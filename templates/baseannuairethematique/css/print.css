@@ -1,0 +1,8 @@
+@media print {
+header, footer,
+.breadcrumb,
+.sidebar1, 
+.sidebar2 {display:none;}
+
+.SPDE-Print  {display:none;}
+}

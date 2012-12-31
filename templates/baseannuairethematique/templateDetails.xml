@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
+<extension version="2.5" type="template" client="site">
+  <name>baseannuairethematique</name>
+  <creationDate>2012-12-31</creationDate>
+  <version>1.0</version>
+  <author></author>
+  <authorUrl></authorUrl>
+  <description>Base annuaire thématique</description>
+  <files>
+	<folder>images</folder>
+	<folder>css</folder>
+	<folder>html</folder>
+	<folder>bootstrap</folder>
+	<folder>bootstrap-sources</folder>
+	<folder>fonts</folder>
+	<folder>fontawesome</folder>
+    <fileName>index.html</fileName>
+    <fileName>index.php</fileName>
+    <fileName>templateDetails.xml</fileName>
+	<fileName>template_thumbnail.png</fileName>
+	<fileName>template_preview.png</fileName>
+	<filename>favicon.ico</filename>
+	<filename>component.php</filename>
+	<filename>error.php</filename>
+  </files>
+  
+  <positions>
+	<position>main</position>
+	<position>center</position>
+	<position>search</position>
+	<position>search2</position>
+	<position>navigation</position>
+    <position>top</position>
+	<position>bottom</position>
+	<position>bottom1</position>
+	<position>bottom2</position>
+	<position>bottom3</position>
+    <position>left</position>
+	<position>right</position>
+	<position>image</position>
+	<position>advertising</position>
+    <position>syndicate</position>
+	<position>user1</position>
+	<position>user2</position>
+    <position>user3</position>
+	<position>copyright</position>
+	<position>map</position>
+	<position>news</position>
+	<position>social</position>
+	<position>sociallinks</position>
+	<position>breadcrumbs</position>
+	<position>footer1</position>
+	<position>footer2</position>
+	<position>footer3</position>
+	<position>copyright</position>
+  </positions>
+</extension>
