@@ -31,7 +31,6 @@ body
 {
   margin: 0 auto;
   padding: 0;
-
 }
 
 * {
@@ -62,17 +61,11 @@ h3 {font-family:@fontFamily1; font-size:1.8em;font-weight:normal; word-spacing:0
 a:hover {text-decoration:none;}
 ul {list-style-type: none; margin:0!important;}
 
-//Module categories caché par défaut
-.categories {display:none;}
-
-//Module En ce moment (rssnews) caché par défaut sur la page Acceuil
-.calendar {display:none;}
+//Blocs
+.centre {margin-bottom:20px;}
 
 //Google maps
 #Jmaps img, #JmapsSearch img, #field_jmapsmarker img {max-width:none!important;}
-
-// Défilés News caché par défaut
-.news {display:none;}
 
 //Pas de champs de recherche etendue dans le module de recherche étendue...
 .title-bloc {font-size:2.5em;line-height:100%;margin-top:10px;margin-bottom:20px;text-align:center;}
@@ -104,25 +97,11 @@ input.invalid, textarea.invalid {border:1px solid #FF0000!important;}
 .brand {font-family:@fontFamily2;color:#6A4A3C!important;margin-top:20px;margin-bottom:20px;font-size:1.5em;}
 .page-header {border-bottom:none;margin:10px 0;}
 
-//Categories
-.categories a.active {font-weight:bold;}
-.accordion-group a {color:#6A4A3C!important;}
-a.accordion-toggle {font-size:1.3em!important;font-family:@fontFamily2;}
-.accordion-group {border:none!important;}
-
 //Liste d'entrées SobiPro
 .spEntriesListContainer .field_name {display:none;}
 .spEntriesListContainer .field_logo {float:left; margin-right:3%;}
 .spEntriesListContainer .field_title {font-weight:bold;}
 .spEntriesListContainer .field_resume_activite {clear:both;}
-
-//Agenda
-#agendacarousel .carousel-inner {height:auto;min-height:100px;}
-#agendacarousel .carousel-inner a {color:@textColor!important;font-weight:bold;}
-
-//Advertising
-.advertising {position:relative;overflow:hidden;}
-
 
 //Login (page - apres bad login) : on ne garde que le message d'erreur
 .login, .login + div {display:none;}
@@ -155,9 +134,6 @@ a.accordion-toggle {font-size:1.3em!important;font-family:@fontFamily2;}
 //Surcharge popup colorbox
 #colorbox #cboxLoadedContent {margin-bottom:0!important; margin-top:30px;}
 #colorbox #cboxClose {top:0; bottom:none!important;}
-
-//Newsletter
-table.acymailing_form {margin:0!important;}
 
 //Header
 .topborder {width:100%; background-color:#987F69;height:10px;}
@@ -366,9 +342,7 @@ form#spEntryForm .controls {margin-left:0!important;}
 
 	//Il faut revoir la police des titres des sidebars
 	h3 {font-size:1.4em!important;}
-	
-	//Formulaire de recherche (les champs d'entrée passent sous le label)
-	.SPSearch .SPSearchField {clear:both;}
+
 }
 
 @media screen and (min-width: 360px) and (max-width: 600px) {

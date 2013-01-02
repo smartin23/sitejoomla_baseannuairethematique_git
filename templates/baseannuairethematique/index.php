@@ -341,12 +341,14 @@ function addBootstrapTags() {
 
 jQuery(window).load(function(){ 
 	
+		//Ouverture du bloc Extended Search en page d'accueil
+		if (jQuery(".task-search-view").length >0) jQuery('#SPExtSearch').show();
+	
 		//Réorganisation de l'ordre des blocs selon la résolution		
 		changeStackingOrder();
 		
 		//Ajout des tags Bootstrap (hors des templates et views modifiables)
 		addBootstrapTags();
-	
 						
 		//Contact Form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de contact form)
 		jQuery(".contact-form").find("form").find("label").addClass('control-label').removeClass("hasTip");
