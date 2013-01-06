@@ -48,40 +48,50 @@ $sitename = $app->getCfg('sitename');
 	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	
-	<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/modernizr.js"></script>
+	<script src="<?php echo $this->baseurl ?>/scripts/modernizr-min.js"></script>
 	<script src="<?php echo $this->baseurl ?>/scripts/jquery.easing.1.3.js"></script>
 	<script src="<?php echo $this->baseurl ?>/scripts/jquery.mobile.custom.min.js"></script>
 	  
 </head>
 <body class="site <?php echo $option . " view-" . $view . " layout-" . $layout . " task-" . str_replace('.','-',$task ). " itemid-" . $itemid . " ";?> <?php if ($this->params->get('fluidContainer')) { echo "fluid"; } ?>">
 
-<div class="topborder"></div>
-
 <div class="sheet container">
-		<header>
-			
-			<div class="introduction row-fluid">
-									
-					<div class="introduction-titre span12">
+		
+				
+		<div class="centre row-fluid">
 	
-								<div class="page-header">
-									<h1><a class="brand" href="<?php echo $this->baseurl; ?>"><?php echo $app->getCfg('sitename');?></a></h1>
-									<h2>Fusce ut nibh turpis, quis imperdiet elit</h2>
-								</div>
+				
+				<div class="span4 pull-left">
+					
+					<header>
+			
+					<div class="header row-fluid">
+					
+					
+					<div class="span12">
+	
+						<div class="row-fluid">
+							<div class="icon">
+								<i class="icon-map-marker icon-large"></i>
+							</div>
+							<div class="brand">
+								&nbsp;<a href="<?php echo $this->baseurl; ?>"><?php echo $app->getCfg('sitename');?></a>
+							</div>
+						</div>
+						
+						<div class="row-fluid">
+							<div class="span12">
+								<div class="soustitre">Fusce ut nibh turpis, quis imperdiet elit</div>
+							</div>
+						</div>
+						
 					
 					</div>
 					
 					
+										
 			</div>	
 		</header>
-				
-		<div class="centre row-fluid">
-	
-				<?php if (($task!='search.results') and ($task!='search.view')) {?>
-				<div class="span6 offset3 pull-left">	
-				<?php } else {?>
-				<div class="span4 pull-left">
-				<?php }?>
 				
 					<jdoc:include type="modules" name="breadcrumbs" />				
 					<div class="contenu" style="overflow:hidden; position:relative;"><jdoc:include type="component" /></div>
@@ -94,31 +104,36 @@ $sitename = $app->getCfg('sitename');
 				
 				</div>
 							
-				<?php if (($task=='search.results') or ($task=='search.view')) {?>
-					<div class="span8 middle">
-									
+				
+				<div class="span8 middle">
 						
+						<?php if (($task=='search.results') or ($task=='search.view')) {?>
 							<div class="mapgrip">
 								<jdoc:include type="modules" name="map" style="standard" />
 							</div>
-						
-						
-						<jdoc:include type="modules" name="bottom1" style="standard" />
+						<?php } ?>
+												
+						<jdoc:include type="modules" name="bottom" style="standard" />
 						
 						<div class="liens row-fluid">
 
 								<?php $counter=0; 
-								if ( $this->countModules( 'bottom2-left' )) $counter++;
-								if ( $this->countModules( 'bottom2-right' )) $counter++;
+								if ( $this->countModules( 'bottom1' )) $counter++;
+								if ( $this->countModules( 'bottom2' )) $counter++;
+								if ( $this->countModules( 'bottom3' )) $counter++;
 								if ($counter>0) {
 								?>
 
-									<?php if ( $this->countModules( 'bottom2-left' )) { ?>
-									<div class="liensblock span<?php echo 12/$counter;?>"><jdoc:include type="modules" name="bottom2-left"  /></div>
+									<?php if ( $this->countModules( 'bottom1' )) { ?>
+									<div class="liensblock span<?php echo 12/$counter;?>"><jdoc:include type="modules" name="bottom1"  /></div>
 									<?php } ?>
 									
-									<?php if ( $this->countModules( 'bottom2-right' )) { ?>
-									<div class="liensblock span<?php echo 12/$counter;?>"><jdoc:include type="modules" name="bottom2-right"  /></div>
+									<?php if ( $this->countModules( 'bottom2' )) { ?>
+									<div class="liensblock span<?php echo 12/$counter;?>"><jdoc:include type="modules" name="bottom2"  /></div>
+									<?php } ?>
+									
+									<?php if ( $this->countModules( 'bottom3' )) { ?>
+									<div class="liensblock span<?php echo 12/$counter;?>"><jdoc:include type="modules" name="bottom3"  /></div>
 									<?php } ?>
 									
 								<?php } ?>
@@ -126,8 +141,16 @@ $sitename = $app->getCfg('sitename');
 						</div>
 					
 						
+				</div>
+				
+				<!-- Pour plus tard : insertion publicité Google
+				<div class="span2 right pull-right">
+					<div class="googleads">
 					</div>
-				<?php } ?>
+					<div class="publicite">
+						<jdoc:include type="modules" name="advertising" style="standard" />
+					</div>
+				</div>-->
 				
 		</div>
 
@@ -138,25 +161,38 @@ $sitename = $app->getCfg('sitename');
 	<!--<p class="pull-right"><a href="#">Haut de la page</a></p>-->
 	
 	<div class="footer container">
-		<div class="colors row-fluid">
+		<!--<div class="colors row-fluid">
 			<div class="span6 offset6">
 				<div class="color1"></div>
 				<div class="color2"></div>
 				<div class="color3"></div>
 				<div class="color4"></div>
 			</div>
-		</div>
+		</div>-->
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="basdepage row-fluid">		
 
-						<div class="span4 menusecondaire">						
+						<div class="span3 menusecondaire">						
 							<jdoc:include type="modules" name="footer1" style="standardlite" />	
 						</div>
-						<div class="span4 login">
-							<jdoc:include type="modules" name="footer2" style="standardlite" />	
+						
+						<div class="span6 theme">
+							<div class="social">
+								<div class="row-fluid">
+									<jdoc:include type="modules" name="footer2" style="standardlite" />	
+								</div>
+								<div class="row-fluid">
+									<div id="sociallinks" class="pull-left">
+										<i class="icon-facebook-sign icon-large">&nbsp;</i><i class="icon-twitter-sign icon-large">&nbsp;</i><i class="icon-google-plus-sign icon-large">&nbsp;</i>
+									</div>
+									<div id="socialshare" class="pull-right">
+										<div id="shareme" data-url="http://sharrre.com/" data-text="Make your sharing widget with Sharrre (jQuery Plugin)" data-title="partagent cette page">&nbsp;</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="span4 social">
+						<div class="span3 login">
 							<jdoc:include type="modules" name="footer3" style="standardlite" />	
 						</div>	
 
@@ -246,14 +282,14 @@ cf. http://stackoverflow.com/questions/12715254/twitter-bootstrap-transition-con
     //jQuery.noConflict();
 </script>
 
-<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/index.js"></script>
-<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/jquery.ba-resize.js"></script>
-<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/jquery.tabs+accordion.js"></script>
+<!--<script src="<php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/index.js"></script>
+<script src="<php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/jquery_ba_resize.js"></script>
+<script src="<php echo $this->baseurl ?>/scripts/tabsandaccordion/js/jquery_tabs_accordion.js"></script>
 <script type='text/javascript'>
 jQuery('.taa-accordion, .taa-tabs').TabsAccordion({
 		responsiveSwitch: 'taa-tablist'
 	});
-</script>
+</script>-->
 
 <script type='text/javascript'>
 function SPCSendMessage( form )
@@ -281,45 +317,20 @@ function SPCSendMessage( form )
 }
 </script>
 
+<script src="<?php echo $this->baseurl ?>/scripts/jquery.tinyscrollbar.min.js"></script>
+
 <script type="text/javascript">
 function changeStackingOrder() {
 
-	//on déplace les categories et les news (les cartes ne peuvent pas etre déplacées)
-	if (jQuery(window).width() <= 600){
+	/*if (jQuery(window).width() <= 600){
 	
-		//On déplace le breadcrumb
-		jQuery(".breadcrumb").insertAfter(jQuery(".introduction"));
-	
-		if (jQuery(".SPListing").length>0) {
-			jQuery(".categories").insertAfter(jQuery(".SPListing"));
-		}
-		else if (jQuery(".SPSearch").length>0) {
-			jQuery(".categories").insertAfter(jQuery(".SPSearch"));
-		}
-		else {
-			jQuery(".categories").insertAfter(jQuery(".contenu"));
-		}
-		
-		jQuery(".calendar").insertBefore(jQuery(".news"));
-		
-		//Sidebar1 n'est plus utilisé
-		jQuery('.sidebar1').hide();
+		//On etend le bloc social à la disparition du bloc login
+		jQuery('.footer').find('.social').removeClass('span5').addClass('span9');
 	}
-	else 
+	else
 	{
-		//Sidebar1 est utilisé
-		jQuery('.sidebar1').show();
-		
-		jQuery(".breadcrumb").insertBefore(jQuery("#system-message-container"));
-		
-		if (jQuery('.categories').length>0) {
-			if (jQuery('.mod-88').length>0) jQuery(".categories").insertAfter(jQuery(".mod-88"));
-			else if (jQuery('.mod-98').length>0) jQuery(".categories").insertAfter(jQuery(".mod-98"));
-			else if (jQuery('.sidebar1').length>0) jQuery(".sidebar1").prepend(jQuery(".categories"));
-		}
-		
-		jQuery(".calendar").insertBefore(jQuery(".promotion1"));
-	}
+		jQuery('.footer').find('.social').removeClass('span9').addClass('span5');
+	}*/
 }
 
 function addBootstrapTags() {
@@ -333,36 +344,39 @@ function addBootstrapTags() {
 		jQuery('#entriescarousel .carousel-control').show();
 	}
 	
-	if  (jQuery('#spdecarousel .carousel-inner').children('div').length>1) {
+	//Reporté dans la vue detail
+	/*if  (jQuery('#spdecarousel .carousel-inner').children('div').length>1) {
 		jQuery('#spdecarousel .carousel-control').show();
-	}
+	}*/
 	
 }
 
 jQuery(window).load(function(){ 
 	
-		//Ouverture du bloc Extended Search en page d'accueil
-		if (jQuery(".task-search-view").length >0) jQuery('#SPExtSearch').show();
-	
-		//Réorganisation de l'ordre des blocs selon la résolution		
-		changeStackingOrder();
-		
-		//Ajout des tags Bootstrap (hors des templates et views modifiables)
-		addBootstrapTags();
-						
-		//Contact Form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de contact form)
-		jQuery(".contact-form").find("form").find("label").addClass('control-label').removeClass("hasTip");
-		
-		//Entry edit form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de sobipro)
-		jQuery("#spEntryForm").addClass("form-horizontal");
-		jQuery("#spEntryForm").find(".spFormRowFooter button").addClass("btn");
-		jQuery("#spEntryForm").find(".spFormRowFooter input").addClass("btn btn-primary");
-		//jQuery("form#spEntryForm").find('.controls input').addClass("input-large");
-		//jQuery("form#spEntryForm").find('.controls textarea').addClass("input-large");
+	//Ouverture du bloc Extended Search en page d'accueil
+	if (jQuery(".task-search-view").length >0) jQuery('#SPExtSearch').show();	
 		
 });
 
 jQuery(document).ready(function() {
+	
+	//Réorganisation de l'ordre des blocs selon la résolution		
+	changeStackingOrder();
+	
+	//Ajout des tags Bootstrap (hors des templates et views modifiables)
+	addBootstrapTags();
+	
+	jQuery('#SPExtSearch').tinyscrollbar();
+					
+	//Contact Form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de contact form)
+	jQuery(".contact-form").find("form").find("label").addClass('control-label').removeClass("hasTip");
+	
+	//Entry edit form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de sobipro)
+	jQuery("#spEntryForm").addClass("form-horizontal");
+	jQuery("#spEntryForm").find(".spFormRowFooter button").addClass("btn");
+	jQuery("#spEntryForm").find(".spFormRowFooter input").addClass("btn btn-primary");
+	//jQuery("form#spEntryForm").find('.controls input').addClass("input-large");
+	//jQuery("form#spEntryForm").find('.controls textarea').addClass("input-large");
 	
 	//Support Swipe pour le carousel Liste des entrées
 	jQuery("#entriescarousel").swiperight(function() {  
@@ -375,9 +389,6 @@ jQuery(document).ready(function() {
 });
 
 jQuery(window).resize(function () {
-
-	//On pousse le contenu sous le header fixe
-	//jQuery("body").css("padding-top", jQuery(".header").height());
 
 	changeStackingOrder();
 	

@@ -1,0 +1,108 @@
+/**
+ * @version: $Id: search.css 1655 2011-07-16 11:16:19Z Sigrid Suski $
+ * @package: SobiPro Library
+ * ===================================================
+ * @author
+ * Name: Sigrid Suski & Radek Suski, Sigsiu.NET GmbH
+ * Email: sobi[at]sigsiu.net
+ * Url: http://www.Sigsiu.NET
+ * ===================================================
+ * @copyright Copyright (C) 2006 - 2011 Sigsiu.NET GmbH (http://www.sigsiu.net). All rights reserved.
+ * @license see http://www.gnu.org/licenses/lgpl.html GNU/LGPL Version 3.
+ * You can use, redistribute this file and/or modify it under the terms of the GNU Lesser General Public License version 3
+ * ===================================================
+ * $Date: 2011-07-16 13:16:19 +0200 (Sat, 16 Jul 2011) $
+ * $Revision: 1655 $
+ * $Author: Sigrid Suski $
+ * File location: components/com_sobipro/usr/templates/default/css/search.css $
+ */
+ 
+//Variables Bootstrap
+@import "../../../../../../templates/baseannuairethematique/bootstrap-sources/less/variables.less";
+
+//Variables internes globales
+@import "../../../../../../templates/baseannuairethematique/css/variables.less";
+
+#spSearchForm h3 {display:none;}
+
+div#SPSearchForm {
+	margin: 2px;
+	padding: 5px;
+}
+
+#SPSearchForm label {display:inline;}
+#SPSearchForm div.SPSearchLabel{width:auto; margin-right:2%;}
+
+#SPSearchForm input,
+#SPSearchForm textarea,
+#SPSearchForm select,
+#SPSearchForm button {
+	border: 1px solid #ccc;
+}
+
+#SPSearchForm input[type=checkbox],
+#SPSearchForm input[type=radio]  {
+	border-style:none;
+}
+
+input.SPSearchBox {
+	float: left;
+	margin-right: 5px;
+	width:90%!important;
+}
+
+input#top_button {
+	float: left;
+	margin-right: 5px;
+}
+
+div.SPSearchCell {
+	margin-top: 5px;
+}
+
+div.SPSearchLabel {
+	width: 150px;
+	float:left;
+}
+
+div.SPSearchSelectRangeFrom,
+div.SPSearchSelectRangeTo {
+	min-width: 220px;
+	float:left;
+}
+
+div.SPSearchField {
+	clear:both;
+}
+
+//Radius
+input#mj_rs_center_selector {width:85%;}
+input#mj_rs_center_selector + img {float:right;height:30px;}
+select#mj_rs_radius_selector {width:auto;}
+button#mj_rs_cutom {margin-bottom:10px;}
+select#sid_list{width:95%;}
+
+//Extended search
+#SPExtSearch{height:370px;}
+//Custom Scrollbar for extended search
+.customscrollbar{ clear: both;}
+.customscrollbar .viewport { width: 95%; height: 370px; overflow: hidden; position: relative; }
+.customscrollbar .overview { list-style: none; position: absolute; left: 0; top: 0; width:100%;}
+.customscrollbar .thumb .end,
+.customscrollbar .thumb { background-color: @textColor; }
+.customscrollbar .scrollbar { position: relative; float: right; width: 15px; }
+.customscrollbar .track { background-color: @boxColor; height: 100%; width:13px; position: relative; padding: 0 1px; }
+.customscrollbar .thumb { height: 20px; width: 13px; cursor: pointer; overflow: hidden; position: absolute; top: 0; }
+.customscrollbar .thumb .end { overflow: hidden; height: 5px; width: 13px; }
+.customscrollbar .disable{ display: none; }
+.noSelect { user-select: none; -o-user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none; }
+
+//Filter
+select.sid_list1, select.sid_list2 {width:100%;}
+
+
+@media screen and (min-width: 601px) and (max-width: 800px) {
+
+	input#mj_rs_center_selector + img {height:25px;}
+}
+
