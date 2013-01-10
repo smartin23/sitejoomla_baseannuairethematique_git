@@ -58,14 +58,14 @@
 				  </xsl:when>			 
 			   </xsl:choose>
 			</xsl:for-each>
-	
+			<div style="clear:both;"/>
 			<span class="spField" id="bio">
 				<xsl:text>Production </xsl:text>
 				<xsl:for-each select="entry/fields/field_bio/options/*">
 				   <xsl:choose>
 					  <xsl:when test="./@selected = 'true'">      
 						  <xsl:value-of select="."/>
-						  <xsl:text>.</xsl:text>						  
+						  <xsl:text>,</xsl:text>						  
 					  </xsl:when>			 
 				   </xsl:choose>
 				</xsl:for-each>
@@ -290,6 +290,18 @@
 							  </div>
 							</div>
 						</xsl:if>
+						
+						<span class="spField" id="bio">
+							<xsl:text>Production </xsl:text>
+							<xsl:for-each select="entry/fields/field_recuperation_essaims/options/*">
+							   <xsl:choose>
+								  <xsl:when test="./@selected = 'true'">      
+									  <xsl:value-of select="."/>
+									  <xsl:text>.</xsl:text>						  
+								  </xsl:when>			 
+							   </xsl:choose>
+							</xsl:for-each>
+						</span>	
 						
 						<xsl:if test="string-length(entry/fields/field_site_internet/data) &gt; 0">
 					  

@@ -24,6 +24,7 @@
 @import "../../../../../../templates/baseannuairethematique/css/variables.less";
 
 #spSearchForm h3 {display:none;}
+#spSearchForm .message {font-weight:bold;margin-bottom:5px;}
 
 div#SPSearchForm {
 	margin: 2px;
@@ -83,11 +84,13 @@ button#mj_rs_cutom {margin-bottom:10px;}
 select#sid_list{width:95%;}
 
 //Extended search
-#SPExtSearch{height:370px;}
+#SPExtSearch{height:370px;margin-bottom:15px;border:1px solid @inputBorder;-webkit-border-radius: 5px;
+-moz-border-radius: 5px;border-radius: 5px;background-color:#fff;}
+
 //Custom Scrollbar for extended search
 .customscrollbar{ clear: both;}
 .customscrollbar .viewport { width: 95%; height: 370px; overflow: hidden; position: relative; }
-.customscrollbar .overview { list-style: none; position: absolute; left: 0; top: 0; width:100%;}
+.customscrollbar .overview { list-style: none; position: absolute; left: 0; top: 0; width:100%;padding:2%;}
 .customscrollbar .thumb .end,
 .customscrollbar .thumb { background-color: @textColor; }
 .customscrollbar .scrollbar { position: relative; float: right; width: 15px; }

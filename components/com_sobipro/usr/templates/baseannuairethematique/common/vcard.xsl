@@ -19,16 +19,7 @@
           </xsl:otherwise>
         </xsl:choose>
       </a>
-	  <xsl:for-each select="fields/field_bio/options/*">
-		<xsl:choose>
-			<xsl:when test="./@selected = 'true'">
-				<xsl:if test="./@position = 1">	
-					<img class="tampon ab" src="images/tampons/logo_ab1-thumb.jpg" />
-				</xsl:if>
-		  </xsl:when>
-		 
-		</xsl:choose>
-	   </xsl:for-each>
+
     </span>
 	
 	<div class="spField" id="title">
@@ -63,14 +54,14 @@
 			  </xsl:when>			 
 		   </xsl:choose>
 		</xsl:for-each>
-		
+		<div style="clear:both;"/>
 		<span class="spField" id="bio">
 			<xsl:text>Production </xsl:text>
 			<xsl:for-each select="fields/field_bio/options/*">
 			   <xsl:choose>
 				  <xsl:when test="./@selected = 'true'">      
 					  <xsl:value-of select="."/>
-					  <xsl:text>.</xsl:text>
+					  <xsl:text>,</xsl:text>
 				  </xsl:when>			 
 			   </xsl:choose>
 			</xsl:for-each>

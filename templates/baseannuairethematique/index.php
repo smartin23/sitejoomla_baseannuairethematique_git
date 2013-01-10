@@ -28,6 +28,8 @@ $sitename = $app->getCfg('sitename');
 	
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/fontawesome/css/font-awesome.css" type="text/css" media="screen" />
 
+	<link href='http://fonts.googleapis.com/css?family=Dosis:400,800' rel='stylesheet' type='text/css'>
+	
 	<link rel="stylesheet" type="text/css" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/template.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/admin.css" />
 
@@ -36,6 +38,8 @@ $sitename = $app->getCfg('sitename');
 	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/scripts/tabsandaccordion/css/tabs+accordion/tabs+accordion.css" />
 	
 	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/scripts/jquery.mobile.custom.min.css" />
+	
+	
 	
 	<!-- Le touch icons -->
 	<link rel="apple-touch-icon" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/icons/apple-touch-icon.png">
@@ -56,92 +60,60 @@ $sitename = $app->getCfg('sitename');
 <body class="site <?php echo $option . " view-" . $view . " layout-" . $layout . " task-" . str_replace('.','-',$task ). " itemid-" . $itemid . " ";?> <?php if ($this->params->get('fluidContainer')) { echo "fluid"; } ?>">
 
 <div class="sheet container">
-		
-				
+			
 		<div class="centre row-fluid">
-	
-				
-				<div class="span4 pull-left">
+		
+				<div class="span4 left pull-left">
 					
 					<header>
-			
-					<div class="header row-fluid">
-					
-					
-					<div class="span12">
-	
-						<div class="row-fluid">
-							<div class="icon">
-								<i class="icon-map-marker icon-large"></i>
-							</div>
-							<div class="brand">
-								&nbsp;<a href="<?php echo $this->baseurl; ?>"><?php echo $app->getCfg('sitename');?></a>
-							</div>
-						</div>
-						
-						<div class="row-fluid">
+						<div class="header row-fluid">
+
 							<div class="span12">
-								<div class="soustitre">Fusce ut nibh turpis, quis imperdiet elit</div>
-							</div>
-						</div>
-						
-					
-					</div>
-					
-					
-										
-			</div>	
-		</header>
-				
-					<jdoc:include type="modules" name="breadcrumbs" />				
-					<div class="contenu" style="overflow:hidden; position:relative;"><jdoc:include type="component" /></div>
-				
-					<div class="sidebar1">
-						<jdoc:include type="modules" name="left" style="standard" />
-					</div>
+
+								<div class="row-fluid">
+									<div class="icon">
+										<a href="<?php echo $this->baseurl; ?>"><i class="icon-map-marker icon-large"></i></a>
+									</div>
+									<div class="brand">
+										&nbsp;<a href="<?php echo $this->baseurl; ?>"><?php echo $app->getCfg('sitename');?></a>
+									</div>
+								</div>
 								
-					<jdoc:include type="message" />
-				
-				</div>
-							
-				
-				<div class="span8 middle">
-						
-						<?php if (($task=='search.results') or ($task=='search.view')) {?>
-							<div class="mapgrip">
-								<jdoc:include type="modules" name="map" style="standard" />
+								<div class="row-fluid">
+									<div class="span12">
+										<div class="soustitre">sur la carte.eu</div>
+									</div>
+								</div>
+								
 							</div>
-						<?php } ?>
-												
-						<jdoc:include type="modules" name="bottom" style="standard" />
+										
+						</div>	
+					</header>
+				
+					<jdoc:include type="modules" name="breadcrumbs" />
+					<div class="recherche" style="overflow:hidden; position:relative;">
+							<jdoc:include type="modules" name="search" />
+					</div>
+					<?php if (($task=='search.results') or ($task=='search.view')) {?>
 						
-						<div class="liens row-fluid">
-
-								<?php $counter=0; 
-								if ( $this->countModules( 'bottom1' )) $counter++;
-								if ( $this->countModules( 'bottom2' )) $counter++;
-								if ( $this->countModules( 'bottom3' )) $counter++;
-								if ($counter>0) {
-								?>
-
-									<?php if ( $this->countModules( 'bottom1' )) { ?>
-									<div class="liensblock span<?php echo 12/$counter;?>"><jdoc:include type="modules" name="bottom1"  /></div>
-									<?php } ?>
-									
-									<?php if ( $this->countModules( 'bottom2' )) { ?>
-									<div class="liensblock span<?php echo 12/$counter;?>"><jdoc:include type="modules" name="bottom2"  /></div>
-									<?php } ?>
-									
-									<?php if ( $this->countModules( 'bottom3' )) { ?>
-									<div class="liensblock span<?php echo 12/$counter;?>"><jdoc:include type="modules" name="bottom3"  /></div>
-									<?php } ?>
-									
-								<?php } ?>
-
+						<div class="contenu" style="overflow:hidden; position:relative;">
+							<jdoc:include type="component" />
 						</div>
+					<?php } ?>
 					
-						
+				
 				</div>
+				
+				<?php if (($task!='search.results') and ($task!='search.view')) {?>
+				<div class="span8 middle">
+
+							<div class="contenuplus">
+								<jdoc:include type="component" />	
+								<jdoc:include type="message" />
+							</div>
+
+				</div>
+				<?php } ?>
 				
 				<!-- Pour plus tard : insertion publicité Google
 				<div class="span2 right pull-right">
@@ -156,11 +128,27 @@ $sitename = $app->getCfg('sitename');
 
 </div>
 
+<div class="fullmap container-fluid" style="position:fixed;top:0;left:0;width:100%;z-index:0;">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="mapgrip">
+				<?php if ($task=='search.results') {?>
+				<jdoc:include type="modules" name="map2" style="standard" />
+				<?php } else { ?>
+				<jdoc:include type="modules" name="map1" style="standard" />
+				<?php } ?>
+				
+			</div>
+			
+		</div>
+	</div>
+</div>
+
 <footer>
 
 	<!--<p class="pull-right"><a href="#">Haut de la page</a></p>-->
 	
-	<div class="footer container">
+	<div class="container">
 		<!--<div class="colors row-fluid">
 			<div class="span6 offset6">
 				<div class="color1"></div>
@@ -171,7 +159,7 @@ $sitename = $app->getCfg('sitename');
 		</div>-->
 		<div class="row-fluid">
 			<div class="span12">
-				<div class="basdepage row-fluid">		
+				<div class="row-fluid">		
 
 						<div class="span3 menusecondaire">						
 							<jdoc:include type="modules" name="footer1" style="standardlite" />	
@@ -198,15 +186,15 @@ $sitename = $app->getCfg('sitename');
 
 				</div>
 				
-				<div class="copyright row-fluid">		
-					<div class="span12">
-						<jdoc:include type="modules" name="copyright" style="none" />	
-					</div>
-				</div>
+				
 			</div>	
 		</div>
 	</div>
 </footer>
+
+
+
+
 
 <script src="<?php echo $this->baseurl ?>/scripts/sharrre/jquery.sharrre.min.js"></script>
 <script type='text/javascript'>
@@ -339,9 +327,12 @@ function addBootstrapTags() {
 	jQuery('input.button').addClass('btn');
 	jQuery('button').addClass('btn');
 	
-	//Carousel : on affiche les boutons de navigation Carousel si il y a des résultats!
-	if  (jQuery('#entriescarousel .carousel-inner').children('div').length>1) {
-		jQuery('#entriescarousel .carousel-control').show();
+	//Carousel : on affiche le carousel et les boutons de navigation Carousel si il y a des résultats!
+	if  (jQuery('#entriescarousel .carousel-inner').children('div').length>0) {
+		jQuery('.spEntriesListContainer').show();
+		if  (jQuery('#entriescarousel .carousel-inner').children('div').length>1) {
+			jQuery('#entriescarousel .carousel-control').show();
+		}
 	}
 	
 	//Reporté dans la vue detail
@@ -352,9 +343,9 @@ function addBootstrapTags() {
 }
 
 jQuery(window).load(function(){ 
-	
+
 	//Ouverture du bloc Extended Search en page d'accueil
-	if (jQuery(".task-search-view").length >0) jQuery('#SPExtSearch').show();	
+	//if (jQuery(".task-search-view").length >0) jQuery('#SPExtSearch').show();	
 		
 });
 
@@ -366,6 +357,10 @@ jQuery(document).ready(function() {
 	//Ajout des tags Bootstrap (hors des templates et views modifiables)
 	addBootstrapTags();
 	
+	//Taille initiale minimale du bloc centre
+	jQuery('.centre').css('min-height', jQuery(window).height()-jQuery('footer h3').outerHeight(true));
+	
+	//Scrollbar custom dans le bolc de recherche étendue
 	jQuery('#SPExtSearch').tinyscrollbar();
 					
 	//Contact Form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de contact form)
