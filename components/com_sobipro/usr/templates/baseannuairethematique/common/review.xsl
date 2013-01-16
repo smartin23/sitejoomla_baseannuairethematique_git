@@ -168,18 +168,18 @@
             <div id="spReviewCont" style="display:none;">
                 <form id="sprr" target="#">
                     <fieldset>
-                        
+						<p><xsl:value-of select="php:function( 'SobiPro::Txt', 'SPRRA.FORM_MANDATORY_FIELD' )"/></p>
                         <xsl:if test="//review_form/settings/review_enabled">
                             <div id="spRevTitleCont">
                                 <label><span class="spRevLabel">
                                     <xsl:value-of select="php:function( 'SobiPro::Txt', 'SPRRA.FORM_REV_TITLE' )"/>
-                                </span></label>
+                                </span>* : </label>
                                 <input name="spreview[title]" id="spRevTitle" type="text"/>
                             </div>
                             <div id="spRevCont">
                                 <label><span class="spRevLabel">
                                     <xsl:value-of select="php:function( 'SobiPro::Txt', 'SPRRA.FORM_REVIEW' )"/>
-                                </span></label>
+                                </span>* : </label>
                                 <textarea name="spreview[review]" id="spReview"/>
                             </div>
                             <xsl:if test="//review_form/settings/rating_enabled">
@@ -211,8 +211,7 @@
                                     <label><span class="spRevLabel">
                                         <xsl:value-of
                                                 select="php:function( 'SobiPro::Txt', 'SPRRA.FORM_VISITOR_NAME' )"/>
-                                        <xsl:text>: </xsl:text>
-                                    </span></label>
+                                    </span> : </label>
                                     <input name="spreview[visitor]" id="spRevVisName" type="text"/>
                                 </div>
                             </xsl:if>
@@ -222,8 +221,7 @@
                                         
                                         <xsl:value-of
                                                 select="php:function( 'SobiPro::Txt', 'SPRRA.FORM_VISITOR_MAIL' )"/>
-                                        <xsl:text>: </xsl:text>
-                                    </span></label>
+                                    </span>* : </label>
                                     <input name="spreview[vmail]" id="spRevVisMail" type="text"/>
                                 </div>
                             </xsl:if>
@@ -233,14 +231,9 @@
                     </fieldset>
                 </form>
                 <div id="spSendBt">
-                    <input id="spRrHideForm" type="button"
-                           class="btn">
-                        <xsl:attribute name="value">
-                            <xsl:value-of select="php:function( 'SobiPro::Txt', 'SPRRA.FORM_CANCEL_BT' )"/>
-                        </xsl:attribute>
-                    </input>
+                    
                     <input type="submit" id="spRrSubmit"
-                           class="btn btn-primary">
+                           class="btn">
                         <xsl:attribute name="value">
                             <xsl:value-of select="php:function( 'SobiPro::Txt', 'SPRRA.FORM_SUBMIT_BT' )"/>
                         </xsl:attribute>
@@ -258,7 +251,7 @@
                     <span>
                         
                         <xsl:value-of select="label"/>
-                    </span>
+                    </span> :
                 </div>
                 <xsl:variable name="fid">
                     <xsl:value-of select="@id"/>

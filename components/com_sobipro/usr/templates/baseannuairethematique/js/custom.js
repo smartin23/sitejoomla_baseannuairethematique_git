@@ -23,11 +23,6 @@ jQuery(document).ready(function() {
 	//Ajout des tags Bootstrap (hors des templates et views modifiables)
 	addBootstrapTags();
 	
-	//Accordion responsive
-	jQuery('.taa-accordion, .taa-tabs').TabsAccordion({
-		responsiveSwitch: 'taa-tablist'
-	});	
-
 	//Support swipe dans le défilé d'images dans la vue détail 
 	jQuery("#spdecarousel").swiperight(function() {  
 		jQuery("#spdecarousel").carousel('prev');  

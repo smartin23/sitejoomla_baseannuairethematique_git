@@ -19,63 +19,32 @@
 	
 	<div class="SPDetailEntry">
 
-		<div style="float:left;"><xsl:call-template name="manage" /></div>
-		<div style="float:right;"><xsl:call-template name="ratingStars"/></div>
+		<div class="manage"><xsl:call-template name="manage" /></div>
+		<div class="ratingstars"><xsl:call-template name="ratingStars"/></div>
 		<div style="clear:both;"/>
 		
 		<h1 itemprop="legalName" class="SPTitle">
 			<xsl:value-of select="entry/name" />
-			
-			<xsl:for-each select="entry/fields/field_bio/options/*">
-				<xsl:choose>
-					<xsl:when test="./@selected = 'true'">
-						<xsl:if test="./@position = 1">	
-							<img class="tampon ab" src="images/tampons/logo_ab1-small.jpg" />
-						</xsl:if>
-				  </xsl:when>
-				 
-				</xsl:choose>
-			</xsl:for-each>
 		</h1>
 		
-		<div id="soustitre">
-						
-			<xsl:for-each select="entry/fields/field_productions_principales/options/*">
-			   <xsl:choose>
-				  <xsl:when test="./@selected = 'true'">      
-					  <xsl:value-of select="."/>				
-					  <xsl:text>, </xsl:text>
-
-				  </xsl:when>		 
-			   </xsl:choose>
-			</xsl:for-each>
+		<xsl:if test="count(entry/categories)">
+          <div class="spEntryCats">
+            <xsl:value-of select="php:function( 'SobiPro::Txt' , 'Catégorie(s):' )" /><xsl:text> </xsl:text>
+            <xsl:for-each select="entry/categories/category">
+             
+              <xsl:value-of select="." />
+  
+              <xsl:if test="position() != last()">
+              <xsl:text> | </xsl:text>
+              </xsl:if>
+            </xsl:for-each>
+          </div>
+        </xsl:if>
 	
-			<xsl:for-each select="entry/fields/field_produits_derives/options/*">
-			   <xsl:choose>
-				  <xsl:when test="./@selected = 'true'">      
-					  <xsl:value-of select="."/>
-						<xsl:text>, </xsl:text>				  
-				  </xsl:when>			 
-			   </xsl:choose>
-			</xsl:for-each>
-			<div style="clear:both;"/>
-			<span class="spField" id="bio">
-				<xsl:text>Production </xsl:text>
-				<xsl:for-each select="entry/fields/field_bio/options/*">
-				   <xsl:choose>
-					  <xsl:when test="./@selected = 'true'">      
-						  <xsl:value-of select="."/>
-						  <xsl:text>,</xsl:text>						  
-					  </xsl:when>			 
-				   </xsl:choose>
-				</xsl:for-each>
-			</span>	
-		</div>
-	  
 		<div class="taa-tabs minimal hide-title cross-fade">
 			<section>
 			
-				<h1><i class="icon-pushpin icon-large"></i> Description</h1>
+				<h2><i class="icon-pushpin icon-large"></i> Description</h2>
 				
 				<div class="spField" id="title">
 				  <xsl:value-of select="entry/fields/field_title/data"/>
@@ -88,7 +57,8 @@
 					<xsl:text> </xsl:text>
 					<xsl:value-of select="entry/fields/field_resume_activite/@suffix"/>
 				</div>
-		  
+				
+	
 				<xsl:if test="string-length(data/@image)">
 					<div itemprop="logo" class="SPDE-Logo hidden-phone">
 						
@@ -109,73 +79,7 @@
 				  <xsl:text> </xsl:text>
 				  <xsl:value-of select="entry/fields/field_activite_detaillee/@suffix"/>
 				</div>
-		  
-				<div class="SPDE-Website">
-					<xsl:if test="string-length(entry/fields/field_site_internet/data) &gt; 0">
-					  
-						<div class="spField" id="internet">          
-						  <a>
-							 <xsl:attribute name="href">
-							  <xsl:value-of select="entry/fields/field_site_internet/data/a/@href" />
-							 </xsl:attribute>
-							 <xsl:attribute name="target">
-							  <xsl:text>_blank</xsl:text>
-							 </xsl:attribute>
-							 Visiter le site internet
-						  </a>
-						</div>
-					  
-					</xsl:if>
-				</div>
-		  
-				<div class="SPDE-Links">	   
-					<xsl:if test="string-length(entry/fields/field_facebook/data) &gt; 0">
-						
-					  <div class="spField" id="facebook">          
-					  <a>
-						 <xsl:attribute name="href">
-						  <xsl:value-of select="entry/fields/field_facebook/data/a/@href" />
-						 </xsl:attribute>
-						 <xsl:attribute name="target">
-						  <xsl:value-of select="_blank" />
-						 </xsl:attribute>
-						 <i class="icon-facebook icon-large"></i>
-					  </a>
-					  </div>
-					  
-					</xsl:if>
-					<xsl:if test="string-length(entry/fields/field_twitter/data) &gt; 0">
-						
-					  <div class="spField" id="twitter">          
-					  <a>
-						 <xsl:attribute name="href">
-						  <xsl:value-of select="entry/fields/field_twitter/data/a/@href" />
-						 </xsl:attribute>
-						 <xsl:attribute name="target">
-						  <xsl:value-of select="_blank" />
-						 </xsl:attribute>
-						 <i class="icon-twitter icon-large"></i>
-					  </a>
-					  </div>
-					  
-					</xsl:if>
-					<xsl:if test="string-length(entry/fields/field_googleplus/data) &gt; 0">
-						
-					  <div class="spField" id="googleplus">          
-					  <a>
-						 <xsl:attribute name="href">
-						  <xsl:value-of select="entry/fields/field_googleplus/data/a/@href" />
-						 </xsl:attribute>
-						 <xsl:attribute name="target">
-						  <xsl:value-of select="_blank" />
-						 </xsl:attribute>
-						 <i class="icon-google-plus icon-large"></i>
-					  </a>
-					  </div>
-					  
-					</xsl:if>
-				</div>
-	 
+				
 				<div class="SPDE-Galery">
 					<div id="spdecarousel" class="carousel slide">
 						<div class="carousel-inner">
@@ -203,19 +107,116 @@
 						<a class="carousel-control right" href="#spdecarousel" data-slide="next"><i class="icon-circle-arrow-right icon-large"></i></a>
 					</div>
 				</div>
+				
+				<div class="SPDE-Resume">
+									
+					<strong><xsl:text>Productions principales : </xsl:text></strong><br/>						
+					<xsl:for-each select="entry/fields/field_productions_principales/options/*">
+					   <xsl:choose>
+						  <xsl:when test="./@selected = 'true'">      
+							  <xsl:value-of select="."/>				
+							  <xsl:text>, </xsl:text>
+
+						  </xsl:when>		 
+					   </xsl:choose>
+					</xsl:for-each>
+					
+					<div style="clear:both;"/>
+					<strong><xsl:text>Produits dérivés : </xsl:text></strong><br/>	
+					<xsl:for-each select="entry/fields/field_produits_derives/options/*">
+					   <xsl:choose>
+						  <xsl:when test="./@selected = 'true'">      
+							  <xsl:value-of select="."/>
+								<xsl:text>, </xsl:text>				  
+						  </xsl:when>			 
+					   </xsl:choose>
+					</xsl:for-each>
 		
+					<div style="clear:both;"/>
+					
+					<div class="stampels">
+						<xsl:for-each select="entry/fields/field_bio/options/*">
+						<xsl:choose>
+							<xsl:when test="./@selected = 'true'">
+								<xsl:if test="./@position = 1">	
+									<img class="tampon ab" src="images/tampons/logo_ab1-small.jpg" />
+								</xsl:if>
+							</xsl:when>					 
+						</xsl:choose>
+						</xsl:for-each>
+					</div>
+					
+				</div>
+	 
+				<div class="SPDE-More">
+					
+						
+					<div class="SPDE-Links">	
+						<strong><xsl:text>Suivez-nous sur : </xsl:text></strong><br/>			
+						<xsl:if test="string-length(entry/fields/field_facebook/data) &gt; 0">
+							
+						  <div class="spField" id="facebook">          
+						  <a>
+							 <xsl:attribute name="href">
+							  <xsl:value-of select="entry/fields/field_facebook/data/a/@href" />
+							 </xsl:attribute>
+							 <xsl:attribute name="target">
+							  <xsl:value-of select="_blank" />
+							 </xsl:attribute>
+							 <i class="icon-facebook-sign"></i>
+						  </a>
+						  </div>
+						  
+						</xsl:if>
+						<xsl:if test="string-length(entry/fields/field_twitter/data) &gt; 0">
+							
+						  <div class="spField" id="twitter">          
+						  <a>
+							 <xsl:attribute name="href">
+							  <xsl:value-of select="entry/fields/field_twitter/data/a/@href" />
+							 </xsl:attribute>
+							 <xsl:attribute name="target">
+							  <xsl:value-of select="_blank" />
+							 </xsl:attribute>
+							 <i class="icon-twitter-sign"></i>
+						  </a>
+						  </div>
+						  
+						</xsl:if>
+						<xsl:if test="string-length(entry/fields/field_googleplus/data) &gt; 0">
+							
+						  <div class="spField" id="googleplus">          
+						  <a>
+							 <xsl:attribute name="href">
+							  <xsl:value-of select="entry/fields/field_googleplus/data/a/@href" />
+							 </xsl:attribute>
+							 <xsl:attribute name="target">
+							  <xsl:value-of select="_blank" />
+							 </xsl:attribute>
+							 <i class="icon-google-plus-sign"></i>
+						  </a>
+						  </div>
+						  
+						</xsl:if>
+					</div>
+				</div>
+
+				
+				
+				<div style="clear:both;"/>
+					
 				<div class="SPDE-Tags">
 					<xsl:if test="count(entry/fields/field_tags/data/*)">
-						<i class="icon-tags icon-large"></i>
-					   
+						<i class="icon-tags icon-large"></i>						   
 						<xsl:text> </xsl:text>
 						<xsl:copy-of select="entry/fields/field_tags/data/*" />
 					</xsl:if>
 				</div>
+				
 	  
 			</section>
 			<section>
-				<h1> <i class="icon-info-sign icon-large"></i> Infos pratiques</h1>  
+				<h2> <i class="icon-info-sign icon-large"></i> Infos pratiques</h2>  
 		
 				<div class="SPDetailEntry-Sidebar">
 	  
@@ -292,7 +293,6 @@
 						</xsl:if>
 						
 						<span class="spField" id="bio">
-							<xsl:text>Production </xsl:text>
 							<xsl:for-each select="entry/fields/field_recuperation_essaims/options/*">
 							   <xsl:choose>
 								  <xsl:when test="./@selected = 'true'">      
@@ -345,14 +345,14 @@
 				</div>
 			</section>
 			<section>
-				<h1><i class="icon-comments icon-large"></i> Commentaires</h1>
+				<h2><i class="icon-comments icon-large"></i> Commentaires</h2>
 				<xsl:call-template name="ratingSummary"/>
 				<xsl:call-template name="reviewForm"/>
 				<div style="clear: both;"/><br/>
 				<xsl:call-template name="reviews"/>		  
 			</section>
 			<section>
-			  <h1><i class="icon-phone icon-large"></i> Contact</h1>
+			  <h2><i class="icon-phone icon-large"></i> Contact</h2>
 			  <div id='contact'>
 				<xsl:call-template name="contact">
 						<xsl:with-param name="field" select="/entry_details/entry/fields/field_contact/data"/>

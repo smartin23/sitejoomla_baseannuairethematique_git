@@ -10,17 +10,6 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'BebasRegular';
-    src: url('../fonts/BEBAS___-webfont.eot');
-    src: url('../fonts/BEBAS___-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/BEBAS___-webfont.woff') format('woff'),
-         url('../fonts/BEBAS___-webfont.ttf') format('truetype'),
-         url('../fonts/BEBAS___-webfont.svg#BebasRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
 //Variables Bootstrap
 @import "../bootstrap-sources/less/variables.less";
 
@@ -48,210 +37,135 @@ body
     padding: 0;
 }
 
+.whitebordered {
+text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff;
+/* 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;*/
+filter: progid:DXImageTransform.Microsoft.Glow(Color=#ffffff,Strength=1); /* IE<10 */
+}
+
 //Structure
 .sheet.container, .footer.container {margin:auto;}
 .sheet-wrapper, .footer-wrapper { }
 
 //Titres
 h1 {font-family:@fontFamily1; font-size:2.5em; line-height:1em; font-weight:normal; word-spacing:0.2em;}
-h2 {font-family:@fontFamily1; font-size:1.8em; line-height:1em; font-weight:normal; word-spacing:0.2em;}
-h3 {font-family:@fontFamily1; font-size:1.8em;font-weight:normal; word-spacing:0.2em;color:@textColor;}
+h2 {font-family:@fontFamily1; font-size:2.2em; line-height:1em; font-weight:normal; word-spacing:0.2em;}
+h3 {font-family:@fontFamily1; font-size:2em;font-weight:normal; word-spacing:0.2em;color:@textColor;}
 
 //Général
 a:hover {text-decoration:none;}
 ul {list-style-type: none; margin:0!important;}
 
-//Blocs
-.left {position:relative; z-index:9;background-color:rgba(255,255,255,0);}
+//Blocs principaux
+.left {position:relative; z-index:9;}
+.middle {position:relative; z-index:9;}
 
+//Onoff
+#onoff {cursor:pointer; position:absolute; top:0; right:0; font-size:1.8em;font-weight:normal; background-color:@textColor;color:#fff;padding:2%;
+-moz-border-radius-bottomright: 5px;
+border-bottom-right-radius: 5px;
+-moz-border-radius-bottomleft: 5px;
+border-bottom-left-radius: 5px;}
+
+//Contenu / Onoff
+.contenu {overflow:hidden; position:relative;}
+.contenu.on {
+	transition: 1s opacity 0.3s;  
+	opacity:1;
+}
+
+.contenu.off{
+	transition: 1s opacity 0.3s;  
+	opacity:0;
+}
+
+//Header
+.header {padding:1%;margin-bottom:25px;padding-top:20px;}
+.contenuplus .header {margin:0!important; padding:0!important;}
+.contenuplus .header {margin-top:20px!important;margin-bottom:25px!important;}
+.header table.sitename {width:100%; max-width:320px;}
+.header table.sitename td.icone {width:15px;vertical-align:middle;}
+.header table.sitename td.extension {text-align:center;}
+.header i {font-size:5em; .whitebordered;margin-top:70%;}
+.header .icon a, .header .icon a:hover {color:@textColor;}
+.header i.icon-large:before {}
+.header .icon {float:left;}
+.header .brand {font-family:@fontFamily1;font-size:2.5em;line-height:1.2em;font-weight:bold;text-transform:uppercase;.whitebordered;}
+.header a {color:@textColor;}
+.header a:hover {color:lighten(@textColor,5%)!important;}
+.header .soustitre {clear:both;font-family:@fontFamily2;margin-top:10px;margin-bottom:20px;font-size:1em;text-align:center;.whitebordered;}
+.contenuplus .header i, .contenuplus .header .brand, .contenuplus .header .soustitre{opacity:0.1;}
 
 //Google maps
-.fullmap.container-fluid {padding:0!important;}
+.fullmap {position:fixed;top:0;left:0;width:100%;z-index:0;}
+.fullmap.container-fluid {padding:0!important;margin:0!important;}
 
-.map { margin-bottom:20px;}
 #Jmaps img, #JmapsSearch img, #JmapsHome img, #field_jmapsmarker img {max-width:none!important;}
-
-//Pas de champs de recherche etendue dans le module de recherche étendue...
-.title-bloc {font-size:2.5em;line-height:100%;margin-top:10px;margin-bottom:20px;text-align:center;}
-
-.spextsearchmodule h3 {display:none;}
-.search-bloc, .search2-bloc {width:320px; margin:auto;text-align:center;}
-.search-bloc form {margin-bottom:0px;}
-.search-bloc .extended-searck-link {clear:both;padding-left:3%;}
-.search-bloc .XTSPSearchForm {display:inline;}
-.search-bloc .XTSPSearchCell1 , .search-bloc .XTSPSearchCell2 {float:left;}
-.search-bloc .XTSPSearchLabel, .search-bloc .XTSPSearchCell3, .search-bloc #XTSPExtSearch, .search-bloc .spspacer {display:none;}
-//.search-bloc .XTSPSearchBox {width:125px;}
+#JmapsSearch .markerHTMLdiv {font-weight:normal!important;font-size:1em!important;}
 
 //Pagination
-.pagination span {
-  float: left;
-  padding: 0 14px;
-  line-height: 34px;
-  text-decoration: none;
-  border: 1px solid #ddd;
-  border-left-width: 0;
-}
+//.pagination span {
+//  float: left;
+//  padding: 0 14px;
+//  line-height: 34px;
+//  text-decoration: none;
+//  border: 1px solid #ddd;
+//  border-left-width: 0;
+//}
+
+//Login
+.login .login-description, .logout .logout-description {margin-bottom:20px;}
+.login input#remember {float:left;}
+.login label#remember-lbl {display:inline; margin-left:1%;}
+.login button {margin-top:15px;}
+
+//Profile Affichage
+.profile #users-profile-core {}
+.profile #users-profile-sobipro {margin-top:20px;}
+.profile #users-profile-sobipro div#sobipro-entries {margin-bottom:20px;}
+
+//Profile Edition
+.profile-edit legend {color:@textColor!important;border:none!important; font-size:1em!important;}
+
+//Registration
+.registration legend {color:@textColor!important;border:none!important; font-size:1em!important;}
+
+//Contacts
+.contact .contact-email-form-description {margin-bottom:20px;}
+.contact-form legend {color:@textColor!important;border:none!important; font-size:1em!important;font-weight:normal!important;}
 
 //Validation
 input.invalid, textarea.invalid {border:1px solid #FF0000!important;}
 
-//Intro
-.header {padding-top:15px;}
-.header i {font-size:6.8em;}
-.header .icon a, .header .icon a:hover {color:@textColor;}
-.header i.icon-large:before {vertical-align:-320%;}
-.header .icon {float:left;}
-.header .brand {font-family:@fontFamily1;font-size:3.5em;line-height:1.2em;font-weight:bold;text-transform:uppercase;}
-.header .brand a, .header .brand a:hover {color:@textColor;}
-.header .soustitre {clear:both;font-family:@fontFamily2;margin-top:10px;margin-bottom:20px;font-size:3em;}
-
-//Login (page - apres bad login) : on ne garde que le message d'erreur
-.login, .login + div {display:none;}
-
-//Profile
-.profile-edit legend {color:@textColor!important;border:none!important; font-size:1em!important;}
-.profile-edit fieldset+fieldset {display:none;}
-
-//Enregistrement
-.registration legend {color:@textColor!important;border:none!important; font-size:1em!important;}
-
-//Contacts
-.contact-category table.category {width:100%}
-.contact-category table.category th {font-family:@fontFamily2;text-align:left;}
-.contact-form legend {color:@textColor!important;border:none!important; font-size:1em!important;font-weight:normal!important;}
-
-//Bootstrap carousel
-.spEntriesListContainer {display:none;}
-.carousel-control {display:none;background:none!important; border:none!important; color:@textColor ;opacity:1;font-size:2em;}
-
-//Entries dateil
-#entriescarousel .carousel-control { position:relative!important;left:0px!important;top:10px;}
-#entriescarousel .carousel-control:hover {color:@textColor;}
-#entriescarousel .carousel-control.left {float:left;}
-#entriescarousel .carousel-control.right {float:right;}
-
-//Modules : général
-//.module.left, .module.right, .newsblock, .adsblock, .liensblock {margin-bottom:20px;}
-
-//Surcharge popup colorbox
-#colorbox #cboxLoadedContent {margin-bottom:0!important; margin-top:30px;}
-#colorbox #cboxClose {top:0; bottom:none!important;}
-
-//Header
-.topborder {width:100%; background-color:#987F69;height:10px;}
-.header {padding:1%;padding-top:20px;}
-
-//Fil d'ariane
-.breadcrumb {background:none!important;}
-
-//Resultats de recherche
-//Liste d'entrées SobiPro (vcard)
-.spEntriesListContainer {margin:1%;border:1px solid @inputBorder;-webkit-border-radius: 5px;
--moz-border-radius: 5px;border-radius: 5px;background-color:#fff;}
-.spEntriesListCell {border:none!important; margin:2%; line-height:1.3em;}
-.spEntriesListTitle {border:none!important;}
-.spEntriesListTitle a {font-weight:normal!important;padding-left:2%;}
-.spEntriesListCell:hover .spEntriesListTitle a {}
-.spEntriesListCell img.tampon {height:25px;margin-left:1%;}
-.spEntriesListCell{background:none!important;margin-bottom:25px;}
-.spEntriesListCell div#title {font-weight:bold; margin-bottom:10px;}
-.spEntriesListCell div#resume_activite {margin-bottom:10px;}
-.spEntriesListCell div#productions {font-weight:bold;margin-bottom:10px;}
-
-//Links
-.bottom {position:relative;background-color:@boxColor;color:#fff;z-index:9999;}
-.bottom .liens {padding-top:20px; padding-bottom:20px;}
-
 //Contenu +
 .contenuplus {position:relative;z-index:9;margin-top:25px;background-color:rgba(255,255,255,0.95);padding:3%;}
+.contenuplus .retour {font-size:2em; position:absolute; top:20px; right:20px;}
 
-//Section Tools
+//Footer
 footer {position:relative;background-color:lighten(@textColor,30%);color:#fff;z-index:9999;margin-top:20px;}
-footer  h3 {color:@white;font-weight:bold; text-transform:uppercase;}
+footer  h3 {color:@white; font-size:1.8em;font-weight:bold; text-transform:uppercase;}
 
-//Plan du site
-footer .sitemap {padding:1%;padding-top:0px;}
-footer .sitemap .nav > li a {color:@white!important;}
-footer .sitemap .nav > li a:hover {color:@white!important; background:none!important;}
+//S'incrire
+footer .login {padding:1%;padding-top:0px;}
+footer .login .nav > li a {color:@white!important;}
+footer .login .nav > li a:hover {color:@white!important; background:none!important;}
+footer .login {margin-bottom:15px;}
+footer .registered .login .guestonly {display:none;}
+
+//Logout
+footer .loggedin {padding:1%;padding-top:0px;}
+footer .login-greeting {margin-bottom:5px;}
+
+//Sur le Web
+footer .links {padding:1%;padding-top:0px;}
+footer .links .nav > li a {color:@white!important;}
+footer .links .nav > li a:hover {color:@white!important; background:none!important;}
 
 //Share
 footer .keywords {color:@textColor;}
 footer .social {padding:1%;padding-top:0px}
 footer .social #socialshare {position:relative; right:2%;}
-footer .social #sociallinks {margin-top:10px; font-size:1.8em;}
-
-//Login
-footer .lock {padding:1%;padding-top:0px;}
-
-//Menu principal
-.navbar {margin-top:-25px;margin-bottom:0px!important;}
-.navbar .brand  {margin-top:40px;}
-.navbar a.rechercher {display:none;}
-
-.navbar .dropdown-menu {
-    background-color: @white;
-	margin:0px!important;
-}
-
-.navbar .dropdown-menu li > a {
-   
-	text-shadow:none!important;
-	font-family:@fontFamily1;
-	text-transform:uppercase;
-	word-spacing:0.2em;
-}
-.navbar .dropdown-menu li > a:hover, .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
-    background-color: @colorSup9!important;
-    background-image: none;
-    color: #fff;
-    filter: none;
-}
-
-.navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle {
-	background-color: rgba(@colorSup9-r,@colorSup9-g,@colorSup9-b,0.8)!important;
-}
-
-.navbar .nav > li > a:focus, .navbar .nav > li > a:hover {
-	background-color: rgba(@colorSup9-r,@colorSup9-g,@colorSup9-b,0.8)!important;
-}
-
-.navbar .nav-pills > li + li > a {
-    background-color: rgba(@color1-r, @color1-g, @color1-b,0.8);
-    border-radius: 0px 0px 30px 30px;
-    color: #fff;
-    margin:0px;
-    padding: 50px 20px 50px;
-	text-shadow:none;
-	font-family:@fontFamily1;
-	text-transform:uppercase;
-	word-spacing:0.2em;
-}
-.navbar .nav-pills > li + li  + li > a   {
-    background-color: rgba(@color2-r, @color2-g, @color2-b,0.8);
-}
-
-.navbar .nav-pills > li + li  + li   + li > a   {
-    background-color: rgba(@color3-r, @color3-g, @color3-b,0.8);
-}
-
-.navbar .nav-pills > li + li  + li + li + li> a   {
-    background-color: rgba(@color4-r, @color4-g, @color4-b,0.8);
-}
-
-.navbar .nav-pills > li > a:hover {
-    background-color:rgba(@colorSup9-r,@colorSup9-g,@colorSup9-b,0.8)!important;
-    color: #FFFFFF!important;
-	text-shadow:none!important;
-}
-
-
-.navbar .nav-pills > .active > a, .nav-pills > .active > a:hover {
-    background-color: rgba(@colorSup9-r,@colorSup9-g,@colorSup9-b,0.8);
-    color: #FFFFFF;
-}
-
-.navbar .nav-pills > li > a .caret , .nav-pills > li > a:hover .caret {border-bottom-color:#fff!important; border-top-color:#fff!important;}
+footer .social #sociallinks {margin-top:10px; font-size:2em;}
 
 //Autres menu
 .nav > li > a:hover {background:none;}
@@ -279,7 +193,7 @@ padding-right:10px
 #shareme .share {
 float:left;
 margin-left:10px;
-font-size:1.4em;
+font-size:1.2em;
 width:100px;
 }
 #shareme .buttons {
@@ -301,34 +215,9 @@ margin:0 10px 0 0;
 margin:0 4px 0 0;
 }
 
-/*Formulaire edition d'entree*/
-form#spEntryForm label 
-{
-			float: none!important;
-			padding-top: 0!important;
-			text-align: left!important;
-			width: auto!important;
-}
-	
-form#spEntryForm .controls {margin-left:0!important;}
-
-
 //Media Queries  
 @media screen and (max-width: 980px) {
 
-	//On supprime la déco menu et on réarrange le menu
-	//.topborder, .introduction-illustration {display:none!important;}
-	//.introduction-titre {width:100%!important;margin-top:20px;}
-	
-	.navbar {margin-top:0px;}
-	.navbar .brand  {margin-top:0px;}
-	.nav-pills > li + li > a {
-		background-color: rgba(156,156,156,0.8);
-		border-radius: 7px 7px 7px 7px!important;
-		color: #454545;
-		padding: 15px 20px !important;
-	}
-	
 	//On bascule de force avant 360px le formulaire de contact et le formulaire d'edit d'entrées
 	/*.contact-form label, form#spEntryForm label 
    {
@@ -339,111 +228,53 @@ form#spEntryForm .controls {margin-left:0!important;}
 	}*/
 	
 	/*.contact-form .controls,*/
-	form#spEntryForm .controls {margin-left:0!important;}
-}
-
-@media screen and (max-width: 800px) {
-
-	//Il faut revoir la police des titres des sidebars
-	h3 {font-size:1.4em!important;}
-}
+	//form#spEntryForm .controls {margin-left:0!important;}
+}	
 
 
-@media screen and (max-width: 600px) {
-
-	//On ajoute un padding de bord (?)
-	//[class*="span"], .uneditable-input[class*="span"], .row-fluid [class*="span"] {
-	//	padding-left:1%;
-	//	padding-right:1%;
-	//}
+// Tablets to regular desktops
+@media screen and (min-width: 768px) and (max-width: 979px) {
+	//Logo
+	.header .brand {font-size:2em;}
+	.header i  {font-size:3.8em;}
 	
+	//Titres footer
+	footer h3 {font-size:1.8em!important;}
+}
+	
+
+// Phones to portrait tablets and narrow desktops
+@media screen and (max-width: 767px) {
+
+	//body {font-size:16px;}
+
 	//La partie centre n'utilise plus de height min
-	.centre {min-height:auto!important;}
+	.centre {min-height:0px!important;}
 	
-	//La map prend sa place
+	//Par defaut pas de fullmap
+	.fullmap {display:none;}
+	//Sauf ...
+	.task-search-results .fullmap, .task-search-view .fullmap{display:block;}
+	
+	//La map prend sa place..pas trop haute....
 	.fullmap {position:relative!important;}
 	
 	//On laisse un grip a droite de la map pour eviter le scroll of death...
 	.mapgrip {		background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC) repeat;
 	}	
-	.map {width:95%;}
-	
-	 //On supprime le login (et l'acces aux formulaires sobipro/jce non adaptés pour le moment)
-	.footer .login {display:none;}
+	.map1, .map2 {width:95%; }
 
+	//On supprime le bouton de masquage de la partie gauche
+	#onoff {display:none;}
+	
+	//Titres footer
+	footer h3 {font-size:1.8em!important;}
 }
 
-@media screen and (min-width: 360px) and (max-width: 600px) {
-
-	//Blocs défilé pubs, actus et promos 
-	//.advertising .adsblock {float:left; width:32%!important;padding-left:1%; padding-right:1%;}	
-	//.news .newsblock {float:left; width:50%!important;}
-	//.liens .liensblock {float:left; width:50%!important;}
-	
-	//Blocs footer
-	//footer .menusecondaire, footer .social, footer .newsletter {
-	//	float:left!important; width:33.33333333%!important;
-	//}
-	
-}
 
 @media screen and (max-width: 360px) {
 
-	footer #shareme .share {font-size:1.5em;}
+	footer #shareme .share {font-size:1.2em;}
 	footer #shareme .count {font-size:2em;}
-	
-	//Copyright
-	.copyright{font-size:1em!important;}	
-}
-
-@media screen and (max-width: 320px) {}
-
-//Titre du site
-@media screen and (min-width: 1024px) and (max-width: 1280px) {
-
-	.header i {font-size:5.5em;}
-	.header i.icon-large:before {vertical-align:-200%;}
-	.header .brand {font-size:3em;line-height:1em;}
-}
-
-@media screen and (min-width: 980px) and (max-width: 1024px) {
-
-.header i {font-size:5.5em;}
-	.header i.icon-large:before {vertical-align:-200%;}
-	.header .brand {font-size:3em;line-height:1em;}
-	
-}
-
-@media screen and (min-width: 801px) and (max-width: 979px) {
-
-	
-	
-	.header i {font-size:4em;}
-	.header i.icon-large:before {vertical-align:-130%;}
-	.header .brand {font-size:2.2em;line-height:1em;}
-}
-
-@media screen and (min-width: 601px) and (max-width: 800px) {
-
 
 }
-
-@media screen and (min-width: 480px) and (max-width: 800px) {
-
-	.header {}
-	.header i {font-size:3em;}
-	.header i.icon-large:before {vertical-align:-90%;}
-	.header .brand {font-size:3em;line-height:1em;}
-	.header .brand a {}
-}
-
-@media screen and (min-width: 320px) and (max-width: 479px) {
-	
-	.header {}
-	.header i {font-size:5.5em;}
-	.header i.icon-large:before {vertical-align:-200%;}
-	.header .brand {font-size:3em;line-height:1em;}
-	.header .brand a {}
-}
-
-

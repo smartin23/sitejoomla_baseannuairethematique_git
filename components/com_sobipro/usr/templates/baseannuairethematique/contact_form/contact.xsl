@@ -4,7 +4,7 @@
     <xsl:template name="contact">
         <xsl:param name="field" />
         <div id="{$field/@nid}_container" class="spContactForm"
-             title="{php:function( 'SobiPro::Txt' , 'AFCF_TPL_CONTACT_TITLE' )}" style="height:400px; width:520px">
+             title="{php:function( 'SobiPro::Txt' , 'AFCF_TPL_CONTACT_TITLE' )}" >
             <form id="{$field/@nid}_form" action="index.php" >
                 
                 <xsl:if test="//visitor/@id = 0">

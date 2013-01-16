@@ -28,7 +28,7 @@ $lang->load( 'plg_user_profile', JPATH_ADMINISTRATOR );
 	<?php if (count($fields)):?>
 	<fieldset>
 		<?php if (isset($fieldset->label)):// If the fieldset has a label set, display it as the legend.?>
-		<h3><i class="icon-user icon-large"></i> <?php echo JText::_($fieldset->label); ?></h3>
+		<h3><i class="icon-user icon-large"></i> <?php echo JText::_('COM_USERS_EDIT_PROFILE'); ?></h3>
 		<?php endif;?>
 		
 		<dl>
@@ -51,7 +51,7 @@ $lang->load( 'plg_user_profile', JPATH_ADMINISTRATOR );
 <?php endforeach;?>
 		<legend><?php echo JText::_('COM_USERS_REGISTER_REQUIRED'); ?></legend>
 		<div>
-			<button type="submit" class="validate btn btn-primary"><span><?php echo JText::_('JSUBMIT'); ?></span></button>
+			<button type="submit" class="validate btn"><span><?php echo JText::_('JSUBMIT'); ?></span></button>
 		
 			<input type="hidden" name="option" value="com_users" />
 			<input type="hidden" name="task" value="profile.save" />

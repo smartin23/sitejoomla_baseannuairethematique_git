@@ -20,13 +20,14 @@ JHtml::_('behavior.noframes');
 <?php endif; ?>
 
 	<form id="member-registration" action="<?php echo JRoute::_('index.php?option=com_users&task=registration.register'); ?>" method="post" class="form-validate">
+
 <?php foreach ($this->form->getFieldsets() as $fieldset): // Iterate through the form fieldsets and display each one.?>
 	<?php $fields = $this->form->getFieldset($fieldset->name);?>
 	<?php if (count($fields)):?>
 		<fieldset>
 		<?php if (isset($fieldset->label)):// If the fieldset has a label set, display it .
 		?>
-			<h3><i class="icon-unlock icon-large"></i> <?php echo JText::_($fieldset->label);?></h3>
+			<h3><i class="icon-user icon-large"></i> <?php echo JText::_($fieldset->label);?></h3>
 		<?php endif;?>
 			<dl>
 		<?php foreach($fields as $field):// Iterate through the fields in the set and display them.?>

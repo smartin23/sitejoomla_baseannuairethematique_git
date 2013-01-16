@@ -20,6 +20,10 @@ cd \wamp21e\www\sitejoomla_baseannuairethematique\modules
 rmdir mod_jmaps
 MKLINK /D mod_jmaps D:\wamp21e\www\sitejoomla_baseannuaire_git\modules\mod_jmaps
 pause
+cd \wamp21e\www\sitejoomla_baseannuairethematique\plugins\system
+MKLINK /D plugin_googlemap2 D:\wamp21e\www\sitejoomla_baseannuaire_git\plugins\system\plugin_googlemap2
+pause
+
 cd \wamp21e\www\sitejoomla_baseannuairethematique
 rmdir scripts
 MKLINK /D scripts D:\wamp21e\www\sitejoomla_baseannuaire_git\scripts

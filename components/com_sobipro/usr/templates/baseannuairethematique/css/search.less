@@ -23,27 +23,25 @@
 //Variables internes globales
 @import "../../../../../../templates/baseannuairethematique/css/variables.less";
 
+.whitebordered {
+text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff;
+filter: progid:DXImageTransform.Microsoft.Glow(Color=#ffffff,Strength=1); /* IE<10 */
+}
+
+#spSearchForm {margin:0!important;}
 #spSearchForm h3 {display:none;}
-#spSearchForm .message {font-weight:bold;margin-bottom:5px;}
+#spSearchForm .message {font-weight:bold;margin:1%;margin-bottom:5px;.whitebordered;}
+#spSearchForm .pagination {display:none;}
 
-div#SPSearchForm {
-	margin: 2px;
-	padding: 5px;
-}
-
+#SPSearchForm {	margin:1%; margin-bottom:20px;}
 #SPSearchForm label {display:inline;}
-#SPSearchForm div.SPSearchLabel{width:auto; margin-right:2%;}
+#SPSearchForm div.SPSearchLabel{width:auto; margin-right:2%;.whitebordered;}
 
-#SPSearchForm input,
-#SPSearchForm textarea,
-#SPSearchForm select,
-#SPSearchForm button {
-	border: 1px solid #ccc;
-}
+#SPSearchForm label {line-height:25px;}
 
 #SPSearchForm input[type=checkbox],
 #SPSearchForm input[type=radio]  {
-	border-style:none;
+	//border-style:none;
 }
 
 input.SPSearchBox {
@@ -58,7 +56,7 @@ input#top_button {
 }
 
 div.SPSearchCell {
-	margin-top: 5px;
+
 }
 
 div.SPSearchLabel {
@@ -78,22 +76,23 @@ div.SPSearchField {
 
 //Radius
 input#mj_rs_center_selector {width:85%;}
-input#mj_rs_center_selector + img {float:right;height:30px;}
+i.locateme {cursor:pointer;font-size:2.3em;.whitebordered;max-width:5%;}
+div.SPSearchField.radius {display:inline;}
 select#mj_rs_radius_selector {width:auto;}
 button#mj_rs_cutom {margin-bottom:10px;}
 select#sid_list{width:95%;}
 
 //Extended search
-#SPExtSearch{height:370px;margin-bottom:15px;border:1px solid @inputBorder;-webkit-border-radius: 5px;
+#SPExtSearch{height:350px;margin-top:10px;margin-bottom:15px;border:1px solid @inputBorder;-webkit-border-radius: 5px;
 -moz-border-radius: 5px;border-radius: 5px;background-color:#fff;}
 
 //Custom Scrollbar for extended search
 .customscrollbar{ clear: both;}
-.customscrollbar .viewport { width: 95%; height: 370px; overflow: hidden; position: relative; }
-.customscrollbar .overview { list-style: none; position: absolute; left: 0; top: 0; width:100%;padding:2%;}
+.customscrollbar .viewport { width: 95%; height: 350px; overflow: hidden; position: relative; }
+.customscrollbar .overview { list-style: none; position: absolute; left: 0; top: 0; width:100%;padding-left:1%;}
 .customscrollbar .thumb .end,
 .customscrollbar .thumb { background-color: @textColor; }
-.customscrollbar .scrollbar { position: relative; float: right; width: 15px; }
+.customscrollbar .scrollbar { position: relative; float: right; width: 5%; }
 .customscrollbar .track { background-color: @boxColor; height: 100%; width:13px; position: relative; padding: 0 1px; }
 .customscrollbar .thumb { height: 20px; width: 13px; cursor: pointer; overflow: hidden; position: absolute; top: 0; }
 .customscrollbar .thumb .end { overflow: hidden; height: 5px; width: 13px; }
@@ -103,9 +102,37 @@ select#sid_list{width:95%;}
 //Filter
 select.sid_list1, select.sid_list2 {width:100%;}
 
+//Resultats de recherche
+.spEntriesListContainer {display:none;}
+.spEntriesListContainer {margin:1%;/*border:1px solid @inputBorder;-webkit-border-radius: 5px; -moz-border-radius: 5px;border-radius: 5px;*/background-color:rgba(255,255,255,1);}
+.spEntriesListContainer .spEntriesListCell {border:none!important; margin:2%; line-height:1.3em;}
+.spEntriesListContainer .spEntriesListTitle {border:none!important;}
+.spEntriesListContainer .spEntriesListTitle a {font-weight:normal!important;padding-left:2%;}
+.spEntriesListContainer .spEntriesListCell:hover .spEntriesListTitle a {}
+.spEntriesListContainer .spEntriesListCell img.tampon {height:25px;margin-left:1%;}
+.spEntriesListContainer .spEntriesListCell{background:none!important;margin-bottom:25px;}
+.spEntriesListContainer .spEntriesListCell div#title {font-weight:bold; margin-bottom:10px;}
+.spEntriesListContainer .spEntriesListCell div#resume_activite {margin-bottom:10px;}
+.spEntriesListContainer .spEntriesListCell div#productions {font-weight:bold;margin-bottom:10px;}
 
-@media screen and (min-width: 601px) and (max-width: 800px) {
+.spEntriesListContainer .spEntriesListCell .spEntryCats {font-size:1em; font-weight:normal;margin-top:10px;text-align:left;}
 
-	input#mj_rs_center_selector + img {height:25px;}
+//Bootstrap result entries carousel
+.spEntriesListContainer .carousel-control {display:none;background:none!important; border:none!important; color:@textColor ;font-size:2em;opacity:1}
+.spEntriesListContainer .carousel-control { position:relative!important;left:0px!important;top:10px;}
+.spEntriesListContainer .carousel-control:hover {color:@textColor;}
+.spEntriesListContainer .carousel-control.left {float:left;}
+.spEntriesListContainer .carousel-control.right {float:right;}
+
+//Media queries
+@media screen and (min-width: 768px) {
+	.overview .SPSearchCell:nth-child(2) span {display:block;}
 }
 
+@media screen and (min-width: 768px) and (max-width: 980px){
+input#mj_rs_center_selector {width:80%;}
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px){
+	.overview .SPSearchCell:nth-child(2) span {display:block;}
+}

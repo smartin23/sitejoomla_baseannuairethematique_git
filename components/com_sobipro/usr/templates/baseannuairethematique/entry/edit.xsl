@@ -5,8 +5,7 @@
   <xsl:include href="../common/catchooser.xsl" />
 
   <xsl:template match="/entry_form">
-    <div class="SPEntryEdit">
-		
+    <div class="SPEntryEdit">	
         <div>
           <xsl:apply-templates select="menu" />
         </div>
@@ -22,7 +21,8 @@
       </div>
       <div class="spFormRowOdd" >
 	  <h3><i class="icon-pencil icon-large"></i><xsl:text> </xsl:text><xsl:value-of select="php:function( 'SobiPro::Txt' , 'Add an entry' )"  /></h3>
-      <div class="control-group">
+      <div class="control-group"><xsl:value-of select="php:function( 'SobiPro::Txt' , 'Mandatory field' )" /></div>
+	  <div class="control-group">
         <label class="control-label" for="entry.parent">
         <xsl:value-of select="php:function( 'SobiPro::Txt' , 'TP.CAT_BOX' )" />
         </label>
@@ -106,7 +106,6 @@
       </div>
       <div class="spFormRowFooter">
         <div>
-          <xsl:copy-of select="entry/fields/cancel_button/data/*" />
           <xsl:copy-of select="entry/fields/save_button/data/*" />
         </div>
       </div>

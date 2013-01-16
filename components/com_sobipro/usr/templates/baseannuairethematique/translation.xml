@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <translation>
+  <term value="Mandatory field">
+    <value lang="fr-FR">* = Champ obligatoire</value>
+  </term>    
   <term value="Add an entry">
-    <value lang="fr-FR">Ajouter une entrée</value>
+    <value lang="fr-FR">Ajouter une fiche</value>
   </term> 
   <term value="Disable Entry">
-    <value lang="fr-FR">Désactiver l'entrée</value>
+    <value lang="fr-FR">Désactiver la fiche</value>
   </term>  
   <term value="Enable Entry">
-    <value lang="fr-FR">Activer l'entrée</value>
+    <value lang="fr-FR">Activer la fiche</value>
   </term>  
   <term value="Approve Entry">
-    <value lang="fr-FR">Approuver l'entrée</value>
+    <value lang="fr-FR">Approuver la fiche</value>
   </term>  
   <term value="Edit Entry">
-   <value lang="fr-FR">Editer l'entrée</value>
+   <value lang="fr-FR">Editer la fiche</value>
   </term>  
   <term value="Located in:">
     <value lang="fr-FR">Catégorie :</value>
@@ -46,6 +49,6 @@
     <value lang="fr-FR">Que voulez-vous faire</value>
   </term>  
   <term value="Please select payment method below">
-    <value lang="fr-FR">Selectionnez un mode de piement ci-dessous</value>
+    <value lang="fr-FR">Selectionnez un mode de paiement ci-dessous</value>
   </term>  
 </translation>

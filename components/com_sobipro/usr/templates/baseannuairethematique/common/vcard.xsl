@@ -40,7 +40,7 @@
 		   <xsl:choose>
 			  <xsl:when test="./@selected = 'true'">      
 				  <xsl:value-of select="."/>				
-				  <xsl:text>, </xsl:text>
+				  <xsl:text> </xsl:text>
 
 			  </xsl:when>		 
 		   </xsl:choose>
@@ -50,18 +50,20 @@
 		   <xsl:choose>
 			  <xsl:when test="./@selected = 'true'">      
 				  <xsl:value-of select="."/>
-					<xsl:text>, </xsl:text>				  
+					<xsl:text> </xsl:text>				  
 			  </xsl:when>			 
 		   </xsl:choose>
 		</xsl:for-each>
+		
 		<div style="clear:both;"/>
+		
 		<span class="spField" id="bio">
-			<xsl:text>Production </xsl:text>
+			
 			<xsl:for-each select="fields/field_bio/options/*">
 			   <xsl:choose>
 				  <xsl:when test="./@selected = 'true'">      
 					  <xsl:value-of select="."/>
-					  <xsl:text>,</xsl:text>
+					  <xsl:text> </xsl:text>
 				  </xsl:when>			 
 			   </xsl:choose>
 			</xsl:for-each>
@@ -75,6 +77,23 @@
       <div style="float:left"><xsl:call-template name="ratingStars"/></div>
       <div style="float:right"><xsl:value-of select="mjradius" disable-output-escaping="yes" /></div>
     </div>
+	
+	<div style="clear:both;"/>
+		
+	<xsl:if test="count(categories)">
+          <div class="spEntryCats">
+            <xsl:value-of select="php:function( 'SobiPro::Txt' , 'Catégorie(s):' )" /><xsl:text> </xsl:text>
+            <xsl:for-each select="categories/category">
+             
+              <xsl:value-of select="." />
+  
+              <xsl:if test="position() != last()">
+              <xsl:text> | </xsl:text>
+              </xsl:if>
+            </xsl:for-each>
+          </div>
+        </xsl:if>
+
 
   </xsl:template>
 </xsl:stylesheet>

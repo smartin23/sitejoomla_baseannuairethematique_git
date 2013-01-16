@@ -7,6 +7,9 @@ $doc = JFactory::getDocument();
 $this->language = $doc->language;
 $this->direction = $doc->direction;
 
+// Get the user
+$user =& JFactory::getUser();
+
 // Detecting Active Variables
 $option   = $app->input->getCmd('option', '');
 $view     = $app->input->getCmd('view', '');
@@ -40,7 +43,6 @@ $sitename = $app->getCfg('sitename');
 	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/scripts/jquery.mobile.custom.min.css" />
 	
 	
-	
 	<!-- Le touch icons -->
 	<link rel="apple-touch-icon" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/icons/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/icons/apple-touch-icon-72x72.png">
@@ -63,72 +65,81 @@ $sitename = $app->getCfg('sitename');
 			
 		<div class="centre row-fluid">
 		
-				<div class="span4 left pull-left">
-					
+				<?php if (($task=='search.results') or ($task=='search.view')) {?>
+				<div class="span4 left">
+					<div id="onoff"><i class="icon-eye-close icon-large"></i></div>
 					<header>
-						<div class="header row-fluid">
-
-							<div class="span12">
-
-								<div class="row-fluid">
-									<div class="icon">
-										<a href="<?php echo $this->baseurl; ?>"><i class="icon-map-marker icon-large"></i></a>
-									</div>
-									<div class="brand">
-										&nbsp;<a href="<?php echo $this->baseurl; ?>"><?php echo $app->getCfg('sitename');?></a>
-									</div>
-								</div>
-								
-								<div class="row-fluid">
-									<div class="span12">
-										<div class="soustitre">sur la carte.eu</div>
-									</div>
-								</div>
-								
-							</div>
+						
+						<div class="header">
+					
+								<a href="<?php echo $this->baseurl; ?>">
+									<table class="sitename" border="0">
+										<tbody>
+											<tr>
+												<td rowspan="2" class="icone"><i class="icon-map-marker icon-large"></i></td>
+												<td class="ligne1"><span class="brand">TOUS LES</span></td>
+											</tr>
+											<tr>
+												<td class="ligne2"><span class="brand">APICULTEURS</span></td>
+											</tr>
+											<tr>
+												<td rowspan="1" colspan="2" class="extension"><span class="soustitre">Proin sed diam vel enim cursus ultrices</span></td>
+											</tr>
+										</tbody>
+									</table>
+								</a>
 										
 						</div>	
 					</header>
-				
-					<jdoc:include type="modules" name="breadcrumbs" />
-					<div class="recherche" style="overflow:hidden; position:relative;">
-							<jdoc:include type="modules" name="search" />
+															
+					<div class="contenu on">
+						<jdoc:include type="component" />
 					</div>
-					<?php if (($task=='search.results') or ($task=='search.view')) {?>
-						
-						<div class="contenu" style="overflow:hidden; position:relative;">
-							<jdoc:include type="component" />
-						</div>
-					<?php } ?>
-					
-				
-				</div>
-				
-				<?php if (($task!='search.results') and ($task!='search.view')) {?>
-				<div class="span8 middle">
-
-							<div class="contenuplus">
-								<jdoc:include type="component" />	
-								<jdoc:include type="message" />
-							</div>
-
+								
 				</div>
 				<?php } ?>
 				
-				<!-- Pour plus tard : insertion publicité Google
-				<div class="span2 right pull-right">
-					<div class="googleads">
+				<?php if (($task!='search.results') and ($task!='search.view')) {?>
+				<div class="span10 offset1 middle">
+
+					<div class="contenuplus">
+					<?php $backurl= $_SERVER['HTTP_REFERER'];
+					//On fait un retour historique -1 si on vient de la page d'accueil ou d'une recherche
+					if ((strcmp($backurl,juri::base())!=0) && (strpos($backurl,'rechercher')===false)){?>
+							<div class="retour"><a href="index.php"><i class="icon-remove-sign icon-large"></i></a></div>
+					<?php } else {?>
+							<div class="retour"><a href="javascript:history.go(-1)"><i class="icon-remove-sign icon-large"></i></a></div>
+					<?php } ?>
+						
+								<div class="span6 header">
+									<table class="sitename" border="0">
+										<tbody>
+											<tr>
+												<td rowspan="2" class="icone"><i class="icon-map-marker icon-large"></i></td>
+												<td class="ligne1"><span class="brand">TOUS LES</span></td>
+											</tr>
+											<tr>
+												<td class="ligne2"><span class="brand">APICULTEURS</span></td>
+											</tr>
+											<tr>
+												<td rowspan="1" colspan="2" class="extension"><span class="soustitre">Proin sed diam vel enim cursus ultrices</span></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="clear"></div>
+					
+						<jdoc:include type="component" />	
+						<jdoc:include type="message" />
 					</div>
-					<div class="publicite">
-						<jdoc:include type="modules" name="advertising" style="standard" />
-					</div>
-				</div>-->
-				
+				</div>
+				<?php } ?>
+							
 		</div>
 
 </div>
 
-<div class="fullmap container-fluid" style="position:fixed;top:0;left:0;width:100%;z-index:0;">
+<div class="fullmap container">
 	<div class="row-fluid">
 		<div class="span12">
 			<div class="mapgrip">
@@ -136,33 +147,22 @@ $sitename = $app->getCfg('sitename');
 				<jdoc:include type="modules" name="map2" style="standard" />
 				<?php } else { ?>
 				<jdoc:include type="modules" name="map1" style="standard" />
-				<?php } ?>
-				
-			</div>
-			
+				<?php } ?>				
+			</div>		
 		</div>
 	</div>
 </div>
 
 <footer>
 
-	<!--<p class="pull-right"><a href="#">Haut de la page</a></p>-->
-	
 	<div class="container">
-		<!--<div class="colors row-fluid">
-			<div class="span6 offset6">
-				<div class="color1"></div>
-				<div class="color2"></div>
-				<div class="color3"></div>
-				<div class="color4"></div>
-			</div>
-		</div>-->
+		
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="row-fluid">		
 
-						<div class="span3 menusecondaire">						
-							<jdoc:include type="modules" name="footer1" style="standardlite" />	
+						<div class="span3 menusecondaire <?php if ($user->id!=0) echo 'registered user_'.$user->id;?>">						
+							<jdoc:include type="modules" name="footer1" style="standardlite" />
 						</div>
 						
 						<div class="span6 theme">
@@ -180,21 +180,16 @@ $sitename = $app->getCfg('sitename');
 								</div>
 							</div>
 						</div>
-						<div class="span3 login">
+						<div class="span3 links">
 							<jdoc:include type="modules" name="footer3" style="standardlite" />	
 						</div>	
 
 				</div>
-				
-				
+							
 			</div>	
 		</div>
 	</div>
 </footer>
-
-
-
-
 
 <script src="<?php echo $this->baseurl ?>/scripts/sharrre/jquery.sharrre.min.js"></script>
 <script type='text/javascript'>
@@ -270,14 +265,14 @@ cf. http://stackoverflow.com/questions/12715254/twitter-bootstrap-transition-con
     //jQuery.noConflict();
 </script>
 
-<!--<script src="<php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/index.js"></script>
-<script src="<php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/jquery_ba_resize.js"></script>
-<script src="<php echo $this->baseurl ?>/scripts/tabsandaccordion/js/jquery_tabs_accordion.js"></script>
+<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/index.js"></script>
+<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/jquery-ba-resize.js"></script>
+<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/jquery-tabs-accordion.js"></script>
 <script type='text/javascript'>
 jQuery('.taa-accordion, .taa-tabs').TabsAccordion({
 		responsiveSwitch: 'taa-tablist'
 	});
-</script>-->
+</script>
 
 <script type='text/javascript'>
 function SPCSendMessage( form )
@@ -346,10 +341,34 @@ jQuery(window).load(function(){
 
 	//Ouverture du bloc Extended Search en page d'accueil
 	//if (jQuery(".task-search-view").length >0) jQuery('#SPExtSearch').show();	
-		
+	
+	//Affichage du contenu en Colorbox
+	/*jQuery(".sitemap").find('a').each(function( index ) {
+		cbref=jQuery(this).attr('href')+'&tmpl=component';
+		//jQuery(this).addClass('iframe').attr('href', cbref).colorbox({iframe:true, maxWidth:"900px", width:"100%", height:"80%", opacity:0.4});	
+		jQuery(this).attr('href', cbref).colorbox({href:cbref});
+	});
+
+	//Idem formulaires de login
+	jQuery(".lock #login-form").find('a').each(function( index ) {
+		cbref=jQuery(this).attr('href')+'&tmpl=component';
+		jQuery(this).addClass('iframe').attr('href', cbref).colorbox({iframe:true, maxWidth:"900px", width:"100%", height:"80%", opacity:0.4});	
+	});
+	
+	//Idem profil
+	//A faire*/
+	
 });
 
 jQuery(document).ready(function() {
+
+	/*backurl = window.location.origin;
+	alert(backurl);
+	jQuery('.contenuplus').find(".retour a").attr('href', backurl);*/
+	//Scrollbar custom dans le bolc de recherche étendue
+	jQuery('#SPExtSearch').show();
+	jQuery('#SPExtSearch').tinyscrollbar();
+	jQuery('#SPExtSearch').hide();
 	
 	//Réorganisation de l'ordre des blocs selon la résolution		
 	changeStackingOrder();
@@ -358,18 +377,33 @@ jQuery(document).ready(function() {
 	addBootstrapTags();
 	
 	//Taille initiale minimale du bloc centre
-	jQuery('.centre').css('min-height', jQuery(window).height()-jQuery('footer h3').outerHeight(true));
+	jQuery('.centre').css('min-height', jQuery(window).height()-80); 
+	//jQuery(window).height()-jQuery('footer h3').outerHeight(true));
 	
-	//Scrollbar custom dans le bolc de recherche étendue
-	jQuery('#SPExtSearch').tinyscrollbar();
-					
+	//On/off
+	var contenu = jQuery('.contenu');
+	jQuery("#onoff").click(function() {
+	
+		if (contenu.hasClass('on')) {
+			jQuery(this).html('<i class="icon-eye-open icon-large"></i>');
+			contenu.removeClass('on');
+			contenu.addClass('off');
+		}
+		else
+		{
+			jQuery(this).html('<i class="icon-eye-close icon-large"></i>');
+			contenu.removeClass('off');
+			contenu.addClass('on');
+		}
+	});
+						
 	//Contact Form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de contact form)
 	jQuery(".contact-form").find("form").find("label").addClass('control-label').removeClass("hasTip");
 	
 	//Entry edit form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de sobipro)
 	jQuery("#spEntryForm").addClass("form-horizontal");
-	jQuery("#spEntryForm").find(".spFormRowFooter button").addClass("btn");
-	jQuery("#spEntryForm").find(".spFormRowFooter input").addClass("btn btn-primary");
+	jQuery("#spEntryForm").find(".spFormRowFooter input").addClass("btn");//donc pas la peine de le mettre en primary...
+	jQuery("#spEntryForm").find(".required").parent().parent().find("label").after("*");
 	//jQuery("form#spEntryForm").find('.controls input').addClass("input-large");
 	//jQuery("form#spEntryForm").find('.controls textarea').addClass("input-large");
 	

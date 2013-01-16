@@ -37,6 +37,8 @@ div.spFormRowEven {
 
 form#spEntryForm label {font-weight:bold; display:inline;}
 
+form#spEntryForm .controls label {font-weight:normal;}
+
 #spEntryForm input[type=checkbox],
 #spEntryForm input[type=radio]  {
 	border-style:none!important;
@@ -48,6 +50,11 @@ div.SPtagsinput input{
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
 }
 
+input#field_site_internet_url,
+input#field_facebook_url, 
+input#field_twitter_url, 
+input#field_googleplus_url {width:auto!important;display:inline!important;}
+
 select#field_site_internet_protocol, select#field_facebook_protocol, select#field_twitter_protocol,select#field_googleplus_protocol {
 	width:auto;
 }
@@ -55,6 +62,8 @@ select#field_site_internet_protocol, select#field_facebook_protocol, select#fiel
 input#field_jmapsmarker_jmlatitude, input#field_jmapsmarker_jmlongitude {
 	width:auto;
 }
+
+#field_jmapsmarker_canvas {margin-bottom:15px;}
 
 #editor-xtd-buttons {display:none;}
 
@@ -69,6 +78,20 @@ div.spFormRowFooter {
 div.spFormRowFooter div {
 	float:right;
 }
+
+/*Formulaire edition d'entree*/
+form#spEntryForm label 
+{
+			float: none!important;
+			padding-top: 0!important;
+			text-align: left!important;
+			width: auto!important;
+}
+	
+form#spEntryForm  .controls {margin-left:0!important;}
+
+/*On cache le Toogle Editor*/
+.wf_editor_toggle {display:none!important;}
 
 
 #selectedCats {
