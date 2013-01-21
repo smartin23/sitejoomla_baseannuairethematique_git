@@ -35,12 +35,13 @@
 // -------------------------
 @bodyBackground:        @white;
 @textColor:             @marron;
+@invertedtextColor:     @white;
 
 
 // Links
 // -------------------------
-@linkColor:             @textColor;
-@linkColorHover:        lighten(@textColor, 20%);
+@linkColor:             lighten(@textColor, 15%);
+@linkColorHover:        lighten(@textColor, 30%);
 
 
 // Typography
@@ -89,7 +90,7 @@
 @btnBackgroundHighlight:            darken(@white, 10%);
 @btnBorder:                         #bbb;
 
-@btnPrimaryBackground:              @linkColor;
+@btnPrimaryBackground:              @textColor;
 @btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 20%);
 
 @btnInfoBackground:                 #5bc0de;

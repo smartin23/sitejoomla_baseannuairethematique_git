@@ -21,7 +21,7 @@
       </div>
       <div class="spFormRowOdd" >
 	  <h3><i class="icon-pencil icon-large"></i><xsl:text> </xsl:text><xsl:value-of select="php:function( 'SobiPro::Txt' , 'Add an entry' )"  /></h3>
-      <div class="control-group"><xsl:value-of select="php:function( 'SobiPro::Txt' , 'Mandatory field' )" /></div>
+      <div class="isRequired"><xsl:value-of select="php:function( 'SobiPro::Txt' , 'Mandatory field' )" /></div>
 	  <div class="control-group">
         <label class="control-label" for="entry.parent">
         <xsl:value-of select="php:function( 'SobiPro::Txt' , 'TP.CAT_BOX' )" />

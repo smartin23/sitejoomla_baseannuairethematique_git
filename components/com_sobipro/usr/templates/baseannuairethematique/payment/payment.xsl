@@ -34,10 +34,10 @@
 						<div style="width: 40%;" class="spPaymentPosition">
 							<xsl:value-of select="." />
 						</div>
-						<div style="width: 15%; text-align:right" class="spPaymentPosition">
+						<div style="width: 15%; text-align:left" class="spPaymentPosition">
 							<xsl:value-of select="@netto" />
 						</div>
-						<div style="width: 15%; text-align:right" class="spPaymentPosition">
+						<div style="width: 15%; text-align:left" class="spPaymentPosition">
 							<xsl:value-of select="@brutto" />
 						</div>
 						<div style="clear:both;"/>
@@ -92,13 +92,18 @@
 					</div>
 					<hr/>
 					<xsl:for-each select="payment_methods/*">
+					
+												
 						<div class="spPaymentSum">
 							<xsl:value-of select="@title"/>
 						</div>
+												
 						<div style="width: 100%; padding: 5px;">
 							<xsl:choose>
 								<xsl:when test="@escaped">
+									
 									<xsl:value-of select="." disable-output-escaping="yes"/>
+							
 								</xsl:when>
 								<xsl:otherwise>
 									<xsl:choose>
@@ -112,8 +117,12 @@
 								</xsl:otherwise>
 							</xsl:choose>
 						</div>
+						
 						<div style="clear:both;"/>
 					</xsl:for-each>
+					<div class="spPaymentPaypalExpl">
+						<xsl:value-of select="php:function( 'SobiPro::Txt', 'Paypal est une banque en ligne sécurisée. Son mode de fonctionnement est très simple : vous pouvez payez directement avec une carte de crédit, carte Visa et Mastercard, ou ouvrir un compte et payer à partir de votre adresse email. PayPal, leader incontesté en matière de paiement en ligne, permet aux acheteurs et aux vendeurs d envoyer et de recevoir des paiements en ligne de façon sécurisée. PayPal contribue à protéger les informations concernant votre carte bancaire grâce aux meilleurs systèmes présents sur le marché pour la sécurité et la prévention contre la fraude. Lorsque vous utilisez PayPal, vos informations financières ne sont jamais communiquées au marchand.' )" />
+					</div>
 					</div>
 				</div>
 			<br/><br/>

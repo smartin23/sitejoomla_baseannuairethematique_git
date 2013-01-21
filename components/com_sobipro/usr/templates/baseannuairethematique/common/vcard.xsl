@@ -29,50 +29,81 @@
 	</div>  
 	
 	<div class="spField" id="resume_activite">
-          <xsl:value-of select="fields/field_resume_activite/data" disable-output-escaping="yes"/>
-          <xsl:text> </xsl:text>
-          <xsl:value-of select="fields/field_resume_activite/@suffix"/>
+	
+		<xsl:if test="string-length(fields/field_logo/data/@image) &gt; 0">
+					<div id="logo" class="SPField">
+						
+						<xsl:element name="img">
+						  <xsl:attribute name="src">
+						  <xsl:value-of select="fields/field_logo/data/@thumbnail" />
+						  </xsl:attribute>
+						  <xsl:attribute name="alt">
+						  <xsl:value-of select="entry/name" />
+						  </xsl:attribute>
+						</xsl:element>
+						
+					</div>
+		</xsl:if>
+	
+		<xsl:value-of select="fields/field_resume_activite/data" disable-output-escaping="yes"/>
+		<xsl:text> </xsl:text>
+		<xsl:value-of select="fields/field_resume_activite/@suffix"/>
+		
     </div>    
 	
-	<div class="spField" id="productions">
-
-		<xsl:for-each select="fields/field_productions_principales/options/*">
-		   <xsl:choose>
+	<xsl:if test="string-length(fields/field_lieux_de_vente/data) &gt; 0">
+		<div class="spField list" id="lieuxdevente">			
+			<strong><xsl:text>Lieux de vente : </xsl:text></strong>	
+			<ul style="display:inline">
+			<xsl:for-each select="fields/field_lieux_de_vente/options/*">
+			<xsl:choose>
 			  <xsl:when test="./@selected = 'true'">      
-				  <xsl:value-of select="."/>				
-				  <xsl:text> </xsl:text>
-
-			  </xsl:when>		 
-		   </xsl:choose>
-		</xsl:for-each>
-		
-		<xsl:for-each select="fields/field_produits_derives/options/*">
-		   <xsl:choose>
-			  <xsl:when test="./@selected = 'true'">      
-				  <xsl:value-of select="."/>
-					<xsl:text> </xsl:text>				  
+				  <li><xsl:value-of select="."/></li>		  
 			  </xsl:when>			 
-		   </xsl:choose>
-		</xsl:for-each>
-		
-		<div style="clear:both;"/>
-		
-		<span class="spField" id="bio">
-			
-			<xsl:for-each select="fields/field_bio/options/*">
+			</xsl:choose>
+			</xsl:for-each>
+			</ul>
+		</div>
+	</xsl:if>
+	
+	<div style="clear:both;"/>
+	
+	<div class="spField list" id="productionsprincipales">
+		<ul>
+			<xsl:for-each select="fields/field_productions_principales/options/*">
 			   <xsl:choose>
 				  <xsl:when test="./@selected = 'true'">      
-					  <xsl:value-of select="."/>
-					  <xsl:text> </xsl:text>
+					  <li><xsl:value-of select="."/></li>			
+				  </xsl:when>		 
+			   </xsl:choose>
+			</xsl:for-each>
+		</ul>
+	</div>
+	<div style="clear:both;"/>
+	<div class="spField list" id="produitsderives">
+		<ul>
+			<xsl:for-each select="fields/field_produits_derives/options/*">
+			   <xsl:choose>
+				  <xsl:when test="./@selected = 'true'">      
+					  <li><xsl:value-of select="."/></li>		  
 				  </xsl:when>			 
 			   </xsl:choose>
 			</xsl:for-each>
-		</span>
-	
+		</ul>
 	</div>
-    
-    <div style="clear:both;"/>
-    
+	<div style="clear:both;"/>	
+	<div class="spField list" id="caracteristiques">
+		<ul>
+			<xsl:for-each select="fields/field_bio/options/*">
+			   <xsl:choose>
+				  <xsl:when test="./@selected = 'true'">      
+					  <li><xsl:value-of select="."/></li>
+				  </xsl:when>			 
+			   </xsl:choose>
+			</xsl:for-each>
+		</ul>
+	</div> 
+    <div style="clear:both;"/>   
     <div class="spEntryFooter">
       <div style="float:left"><xsl:call-template name="ratingStars"/></div>
       <div style="float:right"><xsl:value-of select="mjradius" disable-output-escaping="yes" /></div>

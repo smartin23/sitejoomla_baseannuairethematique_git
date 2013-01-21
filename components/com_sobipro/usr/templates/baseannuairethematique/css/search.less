@@ -24,8 +24,13 @@
 @import "../../../../../../templates/baseannuairethematique/css/variables.less";
 
 .whitebordered {
-text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff;
+text-shadow:  1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff,
+1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 filter: progid:DXImageTransform.Microsoft.Glow(Color=#ffffff,Strength=1); /* IE<10 */
+}
+.notwhitebordered {
+text-shadow: none;
+filter:none;
 }
 
 #spSearchForm {margin:0!important;}
@@ -83,8 +88,9 @@ button#mj_rs_cutom {margin-bottom:10px;}
 select#sid_list{width:95%;}
 
 //Extended search
-#SPExtSearch{height:350px;margin-top:10px;margin-bottom:15px;border:1px solid @inputBorder;-webkit-border-radius: 5px;
+#SPExtSearch{font-size:0.9em;height:350px;margin-top:10px;margin-bottom:15px;border:1px solid @inputBorder;-webkit-border-radius: 5px;
 -moz-border-radius: 5px;border-radius: 5px;background-color:#fff;}
+#SPExtSearch div.SPSearchLabel {.notwhitebordered; margin-top:10px;}
 
 //Custom Scrollbar for extended search
 .customscrollbar{ clear: both;}
@@ -114,6 +120,7 @@ select.sid_list1, select.sid_list2 {width:100%;}
 .spEntriesListContainer .spEntriesListCell div#title {font-weight:bold; margin-bottom:10px;}
 .spEntriesListContainer .spEntriesListCell div#resume_activite {margin-bottom:10px;}
 .spEntriesListContainer .spEntriesListCell div#productions {font-weight:bold;margin-bottom:10px;}
+.spEntriesListContainer .spEntriesListCell #logo {float:left; margin-right:2%;}
 
 .spEntriesListContainer .spEntriesListCell .spEntryCats {font-size:1em; font-weight:normal;margin-top:10px;text-align:left;}
 
@@ -129,8 +136,9 @@ select.sid_list1, select.sid_list2 {width:100%;}
 	.overview .SPSearchCell:nth-child(2) span {display:block;}
 }
 
-@media screen and (min-width: 768px) and (max-width: 980px){
-input#mj_rs_center_selector {width:80%;}
+@media screen and (min-width: 768px) and (max-width: 1200px){
+input#mj_rs_center_selector {width:75%;}
+
 }
 
 @media screen and (min-width: 320px) and (max-width: 480px){

@@ -33,16 +33,17 @@ $sitename = $app->getCfg('sitename');
 
 	<link href='http://fonts.googleapis.com/css?family=Dosis:400,800' rel='stylesheet' type='text/css'>
 	
+	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/system/css/system.css" type="text/css" />
+    <link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/system/css/general.css" type="text/css" />
+  	
 	<link rel="stylesheet" type="text/css" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/template.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/admin.css" />
 
 	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/print.css" />
 	
 	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/scripts/tabsandaccordion/css/tabs+accordion/tabs+accordion.css" />
 	
 	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/scripts/jquery.mobile.custom.min.css" />
-	
-	
+		
 	<!-- Le touch icons -->
 	<link rel="apple-touch-icon" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/icons/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/icons/apple-touch-icon-72x72.png">
@@ -73,24 +74,21 @@ $sitename = $app->getCfg('sitename');
 						<div class="header">
 					
 								<a href="<?php echo $this->baseurl; ?>">
-									<table class="sitename" border="0">
-										<tbody>
-											<tr>
-												<td rowspan="2" class="icone"><i class="icon-map-marker icon-large"></i></td>
-												<td class="ligne1"><span class="brand">TOUS LES</span></td>
-											</tr>
-											<tr>
-												<td class="ligne2"><span class="brand">APICULTEURS</span></td>
-											</tr>
-											<tr>
-												<td rowspan="1" colspan="2" class="extension"><span class="soustitre">Proin sed diam vel enim cursus ultrices</span></td>
-											</tr>
-										</tbody>
-									</table>
+									<div class="logo">
+										<div class="icone"><i class="icon-map-marker"></i></div>
+										<div class="titresite">
+											<h1><div class="titresite1"><span class="brand">TOUS LES</span></div>
+											<div class="titresite2"><span class="brand">APICULTEURS</span></div>
+											<div class="soustitre">dans un annuaire et sur une carte</div></h1>
+										</div>
+									</div>
+									
 								</a>
 										
 						</div>	
 					</header>
+					
+					<div class="clear"></div>
 															
 					<div class="contenu on">
 						<jdoc:include type="component" />
@@ -112,25 +110,20 @@ $sitename = $app->getCfg('sitename');
 					<?php } ?>
 						
 								<div class="span6 header">
-									<table class="sitename" border="0">
-										<tbody>
-											<tr>
-												<td rowspan="2" class="icone"><i class="icon-map-marker icon-large"></i></td>
-												<td class="ligne1"><span class="brand">TOUS LES</span></td>
-											</tr>
-											<tr>
-												<td class="ligne2"><span class="brand">APICULTEURS</span></td>
-											</tr>
-											<tr>
-												<td rowspan="1" colspan="2" class="extension"><span class="soustitre">Proin sed diam vel enim cursus ultrices</span></td>
-											</tr>
-										</tbody>
-									</table>
+									<div class="logo">
+										<div class="icone"><i class="icon-map-marker"></i></div>
+										<div class="titresite">
+											<h1><div class="titresite1"><span class="brand">TOUS LES</span></div>
+											<div class="titresite2"><span class="brand">APICULTEURS</span></div>
+											<div class="soustitre">dans un annuaire et sur une carte</div></h1>
+										</div>
+									</div>
 								</div>
 								<div class="clear"></div>
 					
-						<jdoc:include type="component" />	
 						<jdoc:include type="message" />
+						<jdoc:include type="component" />	
+						
 					</div>
 				</div>
 				<?php } ?>
@@ -175,7 +168,7 @@ $sitename = $app->getCfg('sitename');
 										<i class="icon-facebook-sign icon-large">&nbsp;</i><i class="icon-twitter-sign icon-large">&nbsp;</i><i class="icon-google-plus-sign icon-large">&nbsp;</i>
 									</div>
 									<div id="socialshare" class="pull-right">
-										<div id="shareme" data-url="http://sharrre.com/" data-text="Make your sharing widget with Sharrre (jQuery Plugin)" data-title="partagent cette page">&nbsp;</div>
+										<div id="shareme" data-url="http://www.lagrangeweb.fr" data-text="Partagez Tous les apicluteurs sur vos réseaux sociaux" data-title="partagent cette page">&nbsp;</div>
 									</div>
 								</div>
 							</div>
@@ -214,12 +207,12 @@ jQuery(api.element).find('.buttons').hide();
 });
 </script>
 
-<!--<script src="<php echo $this->baseurl ?>/templates/<php echo $this->template; ?>/bootstrap/js/bootstrap.min.js"></script>-->
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-button.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-collapse.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-dropdown.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-transition.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-carousel.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-tooltip.js"></script>
 <script type='text/javascript'>
 
 	jQuery('.carousel').carousel({  
@@ -303,6 +296,25 @@ function SPCSendMessage( form )
 <script src="<?php echo $this->baseurl ?>/scripts/jquery.tinyscrollbar.min.js"></script>
 
 <script type="text/javascript">
+
+jQuery.extend({
+  getUrlVars: function(){
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+      hash = hashes[i].split('=');
+      vars.push(hash[0]);
+      vars[hash[0]] = hash[1];
+    }
+    return vars;
+  },
+  getUrlVar: function(name){
+    return jQuery.getUrlVars()[name];
+  }
+});
+//var val = jQuery.getUrlVar('name');
+
 function changeStackingOrder() {
 
 	/*if (jQuery(window).width() <= 600){
@@ -337,6 +349,14 @@ function addBootstrapTags() {
 	
 }
 
+jQuery.fn.scrollView = function () {
+    return this.each(function () {
+        jQuery('html, body').animate({
+            scrollTop: jQuery(this).offset().top
+        }, 1000);
+    });
+}
+
 jQuery(window).load(function(){ 
 
 	//Ouverture du bloc Extended Search en page d'accueil
@@ -358,17 +378,31 @@ jQuery(window).load(function(){
 	//Idem profil
 	//A faire*/
 	
+	
+	//Remontée du footer 
+	var footer = jQuery('footer');
+	footer.find('h3').addClass('down').click(function() {
+		if (jQuery(this).hasClass('up')) {
+			
+			jQuery(this).removeClass('up');
+			jQuery(this).addClass('down');
+			
+			jQuery('.centre').scrollView();
+		}
+		else
+		{
+			jQuery(this).removeClass('down');
+			jQuery(this).addClass('up');
+			
+			footer.scrollView();
+		}
+		
+	});
+	
 });
 
 jQuery(document).ready(function() {
 
-	/*backurl = window.location.origin;
-	alert(backurl);
-	jQuery('.contenuplus').find(".retour a").attr('href', backurl);*/
-	//Scrollbar custom dans le bolc de recherche étendue
-	jQuery('#SPExtSearch').show();
-	jQuery('#SPExtSearch').tinyscrollbar();
-	jQuery('#SPExtSearch').hide();
 	
 	//Réorganisation de l'ordre des blocs selon la résolution		
 	changeStackingOrder();
@@ -377,8 +411,13 @@ jQuery(document).ready(function() {
 	addBootstrapTags();
 	
 	//Taille initiale minimale du bloc centre
-	jQuery('.centre').css('min-height', jQuery(window).height()-80); 
+	jQuery('.centre').css('min-height', jQuery(window).height()-60); 
 	//jQuery(window).height()-jQuery('footer h3').outerHeight(true));
+	
+	//Scrollbar custom dans le bloc de recherche étendue : beurk, on l'affiche pour génére la barre correctement sous Safari puis on la masque....
+	jQuery('#SPExtSearch').show();
+	jQuery('#SPExtSearch').tinyscrollbar();
+	jQuery('#SPExtSearch').hide();
 	
 	//On/off
 	var contenu = jQuery('.contenu');
@@ -398,14 +437,29 @@ jQuery(document).ready(function() {
 	});
 						
 	//Contact Form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de contact form)
-	jQuery(".contact-form").find("form").find("label").addClass('control-label').removeClass("hasTip");
+	//jQuery(".contact-form").find("form").find("label").addClass('control-label').removeClass("hasTip");
 	
 	//Entry edit form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de sobipro)
 	jQuery("#spEntryForm").addClass("form-horizontal");
 	jQuery("#spEntryForm").find(".spFormRowFooter input").addClass("btn");//donc pas la peine de le mettre en primary...
-	jQuery("#spEntryForm").find(".required").parent().parent().find("label").after("*");
+	jQuery("#spEntryForm").find(".required").parent().parent().children("label").after("*");
+	//Hack pour required manquant..
+	jQuery("#spEntryForm").find("#field_activite_detailleeContainer").find(".control-group").children("label").after("*");
+	
 	//jQuery("form#spEntryForm").find('.controls input').addClass("input-large");
 	//jQuery("form#spEntryForm").find('.controls textarea').addClass("input-large");
+	
+	//Activation des tooltips Bootstrap sur les labels du fomullaire d'édition des entrées
+	//jQuery('.hasBootstrapTip').tooltip();
+	
+	//Ou affichage sous le champs de saisie
+	var ctrlgrp=jQuery('.SPEntryEdit').find('.control-group').each(function () {
+		title=jQuery(this).find('a').attr('title');
+		if (title && title!='Article') jQuery(this).find(".controls").after('<div class="hasCustomLegend">'+title+'</div>');
+	});
+			
+	
+	
 	
 	//Support Swipe pour le carousel Liste des entrées
 	jQuery("#entriescarousel").swiperight(function() {  

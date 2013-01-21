@@ -37,10 +37,18 @@ $cparams = JComponentHelper::getParams ('com_media');
 		<?php if ($this->params->get('presentation_style')=='plain'):?>
 			<?php  echo '<h3><i class="icon-envelope icon-large"></i> '. JText::_('COM_CONTACT_EMAIL_FORM').'</h3>';  ?>
 		<?php endif; ?>
-		<div class="contact-email-form-description">
-			<?php echo JText::_('COM_CONTACT_EMAIL_FORM_DESCRIPTION'); ?>
-		</div>
-		<?php  echo $this->loadTemplate('form');  ?>
+		<?php if ($this->contact->misc && $this->params->get('show_misc')) : ?>
+		
+				<div class="contact-miscinfo">
+					<div class="<?php echo $this->params->get('marker_class'); ?>">
+						<?php echo $this->params->get('marker_misc'); ?>
+					</div>
+					<div class="contact-misc">
+						<?php echo $this->contact->misc; ?>
+					</div>
+				</div>
+	<?php endif; ?>
+	<?php  echo $this->loadTemplate('form');  ?>
 	<?php endif; ?>
 	<?php if ($this->params->get('show_links')) : ?>
 		<?php echo $this->loadTemplate('links'); ?>
@@ -63,21 +71,7 @@ $cparams = JComponentHelper::getParams ('com_media');
 		<?php endif; ?>
 		<?php echo $this->loadTemplate('profile'); ?>
 	<?php endif; ?>
-	<?php if ($this->contact->misc && $this->params->get('show_misc')) : ?>
-		<?php if ($this->params->get('presentation_style')!='plain'){?>
-			<?php echo JHtml::_($this->params->get('presentation_style').'.panel', JText::_('COM_CONTACT_OTHER_INFORMATION'), 'display-misc');} ?>
-		<?php if ($this->params->get('presentation_style')=='plain'):?>
-			<?php echo '<h3>'. JText::_('COM_CONTACT_OTHER_INFORMATION').'</h3>'; ?>
-		<?php endif; ?>
-				<div class="contact-miscinfo">
-					<div class="<?php echo $this->params->get('marker_class'); ?>">
-						<?php echo $this->params->get('marker_misc'); ?>
-					</div>
-					<div class="contact-misc">
-						<?php echo $this->contact->misc; ?>
-					</div>
-				</div>
-	<?php endif; ?>
+	
 	<?php if ($this->params->get('presentation_style')!='plain'){?>
 			<?php echo JHtml::_($this->params->get('presentation_style').'.end');} ?>
 </div>

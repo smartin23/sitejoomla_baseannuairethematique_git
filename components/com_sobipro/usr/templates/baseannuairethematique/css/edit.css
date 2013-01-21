@@ -31,10 +31,6 @@ div.spFormRowEven {
 	/*background-color: #EEEEEE;*/
 }
 
-/*form#spEntryForm .required {
-	border: 1px solid red
-}*/
-
 form#spEntryForm label {font-weight:bold; display:inline;}
 
 form#spEntryForm .controls label {font-weight:normal;}
@@ -49,7 +45,7 @@ div.SPtagsinput input{
 	border: 1px solid #CCCCCC;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
 }
-
+/*
 input#field_site_internet_url,
 input#field_facebook_url, 
 input#field_twitter_url, 
@@ -61,9 +57,17 @@ select#field_site_internet_protocol, select#field_facebook_protocol, select#fiel
 
 input#field_jmapsmarker_jmlatitude, input#field_jmapsmarker_jmlongitude {
 	width:auto;
-}
+}*/
+
+#spEntryForm .isRequired {font-size:0.75em;margin-bottom:15px;}
+#spEntryForm .hasCustomLegend {font-size:0.75em; margin-top:3px;width:90%;}
+
+div.SPJmapsmarkerLatitude {float:left; width:50%;}
+div.SPJmapsmarkerLongitude {float:right;width:50%;}
 
 #field_jmapsmarker_canvas {margin-bottom:15px;}
+
+div.spFormPaymentInfo {margin-bottom:10px;}
 
 #editor-xtd-buttons {display:none;}
 
@@ -89,9 +93,6 @@ form#spEntryForm label
 }
 	
 form#spEntryForm  .controls {margin-left:0!important;}
-
-/*On cache le Toogle Editor*/
-.wf_editor_toggle {display:none!important;}
 
 
 #selectedCats {
@@ -149,6 +150,7 @@ button#SPSaveCats {
     width: 80px; 
 }
 
+
 /*
  * SimpleModal OSX Style Modal Dialog
  * http://www.ericmmartin.com/projects/simplemodal/
@@ -180,3 +182,10 @@ button#SPSaveCats {
 #osx-container p {margin-bottom:10px;}
 #osx-container span {color:#777;}
 
+/*Media queries*/
+@media screen and (max-width: 767px) {
+
+div.SPJmapsmarkerLatitude {float:left;width:100%;}
+div.SPJmapsmarkerLongitude {clear:both;margin-top:10px;width:100%;}
+
+}

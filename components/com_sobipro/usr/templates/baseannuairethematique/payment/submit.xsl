@@ -29,10 +29,10 @@
 						<div style="width: 40%;" class="spPaymentPosition">
 							<xsl:value-of select="." />
 						</div>
-						<div style="width: 15%; text-align:right" class="spPaymentPosition">
+						<div style="width: 15%; text-align:left" class="spPaymentPosition">
 							<xsl:value-of select="@netto" />
 						</div>
-						<div style="width: 15%; text-align:right" class="spPaymentPosition">
+						<div style="width: 15%; text-align:left" class="spPaymentPosition">
 							<xsl:value-of select="@brutto" />
 						</div>
 						<div style="clear:both;"/>

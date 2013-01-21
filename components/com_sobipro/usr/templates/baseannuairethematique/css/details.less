@@ -4,12 +4,33 @@
 //Variables internes globales
 @import "../../../../../../templates/baseannuairethematique/css/variables.less";
 
+//CSS eneral
+@import "../../../../../../templates/baseannuairethematique/css/general.css";
+
 #all {max-width:none!important;}
+
+.block-editor ul {list-style-type:none;  list-style: none; margin: 0 0 10px;}
+.block-editor ul li{padding:2px; position:relative; margin-left:15px;}
+.block-editor ul li:before {
+	content:"\00a0";
+	display: block;
+	border: solid 5px @textColor;
+	height: 0;
+	width: 0;
+	position: absolute;
+	left:-15px;
+	top:5px;
+}
+
+.block-gauche {overflow:hidden; float:left; width:60%;}
+.block-droite {overflow:hidden; float:right; width:35%;}
 
 .SPDetails {color:@textColor;}
 .SPDetails h1 {font-size:2.5em;}
 
-.SPDetails #resume_activite {font-weight:bold;margin-bottom:15px;}
+//Textes enrichis
+.SPDetails #resume_activite {font-weight:bold;margin-bottom:30px;}
+
 
 //Entete
 .SPDetails .spEntryEditLink {padding-right:2%;}
@@ -20,6 +41,7 @@
 
 //Infos
 .SPDetailEntry-Sidebar {float:left; width:100%; margin-bottom:30px;}
+.SPDetailEntry-Sidebar-infocomplementaire {margin-top:15px;}
 .SPDetailEntry-Sidebar-contact {float:left; width:45%;margin-right:5%;}
 .SPDetailEntry-Sidebar-contact .SPDetailEntry-Sidebar-address{margin-bottom:5px;}
 .SPDetailEntry-Sidebar-infos {float:right; width:50%;}
@@ -32,21 +54,21 @@
 .SPDetailEntry .ratingstars {float:right;}
 
 //Logo
-.SPDE-Logo  img {float:left;max-width:100%;height:auto;margin-right:3%;}
+.SPField#logo img {max-width:100%; width:100%;height:auto;}
 
 //Resume
-.SPDE-Resume {margin-top:15px;float:left;width:45%;}
+.SPDE-Resume {margin-top:15px;}
 .SPDE-Resume .stampels {margin-top:10px;}
 
 //Website
 //.SPDE-Website {margin-top:15px;}
 
 //More
-.SPDE-More {margin-top:15px;float:right;width:45%; text-align:right;}
+.SPDE-More {margin-top:15px; text-align:right;}
 
 //Links
 .SPDE-Links {}
-.SPDE-Links div.spField {display:inline;margin-right:2%;}
+.SPDE-Links div.spField {display:inline;line-height:30px;margin-left:3%;}
 .SPDE-Links div.spField a {color:@textColor!important;font-size:2.2em;}
 
 //Galerie d'images
@@ -54,11 +76,8 @@
 .SPDE-Galery .carousel-control {display:none;background:none!important; border:none!important; color:@textColor ;font-size:2em;opacity:1}
 .SPDE-Galery .carousel .item img {width:100%;}
 
-//Tags
-.SPDE-Tags {margin-top:10px; text-align:right;}
-
 //Google map : gestion du formulaire de recherche d'itineraire
-.SPDE-Map {background-color:@boxColor;padding:2%;}
+.SPDE-Map {border:1px solid @boxColor;padding:2%;}
 .SPDE-Map #saddr {margin-bottom:0px!important;}
 .SPDE-Map .directions {display:none;}
 .SPDE-Map .directions-show {visibility:hidden; cursor:pointer;text-align:center;margin-top:15px;}
@@ -96,15 +115,15 @@
   outline: none; 
 }
 
-.minimal.taa-accordion ul,
-.minimal.taa-tabs ul{
+.minimal.taa-accordion ul[role='taa-tablist'],
+.minimal.taa-tabs ul[role='taa-tablist']{
 	margin:0 0  -1px 0!important;
 	padding:0!important;
 	list-style-type:none;
 }
 
-.minimal.taa-accordion ul li,
-.minimal.taa-tabs ul li{
+.minimal.taa-accordion ul[role='taa-tablist'] li,
+.minimal.taa-tabs ul[role='taa-tablist'] li{
 	font-family:@fontFamily1;
 	font-size:1.5em;
 	list-style-type:none;
@@ -224,6 +243,9 @@
 
 
 @media screen and (min-width: 320px) and (max-width: 480px){
+
+.SPDE-Resume, .SPDE-More {width:100%;text-align:left;}
+
 .SPDE-Map span.dirflg-driven ,
 .SPDE-Map span.dirflg-bicycle ,
 .SPDE-Map span.dirflg-walking ,
@@ -233,4 +255,5 @@
 @media screen and (max-width: 360px){
 .SPDetailEntry-Sidebar-contact {width:100%;margin-bottom:5px;}
 .SPDetailEntry-Sidebar-infos {clear:both; width:100%;}
+
 }
