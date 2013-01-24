@@ -32,8 +32,8 @@ filter: progid:DXImageTransform.Microsoft.Glow(Color=#ffffff,Strength=1); /* IE<
 .sheet-wrapper, .footer-wrapper { }
 
 //Blocs principaux
-.left {position:relative; z-index:9;}
-.middle {position:relative; z-index:9;}
+.zone-gauche {position:relative; z-index:9;}
+.zone-centre {position:relative; z-index:9;}
 
 //Onoff
 #onoff {cursor:pointer; position:absolute; top:0; right:0; font-size:1.5em;font-weight:normal; background-color:@textColor;color:#fff;padding:1%;
@@ -55,9 +55,8 @@ border-bottom-left-radius: 5px;}
 }
 
 //Header
-.header {padding:1%;margin-bottom:25px;padding-top:20px;}
+.header {padding:1%;padding-top:20px;padding-bottom:20px;}
 .contenuplus .header {margin:0!important; padding:0!important;}
-.contenuplus .header {margin-top:20px!important;margin-bottom:25px!important;}
 .header .icone {float:left;}
 .header .titresite {float:left;}
 .header i {font-size:6.5em; line-height:100%; .whitebordered;}
@@ -67,7 +66,8 @@ border-bottom-left-radius: 5px;}
 .header .brand {font-family:@fontFamily1;font-size:2.5em;line-height:1.2em;font-weight:bold;text-transform:uppercase;.whitebordered;}
 .header a {color:@textColor;}
 .header a:hover {color:lighten(@textColor,5%)!important;}
-.header .soustitre {clear:both;font-family:@fontFamily1;margin-bottom:20px;margin-top:-15px;font-size:1em;font-weight:700;.whitebordered;}
+.header h2 {font-size:1em!important;margin:0; padding:0;}
+.header h2 .soustitre, .header h2 .accroche {clear:both;font-family:@fontFamily1;font-weight:700;.whitebordered;visibility:hidden;height:1px;}
 .contenuplus .header i, .contenuplus .header .brand, .contenuplus .header .soustitre{opacity:0.1;}
 
 //Google maps
@@ -75,7 +75,7 @@ border-bottom-left-radius: 5px;}
 .fullmap.container-fluid {padding:0!important;margin:0!important;}
 
 #Jmaps img, #JmapsSearch img, #JmapsHome img, #field_jmapsmarker img {max-width:none!important;}
-#JmapsSearch .markerHTMLdiv, #JmapsHome .markerHTMLdiv {font-weight:normal!important;font-size:0.9em!important;}
+#JmapsSearch .markerHTMLdiv, #JmapsHome .markerHTMLdiv {font-weight:normal!important;font-size:0.9em!important;line-height:1.5em;}
 #JmapsSearch .markerHTMLdiv img, #JmapsHome .markerHTMLdiv img {margin-right:2%;}
 
 //Pagination
@@ -129,11 +129,11 @@ input.invalid, textarea.invalid {border:1px solid #FF0000!important;}
 }
 
 //Footer
-footer {position:relative;background-color:lighten(@textColor,30%);color:#fff;z-index:9999;margin-top:20px;}
+footer {position:relative;background-color:lighten(@textColor,30%);color:#fff;z-index:9999;padding-bottom:45px;}
 footer  h3 {color:@white; font-size:1.6em;font-weight:bold; text-transform:uppercase;line-height:20px;cursor:pointer;}
 footer a {color:@textColor;}
 footer a:hover {color:@white;}
-footer .menusecondaire, footer .theme, footer .links {margin-top:30px;}
+
 
 //S'incrire
 footer .login {padding:1%;padding-top:0px;}
@@ -162,11 +162,28 @@ footer .social #sociallinks {font-size:2em;}
 //Autres menu
 .nav > li > a:hover {background:none;}
 
+//Carousel
+.carousel .carousel-control {display:none;background:none!important; border:none!important; color:@textColor ;font-size:2em;opacity:0.4;}
+.carousel .carousel-inner .item img {width:100%;}
+
+
 //Tooltips (bootstrap)
 .tooltip {font-size:1em;font-weight:normal;}
 a.hasBootstrapTip {color:@textColor;}
 
+//Comment ca marche ?
+#inscrivezvous-demo {position:relative;}
+#inscrivezvouscarousel .carousel-caption {position:relative; background-color:rgba(0,0,0,0.6);}
+#inscrivezvouscarousel .carousel-caption h4 {font-size:1em;}
+#inscrivezvouscarousel .carousel-caption p{}
+
 //Blog
+//Titres du blog
+.blog h2 {font-size:1.8em;}
+.blog h3 {font-size:1.6em;}
+
+.blog img.illustration {float:left; width:20%;margin-right:2%;}
+
 .cols-1
 {
         display: block;
@@ -318,12 +335,13 @@ margin:0 4px 0 0;
 @media screen and (min-width: 768px) and (max-width: 979px) {
 	
 	//Logo
-	.header .brand {font-size:1.6em;}
-	.header i  {font-size:4em;}
+	.header .brand {font-size:2em;}
+	.header i  {font-size:5.2em;}
 	.header .soustitre {font-size:0.8em;}
 	
 	//Titres footer
 	footer h3 {font-size:1.6em!important;}
+
 }
 	
 
@@ -348,13 +366,31 @@ margin:0 4px 0 0;
 
 	//On supprime le bouton de masquage de la partie gauche
 	#onoff {display:none;}
+		
+	//Titre header
+	.header {padding-top:0px;padding-bottom:0px;}
 	
 	//Titres footer
-	footer h3 {font-size:1.8em!important;}
+	footer h3 {font-size:1.5em!important;}
+	footer .menusecondaire, footer .theme, footer .links {margin-top:30px;}
+	
+	//Titres du blog
+	.blog h2 {font-size:1.6em;}
+	.blog h3 {font-size:1.4em;}
+	
+	//Contenu + 
+	.contenuplus {margin-top:0px;}
 }
 
+@media screen and (max-width: 480px) {
+	//Titres du blog
+	.blog h2 {font-size:1.4em;}
+	.blog h3 {font-size:1.2em;}
+}
 
 @media screen and (max-width: 360px) {
+	//Bascule de l'illustration du post
+	.blog img.illustration {float:left; width:100%;}
 
 	footer #shareme .share {font-size:1.2em;}
 	footer #shareme .count {font-size:2em;}

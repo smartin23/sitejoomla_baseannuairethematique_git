@@ -89,7 +89,7 @@
 				<div class="SPDE-Resume">
 					
 					
-						<xsl:if test="count(entry/fields/field_productions_principales/data
+						<xsl:if test="count(entry/fields/field_productions_principales/data/*)">
 							<div class="SPField block" id="productions-principales">
 								<strong><xsl:text>Productions principales : </xsl:text></strong><br/>
 								<ul>	

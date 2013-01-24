@@ -95,7 +95,7 @@ select#sid_list{width:95%;}
 //Custom Scrollbar for extended search
 .customscrollbar{ clear: both;}
 .customscrollbar .viewport { width: 95%; height: 350px; overflow: hidden; position: relative; }
-.customscrollbar .overview { list-style: none; position: absolute; left: 0; top: 0; width:100%;padding-left:1%;}
+.customscrollbar .overview { list-style: none; position: absolute; left: 0; top: 0; width:100%;padding-left:2%;}
 .customscrollbar .thumb .end,
 .customscrollbar .thumb { background-color: @textColor; }
 .customscrollbar .scrollbar { position: relative; float: right; width: 5%; }
@@ -110,8 +110,9 @@ select.sid_list1, select.sid_list2 {width:100%;}
 
 //Resultats de recherche
 .spEntriesListContainer {display:none;}
-.spEntriesListContainer {margin:1%;/*border:1px solid @inputBorder;-webkit-border-radius: 5px; -moz-border-radius: 5px;border-radius: 5px;*/background-color:rgba(255,255,255,1);}
-.spEntriesListContainer .spEntriesListCell {border:none!important; margin:2%; line-height:1.3em;}
+.spEntriesListContainer {margin:1%; border: 1px solid #CCCCCC;
+    border-radius: 5px 5px 5px 5px;/*border:1px solid @inputBorder;-webkit-border-radius: 5px; -moz-border-radius: 5px;border-radius: 5px;*/background-color:rgba(255,255,255,1);}
+.spEntriesListContainer .spEntriesListCell {  margin:2%; line-height:1.3em;}
 .spEntriesListContainer .spEntriesListTitle {border:none!important;}
 .spEntriesListContainer .spEntriesListTitle a {font-weight:normal!important;padding-left:2%;}
 .spEntriesListContainer .spEntriesListCell:hover .spEntriesListTitle a {}
@@ -125,8 +126,9 @@ select.sid_list1, select.sid_list2 {width:100%;}
 .spEntriesListContainer .spEntriesListCell .spEntryCats {font-size:1em; font-weight:normal;margin-top:10px;text-align:left;}
 
 //Bootstrap result entries carousel
-.spEntriesListContainer .carousel-control {display:none;background:none!important; border:none!important; color:@textColor ;font-size:2em;opacity:1}
-.spEntriesListContainer .carousel-control { position:relative!important;left:0px!important;top:10px;}
+.spEntriesListContainer .carousel-control {opacity:1!important;}
+.spEntriesListContainer .carousel-inner .item img {width:auto!important;}
+.spEntriesListContainer .carousel-control { position:relative!important;left:0px!important;}
 .spEntriesListContainer .carousel-control:hover {color:@textColor;}
 .spEntriesListContainer .carousel-control.left {float:left;}
 .spEntriesListContainer .carousel-control.right {float:right;}

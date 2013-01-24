@@ -47,7 +47,7 @@ JHtml::_('behavior.noframes');
 		</fieldset>
 	<?php endif;?>
 <?php endforeach;?>
-		<legend><?php echo JText::_('COM_USERS_REGISTER_REQUIRED'); ?></legend>
+		
 		<div>
 			<button type="submit" class="btn validate"><?php echo JText::_('JREGISTER');?></button>
 			

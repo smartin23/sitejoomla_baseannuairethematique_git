@@ -9,9 +9,9 @@ function addBootstrapTags() {
 	jQuery('button').addClass('btn');
 	
 	//Carousel : on affiche les boutons de navigation Carousel si il y a des résultats!
-	if  (jQuery('#spdecarousel .carousel-inner').children('div').length>1) {
+	/*if  (jQuery('#spdecarousel .carousel-inner').children('div').length>1) {
 		jQuery('#spdecarousel .carousel-control').show();
-	}
+	}*/
 
 }
 
@@ -24,12 +24,12 @@ jQuery(document).ready(function() {
 	addBootstrapTags();
 	
 	//Support swipe dans le défilé d'images dans la vue détail 
-	jQuery("#spdecarousel").swiperight(function() {  
+	/*jQuery("#spdecarousel").swiperight(function() {  
 		jQuery("#spdecarousel").carousel('prev');  
 	});  
 	jQuery("#spdecarousel").swipeleft(function() {  
 		jQuery("#spdecarousel").carousel('next');  
-	}); 
+	}); */
 	
 	//Si le formulaire de direction est affiché, on gélocalise...
 	googlemapdirections();

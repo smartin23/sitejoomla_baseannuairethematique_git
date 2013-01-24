@@ -67,23 +67,27 @@ $sitename = $app->getCfg('sitename');
 		<div class="centre row-fluid">
 		
 				<?php if (($task=='search.results') or ($task=='search.view')) {?>
-				<div class="span4 left">
+				<div class="span4 zone-gauche">
 					<div id="onoff"><i class="icon-eye-close icon-large"></i></div>
 					<header>
 						
-						<div class="header">
-					
+						<div class="header">					
+								
+							<div class="logo">
 								<a href="<?php echo $this->baseurl; ?>">
-									<div class="logo">
-										<div class="icone"><i class="icon-map-marker"></i></div>
-										<div class="titresite">
-											<h1><div class="titresite1"><span class="brand">TOUS LES</span></div>
-											<div class="titresite2"><span class="brand">APICULTEURS</span></div>
-											<div class="soustitre">dans un annuaire et sur une carte</div></h1>
-										</div>
-									</div>
-									
+								<div class="icone"><i class="icon-map-marker"></i></div>
+								<div class="titresite">
+									<h1><div class="titresite1"><span class="brand">TOUS LES</span></div>
+									<div class="titresite2"><span class="brand">APICULTEURS</span></div>
+									</h1>
+								</div>
 								</a>
+								<h2>
+									<div class="soustitre">mieux qu'un annuaire, une grande carte interactive !</div>
+									<div class="accroche">en France, en Suisse, en Belgique et au Luxembourg</div>
+								</h2>
+																
+							</div>
 										
 						</div>	
 					</header>
@@ -98,7 +102,7 @@ $sitename = $app->getCfg('sitename');
 				<?php } ?>
 				
 				<?php if (($task!='search.results') and ($task!='search.view')) {?>
-				<div class="span10 offset1 middle">
+				<div class="span10 offset1 zone-centre">
 
 					<div class="contenuplus">
 					<?php $backurl= $_SERVER['HTTP_REFERER'];
@@ -114,9 +118,13 @@ $sitename = $app->getCfg('sitename');
 										<div class="icone"><i class="icon-map-marker"></i></div>
 										<div class="titresite">
 											<h1><div class="titresite1"><span class="brand">TOUS LES</span></div>
-											<div class="titresite2"><span class="brand">APICULTEURS</span></div>
-											<div class="soustitre">dans un annuaire et sur une carte</div></h1>
+											<div class="titresite2"><span class="brand">APICULTEURS</span></div></h1>
 										</div>
+										<h2>
+										<div class="soustitre">mieux qu'un annuaire, une grande carte interactive !</div>
+										<div class="accroche">en France, en Suisse, en Belgique et au Luxembourg</div>
+										</h2>
+										
 									</div>
 								</div>
 								<div class="clear"></div>
@@ -332,20 +340,29 @@ function addBootstrapTags() {
 
 	//Ajout du style btn sur les boutons
 	jQuery('input.button').addClass('btn');
+	jQuery("input[type='submit']").addClass('btn');
 	jQuery('button').addClass('btn');
 	
-	//Carousel : on affiche le carousel et les boutons de navigation Carousel si il y a des résultats!
-	if  (jQuery('#entriescarousel .carousel-inner').children('div').length>0) {
-		jQuery('.spEntriesListContainer').show();
-		if  (jQuery('#entriescarousel .carousel-inner').children('div').length>1) {
-			jQuery('#entriescarousel .carousel-control').show();
-		}
-	}
+	//Carousel : En général, on affiche le carousel et les boutons de navigation Carousel si il y a des résultats!
+	jQuery('.carousel-inner').each(function () {
+		var nbitems = jQuery(this).children('.item').length;		
+		if  (nbitems>1) {
+			jQuery(this).parent().find('.carousel-control').show();
+		}		
+	});
 	
-	//Reporté dans la vue detail
-	/*if  (jQuery('#spdecarousel .carousel-inner').children('div').length>1) {
-		jQuery('#spdecarousel .carousel-control').show();
-	}*/
+}
+
+function adaptOnResize() {
+
+	var usedHeight =  jQuery(window).height();
+	
+	jQuery('.centre').css('min-height', usedHeight-jQuery('footer h3').outerHeight(true)); 
+	//jQuery(window).height()-jQuery('footer h3').outerHeight(true));
+	
+	jQuery('#JmapsHome').height(usedHeight);
+	jQuery('#JmapsSearch').height(usedHeight);
+		
 	
 }
 
@@ -374,10 +391,7 @@ jQuery(window).load(function(){
 		cbref=jQuery(this).attr('href')+'&tmpl=component';
 		jQuery(this).addClass('iframe').attr('href', cbref).colorbox({iframe:true, maxWidth:"900px", width:"100%", height:"80%", opacity:0.4});	
 	});
-	
-	//Idem profil
-	//A faire*/
-	
+	*/
 	
 	//Remontée du footer 
 	var footer = jQuery('footer');
@@ -403,21 +417,25 @@ jQuery(window).load(function(){
 
 jQuery(document).ready(function() {
 
-	
+	//Hauteur initiale minimale utilse
+	adaptOnResize();
+
 	//Réorganisation de l'ordre des blocs selon la résolution		
 	changeStackingOrder();
 	
 	//Ajout des tags Bootstrap (hors des templates et views modifiables)
 	addBootstrapTags();
-	
-	//Taille initiale minimale du bloc centre
-	jQuery('.centre').css('min-height', jQuery(window).height()-60); 
-	//jQuery(window).height()-jQuery('footer h3').outerHeight(true));
-	
+		
 	//Scrollbar custom dans le bloc de recherche étendue : beurk, on l'affiche pour génére la barre correctement sous Safari puis on la masque....
 	jQuery('#SPExtSearch').show();
 	jQuery('#SPExtSearch').tinyscrollbar();
 	jQuery('#SPExtSearch').hide();
+	
+	//On montre les Résultat de recherche si il y en a
+	var entrieslist = jQuery('.spEntriesListContainer');
+	if  (entrieslist.find('.carousel-inner').children('.item').length>0) {
+			entrieslist.show();
+	}
 	
 	//On/off
 	var contenu = jQuery('.contenu');
@@ -441,7 +459,7 @@ jQuery(document).ready(function() {
 	
 	//Entry edit form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de sobipro)
 	jQuery("#spEntryForm").addClass("form-horizontal");
-	jQuery("#spEntryForm").find(".spFormRowFooter input").addClass("btn");//donc pas la peine de le mettre en primary...
+	//jQuery("#spEntryForm").find(".spFormRowFooter input").addClass("btn");//donc pas la peine de le mettre en primary...
 	jQuery("#spEntryForm").find(".required").parent().parent().children("label").after("*");
 	//Hack pour required manquant..
 	jQuery("#spEntryForm").find("#field_activite_detailleeContainer").find(".control-group").children("label").after("*");
@@ -454,28 +472,39 @@ jQuery(document).ready(function() {
 	
 	//Ou affichage sous le champs de saisie
 	var ctrlgrp=jQuery('.SPEntryEdit').find('.control-group').each(function () {
-		title=jQuery(this).find('a').attr('title');
+		title=jQuery(this).find('span').attr('title');
 		if (title && title!='Article') jQuery(this).find(".controls").after('<div class="hasCustomLegend">'+title+'</div>');
 	});
-			
-	
-	
-	
-	//Support Swipe pour le carousel Liste des entrées
-	jQuery("#entriescarousel").swiperight(function() {  
-		jQuery("#entriescarousel").carousel('prev');  
-	});  
-	jQuery("#entriescarousel").swipeleft(function() {  
-		jQuery("#entriescarousel").carousel('next');  
-	});  
+		
+	//Support Swipe pour le carousel
+	jQuery('.carousel-inner').each(function () {
+		jQuery(".carousel").swiperight(function() {  
+			jQuery(".carousel").carousel('prev');  
+		});  
+		jQuery(".carousel").swipeleft(function() {  
+			jQuery(".carousel").carousel('next');  
+		});  
+	});
 	
 });
 
 jQuery(window).resize(function () {
 
+	adaptOnResize();
+
 	changeStackingOrder();
 	
 });
+
+
+// Listen for orientation changes
+window.addEventListener("orientationchange", function() {
+
+  adaptOnResize();
+  
+}, false);
+
+
 </script>
 
 </body> 

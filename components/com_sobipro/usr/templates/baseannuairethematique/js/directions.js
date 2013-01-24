@@ -1,23 +1,38 @@
 
 function geolocalisation(){
-	var gc = new google.maps.Geocoder();
-	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function (po) {
-			gc.geocode({"latLng":  new google.maps.LatLng(po.coords.latitude, po.coords.longitude) }, function(results, status) {
-				if(status == google.maps.GeocoderStatus.OK) {
-					jQuery("#mj_rs_ref_lat").val(po.coords.latitude) ;
-					jQuery("#mj_rs_ref_lng").val(po.coords.longitude) ;
-					jQuery("#mj_rs_center_selector").val();
-					jQuery("input#saddr").val(results[0]["formatted_address"]);
-					
-				} else {
-					jQuery("#saddr-msg").html('Erreur lors de la géolocalisation : '+ status);
-				}
+
+	//Si la localisation n'est pas disponible par le module mjradius
+	if (((jQuery("#mj_rs_ref_lat").val()==0) && (jQuery("#mj_rs_ref_lng").val()==0)) || (jQuery("#mj_rs_center_selector").val()=='')){
+
+		var gc = new google.maps.Geocoder();
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function (po) {
+				gc.geocode({"latLng":  new google.maps.LatLng(po.coords.latitude, po.coords.longitude) }, function(results, status) {
+					if(status == google.maps.GeocoderStatus.OK) {
+								
+						//On met à jour mjradius ?
+						jQuery("#mj_rs_ref_lat").val(po.coords.latitude) ;
+						jQuery("#mj_rs_ref_lng").val(po.coords.longitude) ;				
+						jQuery("#mj_rs_center_selector").val(results[0]["formatted_address");
+						
+						//On remplit le champs Depuis de Directions
+						jQuery("input#saddr").val(results[0]["formatted_address"]);
+						
+					} else {
+						jQuery("#saddr-msg").html('Erreur lors de la géolocalisation : '+ status);
+					}
+				});
 			});
-		});
+		}
+		else{
+			jQuery("#saddr-msg").html('Partage de position non autorisé.');
+		}
+		
 	}
-	else{
-		jQuery("#saddr-msg").html('Partage de position non autorisé.');
+	else
+	{
+		//On recupère l'adresse depuis mjradius
+		jQuery("input#saddr").val(jQuery("#mj_rs_center_selector").val());
 	}
 }
 /*
@@ -49,6 +64,7 @@ function googlemapdirections () {
 		jQuery("input#saddr").after('<div class="small text-info" id="saddr-msg"></div>');
 		
 		//Localisation de l'utilisateur
+		
 		geolocalisation();
 		//if (navigator.geolocation) navigator.geolocation.getCurrentPosition(setStartAddress, erreurPosition);
 		
