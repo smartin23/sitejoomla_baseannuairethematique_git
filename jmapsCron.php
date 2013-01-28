@@ -99,7 +99,7 @@ foreach ($sections as $section) {
 
 	$jmfaBubbleLayout = $params['jmfaBubbleLayout'];
 	
-	$fieldNames = $spdb->select('*', 'spdb_field', array('section' => $section->id, 'nid' => array($jmfaTitleField, $jmfaStreetField, $jmfaCityField, $jmfaStateField, $jmfaPostcodeField, $jmfaFeaturedField, $jmfaCountryField, $jmfaCustomField1, $jmfaCustomField2, $jmfaCustomField3, $jmfaCustomField4, $jmfaCustomField5), 'enabled' => 1))->loadObjectList();
+	/*$fieldNames = $spdb->select('*', 'spdb_field', array('section' => $section->id, 'nid' => array($jmfaTitleField, 'field_logo', $jmfaStreetField, $jmfaCityField, $jmfaStateField, $jmfaPostcodeField, $jmfaFeaturedField, $jmfaCountryField, $jmfaCustomField1, $jmfaCustomField2, $jmfaCustomField3, $jmfaCustomField4, $jmfaCustomField5), 'enabled' => 1))->loadObjectList();*/
 	
 //	echo '<br />$fieldNames = <br />';
 //	print_r($fieldNames);
@@ -121,7 +121,7 @@ foreach ($sections as $section) {
 	//   Get all data for each entry required to create the XML markers
 		if(isset($data->jmlatitude) && isset($data->jmlongitude) && ($data->jmlatitude + $data->jmlongitude) != 0) {
 //			echo '<br />Got this far!!!<br />';
-			$fieldNames = $spdb->select('*', 'spdb_field', array('section' => $data->section, 'nid' => array($jmfaTitleField, $jmfaStreetField, $jmfaCityField, $jmfaStateField, $jmfaPostcodeField, $jmfaFeaturedField, $jmfaCountryField, $jmfaCustomField1, $jmfaCustomField2, $jmfaCustomField3, $jmfaCustomField4, $jmfaCustomField5), 'enabled' => 1))->loadObjectList();
+			$fieldNames = $spdb->select('*', 'spdb_field', array('section' => $data->section, 'nid' => array($jmfaTitleField, 'field_logo', $jmfaStreetField, $jmfaCityField, $jmfaStateField, $jmfaPostcodeField, $jmfaFeaturedField, $jmfaCountryField, $jmfaCustomField1, $jmfaCustomField2, $jmfaCustomField3, $jmfaCustomField4, $jmfaCustomField5), 'enabled' => 1))->loadObjectList();
 			foreach($fieldNames as $fieldName) {
 				$fieldDataObj = $spdb->select('*', 'spdb_field_data', array('sid' => $data->sid, 'fid' => $fieldName->fid))->loadObject();
 				if (isset($fieldDataObj->baseData)) {
@@ -214,10 +214,10 @@ foreach ($sections as $section) {
 			//LGW : on ajoute un champ fixe : field_logo
 			$imageArray = SPConfig::unserialize($fieldData['field_logo']);
 			$logosrc = $imageArray['ico']; //ico, thumb, image,original
-			$jmfaLogo = '<img style="float:left" src="'.JURI::base() .$logosrc.'">';
+			$jmfaLogo = '<img style="float:left" src="'.JURI::base().$logosrc.'">';
 	
 			//LGW:Modification de l'entete
-			$jmfaTitle = $jmfaLogo.'<b>' . $fieldData[$this->jmfaTitleField] . '</b><br/>';
+			$jmfaTitle = $jmfaLogo.'<b>' . $fieldData[$jmfaTitleField] . '</b><br/>';
 			$jmfaDetails = '<div class="SOBIproDetailsDIV"><a href="' . $jmfaLink . '" class="SOBIproDetails" onclick="if(!parent.jQuery.browser.opera) {var linkData = \'' . $jmfaLink . '\'; var returnData = openColorbox(linkData); return returnData;}" target="_blank"><i class="icon-plus-sign"></i> ' . Sobi::Txt('JMFA_DETAILS_LABEL') . '</a></div>';
 			
 			$XMLname = $fieldData[$jmfaTitleField];
@@ -417,7 +417,7 @@ foreach ($sections as $section) {
 							
 					//LGW: si le champ est vide, on saute....
 					if ($XMLcustom!='') {
-						//LGW: on ajoute le br en dynamique pour prévoir les champs custom vides
+						//LGW: on ajoute le br en dynamique pour prÃ©voir les champs custom vides
 						if (count($HTMLarray) == 1) {
 							$HTMLwork = $XMLcustom . '</br>' . $HTMLarray[0];
 						} 
@@ -443,7 +443,7 @@ foreach ($sections as $section) {
 					
 					//LGW: si le champ est vide, on saute....
 					if ($XMLcustom!='') {
-						//LGW: on ajoute le br en dynamique pour prévoir les champs custom vides
+						//LGW: on ajoute le br en dynamique pour prÃ©voir les champs custom vides
 						if (count($HTMLarray) == 1) {
 							$HTMLwork = $XMLcustom . '</br>' . $HTMLarray[0];
 						} 
@@ -470,7 +470,7 @@ foreach ($sections as $section) {
 					
 					//LGW: si le champ est vide, on saute....
 					if ($XMLcustom!='') {
-						//LGW: on ajoute le br en dynamique pour prévoir les champs custom vides
+						//LGW: on ajoute le br en dynamique pour prÃ©voir les champs custom vides
 						if (count($HTMLarray) == 1) {
 							$HTMLwork = $XMLcustom . '</br>' . $HTMLarray[0];
 						} 
@@ -499,7 +499,7 @@ foreach ($sections as $section) {
 					
 					//LGW: si le champ est vide, on saute....
 					if ($XMLcustom!='') {
-						//LGW: on ajoute le br en dynamique pour prévoir les champs custom vides
+						//LGW: on ajoute le br en dynamique pour prÃ©voir les champs custom vides
 						if (count($HTMLarray) == 1) {
 							$HTMLwork = $XMLcustom . '</br>' . $HTMLarray[0];
 						} 
@@ -528,7 +528,7 @@ foreach ($sections as $section) {
 					
 					//LGW: si le champ est vide, on saute....
 					if ($XMLcustom!='') {
-						//LGW: on ajoute le br en dynamique pour prévoir les champs custom vides
+						//LGW: on ajoute le br en dynamique pour prÃ©voir les champs custom vides
 						if (count($HTMLarray) == 1) {
 							$HTMLwork = $XMLcustom . '</br>' . $HTMLarray[0];
 						} 
@@ -547,7 +547,7 @@ foreach ($sections as $section) {
 			//LGW : On ajoute la categorie		
 			$nbcats = count($labels);
 			$i=1;
-			$cats = '<br/><br/>Catégorie(s) : '; //A faire : gerer la traduction !
+			$cats = '<br/><br/>CatÃ©gorie(s) : '; //A faire : gerer la traduction !
 			foreach ($labels as $label ) {
 				$cats .= $label['value'];
 				if ($i<$nbcats) $cats .= ', ';

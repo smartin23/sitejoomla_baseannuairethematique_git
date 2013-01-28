@@ -45,30 +45,36 @@ border-bottom-left-radius: 5px;}
 //Contenu / Onoff
 .contenu {overflow:hidden; position:relative;}
 .contenu.on {
-	transition: 1s opacity 0.3s;  
-	opacity:1;
+	//transition: 1s opacity 0.3s;  
+	//opacity:1;
+	display:block;
 }
 
 .contenu.off{
-	transition: 1s opacity 0.3s;  
-	opacity:0;
+	//transition: 1s opacity 0.3s;  
+	//opacity:0;
+	display:none;
 }
 
 //Header
 .header {padding:1%;padding-top:20px;padding-bottom:20px;}
-.contenuplus .header {margin:0!important; padding:0!important;}
+.contenuplus .header {margin:0 0 25px!important; padding:0!important;}
 .header .icone {float:left;}
 .header .titresite {float:left;}
 .header i {font-size:6.5em; line-height:100%; .whitebordered;}
 .header .icon a, .header .icon a:hover {color:@textColor;}
 .header i.icon-large:before {}
-.header .icon {float:left;}
-.header .brand {font-family:@fontFamily1;font-size:2.5em;line-height:1.2em;font-weight:bold;text-transform:uppercase;.whitebordered;}
+.header .icon {float:left; margin-right:1%;}
+.header .brand {font-family:@fontFamily1;font-size:2.5em;line-height:1.2em;font-weight:bold;.whitebordered;}
+
 .header a {color:@textColor;}
 .header a:hover {color:lighten(@textColor,5%)!important;}
 .header h2 {font-size:1em!important;margin:0; padding:0;}
-.header h2 .soustitre, .header h2 .accroche {clear:both;font-family:@fontFamily1;font-weight:700;.whitebordered;visibility:hidden;height:1px;}
+.header h2 .soustitre, .header h2 .soustitre-small, .header h2 .accroche {clear:both;font-family:@fontFamily1;font-weight:700;.whitebordered;}
+.header h2 .soustitre-small {display:none;}
+.header h2 .accroche {visibility:hidden; height:1px;}
 .contenuplus .header i, .contenuplus .header .brand, .contenuplus .header .soustitre{opacity:0.1;}
+
 
 //Google maps
 .fullmap {position:fixed;top:0;left:0;width:100%;z-index:0;}
@@ -113,7 +119,7 @@ border-bottom-left-radius: 5px;}
 input.invalid, textarea.invalid {border:1px solid #FF0000!important;}
 
 //Contenu +
-.contenuplus {position:relative;z-index:9;margin-top:25px;background-color:rgba(255,255,255,0.95);padding:3%;}
+.contenuplus {position:relative;z-index:9;margin-top:25px;margin-bottom:25px;background-color:rgba(255,255,255,0.95);padding:3%;}
 .contenuplus .retour {font-size:2em; position:absolute; top:20px; right:20px;}
 .contenuplus ul.editor {list-style-type:none;  list-style: none; margin: 0 0 10px;}
 .contenuplus ul.editor li{padding:2px; position:relative; margin-left:15px;}
@@ -133,7 +139,6 @@ footer {position:relative;background-color:lighten(@textColor,30%);color:#fff;z-
 footer  h3 {color:@white; font-size:1.6em;font-weight:bold; text-transform:uppercase;line-height:20px;cursor:pointer;}
 footer a {color:@textColor;}
 footer a:hover {color:@white;}
-
 
 //S'incrire
 footer .login {padding:1%;padding-top:0px;}
@@ -179,8 +184,8 @@ a.hasBootstrapTip {color:@textColor;}
 
 //Blog
 //Titres du blog
-.blog h2 {font-size:1.8em;}
-.blog h3 {font-size:1.6em;}
+.blog h2 {font-size:2.2em;}
+.blog h3 {font-size:1.8em;}
 
 .blog img.illustration {float:left; width:20%;margin-right:2%;}
 
@@ -306,18 +311,6 @@ margin:0 4px 0 0;
 
 //Media Queries  
 @media screen and (max-width: 980px) {
-
-	//On bascule de force avant 360px le formulaire de contact et le formulaire d'edit d'entrées
-	/*.contact-form label, form#spEntryForm label 
-   {
-			float: none!important;
-			padding-top: 0!important;
-			text-align: left!important;
-			width: auto!important;
-	}*/
-	
-	/*.contact-form .controls,*/
-	//form#spEntryForm .controls {margin-left:0!important;}
 }	
 
 // Tablets to regular desktops
@@ -327,7 +320,6 @@ margin:0 4px 0 0;
 	.header .brand {font-size:2.2em;}
 	.header i  {font-size:5.6em;}
 	.header .soustitre {font-size:0.8em;}
-	
 }
 
 
@@ -335,13 +327,18 @@ margin:0 4px 0 0;
 @media screen and (min-width: 768px) and (max-width: 979px) {
 	
 	//Logo
-	.header .brand {font-size:2em;}
-	.header i  {font-size:5.2em;}
-	.header .soustitre {font-size:0.8em;}
+	.header .brand {font-size:2.2em;}
+	.header i  {font-size:5.8em;}
+	.header .soustitre {font-size:0.7em;}
+	
+	//.spEntriesListContainer .spEntriesListCell  #logo {float:none;margin-bottom:15px;}
+	//.spEntriesListContainer .spEntriesListTitle #titre {clear:both;}
 	
 	//Titres footer
 	footer h3 {font-size:1.6em!important;}
-
+	
+	//En test :  est-ce la bonne méthode ?
+	.row-fluid .span4 {width:42%;}
 }
 	
 
@@ -368,31 +365,47 @@ margin:0 4px 0 0;
 	#onoff {display:none;}
 		
 	//Titre header
-	.header {padding-top:0px;padding-bottom:0px;}
+	.header {padding-top:5px;padding-bottom:20px;}
+	//header
+	.header h2 .soustitre {display:none;}
+	.header h2 .soustitre-small {display:block;text-align:right;margin-right:3%;}
 	
 	//Titres footer
 	footer h3 {font-size:1.5em!important;}
 	footer .menusecondaire, footer .theme, footer .links {margin-top:30px;}
 	
 	//Titres du blog
-	.blog h2 {font-size:1.6em;}
-	.blog h3 {font-size:1.4em;}
+	.blog h2 {font-size:2em;}
+	.blog h3 {font-size:1.8em;}
 	
 	//Contenu + 
-	.contenuplus {margin-top:0px;}
+	.contenuplus {margin-top:0px;margin-bottom:0px;}
 }
 
 @media screen and (max-width: 480px) {
 	//Titres du blog
-	.blog h2 {font-size:1.4em;}
-	.blog h3 {font-size:1.2em;}
+	.blog h2 {font-size:1.8em;}
+	.blog h3 {font-size:1.6em;}
 }
 
 @media screen and (max-width: 360px) {
+
+
+
 	//Bascule de l'illustration du post
 	.blog img.illustration {float:left; width:100%;}
 
 	footer #shareme .share {font-size:1.2em;}
 	footer #shareme .count {font-size:2em;}
+
+}
+
+@media screen and (max-width: 320px) {
+
+	//Logo
+	.header .brand {font-size:2em;}
+	.header i  {font-size:5.4em;}
+	.header .soustitre {font-size:0.7em;}
+
 
 }

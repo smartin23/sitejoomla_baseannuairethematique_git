@@ -113,17 +113,25 @@ select.sid_list1, select.sid_list2 {width:100%;}
 .spEntriesListContainer {margin:1%; border: 1px solid #CCCCCC;
     border-radius: 5px 5px 5px 5px;/*border:1px solid @inputBorder;-webkit-border-radius: 5px; -moz-border-radius: 5px;border-radius: 5px;*/background-color:rgba(255,255,255,1);}
 .spEntriesListContainer .spEntriesListCell {  margin:2%; line-height:1.3em;}
-.spEntriesListContainer .spEntriesListTitle {border:none!important;}
-.spEntriesListContainer .spEntriesListTitle a {font-weight:normal!important;padding-left:2%;}
+.spEntriesListContainer img.jmapsInfoMarker {float:right;margin-left:2%;cursor:pointer}
+.spEntriesListContainer img.jmapsInfoMarker:hover {cursor:pointer}
+.spEntriesListContainer .spEntriesListTitle {border:none!important;margin-bottom:15px;}
+.spEntriesListContainer .spEntriesListTitle #titre {font-size:1.5em;font-weight:bold;padding-left:1%;padding-bottom:5px;}
 .spEntriesListContainer .spEntriesListCell:hover .spEntriesListTitle a {}
+
 .spEntriesListContainer .spEntriesListCell img.tampon {height:25px;margin-left:1%;}
 .spEntriesListContainer .spEntriesListCell{background:none!important;margin-bottom:25px;}
-.spEntriesListContainer .spEntriesListCell div#title {font-weight:bold; margin-bottom:10px;}
+
 .spEntriesListContainer .spEntriesListCell div#resume_activite {margin-bottom:10px;}
 .spEntriesListContainer .spEntriesListCell div#productions {font-weight:bold;margin-bottom:10px;}
 .spEntriesListContainer .spEntriesListCell #logo {float:left; margin-right:2%;}
 
-.spEntriesListContainer .spEntriesListCell .spEntryCats {font-size:1em; font-weight:normal;margin-top:10px;text-align:left;}
+//vCard
+.spEntriesListContainer .spEntriesListCell #rating {float:left;}
+.spEntriesListContainer .spEntriesListCell #distance {float:right; font-weight:bold;}
+
+//Category
+.spEntriesListContainer .spEntriesListCell .spEntryCats {font-size:0.8em; font-weight:normal;margin-top:10px;text-align:left;}
 
 //Bootstrap result entries carousel
 .spEntriesListContainer .carousel-control {opacity:1!important;}
@@ -132,6 +140,8 @@ select.sid_list1, select.sid_list2 {width:100%;}
 .spEntriesListContainer .carousel-control:hover {color:@textColor;}
 .spEntriesListContainer .carousel-control.left {float:left;}
 .spEntriesListContainer .carousel-control.right {float:right;}
+
+
 
 //Media queries
 @media screen and (min-width: 768px) {
@@ -145,4 +155,9 @@ input#mj_rs_center_selector {width:75%;}
 
 @media screen and (min-width: 320px) and (max-width: 480px){
 	.overview .SPSearchCell:nth-child(2) span {display:block;}
+}
+
+@media screen and (max-width: 320px) {
+input#mj_rs_center_selector {width:75%;}
+
 }

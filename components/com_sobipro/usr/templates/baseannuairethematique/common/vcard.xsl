@@ -4,29 +4,9 @@
 <xsl:output method="xml" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" encoding="UTF-8"/>
 
   <xsl:template name="vcard">
-    <span class="spEntriesListTitle">
-      <a>
-        <xsl:attribute name="href">
-          <xsl:value-of select="url" />
-        </xsl:attribute>
-      
-        <xsl:choose>
-          <xsl:when test="string-length(name) &gt; 0">
-            <xsl:value-of select="name" />
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="fields/field_name/data" />
-          </xsl:otherwise>
-        </xsl:choose>
-      </a>
-
-    </span>
-	
-	
-	<div class="spField" id="resume_activite">
-	
-		<xsl:if test="string-length(fields/field_logo/data/@image) &gt; 0">
-					<div id="logo" class="SPField">
+  
+  <xsl:if test="string-length(fields/field_logo/data/@image) &gt; 0">
+					<div id="logo" class="SPField pull-left">
 						
 						<xsl:element name="img">
 						  <xsl:attribute name="src">
@@ -39,20 +19,43 @@
 						
 					</div>
 		</xsl:if>
+    
+	<div class="spEntriesListTitle">
+
+		<div class="spField" id="titre">
+			<xsl:choose>
+			  <xsl:when test="string-length(name) &gt; 0">
+				<xsl:value-of select="name" />
+			  </xsl:when>
+			  <xsl:otherwise>
+				<xsl:value-of select="fields/field_name/data" />
+			  </xsl:otherwise>
+			</xsl:choose>
+		</div>
+
+	  <div class="spField" id="fichedetaillee">
+		<a>
+			<xsl:attribute name="href">
+			  <xsl:value-of select="url" />
+			</xsl:attribute>
+		  
+			<i class="icon-plus-sign"></i><xsl:text> </xsl:text><xsl:value-of select="php:function( 'SobiPro::Txt' , 'Fiche détaillée' )" />
+		</a>
+	 </div>  
+
+	</div>
+	
+	
+	
+	<div class="spField" id="resume_activite">
+	
+		
 	
 		<xsl:value-of select="fields/field_resume_activite/data" disable-output-escaping="yes"/>
 		<xsl:text> </xsl:text>
 		<xsl:value-of select="fields/field_resume_activite/@suffix"/>
 		
-		<div id="fichedetaillee">
-		<a>
-        <xsl:attribute name="href">
-          <xsl:value-of select="url" />
-        </xsl:attribute>
-      
-        <i class="icon-plus-sign"></i><xsl:text> </xsl:text><xsl:value-of select="php:function( 'SobiPro::Txt' , 'Fiche détaillée' )" />
-      </a>
-	</div>  
+		
 		
     </div>    
 	
@@ -138,8 +141,8 @@
 	</xsl:if>
 	
     <div class="spEntryFooter">
-      <div style="float:left"><xsl:call-template name="ratingStars"/></div>
-      <div style="float:right"><xsl:value-of select="mjradius" disable-output-escaping="yes" /></div>
+      <div class="spField" id="rating"><xsl:call-template name="ratingStars"/></div>
+      <div class="spField" id="distance" ><xsl:value-of select="mjradius" disable-output-escaping="yes" /></div>
     </div>
 	
 	<div style="clear:both;"/>

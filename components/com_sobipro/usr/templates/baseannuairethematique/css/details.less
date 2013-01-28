@@ -63,7 +63,7 @@
 //.SPDE-Website {margin-top:15px;}
 
 //More
-.SPDE-More {margin-top:15px; text-align:right;}
+.SPDE-More {margin-top:15px; margin-bottom:15px;text-align:right;}
 
 //Links
 .SPDE-Links {}
@@ -240,19 +240,27 @@
   border-left: none;
 }
 
+//Half VGA
+@media screen and (max-width: 640px){
 
-@media screen and (min-width: 320px) and (max-width: 480px){
+//Page Description
+.block-gauche {overflow:hidden; float:none;width:100%;}
+.block-droite {overflow:hidden; float:none; clear:both;width:100%;}
 
 .SPDE-Resume, .SPDE-More {width:100%;text-align:left;}
+
+//Page Infos pratiques
+.SPDetailEntry-Sidebar-contact {width:100%;margin-bottom:5px;}
+.SPDetailEntry-Sidebar-infos {clear:both; width:100%;}
 
 .SPDE-Map span.dirflg-driven ,
 .SPDE-Map span.dirflg-bicycle ,
 .SPDE-Map span.dirflg-walking ,
 .SPDE-Map span.dirflg-nohighways {display:block;}
+
 }
 
 @media screen and (max-width: 360px){
-.SPDetailEntry-Sidebar-contact {width:100%;margin-bottom:5px;}
-.SPDetailEntry-Sidebar-infos {clear:both; width:100%;}
+
 
 }

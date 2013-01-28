@@ -46,13 +46,16 @@
 			
 				<h2><i class="icon-pushpin icon-large"></i> Description</h2>
 				<div style="float:left; width:100%;" class="page">
-				<div class="block-gauche">					
+				<div class="block-gauche">	
+			
 					<div class="spField block-editor" id="resume_activite">
 									
 						<xsl:value-of select="entry/fields/field_resume_activite/data" disable-output-escaping="yes"/>
 						<xsl:text> </xsl:text>
 						<xsl:value-of select="entry/fields/field_resume_activite/@suffix"/>
 					</div>
+					
+					<div style="clear:both;"/>
 														  
 					<div itemprop="description" class="spField block-editor" id="activite_detaillee">
 					  <xsl:value-of select="entry/fields/field_activite_detaillee/data" disable-output-escaping="yes"/>
@@ -60,7 +63,18 @@
 					  <xsl:value-of select="entry/fields/field_activite_detaillee/@suffix"/>
 					</div>
 					
-					<div class="spField block" id="tags">
+					<xsl:if test="string-length(entry/fields/field_encemoment/data) &gt; 0">
+					<div class="SPDE-Encemoment well">
+						<strong><xsl:value-of select="entry/fields/field_encemoment/label"/></strong><br/>
+						<div itemprop="description" class="spField block-editor" id="activite_detaillee">
+						  <xsl:value-of select="entry/fields/field_encemoment/data" disable-output-escaping="yes"/>
+						  <xsl:text> </xsl:text>
+						  <xsl:value-of select="entry/fields/field_encemoment/@suffix"/>
+						</div>
+					</div>
+				</xsl:if>
+					
+				<div class="spField block" id="tags">
 					<xsl:if test="count(entry/fields/field_tags/data/*)">
 						<i class="icon-tags icon-large"></i>						   
 						<xsl:text> </xsl:text>
@@ -73,7 +87,7 @@
 				
 				<div class="block-droite">
 				<xsl:if test="string-length(entry/fields/field_logo/data/@image) &gt; 0">
-					<div itemprop="logo" id="logo" class="SPField block">
+					<div itemprop="logo" id="logo" class="spField block">
 						
 						<xsl:element name="img">
 						  <xsl:attribute name="src">
@@ -91,7 +105,7 @@
 					
 						<xsl:if test="count(entry/fields/field_productions_principales/data/*)">
 							<div class="SPField block" id="productions-principales">
-								<strong><xsl:text>Productions principales : </xsl:text></strong><br/>
+								<strong><xsl:value-of select="entry/fields/field_productions_principales/label"/> : </strong><br/>
 								<ul>	
 								<xsl:for-each select="entry/fields/field_productions_principales/options/*">
 								   <xsl:choose>
@@ -108,7 +122,7 @@
 					
 						<xsl:if test="count(entry/fields/field_produits_derives/data/*)">
 							<div class="SPField block" id="produits-derives">
-								<strong><xsl:text>Produits dérivés : </xsl:text></strong><br/>	
+								<strong><xsl:value-of select="entry/fields/field_produits_derives/label"/> : </strong><br/>
 								<ul>
 								<xsl:for-each select="entry/fields/field_produits_derives/options/*">
 								   <xsl:choose>
@@ -121,13 +135,10 @@
 							</div>
 						</xsl:if>
 					
-		
-					
 				
-						
 						<xsl:if test="count(entry/fields/field_bio/data/*)">
 							<div class="SPField block" id="caracteritiques">
-								<strong><xsl:text>Caractéristiques : </xsl:text></strong><br/>
+								<strong><xsl:value-of select="entry/fields/field_bio/label"/> : </strong><br/>
 								<ul>	
 									
 									<xsl:for-each select="entry/fields/field_bio/options/*">
@@ -156,7 +167,7 @@
 					
 						<xsl:if test="count(entry/fields/field_services/data/*)">
 							<div class="SPField block" id="services">
-								<strong><xsl:text>Services : </xsl:text></strong>
+								<strong><xsl:value-of select="entry/fields/field_services/label"/> : </strong><br/>
 								<ul>
 								<xsl:for-each select="entry/fields/field_services/options/*">
 								   <xsl:choose>
@@ -171,6 +182,7 @@
 					
 
 				</div>
+				
 				
 				<div class="SPDE-Galery">
 					<div id="spdecarousel" class="carousel slide">

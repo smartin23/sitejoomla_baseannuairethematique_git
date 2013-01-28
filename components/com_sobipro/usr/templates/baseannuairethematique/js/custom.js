@@ -1,12 +1,21 @@
-function changeStackingOrder() {
+function changeDetailsStackingOrder() {
 
+    if (jQuery(window).width() <= 640){
+
+		//Logo
+		jQuery('.spField#logo').css('float', 'left').css('width','40%').css('margin-right', '3%').removeClass('block').insertBefore('.spField#resume_activite');
+		
+		//Tagq
+		jQuery('.spField#tags').insertAfter('.SPDE-More');
+	
+	}
 }
 
 function addBootstrapTags() {
 
 	//Ajout du style btn sur les boutons
-	jQuery('input.button').addClass('btn');
-	jQuery('button').addClass('btn');
+	//jQuery('input.button').addClass('btn');
+	//jQuery('button').addClass('btn');
 	
 	//Carousel : on affiche les boutons de navigation Carousel si il y a des résultats!
 	/*if  (jQuery('#spdecarousel .carousel-inner').children('div').length>1) {
@@ -18,7 +27,7 @@ function addBootstrapTags() {
 jQuery(document).ready(function() {
 
 	//Réorganisation de l'ordre des blocs selon la résolution		
-	changeStackingOrder();
+	changeDetailsStackingOrder();
 		
 	//Ajout des tags Bootstrap (hors des templates et views modifiables)
 	addBootstrapTags();

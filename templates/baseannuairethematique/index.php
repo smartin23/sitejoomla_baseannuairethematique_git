@@ -58,6 +58,22 @@ $sitename = $app->getCfg('sitename');
 	<script src="<?php echo $this->baseurl ?>/scripts/modernizr-min.js"></script>
 	<script src="<?php echo $this->baseurl ?>/scripts/jquery.easing.1.3.js"></script>
 	<script src="<?php echo $this->baseurl ?>/scripts/jquery.mobile.custom.min.js"></script>
+	
+	<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38008134-1']);
+  _gaq.push(['_setDomainName', 'ma-carte-locale.eu']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 	  
 </head>
 <body class="site <?php echo $option . " view-" . $view . " layout-" . $layout . " task-" . str_replace('.','-',$task ). " itemid-" . $itemid . " ";?> <?php if ($this->params->get('fluidContainer')) { echo "fluid"; } ?>">
@@ -75,15 +91,16 @@ $sitename = $app->getCfg('sitename');
 								
 							<div class="logo">
 								<a href="<?php echo $this->baseurl; ?>">
-								<div class="icone"><i class="icon-map-marker"></i></div>
+								<div class="icon"><i class="icon-map-marker"></i></div>
 								<div class="titresite">
 									<h1><div class="titresite1"><span class="brand">TOUS LES</span></div>
 									<div class="titresite2"><span class="brand">APICULTEURS</span></div>
 									</h1>
+									
 								</div>
 								</a>
-								<h2>
-									<div class="soustitre">mieux qu'un annuaire, une grande carte interactive !</div>
+								<h2><div class="soustitre">je trouve ce que je cherche sur ma-carte-locale.eu</div>
+									<div class="soustitre-small">sur ma-carte-locale.eu</div>
 									<div class="accroche">en France, en Suisse, en Belgique et au Luxembourg</div>
 								</h2>
 																
@@ -113,21 +130,20 @@ $sitename = $app->getCfg('sitename');
 							<div class="retour"><a href="javascript:history.go(-1)"><i class="icon-remove-sign icon-large"></i></a></div>
 					<?php } ?>
 						
-								<div class="span6 header">
-									<div class="logo">
-										<div class="icone"><i class="icon-map-marker"></i></div>
-										<div class="titresite">
-											<h1><div class="titresite1"><span class="brand">TOUS LES</span></div>
-											<div class="titresite2"><span class="brand">APICULTEURS</span></div></h1>
-										</div>
-										<h2>
-										<div class="soustitre">mieux qu'un annuaire, une grande carte interactive !</div>
-										<div class="accroche">en France, en Suisse, en Belgique et au Luxembourg</div>
-										</h2>
-										
-									</div>
+						<div class="span6 header">
+							<div class="logo">
+								<div class="icon"><i class="icon-map-marker"></i></div>
+								<div class="titresite">
+									<h1><div class="titresite1"><span class="brand">TOUS LES</span></div>
+									<div class="titresite2"><span class="brand">APICULTEURS</span></div></h1>
 								</div>
-								<div class="clear"></div>
+								<h2><div class="soustitre">je trouve ce que je cherche sur ma-carte-locale.eu</div>
+									<div class="accroche">en France, en Suisse, en Belgique et au Luxembourg</div>
+								</h2>
+								
+							</div>
+						</div>
+						<div class="clear"></div>
 					
 						<jdoc:include type="message" />
 						<jdoc:include type="component" />	
@@ -176,7 +192,7 @@ $sitename = $app->getCfg('sitename');
 										<i class="icon-facebook-sign icon-large">&nbsp;</i><i class="icon-twitter-sign icon-large">&nbsp;</i><i class="icon-google-plus-sign icon-large">&nbsp;</i>
 									</div>
 									<div id="socialshare" class="pull-right">
-										<div id="shareme" data-url="http://www.lagrangeweb.fr" data-text="Partagez Tous les apicluteurs sur vos rÈseaux sociaux" data-title="partagent cette page">&nbsp;</div>
+										<div id="shareme" data-url="http://www.lagrangeweb.fr" data-text="Partagez Tous les apicluteurs sur vos r√©seaux sociaux" data-title="partagent cette page">&nbsp;</div>
 									</div>
 								</div>
 							</div>
@@ -224,11 +240,11 @@ jQuery(api.element).find('.buttons').hide();
 <script type='text/javascript'>
 
 	jQuery('.carousel').carousel({  
-	  interval: 5000 // in milliseconds  
+	  interval: 8000 // in milliseconds  
 	})  
 
 	if (jQuery('.carousel')) {
-		//Desactivation du conflit avec Mootools (encore utilisÈ par SobiPro!)
+		//Desactivation du conflit avec Mootools (encore utilis√© par SobiPro!)
 		window.addEvent('domready', function(){
 			if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 
@@ -327,7 +343,7 @@ function changeStackingOrder() {
 
 	/*if (jQuery(window).width() <= 600){
 	
-		//On etend le bloc social ‡ la disparition du bloc login
+		//On etend le bloc social √† la disparition du bloc login
 		jQuery('.footer').find('.social').removeClass('span5').addClass('span9');
 	}
 	else
@@ -343,7 +359,7 @@ function addBootstrapTags() {
 	jQuery("input[type='submit']").addClass('btn');
 	jQuery('button').addClass('btn');
 	
-	//Carousel : En gÈnÈral, on affiche le carousel et les boutons de navigation Carousel si il y a des rÈsultats!
+	//Carousel : En g√©n√©ral, on affiche le carousel et les boutons de navigation Carousel si il y a des r√©sultats!
 	jQuery('.carousel-inner').each(function () {
 		var nbitems = jQuery(this).children('.item').length;		
 		if  (nbitems>1) {
@@ -355,7 +371,8 @@ function addBootstrapTags() {
 
 function adaptOnResize() {
 
-	var usedHeight =  jQuery(window).height();
+	//var usedHeight =  jQuery(window).height();
+	var usedHeight = window.innerHeight ? window.innerHeight : jQuery(window).height();
 	
 	jQuery('.centre').css('min-height', usedHeight-jQuery('footer h3').outerHeight(true)); 
 	//jQuery(window).height()-jQuery('footer h3').outerHeight(true));
@@ -393,7 +410,10 @@ jQuery(window).load(function(){
 	});
 	*/
 	
-	//RemontÈe du footer 
+	//Hauteur initiale minimale utilse
+	adaptOnResize();
+	
+	//Remont√©e du footer 
 	var footer = jQuery('footer');
 	footer.find('h3').addClass('down').click(function() {
 		if (jQuery(this).hasClass('up')) {
@@ -413,28 +433,45 @@ jQuery(window).load(function(){
 		
 	});
 	
+	//On montre les R√©sultat de recherche si il y en a
+	var entrieslist = jQuery('.spEntriesListContainer');
+	if  (entrieslist.find('.carousel-inner').children('.item').length>0) {
+			entrieslist.show();
+	}
+	
 });
 
 jQuery(document).ready(function() {
 
-	//Hauteur initiale minimale utilse
-	adaptOnResize();
-
-	//RÈorganisation de l'ordre des blocs selon la rÈsolution		
+	//R√©organisation de l'ordre des blocs selon la r√©solution		
 	changeStackingOrder();
 	
 	//Ajout des tags Bootstrap (hors des templates et views modifiables)
 	addBootstrapTags();
 		
-	//Scrollbar custom dans le bloc de recherche Ètendue : beurk, on l'affiche pour gÈnÈre la barre correctement sous Safari puis on la masque....
+	//Scrollbar custom dans le bloc de recherche √©tendue : beurk, on l'affiche pour g√©n√©re la barre correctement sous Safari puis on la masque....
 	jQuery('#SPExtSearch').show();
 	jQuery('#SPExtSearch').tinyscrollbar();
 	jQuery('#SPExtSearch').hide();
 	
-	//On montre les RÈsultat de recherche si il y en a
-	var entrieslist = jQuery('.spEntriesListContainer');
-	if  (entrieslist.find('.carousel-inner').children('.item').length>0) {
-			entrieslist.show();
+	
+	
+	//Gestion du recentrage de la carte Search selon l'item affich√© (version1 : sur clic sur marker)
+	jQuery("img.jmapsInfoMarker").each(function () {		
+		jQuery(this).click(function() {
+			jQuery('#JmapsSearch').trigger('recentermap', [jQuery(this).attr("data-lat"), jQuery(this).attr("data-lon")]);
+		});
+	});
+		
+	//version2:
+	jQuery('.spEntriesListContainer').find('.carousel-control').each(function () {
+		jQuery(this).click(function() {
+			setTimeout(centerActiveMarker,1000);
+		});
+	});
+	function centerActiveMarker(){
+		var activemarker = jQuery('.spEntriesListContainer').find('.item.active').find('img.jmapsInfoMarker');
+		jQuery('#JmapsSearch').trigger('recentermap', [activemarker.attr("data-lat"), activemarker.attr("data-lon")]);
 	}
 	
 	//On/off
@@ -467,7 +504,7 @@ jQuery(document).ready(function() {
 	//jQuery("form#spEntryForm").find('.controls input').addClass("input-large");
 	//jQuery("form#spEntryForm").find('.controls textarea').addClass("input-large");
 	
-	//Activation des tooltips Bootstrap sur les labels du fomullaire d'Èdition des entrÈes
+	//Activation des tooltips Bootstrap sur les labels du fomullaire d'√©dition des entr√©es
 	//jQuery('.hasBootstrapTip').tooltip();
 	
 	//Ou affichage sous le champs de saisie
@@ -475,6 +512,7 @@ jQuery(document).ready(function() {
 		title=jQuery(this).find('span').attr('title');
 		if (title && title!='Article') jQuery(this).find(".controls").after('<div class="hasCustomLegend">'+title+'</div>');
 	});
+
 		
 	//Support Swipe pour le carousel
 	jQuery('.carousel-inner').each(function () {
@@ -485,6 +523,8 @@ jQuery(document).ready(function() {
 			jQuery(".carousel").carousel('next');  
 		});  
 	});
+	
+	
 	
 });
 
@@ -506,6 +546,8 @@ window.addEventListener("orientationchange", function() {
 
 
 </script>
+
+
 
 </body> 
 </html>
