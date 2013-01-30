@@ -40,6 +40,22 @@ jQuery(document).ready(function() {
 		jQuery("#spdecarousel").carousel('next');  
 	}); */
 	
+	//Carousel photos (description)
+	jQuery('#spdecarousel').carousel({  
+	  interval: 8000 // autoplay à 8s
+	})  
+	
+	//Support Swipe pour le carousel photos
+	jQuery('#spdecarousel.carousel').each(function () {
+		
+		jQuery(this).swiperight(function() {  
+			jQuery(this).carousel('prev');			
+		}); 
+		
+		jQuery(this).swipeleft(function() {  
+			jQuery(this).carousel('next');  
+		}); 
+	
 	//Si le formulaire de direction est affiché, on gélocalise...
 	googlemapdirections();
 	

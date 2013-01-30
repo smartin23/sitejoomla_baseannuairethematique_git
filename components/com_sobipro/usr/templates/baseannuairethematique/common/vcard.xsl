@@ -33,30 +33,24 @@
 			</xsl:choose>
 		</div>
 
-	  <div class="spField" id="fichedetaillee">
-		<a>
-			<xsl:attribute name="href">
-			  <xsl:value-of select="url" />
-			</xsl:attribute>
-		  
-			<i class="icon-plus-sign"></i><xsl:text> </xsl:text><xsl:value-of select="php:function( 'SobiPro::Txt' , 'Fiche détaillée' )" />
-		</a>
-	 </div>  
+		  <div class="spField" id="fichedetaillee">
+			<a>
+				<xsl:attribute name="href">
+				  <xsl:value-of select="url" />
+				</xsl:attribute>
+			  
+				<i class="icon-plus-sign"></i><xsl:text> </xsl:text><xsl:value-of select="php:function( 'SobiPro::Txt' , 'Fiche détaillée' )" />
+			</a>
+		 </div>  
 
 	</div>
-	
-	
-	
+
 	<div class="spField" id="resume_activite">
-	
-		
-	
+
 		<xsl:value-of select="fields/field_resume_activite/data" disable-output-escaping="yes"/>
 		<xsl:text> </xsl:text>
 		<xsl:value-of select="fields/field_resume_activite/@suffix"/>
-		
-		
-		
+	
     </div>    
 	
 	<xsl:if test="string-length(fields/field_lieux_de_vente/data) &gt; 0">

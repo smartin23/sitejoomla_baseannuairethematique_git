@@ -14,9 +14,17 @@ body
 }
 
 .whitebordered {
-text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff,
-1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-filter: progid:DXImageTransform.Microsoft.Glow(Color=#ffffff,Strength=1); /* IE<10 */
+//text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff,
+//1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+//filter: progid:DXImageTransform.Microsoft.Glow(Color=#ffffff,Strength=1); /* IE<10 */
+}
+
+.shadowed {
+-moz-border-radius: 5px;
+border-radius: 5px;
+-moz-box-shadow: 2px 2px 5px #333;
+-webkit-box-shadow: 2px 2px 5px #333;
+box-shadow: 2px 2px 5px #333;
 }
 
 //Block d'affichage des champs dans les vues vcard et details (partagé ici)
@@ -28,11 +36,11 @@ filter: progid:DXImageTransform.Microsoft.Glow(Color=#ffffff,Strength=1); /* IE<
 .block ul li:last-child:after, .list ul li:last-child:after {content:'.';}
 
 //Structure
-.sheet.container, .footer.container {margin:auto;}
+.sheet.container, .footer.container {overflow:hidden; margin:auto;}
 .sheet-wrapper, .footer-wrapper { }
 
 //Blocs principaux
-.zone-gauche {position:relative; z-index:9;}
+.zone-gauche {position:relative; z-index:9;background-color:#fff; padding:5px; margin-bottom:20px;.shadowed}
 .zone-centre {position:relative; z-index:9;}
 
 //Onoff
@@ -44,28 +52,34 @@ border-bottom-left-radius: 5px;}
 
 //Contenu / Onoff
 .contenu {overflow:hidden; position:relative;}
-.contenu.on {
+.contenu.on, .header.on{
 	//transition: 1s opacity 0.3s;  
 	//opacity:1;
 	display:block;
 }
 
-.contenu.off{
+.contenu.off, .header.off{
 	//transition: 1s opacity 0.3s;  
 	//opacity:0;
 	display:none;
 }
 
+.zone-gauche.on {background-color:@white;.shadowed;}
+.zone-gauche.off {background-color:transparent;box-shadow:none;}
+
 //Header
 .header {padding:1%;padding-top:20px;padding-bottom:20px;}
 .contenuplus .header {margin:0 0 25px!important; padding:0!important;}
-.header .icone {float:left;}
 .header .titresite {float:left;}
 .header i {font-size:6.5em; line-height:100%; .whitebordered;}
 .header .icon a, .header .icon a:hover {color:@textColor;}
 .header i.icon-large:before {}
 .header .icon {float:left; margin-right:1%;}
 .header .brand {font-family:@fontFamily1;font-size:2.5em;line-height:1.2em;font-weight:bold;.whitebordered;}
+.header .brand .w1 {color:lighten(@textColor,10%);}
+.header .brand .w2 {color:lighten(@textColor,20%);}
+.header .brand .w3 {color:@thematicColor;}
+.header .icon.w4 {}
 
 .header a {color:@textColor;}
 .header a:hover {color:lighten(@textColor,5%)!important;}
@@ -73,8 +87,7 @@ border-bottom-left-radius: 5px;}
 .header h2 .soustitre, .header h2 .soustitre-small, .header h2 .accroche {clear:both;font-family:@fontFamily1;font-weight:700;.whitebordered;}
 .header h2 .soustitre-small {display:none;}
 .header h2 .accroche {visibility:hidden; height:1px;}
-.contenuplus .header i, .contenuplus .header .brand, .contenuplus .header .soustitre{opacity:0.1;}
-
+.contenuplus .header i, .contenuplus .header .brand, .contenuplus .header .soustitre, .contenuplus .header .soustitre-small{opacity:0.1;}
 
 //Google maps
 .fullmap {position:fixed;top:0;left:0;width:100%;z-index:0;}
@@ -119,7 +132,7 @@ border-bottom-left-radius: 5px;}
 input.invalid, textarea.invalid {border:1px solid #FF0000!important;}
 
 //Contenu +
-.contenuplus {position:relative;z-index:9;margin-top:25px;margin-bottom:25px;background-color:rgba(255,255,255,0.95);padding:3%;}
+.contenuplus {position:relative;z-index:9;margin-top:25px;margin-bottom:25px;background-color:rgba(255,255,255,0.95);padding:3%;.shadowed;}
 .contenuplus .retour {font-size:2em; position:absolute; top:20px; right:20px;}
 .contenuplus ul.editor {list-style-type:none;  list-style: none; margin: 0 0 10px;}
 .contenuplus ul.editor li{padding:2px; position:relative; margin-left:15px;}
@@ -135,7 +148,7 @@ input.invalid, textarea.invalid {border:1px solid #FF0000!important;}
 }
 
 //Footer
-footer {position:relative;background-color:lighten(@textColor,30%);color:#fff;z-index:9999;padding-bottom:45px;}
+footer {position:relative;background-color:lighten(@textColor,20%);color:#fff;z-index:9999;padding-bottom:45px;}
 footer  h3 {color:@white; font-size:1.6em;font-weight:bold; text-transform:uppercase;line-height:20px;cursor:pointer;}
 footer a {color:@textColor;}
 footer a:hover {color:@white;}
@@ -148,6 +161,9 @@ footer .login .nav > li a {color:@white!important;padding-bottom:5px;}
 footer .login .nav > li a:hover {color:@white!important; background:none!important;}
 footer .registered .login .guestonly {display:none;}
 
+footer .partenaires {padding:1%;padding-top:20px;}
+footer .partenaires img {width:100%;}
+
 //Logout
 footer .loggedin {padding:1%;padding-top:20px;}
 footer .loggedin #login-form {margin:0px;}
@@ -155,6 +171,7 @@ footer .login-greeting {margin-bottom:5px;}
 
 //En savoir plus
 footer .links {padding:1%;padding-top:0px;}
+footer .links .nav {margin:0px;}
 footer .links .nav > li a {color:@white!important;padding-bottom:5px;}
 footer .links .nav > li a:hover {color:@white!important; background:none!important;}
 

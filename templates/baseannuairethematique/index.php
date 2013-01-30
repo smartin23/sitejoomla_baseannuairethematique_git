@@ -83,18 +83,24 @@ $sitename = $app->getCfg('sitename');
 		<div class="centre row-fluid">
 		
 				<?php if (($task=='search.results') or ($task=='search.view')) {?>
-				<div class="span4 zone-gauche">
+				<div class="span4 zone-gauche on">
 					<div id="onoff"><i class="icon-eye-close icon-large"></i></div>
 					<header>
 						
-						<div class="header">					
+						<div class="header on">					
 								
 							<div class="logo">
 								<a href="<?php echo $this->baseurl; ?>">
-								<div class="icon"><i class="icon-map-marker"></i></div>
+								<div class="icon w4"><i class="icon-map-marker"></i></div>
 								<div class="titresite">
-									<h1><div class="titresite1"><span class="brand">TOUS LES</span></div>
-									<div class="titresite2"><span class="brand">APICULTEURS</span></div>
+									<h1>
+									<div class="titresite1">
+										<span class="brand">
+										<span class="w1">TOUS</span>
+										<span class="w2">LES</span>
+										</span>
+									</div>
+									<div class="titresite2"><span class="brand"><span class="w3">APICULTEURS</span></span></div>
 									</h1>
 									
 								</div>
@@ -138,6 +144,7 @@ $sitename = $app->getCfg('sitename');
 									<div class="titresite2"><span class="brand">APICULTEURS</span></div></h1>
 								</div>
 								<h2><div class="soustitre">je trouve ce que je cherche sur ma-carte-locale.eu</div>
+									<div class="soustitre-small">sur ma-carte-locale.eu</div>
 									<div class="accroche">en France, en Suisse, en Belgique et au Luxembourg</div>
 								</h2>
 								
@@ -239,10 +246,6 @@ jQuery(api.element).find('.buttons').hide();
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-tooltip.js"></script>
 <script type='text/javascript'>
 
-	jQuery('.carousel').carousel({  
-	  interval: 8000 // in milliseconds  
-	})  
-
 	if (jQuery('.carousel')) {
 		//Desactivation du conflit avec Mootools (encore utilisé par SobiPro!)
 		window.addEvent('domready', function(){
@@ -278,6 +281,8 @@ cf. http://stackoverflow.com/questions/12715254/twitter-bootstrap-transition-con
     this.$element.one(jQuery.support.transition.end, complete) :
         complete();
     };
+	
+	
     
     //jQuery.noConflict();
 </script>
@@ -341,15 +346,12 @@ jQuery.extend({
 
 function changeStackingOrder() {
 
-	/*if (jQuery(window).width() <= 600){
-	
-		//On etend le bloc social à la disparition du bloc login
-		jQuery('.footer').find('.social').removeClass('span5').addClass('span9');
+	 if (jQuery(window).width() < 768){
+
+		//En savoir plus...
+		jQuery('footer .links').insertBefore('footer .menusecondaire');	
 	}
-	else
-	{
-		jQuery('.footer').find('.social').removeClass('span9').addClass('span5');
-	}*/
+
 }
 
 function addBootstrapTags() {
@@ -358,28 +360,19 @@ function addBootstrapTags() {
 	jQuery('input.button').addClass('btn');
 	jQuery("input[type='submit']").addClass('btn');
 	jQuery('button').addClass('btn');
-	
-	//Carousel : En général, on affiche le carousel et les boutons de navigation Carousel si il y a des résultats!
-	jQuery('.carousel-inner').each(function () {
-		var nbitems = jQuery(this).children('.item').length;		
-		if  (nbitems>1) {
-			jQuery(this).parent().find('.carousel-control').show();
-		}		
-	});
-	
+
 }
 
 function adaptOnResize() {
 
-	//var usedHeight =  jQuery(window).height();
 	var usedHeight = window.innerHeight ? window.innerHeight : jQuery(window).height();
 	
+	//La partie centrale s'affiche sur la hauteur totale - la hauteur des titres du footer.
 	jQuery('.centre').css('min-height', usedHeight-jQuery('footer h3').outerHeight(true)); 
-	//jQuery(window).height()-jQuery('footer h3').outerHeight(true));
 	
+	//Les cartes doivent s'afficher sur la hauteur disponible
 	jQuery('#JmapsHome').height(usedHeight);
 	jQuery('#JmapsSearch').height(usedHeight);
-		
 	
 }
 
@@ -393,24 +386,7 @@ jQuery.fn.scrollView = function () {
 
 jQuery(window).load(function(){ 
 
-	//Ouverture du bloc Extended Search en page d'accueil
-	//if (jQuery(".task-search-view").length >0) jQuery('#SPExtSearch').show();	
-	
-	//Affichage du contenu en Colorbox
-	/*jQuery(".sitemap").find('a').each(function( index ) {
-		cbref=jQuery(this).attr('href')+'&tmpl=component';
-		//jQuery(this).addClass('iframe').attr('href', cbref).colorbox({iframe:true, maxWidth:"900px", width:"100%", height:"80%", opacity:0.4});	
-		jQuery(this).attr('href', cbref).colorbox({href:cbref});
-	});
-
-	//Idem formulaires de login
-	jQuery(".lock #login-form").find('a').each(function( index ) {
-		cbref=jQuery(this).attr('href')+'&tmpl=component';
-		jQuery(this).addClass('iframe').attr('href', cbref).colorbox({iframe:true, maxWidth:"900px", width:"100%", height:"80%", opacity:0.4});	
-	});
-	*/
-	
-	//Hauteur initiale minimale utilse
+	//Hauteur initiale minimale utilisée
 	adaptOnResize();
 	
 	//Remontée du footer 
@@ -433,12 +409,30 @@ jQuery(window).load(function(){
 		
 	});
 	
-	//On montre les Résultat de recherche si il y en a
-	var entrieslist = jQuery('.spEntriesListContainer');
-	if  (entrieslist.find('.carousel-inner').children('.item').length>0) {
-			entrieslist.show();
+	//Attention : fonctionne pour le moment avec un seul carousel / page !	
+	//Losque le premier item active est detecté, on affiche le carousel
+	var itemslist = jQuery('.carousel');
+	var timerActiveItem;
+	if (itemslist.length>0) {
+			var nbitems = itemslist.find('.item').length;		
+			if  (nbitems>=1) {
+				itemslist.show();
+				timerActiveItem=setInterval(showActiveItem,100);
+			}
 	}
 	
+	function showActiveItem(){
+		if (itemslist.find('.active').length>0) {
+			
+			itemslist.parent().addClass('skin');
+			
+			if (itemslist.find('.item').length>1) {
+				itemslist.carousel('pause');
+				itemslist.find('.carousel-control').show();
+				clearInterval(timerActiveItem);
+			}
+		}
+	}
 });
 
 jQuery(document).ready(function() {
@@ -454,16 +448,89 @@ jQuery(document).ready(function() {
 	jQuery('#SPExtSearch').tinyscrollbar();
 	jQuery('#SPExtSearch').hide();
 	
+	//On/off
+	var contenu = jQuery('.contenu');
+	var header = jQuery('.header');
+	var zonegauche = jQuery('.zone-gauche');
+	jQuery("#onoff").click(function() {
 	
+		if (contenu.hasClass('on')) {
+			jQuery(this).html('<i class="icon-eye-open icon-large"></i>');
+			contenu.removeClass('on');
+			contenu.addClass('off');
+			
+			//On cache/montre aussi le header
+			header.removeClass('on');
+			header.addClass('off');
+			zonegauche.removeClass('on');
+			zonegauche.addClass('off');
+		}
+		else
+		{
+			jQuery(this).html('<i class="icon-eye-close icon-large"></i>');
+			contenu.removeClass('off');
+			contenu.addClass('on');
+			
+			//On cache/montre aussi le header
+			header.removeClass('off');
+			header.addClass('on');
+			zonegauche.removeClass('off');
+			zonegauche.addClass('on');
+		}
+	});
+						
+	//Contact Form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de contact form)
+	//jQuery(".contact-form").find("form").find("label").addClass('control-label').removeClass("hasTip");
 	
-	//Gestion du recentrage de la carte Search selon l'item affiché (version1 : sur clic sur marker)
+	//Entry edit form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de sobipro)
+	jQuery("#spEntryForm").addClass("form-horizontal");
+	jQuery("#spEntryForm").find(".required").parent().parent().children("label").after("*");
+	//Hack pour required manquant..
+	jQuery("#spEntryForm").find("#field_activite_detailleeContainer").find(".control-group").children("label").after("*");
+		
+	//Activation des tooltips Bootstrap sur les labels du fomullaire d'édition des entrées
+	//jQuery('.hasBootstrapTip').tooltip();
+	//Ou affichage sous le champs de saisie
+	var ctrlgrp=jQuery('.SPEntryEdit').find('.control-group').each(function () {
+		title=jQuery(this).find('span').attr('title');
+		if (title && title!='Article') jQuery(this).find(".controls").after('<div class="hasCustomLegend">'+title+'</div>');
+	});
+		
+	//Initialisation du Carousel des resultats de recherche
+	jQuery('#entriescarousel.carousel').carousel();  
+		
+	//Support Swipe pour le carousel
+	jQuery('#entriescarousel.carousel').each(function () {
+		
+		jQuery(this).swiperight(function() {  
+			jQuery(this).carousel('prev');
+			
+			//on provoque le recentrage de la carte / marker
+			setTimeout(centerActiveMarker,1000);			
+		}); 
+		
+		jQuery(this).swipeleft(function() {  
+			jQuery(this).carousel('next');  
+			
+			//on provoque le recentrage de la carte / marker
+			setTimeout(centerActiveMarker,1000);
+		}); 
+		
+	});
+	
+	//Gestion du recentrage de la carte Search selon l'item affiché ( methode 1 : sur clic sur titre et marker)
 	jQuery("img.jmapsInfoMarker").each(function () {		
 		jQuery(this).click(function() {
 			jQuery('#JmapsSearch').trigger('recentermap', [jQuery(this).attr("data-lat"), jQuery(this).attr("data-lon")]);
 		});
 	});
+	jQuery(".spEntriesListContainer .spField#titre").each(function () {		
+		jQuery(this).click(function() {
+			jQuery('#JmapsSearch').trigger('recentermap', [jQuery(this).siblings("img.jmapsInfoMarker").attr("data-lat"), jQuery(this).siblings("img.jmapsInfoMarker").attr("data-lon")]);
+		});
+	});
 		
-	//version2:
+	//methode 2:
 	jQuery('.spEntriesListContainer').find('.carousel-control').each(function () {
 		jQuery(this).click(function() {
 			setTimeout(centerActiveMarker,1000);
@@ -474,60 +541,9 @@ jQuery(document).ready(function() {
 		jQuery('#JmapsSearch').trigger('recentermap', [activemarker.attr("data-lat"), activemarker.attr("data-lon")]);
 	}
 	
-	//On/off
-	var contenu = jQuery('.contenu');
-	jQuery("#onoff").click(function() {
-	
-		if (contenu.hasClass('on')) {
-			jQuery(this).html('<i class="icon-eye-open icon-large"></i>');
-			contenu.removeClass('on');
-			contenu.addClass('off');
-		}
-		else
-		{
-			jQuery(this).html('<i class="icon-eye-close icon-large"></i>');
-			contenu.removeClass('off');
-			contenu.addClass('on');
-		}
-	});
-						
-	//Contact Form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de contact form)
-	//jQuery(".contact-form").find("form").find("label").addClass('control-label').removeClass("hasTip");
-	
-	//Entry edit form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de sobipro)
-	jQuery("#spEntryForm").addClass("form-horizontal");
-	//jQuery("#spEntryForm").find(".spFormRowFooter input").addClass("btn");//donc pas la peine de le mettre en primary...
-	jQuery("#spEntryForm").find(".required").parent().parent().children("label").after("*");
-	//Hack pour required manquant..
-	jQuery("#spEntryForm").find("#field_activite_detailleeContainer").find(".control-group").children("label").after("*");
-	
-	//jQuery("form#spEntryForm").find('.controls input').addClass("input-large");
-	//jQuery("form#spEntryForm").find('.controls textarea').addClass("input-large");
-	
-	//Activation des tooltips Bootstrap sur les labels du fomullaire d'édition des entrées
-	//jQuery('.hasBootstrapTip').tooltip();
-	
-	//Ou affichage sous le champs de saisie
-	var ctrlgrp=jQuery('.SPEntryEdit').find('.control-group').each(function () {
-		title=jQuery(this).find('span').attr('title');
-		if (title && title!='Article') jQuery(this).find(".controls").after('<div class="hasCustomLegend">'+title+'</div>');
-	});
-
-		
-	//Support Swipe pour le carousel
-	jQuery('.carousel-inner').each(function () {
-		jQuery(".carousel").swiperight(function() {  
-			jQuery(".carousel").carousel('prev');  
-		});  
-		jQuery(".carousel").swipeleft(function() {  
-			jQuery(".carousel").carousel('next');  
-		});  
-	});
-	
-	
-	
 });
 
+//Listen for resize 
 jQuery(window).resize(function () {
 
 	adaptOnResize();
@@ -542,12 +558,31 @@ window.addEventListener("orientationchange", function() {
 
   adaptOnResize();
   
+  changeStackingOrder();
+  
 }, false);
 
 
+//Gestion du pb d'obtention de la bonne hauteur du navigateur, lorsque la bar url est affichée. On l'enleve donc.
+//Source : http://mobile.tutsplus.com/tutorials/mobile-web-apps/remove-address-bar/
+function hideAddressBar()
+{
+    if(!window.location.hash)
+    {
+        if(document.height <= window.outerHeight + 10)
+        {
+            document.body.style.height = (window.outerHeight + 50) +'px';
+            setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
+        }
+        else
+        {
+            setTimeout( function(){ window.scrollTo(0, 1); }, 0 );
+        }
+    }
+}
+window.addEventListener("load", hideAddressBar );
+window.addEventListener("orientationchange", hideAddressBar );
 </script>
-
-
 
 </body> 
 </html>
