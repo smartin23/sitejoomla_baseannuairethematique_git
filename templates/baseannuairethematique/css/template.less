@@ -20,28 +20,54 @@ body
 }
 
 .shadowed {
--moz-border-radius: 5px;
-border-radius: 5px;
--moz-box-shadow: 2px 2px 5px #333;
--webkit-box-shadow: 2px 2px 5px #333;
-box-shadow: 2px 2px 5px #333;
+-moz-box-shadow: 2px 2px 3px #333;
+-webkit-box-shadow: 2px 2px 3px #333;
+box-shadow: 2px 2px 3px #333;
+}
+
+.top-shadowed {
+-moz-box-shadow: 0px -3px 3px #333;
+-webkit-box-shadow: 0px -3px 3px #333;
+box-shadow: 0px -3px 3px #333;
+}
+
+.bottom-shadowed {
+-moz-box-shadow: 0px 3px 3px #333;
+-webkit-box-shadow: 0px 3px 3px #333;
+box-shadow: 0px 3px 3px #333;
+}
+
+.notshadowed {
+	box-shadow:none;
+}
+
+.rounded {
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.notrounded {
+	border-radius:0px;
 }
 
 //Block d'affichage des champs dans les vues vcard et details (partagé ici)
 .block {margin-bottom:15px;}
 .list {margin-bottom:5px; font-weight:bold;}
 .block ul, .list ul {margin:0; padding:0;}
-.block ul li, .list ul li{display:inline;font-size:1em;}
-.block ul li:after, .list ul li:after {content:', ';}
-.block ul li:last-child:after, .list ul li:last-child:after {content:'.';}
+.block li, .list li{display:inline;font-size:1em;}
+.block li:after, .list li:after {content:', ';}
+.block li:last-child:after, .list li:last-child:after {content:'.';}
 
 //Structure
 .sheet.container, .footer.container {overflow:hidden; margin:auto;}
 .sheet-wrapper, .footer-wrapper { }
 
 //Blocs principaux
-.zone-gauche {position:relative; z-index:9;background-color:#fff; padding:5px; margin-bottom:20px;.shadowed}
+.zone-gauche {position:relative; z-index:9;background-color:#fff; padding:5px; margin-bottom:20px;.shadowed;.rounded;}
+.zone-gauche.on {background-color:@white;.shadowed;}
+.zone-gauche.off {background-color:transparent;box-shadow:none;}
 .zone-centre {position:relative; z-index:9;}
+
 
 //Onoff
 #onoff {cursor:pointer; position:absolute; top:0; right:0; font-size:1.5em;font-weight:normal; background-color:@textColor;color:#fff;padding:1%;
@@ -64,9 +90,6 @@ border-bottom-left-radius: 5px;}
 	display:none;
 }
 
-.zone-gauche.on {background-color:@white;.shadowed;}
-.zone-gauche.off {background-color:transparent;box-shadow:none;}
-
 //Header
 .header {padding:1%;padding-top:20px;padding-bottom:20px;}
 .contenuplus .header {margin:0 0 25px!important; padding:0!important;}
@@ -76,9 +99,9 @@ border-bottom-left-radius: 5px;}
 .header i.icon-large:before {}
 .header .icon {float:left; margin-right:1%;}
 .header .brand {font-family:@fontFamily1;font-size:2.5em;line-height:1.2em;font-weight:bold;.whitebordered;}
-.header .brand .w1 {color:lighten(@textColor,10%);}
-.header .brand .w2 {color:lighten(@textColor,20%);}
-.header .brand .w3 {color:@thematicColor;}
+.header .brand .w1, .contenuplus .header .brand .w1 {color:lighten(@textColor,10%);}
+.header .brand .w2, .contenuplus .header .brand .w2 {color:lighten(@textColor,20%);}
+.header .brand .w3, .contenuplus .header .brand .w3 {color:@thematicColor;}
 .header .icon.w4 {}
 
 .header a {color:@textColor;}
@@ -87,25 +110,15 @@ border-bottom-left-radius: 5px;}
 .header h2 .soustitre, .header h2 .soustitre-small, .header h2 .accroche {clear:both;font-family:@fontFamily1;font-weight:700;.whitebordered;}
 .header h2 .soustitre-small {display:none;}
 .header h2 .accroche {visibility:hidden; height:1px;}
-.contenuplus .header i, .contenuplus .header .brand, .contenuplus .header .soustitre, .contenuplus .header .soustitre-small{opacity:0.1;}
+.contenuplus .header i, .contenuplus .header .brand, .contenuplus .header .soustitre, .contenuplus .header .soustitre-small{opacity:1;}
 
 //Google maps
 .fullmap {position:fixed;top:0;left:0;width:100%;z-index:0;}
 .fullmap.container-fluid {padding:0!important;margin:0!important;}
 
 #Jmaps img, #JmapsSearch img, #JmapsHome img, #field_jmapsmarker img {max-width:none!important;}
-#JmapsSearch .markerHTMLdiv, #JmapsHome .markerHTMLdiv {font-weight:normal!important;font-size:0.9em!important;line-height:1.5em;}
-#JmapsSearch .markerHTMLdiv img, #JmapsHome .markerHTMLdiv img {margin-right:2%;}
-
-//Pagination
-//.pagination span {
-//  float: left;
-//  padding: 0 14px;
-//  line-height: 34px;
-//  text-decoration: none;
-//  border: 1px solid #ddd;
-//  border-left-width: 0;
-//}
+.markerHTMLdiv, .markerHTMLdiv {font-weight:normal!important;font-size:0.9em!important;line-height:1.5em;}
+.markerHTMLdiv img, .markerHTMLdiv img {margin-right:2%;}
 
 //Login
 .login .login-description, .logout .logout-description {margin-bottom:20px;}
@@ -148,38 +161,41 @@ input.invalid, textarea.invalid {border:1px solid #FF0000!important;}
 }
 
 //Footer
-footer {position:relative;background-color:lighten(@textColor,20%);color:#fff;z-index:9999;padding-bottom:45px;}
+footer {position:relative;background-color:lighten(@textColor,20%);color:#fff;z-index:9999;padding-bottom:15px;}
 footer  h3 {color:@white; font-size:1.6em;font-weight:bold; text-transform:uppercase;line-height:20px;cursor:pointer;}
 footer a {color:@textColor;}
 footer a:hover {color:@white;}
 
+footer .nav {list-style-type:none; margin:0;}
+footer .nav > li a {color:@white!important;padding-bottom:5px;}
+footer .nav > li a:hover {color:@white!important; background:none!important;}
+
 //S'incrire
 footer .login {padding:1%;padding-top:0px;}
-footer .login .nav {margin:0;}
-
-footer .login .nav > li a {color:@white!important;padding-bottom:5px;}
-footer .login .nav > li a:hover {color:@white!important; background:none!important;}
 footer .registered .login .guestonly {display:none;}
 
-footer .partenaires {padding:1%;padding-top:20px;}
-footer .partenaires img {width:100%;}
+//Ma carte locale
+footer .macartelocale {background-color:lighten(@textColor,30%); margin-top:20px;padding:3%;.rounded;.shadowed;}
+
+footer .macartelocale a {color:@textColor;}
 
 //Logout
 footer .loggedin {padding:1%;padding-top:20px;}
 footer .loggedin #login-form {margin:0px;}
 footer .login-greeting {margin-bottom:5px;}
 
-//En savoir plus
-footer .links {padding:1%;padding-top:0px;}
-footer .links .nav {margin:0px;}
-footer .links .nav > li a {color:@white!important;padding-bottom:5px;}
-footer .links .nav > li a:hover {color:@white!important; background:none!important;}
+//Misc
+footer .misc {padding:1%;padding-top:0px;}
+footer .partenaires img {width:100%;}
+footer .keywords {font-size:1em; line-height:1.2em;color:@textColor;margin-top:20px;}
 
 //Share
-footer .keywords {color:@textColor;}
 footer .social {padding:1%;padding-top:0px}
 footer .social #socialshare {position:relative; right:2%;}
 footer .social #sociallinks {font-size:2em;}
+
+//Links 
+footer .links {font-size:0.8em;margin-top:20px; color:@textColor;line-height:1.2em;}
 
 //Autres menu
 .nav > li > a:hover {background:none;}
@@ -187,7 +203,6 @@ footer .social #sociallinks {font-size:2em;}
 //Carousel
 .carousel .carousel-control {display:none;background:none!important; border:none!important; color:@textColor ;font-size:2em;opacity:0.4;}
 .carousel .carousel-inner .item img {width:100%;}
-
 
 //Tooltips (bootstrap)
 .tooltip {font-size:1em;font-weight:normal;}
@@ -281,6 +296,9 @@ a.hasBootstrapTip {color:@textColor;}
 .article-info {font-size:0.8em;}
 .article-info-term {display:none;}
 
+//Newletter
+table.acymailing_form {border-collapse:separate;border-spacing:3px;}
+
 //Social share
 #shareme .box{
 float:left;
@@ -309,6 +327,7 @@ width:100px;
 }
 #shareme .buttons {
 position: absolute;
+right:0;
 width:180px;
 background-color:#fff;
 border: 1px solid rgba(0,0,0,.2);
@@ -342,22 +361,20 @@ margin:0 4px 0 0;
 
 // Tablets to regular desktops
 @media screen and (min-width: 768px) and (max-width: 979px) {
+
+	.span4.zone-gauche {width:42%!important;}
 	
 	//Logo
-	.header .brand {font-size:2.2em;}
+	.header .brand {font-size:2em;}
 	.header i  {font-size:5.8em;}
-	.header .soustitre {font-size:0.7em;}
+	.header .soustitre {font-size:0.6em;}
 	
 	//.spEntriesListContainer .spEntriesListCell  #logo {float:none;margin-bottom:15px;}
 	//.spEntriesListContainer .spEntriesListTitle #titre {clear:both;}
 	
 	//Titres footer
 	footer h3 {font-size:1.6em!important;}
-	
-	//En test :  est-ce la bonne méthode ?
-	.row-fluid .span4 {width:42%;}
 }
-	
 
 // Phones to portrait tablets and narrow desktops
 @media screen and (max-width: 767px) {
@@ -389,7 +406,8 @@ margin:0 4px 0 0;
 	
 	//Titres footer
 	footer h3 {font-size:1.5em!important;}
-	footer .menusecondaire, footer .theme, footer .links {margin-top:30px;}
+	footer .menusecondaire, footer .theme, footer .misc {margin-top:30px;}
+	footer .misc {display:none;}
 	
 	//Titres du blog
 	.blog h2 {font-size:2em;}
@@ -397,6 +415,10 @@ margin:0 4px 0 0;
 	
 	//Contenu + 
 	.contenuplus {margin-top:0px;margin-bottom:0px;}
+	
+	//Zones
+	.zone-gauche {margin-bottom:3px; .bottom-shadowed; .notrounded;}
+	.zone-gauche.on {background-color:@white; .bottom-shadowed;}
 }
 
 @media screen and (max-width: 480px) {
@@ -405,9 +427,12 @@ margin:0 4px 0 0;
 	.blog h3 {font-size:1.6em;}
 }
 
+@media screen and (min-width:480px) and (max-width: 767px) {
+
+	footer .partenaires img {width:50%;}
+}
+
 @media screen and (max-width: 360px) {
-
-
 
 	//Bascule de l'illustration du post
 	.blog img.illustration {float:left; width:100%;}
@@ -423,6 +448,7 @@ margin:0 4px 0 0;
 	.header .brand {font-size:2em;}
 	.header i  {font-size:5.4em;}
 	.header .soustitre {font-size:0.7em;}
+}
 
-
+@media print {
 }

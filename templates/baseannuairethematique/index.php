@@ -24,58 +24,31 @@ $sitename = $app->getCfg('sitename');
  <head>
  
 	<meta charset="utf-8">
- 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/less/bootstrap.css" type="text/css" media="screen" />
-	
-	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/fontawesome/css/font-awesome.css" type="text/css" media="screen" />
-
+	<link type="text/css" rel="stylesheet" href="<?php echo $this->baseurl ?>/min/g=generalcss" />
+	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/scripts/jquery.mobile.custom.min.css" />	
+	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/fontawesome/css/font-awesome.min.css" type="text/css" media="screen" />
+	<!--[if IE 7]><link href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/fontawesome/css/font-awesome-ie7.min.css" rel="stylesheet" /><![endif]-->
 	<link href='http://fonts.googleapis.com/css?family=Dosis:400,800' rel='stylesheet' type='text/css'>
-	
-	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/system/css/system.css" type="text/css" />
-    <link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/system/css/general.css" type="text/css" />
-  	
-	<link rel="stylesheet" type="text/css" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/template.css" />
-
-	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/print.css" />
-	
-	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/scripts/tabsandaccordion/css/tabs+accordion/tabs+accordion.css" />
-	
-	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/scripts/jquery.mobile.custom.min.css" />
 		
 	<!-- Le touch icons -->
 	<link rel="apple-touch-icon" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/icons/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/icons/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/images/icons/apple-touch-icon-114x114.png">
-
-	<jdoc:include type="head" />
+	
+	<script src="<?php echo $this->baseurl ?>/min/g=jqueryjs"></script>	  
+	<script type='text/javascript'>
+	jQuery.noConflict();
+	</script>
+	
+    <jdoc:include type="head" />
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 	<!--[if lt IE 9]>
 	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	
-	<script src="<?php echo $this->baseurl ?>/scripts/modernizr-min.js"></script>
-	<script src="<?php echo $this->baseurl ?>/scripts/jquery.easing.1.3.js"></script>
-	<script src="<?php echo $this->baseurl ?>/scripts/jquery.mobile.custom.min.js"></script>
-	
-	<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-38008134-1']);
-  _gaq.push(['_setDomainName', 'ma-carte-locale.eu']);
-  _gaq.push(['_setAllowLinker', true]);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-	  
 </head>
+
 <body class="site <?php echo $option . " view-" . $view . " layout-" . $layout . " task-" . str_replace('.','-',$task ). " itemid-" . $itemid . " ";?> <?php if ($this->params->get('fluidContainer')) { echo "fluid"; } ?>">
 
 <div class="sheet container">
@@ -85,10 +58,8 @@ $sitename = $app->getCfg('sitename');
 				<?php if (($task=='search.results') or ($task=='search.view')) {?>
 				<div class="span4 zone-gauche on">
 					<div id="onoff"><i class="icon-eye-close icon-large"></i></div>
-					<header>
-						
-						<div class="header on">					
-								
+					<header>					
+						<div class="header on">												
 							<div class="logo">
 								<a href="<?php echo $this->baseurl; ?>">
 								<div class="icon w4"><i class="icon-map-marker"></i></div>
@@ -108,15 +79,12 @@ $sitename = $app->getCfg('sitename');
 								<h2><div class="soustitre">je trouve ce que je cherche sur ma-carte-locale.eu</div>
 									<div class="soustitre-small">sur ma-carte-locale.eu</div>
 									<div class="accroche">en France, en Suisse, en Belgique et au Luxembourg</div>
-								</h2>
-																
-							</div>
-										
+								</h2>															
+							</div>										
 						</div>	
 					</header>
 					
-					<div class="clear"></div>
-															
+					<div class="clear"></div>															
 					<div class="contenu on">
 						<jdoc:include type="component" />
 					</div>
@@ -130,7 +98,7 @@ $sitename = $app->getCfg('sitename');
 					<div class="contenuplus">
 					<?php $backurl= $_SERVER['HTTP_REFERER'];
 					//On fait un retour historique -1 si on vient de la page d'accueil ou d'une recherche
-					if ((strcmp($backurl,juri::base())!=0) && (strpos($backurl,'rechercher')===false)){?>
+					if ((strcmp($backurl,juri::base())!=0) && (strpos($backurl,'search')===false)){?>
 							<div class="retour"><a href="index.php"><i class="icon-remove-sign icon-large"></i></a></div>
 					<?php } else {?>
 							<div class="retour"><a href="javascript:history.go(-1)"><i class="icon-remove-sign icon-large"></i></a></div>
@@ -140,8 +108,15 @@ $sitename = $app->getCfg('sitename');
 							<div class="logo">
 								<div class="icon"><i class="icon-map-marker"></i></div>
 								<div class="titresite">
-									<h1><div class="titresite1"><span class="brand">TOUS LES</span></div>
-									<div class="titresite2"><span class="brand">APICULTEURS</span></div></h1>
+									<h1>
+									<div class="titresite1">
+										<span class="brand">
+										<span class="w1">TOUS</span>
+										<span class="w2">LES</span>
+										</span>
+									</div>
+									<div class="titresite2"><span class="brand"><span class="w3">APICULTEURS</span></span></div>
+									</h1>
 								</div>
 								<h2><div class="soustitre">je trouve ce que je cherche sur ma-carte-locale.eu</div>
 									<div class="soustitre-small">sur ma-carte-locale.eu</div>
@@ -157,10 +132,8 @@ $sitename = $app->getCfg('sitename');
 						
 					</div>
 				</div>
-				<?php } ?>
-							
+				<?php } ?>							
 		</div>
-
 </div>
 
 <div class="fullmap container">
@@ -178,9 +151,7 @@ $sitename = $app->getCfg('sitename');
 </div>
 
 <footer>
-
-	<div class="container">
-		
+	<div class="container">	
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="row-fluid">		
@@ -189,7 +160,7 @@ $sitename = $app->getCfg('sitename');
 							<jdoc:include type="modules" name="footer1" style="standardlite" />
 						</div>
 						
-						<div class="span6 theme">
+						<div class="span5 theme">
 							<div class="social">
 								<div class="row-fluid">
 									<jdoc:include type="modules" name="footer2" style="standardlite" />	
@@ -204,67 +175,36 @@ $sitename = $app->getCfg('sitename');
 								</div>
 							</div>
 						</div>
-						<div class="span3 links">
+						<div class="span4 misc">
 							<jdoc:include type="modules" name="footer3" style="standardlite" />	
 						</div>	
-
-				</div>
-							
+				</div>						
 			</div>	
+		</div>
+		<div class="row-fluid">
+			<div class="span12 links">
+				<jdoc:include type="modules" name="seo"/>	
+			</div>
 		</div>
 	</div>
 </footer>
 
-<script src="<?php echo $this->baseurl ?>/scripts/sharrre/jquery.sharrre.min.js"></script>
+<!--<script src="?php echo $this->baseurl ?>/scripts/jquery.defer.js"></script>
 <script type='text/javascript'>
-jQuery('#shareme').sharrre({
-share: {
-googlePlus: true,
-facebook: true,
-twitter: true
-},
-enableTracking: true,
-buttons: {
-googlePlus: {size: 'tall'},
-facebook: {layout: 'box_count'},
-twitter: {count: 'vertical'}
-},
-hover: function(api, options){
-jQuery(api.element).find('.buttons').show();
-},
-hide: function(api, options){
-jQuery(api.element).find('.buttons').hide();
-}
-});
-</script>
+jQuery.deferSettings.delayDomReady = true;
+jQuery.defer( "/scripts/jquery.tinyscrollbar.min.js" )
+    .done( function () {
+		jQuery('#SPExtSearch').tinyscrollbar();
+	});
+</script>-->
 
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-button.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-collapse.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-dropdown.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-transition.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-carousel.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/bootstrap-sources/js/bootstrap-tooltip.js"></script>
-<script type='text/javascript'>
+<script src="<?php echo $this->baseurl ?>/min/g=generaltoolsjs"></script>
 
-	if (jQuery('.carousel')) {
-		//Desactivation du conflit avec Mootools (encore utilisé par SobiPro!)
-		window.addEvent('domready', function(){
-			if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
-
-			Element.implement({
-			slide: function(how, mode){
-			return this;
-			}
-			});
-			}
-		});
-	}
-
-</script>
-
+<!--Accordion collapse-->
 <!---Patch pour eviter l'ajout d'un display:none sur le collapse apres fermeture (hide);
 cf. http://stackoverflow.com/questions/12715254/twitter-bootstrap-transition-conflict-prototypejs-->
 <script type='text/javascript'>
+	jQuery.noConflict();
     jQuery.fn.collapse.Constructor.prototype.transition = function (method, startEvent, completeEvent) {
       var that = this
         , complete = function () {
@@ -281,24 +221,30 @@ cf. http://stackoverflow.com/questions/12715254/twitter-bootstrap-transition-con
     this.$element.one(jQuery.support.transition.end, complete) :
         complete();
     };
-	
-	
-    
-    //jQuery.noConflict();
 </script>
 
-<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/index.js"></script>
-<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/min/jquery-ba-resize.js"></script>
-<script src="<?php echo $this->baseurl ?>/scripts/tabsandaccordion/js/jquery-tabs-accordion.js"></script>
+<!--Carousel-->
 <script type='text/javascript'>
-jQuery('.taa-accordion, .taa-tabs').TabsAccordion({
-		responsiveSwitch: 'taa-tablist'
-	});
+	jQuery.noConflict();
+	if (jQuery('.carousel')) {
+		//Desactivation du conflit avec Mootools (encore utilisé par SobiPro!)
+		window.addEvent('domready', function(){
+			if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
+
+			Element.implement({
+			slide: function(how, mode){
+			return this;
+			}
+			});
+			}
+		});
+	}
 </script>
 
 <script type='text/javascript'>
 function SPCSendMessage( form )
 {
+	jQuery.noConflict();
 	jQuery.ajax( {
 		url:SobiProUrl.replace( '%task%', 'contact.send' ),
 		data:form.serialize(),
@@ -322,10 +268,8 @@ function SPCSendMessage( form )
 }
 </script>
 
-<script src="<?php echo $this->baseurl ?>/scripts/jquery.tinyscrollbar.min.js"></script>
-
 <script type="text/javascript">
-
+jQuery.noConflict();
 jQuery.extend({
   getUrlVars: function(){
     var vars = [], hash;
@@ -349,18 +293,15 @@ function changeStackingOrder() {
 	 if (jQuery(window).width() < 768){
 
 		//En savoir plus...
-		jQuery('footer .links').insertBefore('footer .menusecondaire');	
+		//jQuery('footer .links').insertBefore('footer .menusecondaire');	
 	}
-
 }
 
 function addBootstrapTags() {
-
 	//Ajout du style btn sur les boutons
 	jQuery('input.button').addClass('btn');
 	jQuery("input[type='submit']").addClass('btn');
 	jQuery('button').addClass('btn');
-
 }
 
 function adaptOnResize() {
@@ -372,8 +313,7 @@ function adaptOnResize() {
 	
 	//Les cartes doivent s'afficher sur la hauteur disponible
 	jQuery('#JmapsHome').height(usedHeight);
-	jQuery('#JmapsSearch').height(usedHeight);
-	
+	jQuery('#JmapsSearch').height(usedHeight);	
 }
 
 jQuery.fn.scrollView = function () {
@@ -384,10 +324,20 @@ jQuery.fn.scrollView = function () {
     });
 }
 
-jQuery(window).load(function(){ 
+jQuery(document).ready(function() {
+
+	//Réorganisation de l'ordre des blocs selon la résolution		
+	changeStackingOrder();
+	
+	//Ajout des tags Bootstrap (hors des templates et views modifiables)
+	addBootstrapTags();
 
 	//Hauteur initiale minimale utilisée
 	adaptOnResize();
+	
+	//Association des classes de reception des evenements customs
+	jQuery('#JmapsHome').addClass('userposregistered').addClass('recentermapregistered');
+	jQuery('#JmapsSearch').addClass('userposregistered').addClass('recentermapregistered');
 	
 	//Remontée du footer 
 	var footer = jQuery('footer');
@@ -405,55 +355,14 @@ jQuery(window).load(function(){
 			jQuery(this).addClass('up');
 			
 			footer.scrollView();
-		}
-		
+		}		
 	});
-	
-	//Attention : fonctionne pour le moment avec un seul carousel / page !	
-	//Losque le premier item active est detecté, on affiche le carousel
-	var itemslist = jQuery('.carousel');
-	var timerActiveItem;
-	if (itemslist.length>0) {
-			var nbitems = itemslist.find('.item').length;		
-			if  (nbitems>=1) {
-				itemslist.show();
-				timerActiveItem=setInterval(showActiveItem,100);
-			}
-	}
-	
-	function showActiveItem(){
-		if (itemslist.find('.active').length>0) {
-			
-			itemslist.parent().addClass('skin');
-			
-			if (itemslist.find('.item').length>1) {
-				itemslist.carousel('pause');
-				itemslist.find('.carousel-control').show();
-				clearInterval(timerActiveItem);
-			}
-		}
-	}
-});
-
-jQuery(document).ready(function() {
-
-	//Réorganisation de l'ordre des blocs selon la résolution		
-	changeStackingOrder();
-	
-	//Ajout des tags Bootstrap (hors des templates et views modifiables)
-	addBootstrapTags();
-		
-	//Scrollbar custom dans le bloc de recherche étendue : beurk, on l'affiche pour génére la barre correctement sous Safari puis on la masque....
-	jQuery('#SPExtSearch').show();
-	jQuery('#SPExtSearch').tinyscrollbar();
-	jQuery('#SPExtSearch').hide();
 	
 	//On/off
 	var contenu = jQuery('.contenu');
 	var header = jQuery('.header');
 	var zonegauche = jQuery('.zone-gauche');
 	jQuery("#onoff").click(function() {
-	
 		if (contenu.hasClass('on')) {
 			jQuery(this).html('<i class="icon-eye-open icon-large"></i>');
 			contenu.removeClass('on');
@@ -478,29 +387,37 @@ jQuery(document).ready(function() {
 			zonegauche.addClass('on');
 		}
 	});
-						
-	//Contact Form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de contact form)
-	//jQuery(".contact-form").find("form").find("label").addClass('control-label').removeClass("hasTip");
-	
-	//Entry edit form : ajout des classes Bootstrap hors template (ne pas modifier le coeur de sobipro)
+							
+	//Entry edit form 
+	//Ajout des classes Bootstrap hors template (ne pas modifier le coeur de sobipro)
 	jQuery("#spEntryForm").addClass("form-horizontal");
 	jQuery("#spEntryForm").find(".required").parent().parent().children("label").after("*");
 	//Hack pour required manquant..
 	jQuery("#spEntryForm").find("#field_activite_detailleeContainer").find(".control-group").children("label").after("*");
 		
-	//Activation des tooltips Bootstrap sur les labels du fomullaire d'édition des entrées
+	//Activation des tooltips Bootstrap sur les labels du fomulaire d'édition des entrées
 	//jQuery('.hasBootstrapTip').tooltip();
 	//Ou affichage sous le champs de saisie
 	var ctrlgrp=jQuery('.SPEntryEdit').find('.control-group').each(function () {
 		title=jQuery(this).find('span').attr('title');
 		if (title && title!='Article') jQuery(this).find(".controls").after('<div class="hasCustomLegend">'+title+'</div>');
+	});		
+});
+
+jQuery(window).load(function(){ 
+
+	//Scrollbar custom dans le bloc de recherche étendue 
+	jQuery('#SPExOptBt').click(function() {
+		jQuery('#SPExtSearch').tinyscrollbar();
 	});
 		
-	//Initialisation du Carousel des resultats de recherche
-	jQuery('#entriescarousel.carousel').carousel();  
-		
+	//Et en attendantmieux (ordre d'appels de app ?) : on cache le champs Publication pendant un an en le cochant (js)
+	var dpub = jQuery('#field_duree_de_publication'); 
+	dpub.parent().parent().hide();
+	dpub.attr('checked', true);
+	
 	//Support Swipe pour le carousel
-	jQuery('#entriescarousel.carousel').each(function () {
+	/*jQuery('#entriescarousel.carousel').each(function () {
 		
 		jQuery(this).swiperight(function() {  
 			jQuery(this).carousel('prev');
@@ -514,9 +431,33 @@ jQuery(document).ready(function() {
 			
 			//on provoque le recentrage de la carte / marker
 			setTimeout(centerActiveMarker,1000);
-		}); 
+		}); 		
+	});*/
+	
+	//Attention : fonctionne pour le moment avec un seul carousel / page !	
+	//Losque le premier item active est detecté, on affiche le carousel
+	/*var itemslist = jQuery('#entriescarousel.carousel');
+	var timerActiveItem;
+	if (itemslist.length>0) {
+			var nbitems = itemslist.find('.item').length;		
+			if  (nbitems>=1) {
+				itemslist.show();
+				timerActiveItem=setInterval(showActiveItem,100);
+			}
+	}
+	
+	function showActiveItem(){
+		if (itemslist.find('.active').length>0) {		
+			itemslist.parent().addClass('skin');
+			
+			if (itemslist.find('.item').length>1) {
+				itemslist.carousel('pause');
+				itemslist.find('.carousel-control').show();
+				clearInterval(timerActiveItem);
+			}
+		}
+	}*/
 		
-	});
 	
 	//Gestion du recentrage de la carte Search selon l'item affiché ( methode 1 : sur clic sur titre et marker)
 	jQuery("img.jmapsInfoMarker").each(function () {		
@@ -524,14 +465,19 @@ jQuery(document).ready(function() {
 			jQuery('#JmapsSearch').trigger('recentermap', [jQuery(this).attr("data-lat"), jQuery(this).attr("data-lon")]);
 		});
 	});
-	jQuery(".spEntriesListContainer .spField#titre").each(function () {		
+	/*jQuery(".spEntriesListContainer .spField#titre").each(function () {		
 		jQuery(this).click(function() {
 			jQuery('#JmapsSearch').trigger('recentermap', [jQuery(this).siblings("img.jmapsInfoMarker").attr("data-lat"), jQuery(this).siblings("img.jmapsInfoMarker").attr("data-lon")]);
 		});
-	});
+	});*/
 		
 	//methode 2:
-	jQuery('.spEntriesListContainer').find('.carousel-control').each(function () {
+	jQuery('#entriesaccordion .accordion-body').on('shown', function () {
+		var activemarker = jQuery(this).find('img.jmapsInfoMarker');
+		jQuery('#JmapsSearch').trigger('recentermap', [activemarker.attr("data-lat"), activemarker.attr("data-lon")]);
+    })
+	
+	/*jQuery('.spEntriesListContainer').find('.carousel-control').each(function () {
 		jQuery(this).click(function() {
 			setTimeout(centerActiveMarker,1000);
 		});
@@ -539,8 +485,52 @@ jQuery(document).ready(function() {
 	function centerActiveMarker(){
 		var activemarker = jQuery('.spEntriesListContainer').find('.item.active').find('img.jmapsInfoMarker');
 		jQuery('#JmapsSearch').trigger('recentermap', [activemarker.attr("data-lat"), activemarker.attr("data-lon")]);
-	}
+	}*/
 	
+	//On remplit le champs code postal du formulaire d'iscription à la newsletter a partir de l'event venu de mjradius
+	jQuery(".module.newsletter").on('userposzip', function (event, param1, param2) {
+		jQuery(this).find('td.acyfield_name input').val(param1);
+    })
+	//Si pas d'event, on fait la demande à mjradius
+	//Beurk: bout de code pris a manGeocode de mjradius....
+	var entry = jQuery("#mj_rs_center_selector").val();
+	if (entry.length>0){
+		geocoder = new google.maps.Geocoder();
+		geocoder.geocode( { address:entry}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+			
+				var elt = results[0]["address_components"];
+				for(i in elt){
+					if(elt[i].types[0] == "postal_code") {
+						jQuery('td.acyfield_name input').val(elt[i].long_name);
+						break;
+					}
+				}				
+			}
+		});
+	}
+		
+	//General share plugin
+	jQuery('#shareme').sharrre({
+	share: {
+	googlePlus: true,
+	facebook: true,
+	twitter: true
+	},
+	enableTracking: true,
+	buttons: {
+	googlePlus: {size: 'tall', lang: 'fr-FR'},
+	facebook: {layout: 'box_count', lang: 'fr-FR'},
+	twitter: {count: 'vertical', lang: 'fr-FR'}
+	},
+	hover: function(api, options){
+	jQuery(api.element).find('.buttons').show();
+	},
+	hide: function(api, options){
+	jQuery(api.element).find('.buttons').hide();
+	}
+	});
+
 });
 
 //Listen for resize 
@@ -549,9 +539,7 @@ jQuery(window).resize(function () {
 	adaptOnResize();
 
 	changeStackingOrder();
-	
 });
-
 
 // Listen for orientation changes
 window.addEventListener("orientationchange", function() {
@@ -562,6 +550,25 @@ window.addEventListener("orientationchange", function() {
   
 }, false);
 
+//Defer js loading!
+// Add a script element as a child of the body
+/*function downloadJSAtOnload() {
+var element_tinyscrollbar = document.createElement("script");
+element_tinyscrollbar.src = "/scripts/jquery.tinyscrollbar.min.js";
+document.body.appendChild(element_tinyscrollbar);*/
+
+/*var element_sharrre = document.createElement("script");
+element_sharrre.src = "/scripts/sharrre/jquery.sharrre.min.js";
+document.body.appendChild(element_sharrre);*/
+/*}*/
+
+// Check for browser support of event handling capability
+/*if (window.addEventListener)
+	window.addEventListener("load", downloadJSAtOnload, false);
+else if (window.attachEvent)
+	window.attachEvent("onload", downloadJSAtOnload);
+else 
+	window.onload = downloadJSAtOnload;*/
 
 //Gestion du pb d'obtention de la bonne hauteur du navigateur, lorsque la bar url est affichée. On l'enleve donc.
 //Source : http://mobile.tutsplus.com/tutorials/mobile-web-apps/remove-address-bar/
@@ -582,6 +589,22 @@ function hideAddressBar()
 }
 window.addEventListener("load", hideAddressBar );
 window.addEventListener("orientationchange", hideAddressBar );
+</script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38008134-1']);
+  _gaq.push(['_setDomainName', 'ma-carte-locale.eu']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
 </script>
 
 </body> 

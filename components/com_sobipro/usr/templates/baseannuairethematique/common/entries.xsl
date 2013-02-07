@@ -6,8 +6,8 @@
 	<xsl:template name="entriesLoop">
 	<div class="spEntriesListContainer">
 	
-	<div id="entriescarousel" class="carousel slide">
-	<div class="carousel-inner">
+	<div id="entriesaccordion" class="accordion">
+	
 		<xsl:variable name="entriesInLine">
 			<xsl:value-of select="entries_in_line" />
 		</xsl:variable>
@@ -19,34 +19,79 @@
 		</xsl:variable>
 
 		<xsl:for-each select="entries/entry">
-		<div class="item">
-			<xsl:if test="$entriesInLine > 1 and ( position() = 1 or ( position() mod $entriesInLine ) = 1 )">
-				<!-- opening the "table" row -->
-				<xsl:text disable-output-escaping="yes">
-					&lt;div class="spEntriesListRow" &gt;
-				</xsl:text>
-			</xsl:if>
-			<div style="width: {$eCellWidth}%;">
-				<xsl:attribute name="class">
-					<xsl:choose>
-						<xsl:when test="( ( position() - 1 ) mod $entriesInLine ) ">spEntriesListCell spEntriesListRightCell</xsl:when>
-						<xsl:otherwise>spEntriesListCell</xsl:otherwise>
-					</xsl:choose>
-				</xsl:attribute>
-				<xsl:call-template name="vcard" />
+	
+			<div class="accordion-group">
+				<div class="accordion-heading">
+					<a class="accordion-toogle" data-toggle="collapse" data-parent="#entriesaccordion">
+						<xsl:attribute name="href">
+							<xsl:text>#collapse</xsl:text>
+							<xsl:value-of select="position()" />
+						</xsl:attribute>
+						<div class="spField" id="titre">
+							<xsl:choose>
+							  <xsl:when test="string-length(name) &gt; 0">
+								<xsl:value-of select="name" />
+							  </xsl:when>
+							  <xsl:otherwise>
+								<xsl:value-of select="fields/field_name/data" />
+							  </xsl:otherwise>
+							</xsl:choose>
+						</div>
+						
+						<div class="spField" id="categorie">
+							<xsl:if test="count(categories)">				
+								<xsl:for-each select="categories/category">
+								  <xsl:value-of select="." />			  
+								</xsl:for-each>		
+							</xsl:if>
+						</div>
+						<div style="clear:both;"/>					
+						<div class="spField" id="rating"><xsl:call-template name="ratingStars"/></div>
+						<div class="spField" id="distance" ><xsl:value-of select="mjradius" disable-output-escaping="yes" /></div>
+					</a>
+				</div>
+					<div style="clear:both;"/>
+				<div>
+					<xsl:attribute name="class">
+						<xsl:choose>
+							<xsl:when test="position() = 1">accordion-body collapse in</xsl:when>
+							<xsl:otherwise>accordion-body collapse</xsl:otherwise>
+						</xsl:choose>
+					</xsl:attribute>
+					<xsl:attribute name="id">
+						<xsl:text>collapse</xsl:text>
+						<xsl:value-of select="position()" />		
+					</xsl:attribute>
+					<div class="accordion-inner">
+					
+						<xsl:if test="$entriesInLine > 1 and ( position() = 1 or ( position() mod $entriesInLine ) = 1 )">
+							<!-- opening the "table" row -->
+							<xsl:text disable-output-escaping="yes">
+								&lt;div class="spEntriesListRow" &gt;
+							</xsl:text>
+						</xsl:if>
+						<div style="width: {$eCellWidth}%;">
+							<xsl:attribute name="class">
+								<xsl:choose>
+									<xsl:when test="( ( position() - 1 ) mod $entriesInLine ) ">spEntriesListCell spEntriesListRightCell</xsl:when>
+									<xsl:otherwise>spEntriesListCell</xsl:otherwise>
+								</xsl:choose>
+							</xsl:attribute>
+							<xsl:call-template name="vcard" />
+						</div>
+						<xsl:if test="$entriesInLine > 1 and ( ( position() mod $entriesInLine ) = 0 or position() = $entriesCount )">
+							<div style="clear:both"></div>
+							<!-- closing the "table" row -->
+							<xsl:text disable-output-escaping="yes">
+								&lt;/div&gt;
+							</xsl:text>
+						</xsl:if>
+				
+					</div>
+				</div>
+				
 			</div>
-			<xsl:if test="$entriesInLine > 1 and ( ( position() mod $entriesInLine ) = 0 or position() = $entriesCount )">
-				<div style="clear:both"></div>
-				<!-- closing the "table" row -->
-				<xsl:text disable-output-escaping="yes">
-					&lt;/div&gt;
-				</xsl:text>
-			</xsl:if>
-		</div>
-		</xsl:for-each>
-	</div>
-	 <a class="carousel-control left" href="#entriescarousel" data-slide="prev"><i class="icon-circle-arrow-left icon-large"></i></a>
-     <a class="carousel-control right" href="#entriescarousel" data-slide="next"><i class="icon-circle-arrow-right icon-large"></i></a>
+		</xsl:for-each> 
 	</div>
 	</div>
 	<div style="clear:both;"/>

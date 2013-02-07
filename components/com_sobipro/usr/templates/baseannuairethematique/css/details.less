@@ -63,12 +63,20 @@
 //.SPDE-Website {margin-top:15px;}
 
 //More
-.SPDE-More {margin-top:15px; margin-bottom:15px;text-align:right;}
+.SPDE-More {margin-bottom:15px;}
 
 //Links
 .SPDE-Links {}
-.SPDE-Links div.spField {display:inline;line-height:30px;margin-left:3%;}
+.SPDE-Links div.spField {display:inline;line-height:30px;}
 .SPDE-Links div.spField a {color:@textColor!important;font-size:2.2em;}
+
+//Social share
+.SPDE-Socialshare {width:100%;float:right;}
+.SPDE-Socialshare #entryshareme {margin-top:10px;}
+.SPDE-Socialshare #entryshareme .button{
+	float:left;
+	width:60px;
+}
 
 //Galerie d'images
 .SPDE-Galery {margin-top:25px;}
@@ -95,149 +103,82 @@
 	border:none!important;
 }
 
+//Contact form
+.spContactForm .spCfCloseBt {
+	display:none;
+}
+
 //Tabs & accordion
-.clearfix {
-  zoom: 1;
-}
-.clearfix:after {
-  clear: both;
-}
-.clearfix:after,
-.clearfix:before {
-  display: table;
-  content: "";
-}
-.minimal {
-  margin: 24px 0;
-}
-.minimal:focus {
-  outline: none; 
+.spEntryTabs {
+	position:relative;
+	margin-top:25px;
 }
 
-.minimal.taa-accordion ul[role='taa-tablist'],
-.minimal.taa-tabs ul[role='taa-tablist']{
-	margin:0 0  -1px 0!important;
-	padding:0!important;
-	list-style-type:none;
+.spEntryTabs {
+	position:relative;
 }
 
-.minimal.taa-accordion ul[role='taa-tablist'] li,
-.minimal.taa-tabs ul[role='taa-tablist'] li{
-	font-family:@fontFamily1;
-	font-size:1.5em;
-	list-style-type:none;
-	padding:12px!important;
-}
-.minimal.taa-accordion h2 {font-size:1.5em!important;}
-
-
-.minimal.taa-accordion ul li i.icon-large:before,
-.minimal.taa-tabs ul li i.icon-large:before {
-	vertical-align:middle!important;
+#tabaccordion {
+    width: 100%;
 }
 
-.minimal.taa-accordion > section {
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
-  padding: 24px;
-}
-.minimal.taa-accordion > section > * {
-  max-width: 100%;
-}
-.minimal.taa-accordion > section > :first-child {
-  margin-top: 0;
-}
-.js .minimal.taa-accordion > section {
+#tabaccordion h2 {font-size:1.6em; margin:0;}
+
+ul#tabaccordion {
   padding: 0;
+  margin:0;
 }
-.js .minimal.taa-accordion > section > :first-child {
-  //font-size: inherit;
-  //font-weight: inherit;
-  margin: 0;
-  padding: 12px 24px;
-}
-.js .minimal.taa-accordion > section > :first-child + * > * {
-  padding: 24px;
-}
-.js .minimal.taa-accordion > section > :first-child + * > * > * {
-  max-width: 100%;
-}
-.js .minimal.taa-accordion > section > :first-child + * > * > :first-child {
-  margin-top: 0;
-}
-.js .minimal.taa-accordion > section > :first-child + * > * > :last-child {
-  margin-bottom: 0;
-}
-.minimal.taa-accordion > section > :last-child {
-  margin-bottom: 0;
-}
-.minimal.taa-accordion > section + section {
-  margin-top: -1px;
-}
-.js .minimal.taa-tabs.hide-title > section > :first-child + * {
-  margin-top: 0;
-}
-.minimal.taa-tabs > section {
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 24px;
-}
-.minimal.taa-tabs > section > * {
-  max-width: 100%;
-}
-.minimal.taa-tabs > section > :first-child {
-  margin-top: 0;
-}
-.js .minimal.taa-tabs > section > * > * {
-  margin-top: 0;
-}
-.js .minimal.taa-tabs > section > * > * > * {
-  max-width: 100%;
-}
-.js .minimal.taa-tabs > section > * > * > :first-child {
-  margin-top: 0;
-}
-.js .minimal.taa-tabs > section > * > * > :last-child {
-  margin-bottom: 0;
-}
-.minimal.taa-tabs > section > :last-child {
-  margin-bottom: 0;
-}
-.minimal.taa-tabs > section + section {
-  margin-top: -1px;
-}
-.js .minimal.taa-tabs > section + section {
-  margin-top: 0;
-}
-.minimal.taa-tabs > ul {
-  zoom: 1;
-  display: table;
+
+#tabaccordion > li {
+  overflow:hidden;
+  list-style: none; 
+  cursor:pointer;
  
+   border-top: 1px solid @boxColor;
+   border-left: 1px solid @boxColor;
+   border-right: 1px solid @boxColor;
 }
-.minimal.taa-tabs > ul:after {
-  clear: both;
+#tabaccordion > li:last-child {
+	border-bottom: 1px solid @boxColor;
 }
-.minimal.taa-tabs > ul:after,
-.minimal.taa-tabs > ul:before {
-  display: table;
-  content: "";
+
+#tabaccordion > li span.tabaccordionitem {
+    display: block;
+    padding: 10px 15px;
+ 
+
+    text-decoration: none;
 }
-.minimal.taa-tabs > ul > li {
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
+#tabaccordion > li:last-child span.tabaccordionitem {
+	
+}
+
+#tabaccordion li span.tabaccordionitem:hover, #tabaccordion li span.tabaccordionitem.active {
+    background: @boxColor;
+
+}
+
+#tabaccordion section {
+  display: none; /* I NEED TO FIX THIS */
   float: left;
-  padding: 6px 12px;
-  
+  overflow: hidden; 
+  padding: 1% 3% 0 3%;
 }
-.minimal.taa-tabs > ul > li.current {
-  border-bottom-color: #ffffff;
-  pointer-events: none;
+#tabaccordion #description, #tabaccordion #commentaires, #tabaccordion #contact {
+	float:left;
+	width:100%;
 }
-.minimal.taa-tabs > ul > li + li {
-  border-left: none;
+
+.no-js #tabaccordion section {
+  display: block; /* I NEED TO FIX THIS */
+}
+
+@media only screen and (min-width: 980px) { 
+    #tabaccordion {width: 100%; position: relative; border: none; }
+    #tabaccordion > li { display: inline; border:none; }
+    #tabaccordion > li span.tabaccordionitem {display: inline-block;border-top: 1px solid @boxColor;border-left: 1px solid @boxColor;border-right: 1px solid @boxColor;}  
+	#tabaccordion > li:last-child {	border-bottom: none;}
+    #tabaccordion section { padding: 1%; top: 42px; left: 0; border: 1px solid @boxColor;width:100%;}   
 }
 
 //Half VGA
@@ -257,10 +198,18 @@
 .SPDE-Map span.dirflg-bicycle ,
 .SPDE-Map span.dirflg-walking ,
 .SPDE-Map span.dirflg-nohighways {display:block;}
-
 }
 
-@media screen and (max-width: 360px){
+@media screen and (max-width: 360px){}
 
+@media print {
+	
+	.SPDE-Galery, .SPDE-Print,
+	.moduletable_social {display:none;} 
 
+	.SPDetailEntry-Left {width:60%!important;}
+	.SPDetailEntry-Sidebar {float:right!important;}
+
+	.SPDetailEntry-Center {clear:both;width:100%;}
 }
+ 

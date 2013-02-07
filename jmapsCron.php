@@ -218,7 +218,7 @@ foreach ($sections as $section) {
 	
 			//LGW:Modification de l'entete
 			$jmfaTitle = $jmfaLogo.'<b>' . $fieldData[$jmfaTitleField] . '</b><br/>';
-			$jmfaDetails = '<div class="SOBIproDetailsDIV"><a href="' . $jmfaLink . '" class="SOBIproDetails" onclick="if(!parent.jQuery.browser.opera) {var linkData = \'' . $jmfaLink . '\'; var returnData = openColorbox(linkData); return returnData;}" target="_blank"><i class="icon-plus-sign"></i> ' . Sobi::Txt('JMFA_DETAILS_LABEL') . '</a></div>';
+			$jmfaDetails = '<div class="SOBIproDetailsDIV"><a href="' . $jmfaLink . '" class="SOBIproDetails" onclick="if(!parent.jQuery.browser.opera) {var linkData = \'' . $jmfaLink . '\'; var returnData = openColorbox(linkData); return returnData;}"><i class="icon-plus-sign"></i> ' . Sobi::Txt('JMFA_DETAILS_LABEL') . '</a></div>';
 			
 			$XMLname = $fieldData[$jmfaTitleField];
 			$XMLID = $data->sid;

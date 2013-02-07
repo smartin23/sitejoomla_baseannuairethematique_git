@@ -6,23 +6,34 @@
   <xsl:template name="vcard">
   
   <xsl:if test="string-length(fields/field_logo/data/@image) &gt; 0">
-		<div id="logo" class="SPField pull-left">
-			
-			<xsl:element name="img">
-			  <xsl:attribute name="src">
-			  <xsl:value-of select="fields/field_logo/data/@thumbnail" />
-			  </xsl:attribute>
-			  <xsl:attribute name="alt">
-			  <xsl:value-of select="entry/name" />
-			  </xsl:attribute>
-			</xsl:element>
-			
-		</div>
-	</xsl:if>
+					<div id="logo" class="SPField pull-left">
+						
+						<xsl:element name="img">
+						  <xsl:attribute name="src">
+						  <xsl:value-of select="fields/field_logo/data/@thumbnail" />
+						  </xsl:attribute>
+						  <xsl:attribute name="alt">
+						  <xsl:value-of select="entry/name" />
+						  </xsl:attribute>
+						</xsl:element>
+						
+					</div>
+		</xsl:if>
     
 	<div class="spEntriesListTitle">
 
-	<div class="spField" id="fichedetaillee">
+		<div class="spField" id="titre">
+			<xsl:choose>
+			  <xsl:when test="string-length(name) &gt; 0">
+				<xsl:value-of select="name" />
+			  </xsl:when>
+			  <xsl:otherwise>
+				<xsl:value-of select="fields/field_name/data" />
+			  </xsl:otherwise>
+			</xsl:choose>
+		</div>
+
+		  <div class="spField" id="fichedetaillee">
 			<a>
 				<xsl:attribute name="href">
 				  <xsl:value-of select="url" />
@@ -123,5 +134,27 @@
 		<div style="clear:both;"/>   
 	</xsl:if>
 	
+    <div class="spEntryFooter">
+      <div class="spField" id="rating"><xsl:call-template name="ratingStars"/></div>
+      <div class="spField" id="distance" ><xsl:value-of select="mjradius" disable-output-escaping="yes" /></div>
+    </div>
+	
+	<div style="clear:both;"/>
+		
+	<xsl:if test="count(categories)">
+          <div class="spEntryCats">
+            <xsl:value-of select="php:function( 'SobiPro::Txt' , 'Catégorie(s):' )" /><xsl:text> </xsl:text>
+            <xsl:for-each select="categories/category">
+             
+              <xsl:value-of select="." />
+  
+              <xsl:if test="position() != last()">
+              <xsl:text> | </xsl:text>
+              </xsl:if>
+            </xsl:for-each>
+          </div>
+        </xsl:if>
+
+
   </xsl:template>
 </xsl:stylesheet>

@@ -40,13 +40,12 @@
             </xsl:for-each>
           </div>
         </xsl:if>
-		
-		<div class="spEntryTabs">
-		<ul id="tabaccordion">
-			<li><span class="tabaccordionitem"><h2><i class="icon-pushpin icon-large"></i> Description</h2></span>
+	
+		<div class="taa-tabs minimal hide-title cross-fade">
 			<section>
-				
-				<div style="float:left; width:100%;" id="description">
+			
+				<h2><i class="icon-pushpin icon-large"></i> Description</h2>
+				<div style="float:left; width:100%;" class="page">
 				<div class="block-gauche">	
 			
 					<div class="spField block-editor" id="resume_activite">
@@ -82,63 +81,11 @@
 						<xsl:copy-of select="entry/fields/field_tags/data/*" />
 					</xsl:if>
 				</div>
-							
+				
+				
 				</div>
 				
 				<div class="block-droite">
-				
-				<div class="SPDE-More">
-										
-					<div class="SPDE-Links">	
-						<strong><xsl:text>Suivez-nous sur : </xsl:text></strong><br/>			
-						<xsl:if test="string-length(entry/fields/field_facebook/data) &gt; 0">
-							
-						  <div class="spField" id="facebook">          
-						  <a>
-							 <xsl:attribute name="href">
-							  <xsl:value-of select="entry/fields/field_facebook/data" />
-							 </xsl:attribute>
-							 <xsl:attribute name="target">
-							  <xsl:text>_blank</xsl:text>
-							 </xsl:attribute>
-							 <i class="icon-facebook-sign"></i>
-						  </a>
-						  </div>
-						  
-						</xsl:if>
-						<xsl:if test="string-length(entry/fields/field_twitter/data) &gt; 0">
-							
-						  <div class="spField" id="twitter">          
-						  <a>
-							 <xsl:attribute name="href">
-							  <xsl:value-of select="entry/fields/field_twitter/data" />
-							 </xsl:attribute>
-							 <xsl:attribute name="target">
-							  <xsl:text>_blank</xsl:text>
-							 </xsl:attribute>
-							 <i class="icon-twitter-sign"></i>
-						  </a>
-						  </div>
-						  
-						</xsl:if>
-						<xsl:if test="string-length(entry/fields/field_google_plus/data) &gt; 0">
-							
-						  <div class="spField" id="googleplus">          
-						  <a>
-							 <xsl:attribute name="href">
-							  <xsl:value-of select="entry/fields/field_google_plus/data" />
-							 </xsl:attribute>
-							 <xsl:attribute name="target">
-							  <xsl:text>_blank</xsl:text>
-							 </xsl:attribute>
-							 <i class="icon-google-plus-sign"></i>
-						  </a>
-						  </div>
-						  
-						</xsl:if>
-					</div>
-				</div>
-				
 				<xsl:if test="string-length(entry/fields/field_logo/data/@image) &gt; 0">
 					<div itemprop="logo" id="logo" class="spField block">
 						
@@ -232,8 +179,11 @@
 								</ul>
 							</div>
 						</xsl:if>
+					
+
 				</div>
-							
+				
+				
 				<div class="SPDE-Galery">
 					<div id="spdecarousel" class="carousel slide">
 						<div class="carousel-inner">
@@ -261,16 +211,60 @@
 						<a class="carousel-control right" href="#spdecarousel" data-slide="next"><i class="icon-circle-arrow-right icon-large"></i></a>
 					</div>
 				</div>
-				
-				<div class="SPDE-Socialshare">		
-					<strong>Partagez cette fiche : </strong><br/>
-					 <div id="entryshareme" data-url="http://sharrre.com/" data-text="Partagez cette fiche sur vos réseaux sociaux favoris">
-					 <xsl:attribute name="data-url">
-							  <xsl:value-of select="url" />
-					</xsl:attribute>
-					 </div>
+	 
+				<div class="SPDE-More">
+										
+					<div class="SPDE-Links">	
+						<strong><xsl:text>Suivez-nous sur : </xsl:text></strong><br/>			
+						<xsl:if test="string-length(entry/fields/field_facebook/data) &gt; 0">
+							
+						  <div class="spField" id="facebook">          
+						  <a>
+							 <xsl:attribute name="href">
+							  <xsl:value-of select="entry/fields/field_facebook/data" />
+							 </xsl:attribute>
+							 <xsl:attribute name="target">
+							  <xsl:text>_blank</xsl:text>
+							 </xsl:attribute>
+							 <i class="icon-facebook-sign"></i>
+						  </a>
+						  </div>
+						  
+						</xsl:if>
+						<xsl:if test="string-length(entry/fields/field_twitter/data) &gt; 0">
+							
+						  <div class="spField" id="twitter">          
+						  <a>
+							 <xsl:attribute name="href">
+							  <xsl:value-of select="entry/fields/field_twitter/data" />
+							 </xsl:attribute>
+							 <xsl:attribute name="target">
+							  <xsl:text>_blank</xsl:text>
+							 </xsl:attribute>
+							 <i class="icon-twitter-sign"></i>
+						  </a>
+						  </div>
+						  
+						</xsl:if>
+						<xsl:if test="string-length(entry/fields/field_google_plus/data) &gt; 0">
+							
+						  <div class="spField" id="googleplus">          
+						  <a>
+							 <xsl:attribute name="href">
+							  <xsl:value-of select="entry/fields/field_google_plus/data" />
+							 </xsl:attribute>
+							 <xsl:attribute name="target">
+							  <xsl:text>_blank</xsl:text>
+							 </xsl:attribute>
+							 <i class="icon-google-plus-sign"></i>
+						  </a>
+						  </div>
+						  
+						</xsl:if>
+					</div>
 				</div>
 
+	
 				</div>
 				</div>
 				
@@ -278,11 +272,9 @@
 				
 	  
 			</section>
-			</li>
-			
-			<li><span class="tabaccordionitem"><h2> <i class="icon-info-sign icon-large"></i> Infos pratiques</h2></span>		
 			<section>
-				
+				<h2> <i class="icon-info-sign icon-large"></i> Infos pratiques</h2>  
+		
 				<div class="SPDetailEntry-Sidebar">
 	  
 					<div class="SPDetailEntry-Sidebar-contact">
@@ -316,7 +308,7 @@
 							<xsl:if test="string-length(entry/fields/field_phone/data) &gt; 0">          
 								
 								<div itemprop="telephone" class="spField">
-									<i class="icon-phone"></i> 
+									<strong><xsl:value-of select="entry/fields/field_phone/label" />: </strong>
 									<xsl:value-of select="entry/fields/field_phone/data"/>
 									<xsl:text> </xsl:text>
 									<xsl:value-of select="entry/fields/field_phone/@suffix"/>
@@ -325,7 +317,7 @@
 							<xsl:if test="string-length(entry/fields/field_fax/data) &gt; 0">
 								
 								<div itemprop="faxNumber" class="spField">
-									<i class="icon-inbox"></i> 
+									<strong><xsl:value-of select="entry/fields/field_fax/label" />: </strong>
 									<xsl:value-of select="entry/fields/field_fax/data"/>
 									<xsl:text> </xsl:text>
 									<xsl:value-of select="entry/fields/field_fax/@suffix"/>
@@ -334,7 +326,7 @@
 							<xsl:if test="string-length(entry/fields/field_mobile/data) &gt; 0">
 							
 							<div class="spField">
-								<i class="icon-mobile-phone"></i> 
+								<strong><xsl:value-of select="entry/fields/field_mobile/label" />: </strong>
 								<xsl:value-of select="entry/fields/field_mobile/data"/>
 								<xsl:text> </xsl:text>
 								<xsl:value-of select="entry/fields/field_mobile/@suffix"/>
@@ -345,7 +337,7 @@
 						<xsl:if test="string-length(entry/fields/field_site_internet/data) &gt; 0">
 				  
 							<div class="spField block" id="internet"> 
-								<i class="icon-plus"></i> 
+								<strong><xsl:text>Site internet : </xsl:text></strong>
 								<a>
 									<xsl:attribute name="href">
 									<xsl:value-of select="entry/fields/field_site_internet/data" />
@@ -360,21 +352,10 @@
 					  
 						</xsl:if>
 						
-						<div id="print" class="block">
-							<a>
-								<xsl:attribute name="href">
-									<xsl:text>mailto:</xsl:text>
-									<xsl:text>?subject=</xsl:text>
-									<xsl:value-of select="entry/name" />
-									<xsl:text>&amp;body=</xsl:text>
-									<xsl:value-of select="url" />
-								</xsl:attribute>
-								<i class="icon-envelope"></i> Envoyer cette fiche par mail
-							</a>
-						</div>
-						<div id="print" class="block">
+						<div id="print" class="block hidden-phone">
 							<a href="#" onClick="window.print()"><i class="icon-print"></i> Imprimer cette fiche</a>
-						</div>														
+						</div>
+														
 					</div>
 		
 					<div class="SPDetailEntry-Sidebar-infos">
@@ -396,6 +377,7 @@
 						
 						<xsl:if test="string-length(entry/fields/field_information_complementaire/data) &gt; 0">
 							<div class="SPField block-editor" id="infocomplementaire">			  
+							  <strong><xsl:value-of select="entry/fields/field_information_complementaire/label" />: </strong>
 							  <div class="spField">
 								<xsl:value-of select="entry/fields/field_information_complementaire/data" disable-output-escaping="yes"/>
 								<xsl:text> </xsl:text>
@@ -425,32 +407,26 @@
 					<div class="directions-show closed"><i class="icon-road icon-large"></i><xsl:text> Afficher/masquer les détails de l'itinéraire</xsl:text></div>
 				</div>
 			</section>
-			</li>
-			
-			<li><span class="tabaccordionitem"><h2><i class="icon-comments icon-large"></i> Commentaires</h2></span>
-			<section>	
-				<div id="commentaires">
+			<section>
+				<h2><i class="icon-comments icon-large"></i> Commentaires</h2>
 				<xsl:call-template name="ratingSummary"/>
 				<xsl:call-template name="reviewForm"/>
 				<div style="clear: both;"/><br/>
-				<xsl:call-template name="reviews"/>	
-				</div>
+				<xsl:call-template name="reviews"/>		  
 			</section>
-			</li>
-			
-			<li><span class="tabaccordionitem"> <h2><i class="icon-phone icon-large"></i> Contact</h2></span>
-			<section>	 
-			  <div id="contact">
+			<section>
+			  <h2><i class="icon-phone icon-large"></i> Contact</h2>
+			  <div id='contact'>
 				<xsl:call-template name="contact">
 						<xsl:with-param name="field" select="/entry_details/entry/fields/field_contact/data"/>
 					  </xsl:call-template>  
 			  </div>
 			</section>
-			</li>
-		</ul> 
-		</div>
-		<div style="clear:both;"></div>
-	
+		 
+		</div> <!--tabs-->
+
+	   {loadposition social}
+		
 	</div> <!--container-->
 	<div style="clear:both;"></div>
      

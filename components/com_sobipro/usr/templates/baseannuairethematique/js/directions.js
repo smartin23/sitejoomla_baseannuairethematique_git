@@ -1,3 +1,22 @@
+function geolocalisation(){
+	var gc = new google.maps.Geocoder();
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function (po) {
+			gc.geocode({"latLng":  new google.maps.LatLng(po.coords.latitude, po.coords.longitude) }, function(results, status) {
+				if(status == google.maps.GeocoderStatus.OK) {
+					jQuery("input#saddr").val(results[0]["formatted_address"]);
+					//jQuery("#saddr-msg").html('Votre position a été localisée');
+				} else {
+					//jQuery("#saddr-msg").html('Erreur lors de la géolocalisation : '+ status);
+				}
+			});
+		});
+	}
+	else{
+		//jQuery("#saddr-msg").html('Partage de position non autorisé.');
+	}
+}
+
 function googlemapdirections () {
 
 	//Si le formulaire de directions est affiché par la map....
@@ -6,6 +25,9 @@ function googlemapdirections () {
 		//Ajout d'un champ de message (a utilser ?)
 		jQuery("input#saddr").after('<div class="small text-info" id="saddr-msg"></div>');
 		
+		//Localisation de l'utilisateur
+		geolocalisation();
+	
 		//Afficher le detail de l'itinéraire
 		jQuery('form.mapdirform').find('.button').click(function() {
 
@@ -13,6 +35,7 @@ function googlemapdirections () {
 			dirslink.css('visibility', 'visible');
 			
 			dirslink.click(function() {
+			
 				dirs=jQuery('.directions');
 				sectiondiv = jQuery(this).parents('section').children('div');
 				if (jQuery(this).hasClass('closed')) {
@@ -28,10 +51,8 @@ function googlemapdirections () {
 					jQuery(this).removeClass('open');
 					jQuery(this).addClass('closed');
 					
-					//sectiondiv.css('height','auto');
-					
-				}
-				
+					//sectiondiv.css('height','auto');					
+				}				
 			});		
 		});	
 	}
