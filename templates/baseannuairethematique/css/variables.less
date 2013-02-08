@@ -2,7 +2,28 @@
 @fontFamily1: "Dosis", @baseFontFamily;
 @fontFamily2: @baseFontFamily;
 
-@thematicColor: #FCD036;
-@thematicColorDark: #E3AD40;
-
+@thematicColor: @textColor;
+@thematicColor2: #FCD036;
+@headerIconColor : @thematicColor2;
+@headerBrandColor1 : lighten(@thematicColor, 10%); 
+@headerBrandColor2 : lighten(@thematicColor, 20%); 
+@headerBrandColor3 : @thematicColor2;
 @boxColor: #F4F3F0;
+
+@headerBrandFontsize : 2.5em;
+@headerBrandFontsize980-1200 : 2.2em;
+@headerBrandFontsize768-980 : 2em;
+@headerBrandFontsize320 : 2em;
+
+@headerIconFontsize : 6em;
+@headerIconFontsize980-1200 : 5.5em;
+@headerIconFontsize768-980 : 5em;
+@headerIconFontsize320 : 5em;
+
+@footerBackgroundColor : @boxColor;
+@footerColor : @textColor;
+@footerTitleColor : @textColor;
+@footerLinkColor : lighten(@footerColor , 15%);
+@footerLinkHoverColor : lighten(@footerColor , 25%);
+@footerNavLinkColor : lighten(@footerColor , 15%);
+@footerNavLinkHoverColor : lighten(@footerColor , 25%);

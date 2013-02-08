@@ -30,6 +30,7 @@ $sitename = $app->getCfg('sitename');
 	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/scripts/jquery.mobile.custom.min.css" />	
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/fontawesome/css/font-awesome.min.css" type="text/css" media="screen" />
 	<!--[if IE 7]><link href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/fontawesome/css/font-awesome-ie7.min.css" rel="stylesheet" /><![endif]-->
+	
 	<link href='http://fonts.googleapis.com/css?family=Dosis:400,800' rel='stylesheet' type='text/css'>
 		
 	<!-- Le touch icons -->
@@ -60,27 +61,7 @@ $sitename = $app->getCfg('sitename');
 					<div id="onoff"><i class="icon-eye-close icon-large"></i></div>
 					<header>					
 						<div class="header on">												
-							<div class="logo">
-								<a href="<?php echo $this->baseurl; ?>">
-								<div class="icon w4"><i class="icon-map-marker"></i></div>
-								<div class="titresite">
-									<h1>
-									<div class="titresite1">
-										<span class="brand">
-										<span class="w1">TOUS</span>
-										<span class="w2">LES</span>
-										</span>
-									</div>
-									<div class="titresite2"><span class="brand"><span class="w3">APICULTEURS</span></span></div>
-									</h1>
-									
-								</div>
-								</a>
-								<h2><div class="soustitre">je trouve ce que je cherche sur ma-carte-locale.eu</div>
-									<div class="soustitre-small">sur ma-carte-locale.eu</div>
-									<div class="accroche">en France, en Suisse, en Belgique et au Luxembourg</div>
-								</h2>															
-							</div>										
+							<jdoc:include type="modules" name="logo" />						
 						</div>	
 					</header>
 					
@@ -105,25 +86,7 @@ $sitename = $app->getCfg('sitename');
 					<?php } ?>
 						
 						<div class="span6 header">
-							<div class="logo">
-								<div class="icon"><i class="icon-map-marker"></i></div>
-								<div class="titresite">
-									<h1>
-									<div class="titresite1">
-										<span class="brand">
-										<span class="w1">TOUS</span>
-										<span class="w2">LES</span>
-										</span>
-									</div>
-									<div class="titresite2"><span class="brand"><span class="w3">APICULTEURS</span></span></div>
-									</h1>
-								</div>
-								<h2><div class="soustitre">je trouve ce que je cherche sur ma-carte-locale.eu</div>
-									<div class="soustitre-small">sur ma-carte-locale.eu</div>
-									<div class="accroche">en France, en Suisse, en Belgique et au Luxembourg</div>
-								</h2>
-								
-							</div>
+							<jdoc:include type="modules" name="logo" />			
 						</div>
 						<div class="clear"></div>
 					
@@ -292,8 +255,7 @@ function changeStackingOrder() {
 
 	 if (jQuery(window).width() < 768){
 
-		//En savoir plus...
-		//jQuery('footer .links').insertBefore('footer .menusecondaire');	
+		jQuery('footer .misc').insertBefore('footer .theme');	
 	}
 }
 
@@ -493,21 +455,24 @@ jQuery(window).load(function(){
     })
 	//Si pas d'event, on fait la demande à mjradius
 	//Beurk: bout de code pris a manGeocode de mjradius....
-	var entry = jQuery("#mj_rs_center_selector").val();
-	if (entry.length>0){
-		geocoder = new google.maps.Geocoder();
-		geocoder.geocode( { address:entry}, function(results, status) {
-			if (status == google.maps.GeocoderStatus.OK) {
-			
-				var elt = results[0]["address_components"];
-				for(i in elt){
-					if(elt[i].types[0] == "postal_code") {
-						jQuery('td.acyfield_name input').val(elt[i].long_name);
-						break;
-					}
-				}				
-			}
-		});
+	var centerselector = jQuery("#mj_rs_center_selector");
+	if (centerselector.length>0) {
+		var entry = jQuery("#mj_rs_center_selector").val();
+		if (entry.length>0){
+			geocoder = new google.maps.Geocoder();
+			geocoder.geocode( { address:entry}, function(results, status) {
+				if (status == google.maps.GeocoderStatus.OK) {
+				
+					var elt = results[0]["address_components"];
+					for(i in elt){
+						if(elt[i].types[0] == "postal_code") {
+							jQuery('td.acyfield_name input').val(elt[i].long_name);
+							break;
+						}
+					}				
+				}
+			});
+		}
 	}
 		
 	//General share plugin

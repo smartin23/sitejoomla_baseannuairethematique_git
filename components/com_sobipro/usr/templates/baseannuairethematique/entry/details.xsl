@@ -73,15 +73,23 @@
 						  <xsl:value-of select="entry/fields/field_encemoment/@suffix"/>
 						</div>
 					</div>
-				</xsl:if>
-					
-				<div class="spField block" id="tags">
-					<xsl:if test="count(entry/fields/field_tags/data/*)">
-						<i class="icon-tags icon-large"></i>						   
-						<xsl:text> </xsl:text>
-						<xsl:copy-of select="entry/fields/field_tags/data/*" />
 					</xsl:if>
-				</div>
+					
+					<xsl:if test="count(entry/fields/field_a_telecharger/data/*)">
+						<div class="spField block" id="download">
+							<strong><xsl:value-of select="entry/fields/field_a_telecharger/label"/></strong> : <br/>
+							<xsl:copy-of select="entry/fields/field_presentation_a_telecharger/data/*" /><br/>	
+							<xsl:copy-of select="entry/fields/field_a_telecharger/data/*" />					
+						</div>
+					</xsl:if>
+			
+					<div class="spField block" id="tags">
+						<xsl:if test="count(entry/fields/field_tags/data/*)">
+							<i class="icon-tags icon-large"></i>						   
+							<xsl:text> </xsl:text>
+							<xsl:copy-of select="entry/fields/field_tags/data/*" />
+						</xsl:if>
+					</div>
 							
 				</div>
 				

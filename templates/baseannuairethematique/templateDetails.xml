@@ -28,6 +28,7 @@
   <positions>
 	<position>main</position>
 	<position>center</position>
+	<position>logo</position>
 	<position>search</position>
 	<position>search2</position>
 	<position>navigation</position>

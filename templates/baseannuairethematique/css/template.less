@@ -14,9 +14,9 @@ body
 }
 
 .whitebordered {
-//text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff,
-//1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-//filter: progid:DXImageTransform.Microsoft.Glow(Color=#ffffff,Strength=1); /* IE<10 */
+text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff,
+1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+filter: progid:DXImageTransform.Microsoft.Glow(Color=#ffffff,Strength=1); /* IE<10 */
 }
 
 .shadowed {
@@ -63,14 +63,14 @@ box-shadow: 0px 3px 3px #333;
 .sheet-wrapper, .footer-wrapper { }
 
 //Blocs principaux
-.zone-gauche {position:relative; z-index:9;background-color:#fff; padding:5px; margin-bottom:20px;.shadowed;.rounded;}
-.zone-gauche.on {background-color:@white;.shadowed;}
-.zone-gauche.off {background-color:transparent;box-shadow:none;}
+.zone-gauche {position:relative; z-index:9; padding:5px; margin-bottom:20px;}
+.zone-gauche.on {background-color:rgba(255,255,255,0.8);}
+.zone-gauche.off {background-color:transparent;}
 .zone-centre {position:relative; z-index:9;}
 
 
 //Onoff
-#onoff {cursor:pointer; position:absolute; top:0; right:0; font-size:1.5em;font-weight:normal; background-color:@textColor;color:#fff;padding:1%;
+#onoff {cursor:pointer; position:absolute; top:0; right:0; font-size:1.5em;font-weight:normal; background-color:@thematicColor;color:#fff;padding:1%;
 -moz-border-radius-bottomright: 5px;
 border-bottom-right-radius: 5px;
 -moz-border-radius-bottomleft: 5px;
@@ -93,24 +93,20 @@ border-bottom-left-radius: 5px;}
 //Header
 .header {padding:1%;padding-top:20px;padding-bottom:20px;}
 .contenuplus .header {margin:0 0 25px!important; padding:0!important;}
-.header .titresite {float:left;}
-.header i {font-size:6.5em; line-height:100%; .whitebordered;}
-.header .icon a, .header .icon a:hover {color:@textColor;}
-.header i.icon-large:before {}
-.header .icon {float:left; margin-right:1%;}
-.header .brand {font-family:@fontFamily1;font-size:2.5em;line-height:1.2em;font-weight:bold;.whitebordered;}
-.header .brand .w1, .contenuplus .header .brand .w1 {color:lighten(@textColor,10%);}
-.header .brand .w2, .contenuplus .header .brand .w2 {color:lighten(@textColor,20%);}
-.header .brand .w3, .contenuplus .header .brand .w3 {color:@thematicColor;}
-.header .icon.w4 {}
-
 .header a {color:@textColor;}
 .header a:hover {color:lighten(@textColor,5%)!important;}
-.header h2 {font-size:1em!important;margin:0; padding:0;}
-.header h2 .soustitre, .header h2 .soustitre-small, .header h2 .accroche {clear:both;font-family:@fontFamily1;font-weight:700;.whitebordered;}
-.header h2 .soustitre-small {display:none;}
-.header h2 .accroche {visibility:hidden; height:1px;}
-.contenuplus .header i, .contenuplus .header .brand, .contenuplus .header .soustitre, .contenuplus .header .soustitre-small{opacity:1;}
+.header .titresite {float:left;}
+.header .icon {font-size:@headerIconFontsize; line-height:100%; color:@headerIconColor; .whitebordered;}
+.header .icon a, .header .icon a:hover {color:@headerIconColor;}
+.header .icon {float:left; margin-right:1%;}
+.header .brand {font-family:@fontFamily1;font-size:@headerBrandFontsize;line-height:1.2em;font-weight:bold;.whitebordered;}
+.header .brand .w1, .contenuplus .header .brand .w1 {color:@headerBrandColor1;}
+.header .brand .w2, .contenuplus .header .brand .w2 {color:@headerBrandColor2;}
+.header .brand .w3, .contenuplus .header .brand .w3 {color:@headerBrandColor3;}
+.header  .soustitre, .header .soustitre-small, .header .accroche {clear:both;font-family:@fontFamily1;font-weight:700;.whitebordered;}
+.header  .soustitre-small {display:none;}
+.header  .accroche {visibility:hidden; height:1px;}
+.contenuplus .header .icon, .contenuplus .header .brand, .contenuplus .header .soustitre, .contenuplus .header .soustitre-small{opacity:1;}
 
 //Google maps
 .fullmap {position:fixed;top:0;left:0;width:100%;z-index:0;}
@@ -161,23 +157,22 @@ input.invalid, textarea.invalid {border:1px solid #FF0000!important;}
 }
 
 //Footer
-footer {position:relative;background-color:lighten(@textColor,20%);color:#fff;z-index:9999;padding-bottom:15px;}
-footer  h3 {color:@white; font-size:1.6em;font-weight:bold; text-transform:uppercase;line-height:20px;cursor:pointer;}
-footer a {color:@textColor;}
-footer a:hover {color:@white;}
+footer {position:relative;background-color:rgba(255,255,255,0.8);color:@footerColor;z-index:9999;padding-bottom:15px;}
+footer  h3 {color:@footerTitleColor; font-size:1.6em;font-weight:bold; text-transform:uppercase;line-height:20px;cursor:pointer;}
+footer a {color:@footerLinkColor;}
+footer a:hover {color:@footerLinkHoverColor;}
 
 footer .nav {list-style-type:none; margin:0;}
-footer .nav > li a {color:@white!important;padding-bottom:5px;}
-footer .nav > li a:hover {color:@white!important; background:none!important;}
+footer .nav > li a {color:@footerNavLinkColor!important;padding-bottom:5px;}
+footer .nav > li a:hover {color:@footerNavLinkHoverColor!important; background:none!important;}
 
 //S'incrire
 footer .login {padding:1%;padding-top:0px;}
 footer .registered .login .guestonly {display:none;}
 
 //Ma carte locale
-footer .macartelocale {background-color:lighten(@textColor,30%); margin-top:20px;padding:3%;.rounded;.shadowed;}
-
-footer .macartelocale a {color:@textColor;}
+footer .macartelocale {background-color:@white; color:@textColor; margin-top:20px;padding:3%;.rounded;.shadowed;}
+footer .macartelocale a, footer .macartelocale h3 {color:@textColor;}
 
 //Logout
 footer .loggedin {padding:1%;padding-top:20px;}
@@ -195,7 +190,7 @@ footer .social #socialshare {position:relative; right:2%;}
 footer .social #sociallinks {font-size:2em;}
 
 //Links 
-footer .links {font-size:0.8em;margin-top:20px; color:@textColor;line-height:1.2em;}
+footer .links {font-size:0.8em;margin-top:20px; color:lighten(@footerBackgroundColor,20%);line-height:1.2em;}
 
 //Autres menu
 .nav > li > a:hover {background:none;}
@@ -305,7 +300,7 @@ float:left;
 width:100%;
 }
 #shareme .box a{
-color:@white;
+color:@footerLinkColor;
 text-shadow: 0 1px 1px rgba(167,167,167,.4);
 }
 #shareme .box a:hover{
@@ -315,7 +310,7 @@ text-decoration:none;
 font-weight:bold;
 font-size:2.5em;
 float:left;
-border-right:2px solid @white;
+border-right:2px solid lighten(@footerLinkColor,15%);
 line-height:40px;
 padding-right:10px
 }
@@ -353,8 +348,8 @@ margin:0 4px 0 0;
 @media screen and (min-width: 980px) and (max-width: 1200px) {
 	
 	//Logo
-	.header .brand {font-size:2.2em;}
-	.header i  {font-size:5.6em;}
+	.header .brand {font-size:@headerBrandFontsize980-1200;}
+	.header .icon  {font-size:@headerIconFontsize980-1200;}
 	.header .soustitre {font-size:0.8em;}
 }
 
@@ -365,8 +360,8 @@ margin:0 4px 0 0;
 	.span4.zone-gauche {width:42%!important;}
 	
 	//Logo
-	.header .brand {font-size:2em;}
-	.header i  {font-size:5.8em;}
+	.header .brand {font-size:@headerBrandFontsize768-980;}
+	.header .icon  {font-size:@headerIconFontsize768-980;}
 	.header .soustitre {font-size:0.6em;}
 	
 	//.spEntriesListContainer .spEntriesListCell  #logo {float:none;margin-bottom:15px;}
@@ -401,13 +396,16 @@ margin:0 4px 0 0;
 	//Titre header
 	.header {padding-top:5px;padding-bottom:20px;}
 	//header
-	.header h2 .soustitre {display:none;}
-	.header h2 .soustitre-small {display:block;text-align:right;margin-right:3%;}
+	.header .soustitre {display:none;}
+	.header .soustitre-small {display:block;text-align:right;margin-right:3%;}
 	
 	//Titres footer
 	footer h3 {font-size:1.5em!important;}
 	footer .menusecondaire, footer .theme, footer .misc {margin-top:30px;}
 	footer .misc {display:none;}
+	
+	//Bloc temporaire Ma carte locale
+	footer .macartelocale {display:none;}
 	
 	//Titres du blog
 	.blog h2 {font-size:2em;}
@@ -417,8 +415,10 @@ margin:0 4px 0 0;
 	.contenuplus {margin-top:0px;margin-bottom:0px;}
 	
 	//Zones
-	.zone-gauche {margin-bottom:3px; .bottom-shadowed; .notrounded;}
-	.zone-gauche.on {background-color:@white; .bottom-shadowed;}
+	.zone-gauche {margin-bottom:3px; }
+	.zone-gauche.on {}
+	
+	
 }
 
 @media screen and (max-width: 480px) {
@@ -445,8 +445,8 @@ margin:0 4px 0 0;
 @media screen and (max-width: 320px) {
 
 	//Logo
-	.header .brand {font-size:2em;}
-	.header i  {font-size:5.4em;}
+	.header .brand {font-size:@headerBrandFontsize320;}
+	.header .icon  {font-size:@headerIconFontsize320;}
 	.header .soustitre {font-size:0.7em;}
 }
 
