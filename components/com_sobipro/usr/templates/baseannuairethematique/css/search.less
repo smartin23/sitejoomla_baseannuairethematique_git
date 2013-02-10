@@ -33,6 +33,8 @@ text-shadow: none;
 filter:none;
 }
 
+.contrastedbackground {background-color:rgba(255,255,255,1);}
+
 #spSearchForm {margin:0!important;}
 #spSearchForm h3 {display:none;}
 #spSearchForm .message {font-weight:bold;margin:1%;margin-bottom:5px;.whitebordered;}
@@ -88,8 +90,7 @@ button#mj_rs_cutom {margin-bottom:10px;}
 select#sid_list{width:95%;}
 
 //Extended search
-#SPExtSearch{font-size:0.9em;height:350px;margin-top:10px;margin-bottom:15px;border:1px solid @inputBorder;-webkit-border-radius: 5px;
--moz-border-radius: 5px;border-radius: 5px;}
+#SPExtSearch{font-size:0.9em;height:350px;margin-top:10px;margin-bottom:15px;border:1px solid @inputBorder;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;.contrastedbackground;}
 #SPExtSearch div.SPSearchLabel {.notwhitebordered; margin-top:10px;}
 
 //Custom Scrollbar for extended search
@@ -111,12 +112,16 @@ select.sid_list1, select.sid_list2 {width:100%;}
 //Resultats de recherche
 .spEntriesListContainer {margin:1%;}
 //Accordion header
-.spEntriesListContainer .accordion-heading,.spEntriesListContainer .accordion-inner  {padding:1%;}
+.spEntriesListContainer .accordion-group  {padding:1%;.contrastedbackground;}
 .spEntriesListContainer .accordion-heading a {color:@textColor;}
-.spEntriesListContainer #entriesaccordion #titre {float:left; width:55%;font-size:1em;font-weight:bold;padding-bottom:5px;}
-.spEntriesListContainer #entriesaccordion #categorie {float:right; width:40%; font-size:0.8em;text-align:right;overflow:hidden;}
+.spEntriesListContainer #entriesaccordion #logo {margin-right:2%;}
+.spEntriesListContainer #entriesaccordion #titre {float:left; width:70%;font-size:1em;font-weight:bold;padding-bottom:5px;}
+.spEntriesListContainer #entriesaccordion .localisation {position:relative;float:right; font-size:0.8em;text-align:right;overflow:hidden;}
+.spEntriesListContainer #entriesaccordion #distance {font-weight:bold;clear:right;}
+
 .spEntriesListContainer #entriesaccordion #rating {float:left;}
-.spEntriesListContainer #entriesaccordion #distance {float:right; font-weight:bold;}
+.spEntriesListContainer #entriesaccordion #categorie {float:right;font-size:0.8em;}
+
  
 //Accordion body
 .spEntriesListContainer.skin {margin:1%; border: 1px solid #CCCCCC;
@@ -134,16 +139,6 @@ select.sid_list1, select.sid_list2 {width:100%;}
 
 //Category
 .spEntriesListContainer .spEntriesListCell .spEntryCats {font-size:0.8em; font-weight:normal;margin-top:10px;text-align:left;}
-
-//Bootstrap result entries carousel
-.spEntriesListContainer .carousel-control {opacity:1!important;}
-.spEntriesListContainer .carousel-inner .item img {width:auto!important;}
-.spEntriesListContainer .carousel-control { position:relative!important;left:0px!important;}
-.spEntriesListContainer .carousel-control:hover {color:@textColor;}
-.spEntriesListContainer .carousel-control.left {float:left;}
-.spEntriesListContainer .carousel-control.right {float:right;}
-
-
 
 //Media queries
 @media screen and (min-width: 768px) {

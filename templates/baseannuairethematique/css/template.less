@@ -13,6 +13,9 @@ body
   padding: 0;
 }
 
+.whitetexturized {background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGElEQVQImWNgYGBg+P///384jcKBAbwqADxAH+GUHxlRAAAAAElFTkSuQmCC) repeat;}
+
+
 .whitebordered {
 text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff,
 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
@@ -64,7 +67,7 @@ box-shadow: 0px 3px 3px #333;
 
 //Blocs principaux
 .zone-gauche {position:relative; z-index:9; padding:5px; margin-bottom:20px;}
-.zone-gauche.on {background-color:rgba(255,255,255,0.8);}
+.zone-gauche.on {.whitetexturized }
 .zone-gauche.off {background-color:transparent;}
 .zone-centre {position:relative; z-index:9;}
 
@@ -109,7 +112,7 @@ border-bottom-left-radius: 5px;}
 .contenuplus .header .icon, .contenuplus .header .brand, .contenuplus .header .soustitre, .contenuplus .header .soustitre-small{opacity:1;}
 
 //Google maps
-.fullmap {position:fixed;top:0;left:0;width:100%;z-index:0;}
+.fullmap {position:fixed;top:0;left:0;width:100%;max-width:100%;z-index:0;}
 .fullmap.container-fluid {padding:0!important;margin:0!important;}
 
 #Jmaps img, #JmapsSearch img, #JmapsHome img, #field_jmapsmarker img {max-width:none!important;}
@@ -141,7 +144,7 @@ border-bottom-left-radius: 5px;}
 input.invalid, textarea.invalid {border:1px solid #FF0000!important;}
 
 //Contenu +
-.contenuplus {position:relative;z-index:9;margin-top:25px;margin-bottom:25px;background-color:rgba(255,255,255,0.95);padding:3%;.shadowed;}
+.contenuplus {position:relative;z-index:9;margin-top:25px;margin-bottom:25px;.whitetexturized ;padding:3%;}
 .contenuplus .retour {font-size:2em; position:absolute; top:20px; right:20px;}
 .contenuplus ul.editor {list-style-type:none;  list-style: none; margin: 0 0 10px;}
 .contenuplus ul.editor li{padding:2px; position:relative; margin-left:15px;}
@@ -157,7 +160,7 @@ input.invalid, textarea.invalid {border:1px solid #FF0000!important;}
 }
 
 //Footer
-footer {position:relative;background-color:rgba(255,255,255,0.8);color:@footerColor;z-index:9999;padding-bottom:15px;}
+footer {position:relative;.whitetexturized ;color:@footerColor;z-index:9999;padding-bottom:15px;}
 footer  h3 {color:@footerTitleColor; font-size:1.6em;font-weight:bold; text-transform:uppercase;line-height:20px;cursor:pointer;}
 footer a {color:@footerLinkColor;}
 footer a:hover {color:@footerLinkHoverColor;}
@@ -375,23 +378,23 @@ margin:0 4px 0 0;
 @media screen and (max-width: 767px) {
 
 	//La partie centre n'utilise plus de height min
-	.centre {min-height:0px!important;}
+	//.centre {min-height:0px!important;}
 	
 	//Par defaut pas de fullmap
-	.fullmap {display:none;}
+	//.fullmap {display:none;}
 	//Sauf ...
-	.task-search-results .fullmap, .task-search-view .fullmap{display:block;}
+	//.task-search-results .fullmap, .task-search-view .fullmap{display:block;}
 	
 	//La map prend sa place..pas trop haute....
-	.fullmap {position:relative!important;}
+	//.fullmap {position:relative!important;}
 	
 	//On laisse un grip a droite de la map pour eviter le scroll of death...
-	.mapgrip {		background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC) repeat;
-	}	
-	.map1, .map2 {width:95%; }
+	//.mapgrip {		//background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf//8EPy+xAAAAAElFTkSuQmCC) repeat;
+	//}	
+	//.map1, .map2 {width:95%; }
 
 	//On supprime le bouton de masquage de la partie gauche
-	#onoff {display:none;}
+	#onoff {/*display:none*/ position:fixed; top:0px; z-index:9999;}
 		
 	//Titre header
 	.header {padding-top:5px;padding-bottom:20px;}
@@ -401,7 +404,8 @@ margin:0 4px 0 0;
 	
 	//Titres footer
 	footer h3 {font-size:1.5em!important;}
-	footer .menusecondaire, footer .theme, footer .misc {margin-top:30px;}
+	footer .menusecondaire {margin-top:0px;}
+	footer .theme, footer .misc {margin-top:30px;}
 	footer .misc {display:none;}
 	
 	//Bloc temporaire Ma carte locale
@@ -416,9 +420,7 @@ margin:0 4px 0 0;
 	
 	//Zones
 	.zone-gauche {margin-bottom:3px; }
-	.zone-gauche.on {}
-	
-	
+	.zone-gauche.on {}	
 }
 
 @media screen and (max-width: 480px) {

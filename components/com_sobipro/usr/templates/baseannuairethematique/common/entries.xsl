@@ -27,6 +27,20 @@
 							<xsl:text>#collapse</xsl:text>
 							<xsl:value-of select="position()" />
 						</xsl:attribute>
+						
+						<xsl:if test="string-length(fields/field_logo/data/@image) &gt; 0">
+							<div id="logo" class="SPField pull-left">							
+								<xsl:element name="img">
+								  <xsl:attribute name="src">
+								  <xsl:value-of select="fields/field_logo/data/@icon" />
+								  </xsl:attribute>
+								  <xsl:attribute name="alt">
+								  <xsl:value-of select="entry/name" />
+								  </xsl:attribute>
+								</xsl:element>							
+							</div>
+						</xsl:if>
+						
 						<div class="spField" id="titre">
 							<xsl:choose>
 							  <xsl:when test="string-length(name) &gt; 0">
@@ -38,23 +52,30 @@
 							</xsl:choose>
 						</div>
 						
+						<div class="localisation">
+							<div class="marker"></div>
+							<div class="spField" id="distance" ><xsl:value-of select="mjradius" disable-output-escaping="yes" /></div>
+						</div>
+						
+						<div style="clear:both;"/>	
+						
 						<div class="spField" id="categorie">
 							<xsl:if test="count(categories)">				
 								<xsl:for-each select="categories/category">
 								  <xsl:value-of select="." />			  
 								</xsl:for-each>		
 							</xsl:if>
-						</div>
-						<div style="clear:both;"/>					
+						</div>		
 						<div class="spField" id="rating"><xsl:call-template name="ratingStars"/></div>
-						<div class="spField" id="distance" ><xsl:value-of select="mjradius" disable-output-escaping="yes" /></div>
+						
+						
 					</a>
 				</div>
 					<div style="clear:both;"/>
 				<div>
 					<xsl:attribute name="class">
 						<xsl:choose>
-							<xsl:when test="position() = 1">accordion-body collapse in</xsl:when>
+							<xsl:when test="position() = 1">accordion-body collapse</xsl:when>
 							<xsl:otherwise>accordion-body collapse</xsl:otherwise>
 						</xsl:choose>
 					</xsl:attribute>

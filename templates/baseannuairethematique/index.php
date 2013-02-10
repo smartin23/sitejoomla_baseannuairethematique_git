@@ -27,10 +27,9 @@ $sitename = $app->getCfg('sitename');
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 	<link type="text/css" rel="stylesheet" href="<?php echo $this->baseurl ?>/min/g=generalcss" />
-	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/scripts/jquery.mobile.custom.min.css" />	
+
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/fontawesome/css/font-awesome.min.css" type="text/css" media="screen" />
 	<!--[if IE 7]><link href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/fontawesome/css/font-awesome-ie7.min.css" rel="stylesheet" /><![endif]-->
-	
 	<link href='http://fonts.googleapis.com/css?family=Dosis:400,800' rel='stylesheet' type='text/css'>
 		
 	<!-- Le touch icons -->
@@ -40,7 +39,7 @@ $sitename = $app->getCfg('sitename');
 	
 	<script src="<?php echo $this->baseurl ?>/min/g=jqueryjs"></script>	  
 	<script type='text/javascript'>
-	jQuery.noConflict();
+		jQuery.noConflict();
 	</script>
 	
     <jdoc:include type="head" />
@@ -138,6 +137,7 @@ $sitename = $app->getCfg('sitename');
 								</div>
 							</div>
 						</div>
+						
 						<div class="span4 misc">
 							<jdoc:include type="modules" name="footer3" style="standardlite" />	
 						</div>	
@@ -378,24 +378,6 @@ jQuery(window).load(function(){
 	dpub.parent().parent().hide();
 	dpub.attr('checked', true);
 	
-	//Support Swipe pour le carousel
-	/*jQuery('#entriescarousel.carousel').each(function () {
-		
-		jQuery(this).swiperight(function() {  
-			jQuery(this).carousel('prev');
-			
-			//on provoque le recentrage de la carte / marker
-			setTimeout(centerActiveMarker,1000);			
-		}); 
-		
-		jQuery(this).swipeleft(function() {  
-			jQuery(this).carousel('next');  
-			
-			//on provoque le recentrage de la carte / marker
-			setTimeout(centerActiveMarker,1000);
-		}); 		
-	});*/
-	
 	//Attention : fonctionne pour le moment avec un seul carousel / page !	
 	//Losque le premier item active est detecté, on affiche le carousel
 	/*var itemslist = jQuery('#entriescarousel.carousel');
@@ -435,7 +417,7 @@ jQuery(window).load(function(){
 		
 	//methode 2:
 	jQuery('#entriesaccordion .accordion-body').on('shown', function () {
-		var activemarker = jQuery(this).find('img.jmapsInfoMarker');
+		var activemarker = jQuery(this).siblings('.accordion-heading').find('img.jmapsInfoMarker');
 		jQuery('#JmapsSearch').trigger('recentermap', [activemarker.attr("data-lat"), activemarker.attr("data-lon")]);
     })
 	
@@ -464,7 +446,8 @@ jQuery(window).load(function(){
 				if (status == google.maps.GeocoderStatus.OK) {
 				
 					var elt = results[0]["address_components"];
-					for(i in elt){
+					
+					for(i in elt){					
 						if(elt[i].types[0] == "postal_code") {
 							jQuery('td.acyfield_name input').val(elt[i].long_name);
 							break;
@@ -495,6 +478,8 @@ jQuery(window).load(function(){
 	jQuery(api.element).find('.buttons').hide();
 	}
 	});
+	
+	adaptOnResize();
 
 });
 

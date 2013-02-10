@@ -6,6 +6,10 @@ function changeDetailsStackingOrder() {
 		//Logo
 		jQuery('.spField#logo').css('float', 'left').css('width','40%').css('margin-right', '3%').removeClass('block').insertBefore('.spField#resume_activite');
 		
+		//Resume et gallerie
+		jQuery('.SPDE-Resume').insertAfter('.spField#activite_detaillee');
+		jQuery('.SPDE-Galery').insertAfter('.spField#activite_detaillee');
+		
 		//Tag
 		jQuery('.spField#tags').insertBefore('.SPDE-Socialshare');
 	}
@@ -33,7 +37,8 @@ jQuery(document).ready(function() {
 	addBootstrapTags();
 	
 	//Tabs & accordion
-	jQuery('#tabaccordion').children('li').first().children('span.tabaccordionitem').addClass('active').next().addClass('is-open').show();     
+	jQuery(".tabbable.responsive").resptabs(); 
+	/*jQuery('#tabaccordion').children('li').first().children('span.tabaccordionitem').addClass('active').next().addClass('is-open').show();     
     jQuery('#tabaccordion').on('click', 'li > span.tabaccordionitem', function() {
         
       if (!jQuery(this).hasClass('active')) 
@@ -54,7 +59,8 @@ jQuery(document).ready(function() {
            if (jQuery(window).width() <= 980) jQuery('#tabaccordion .is-open').removeClass('is-open').hide();
 		   jQuery(this).removeClass('active');
       }	  
-    });
+    });*/
+	
 			
 	//Carousel photos (description)
 	jQuery('#spdecarousel').carousel({  

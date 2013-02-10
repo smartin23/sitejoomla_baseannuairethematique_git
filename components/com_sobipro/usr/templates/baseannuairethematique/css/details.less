@@ -7,7 +7,10 @@
 //CSS general
 @import "../../../../../../templates/baseannuairethematique/css/general.less";
 
+.contrastedbackground {background-color:rgba(255,255,255,1);}
+
 #all {max-width:none!important;}
+
 
 .block-editor ul {list-style-type:none;  list-style: none; margin: 0 0 10px;}
 .block-editor ul li{padding:2px; position:relative; margin-left:15px;}
@@ -118,68 +121,98 @@
 	position:relative;
 }
 
-#tabaccordion {
-    width: 100%;
+.tabbable.responsive .tab-content {
+	padding:20px;
+	border-left:1px solid @navbarBorder;
+	border-right:1px solid @navbarBorder;
+	border-bottom:1px solid @navbarBorder;
+	.contrastedbackground;
+}
+.tabbable.responsive .nav-tabs, .tabbable.responsive .nav {
+	margin: 0px;
 }
 
-#tabaccordion h2 {font-size:1.6em; margin:0;}
-
-ul#tabaccordion {
-  padding: 0;
-  margin:0;
+.tabbable.responsive .nav-tabs li {
+	margin-bottom:-3px;
 }
 
-#tabaccordion > li {
-  overflow:hidden;
-  list-style: none; 
-  cursor:pointer;
- 
-   border-top: 1px solid @boxColor;
-   border-left: 1px solid @boxColor;
-   border-right: 1px solid @boxColor;
-}
-#tabaccordion > li:last-child {
-	border-bottom: 1px solid @boxColor;
+.tabbable.responsive .nav-tabs a {
+	font-size:1.4em;
 }
 
-#tabaccordion > li span.tabaccordionitem {
-    display: block;
-    padding: 10px 15px;
- 
-
-    text-decoration: none;
-}
-#tabaccordion > li:last-child span.tabaccordionitem {
-	
+.tabbable.responsive .nav-tabs > li > a:active,
+.tabbable.responsive .nav-tabs > .active > a,
+.tabbable.responsive .nav-tabs > .active > a:hover {
+	border-style: none;
+	color:@textColor!important;
+	.contrastedbackground;
 }
 
-#tabaccordion li span.tabaccordionitem:hover, #tabaccordion li span.tabaccordionitem.active {
-    background: @boxColor;
-
+@media (max-width: 767px) {
+    body {
+      	padding: 0;
+    }
+    .tabbable.responsive .nav-tabs {
+      	font-size: 16px;
+    }
+    .tabbable.responsive .nav-tabs ul {
+      	margin: 0;
+    }
+    .tabbable.responsive .nav-tabs li {
+      	// box-sizing seems like the cleanest way to make sure width includes padding
+				-webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box; 
+            -ms-box-sizing: border-box;
+             -o-box-sizing: border-box;
+                box-sizing: border-box; 
+      	display: inline-block; 
+      	width: 100%; 
+      	height: 44px;
+      	line-height: 44px; 
+      	padding: 0 15px;
+      	border: 1px solid @navbarBorder;
+      	overflow: hidden;
+		
+		.contrastedbackground;
+    }
+    .tabbable.responsive .nav-tabs > li > a {
+      	border-style: none;
+      	display: inline-block;
+      	margin: 0;
+      	padding: 0;
+    }
 }
 
-#tabaccordion section {
-  display: none; /* I NEED TO FIX THIS */
-  float: left;
-  overflow: hidden; 
-  padding: 1% 3% 0 3%;
+.tabbable.responsive .nav-tabs > li > a.tab-control,
+.tabbable.responsive .nav-tabs > li > span.tab-control-spacer {
+    float: left;
+    width: 28px;
+    height: 28px;
+    margin-top: 6px;
+    font-size: 2.2em;
+    font-weight: 100;
+    line-height: 22px;
+    color: @white!important;
+    text-align: center;
+    background: @linkColor;
+	-webkit-border-radius: 18px;
+	-moz-border-radius: 18px;
+	border-radius: 18px;
+    }
+.tabbable.responsive .nav-tabs > li > a.tab-control.right,
+.tabbable.responsive .nav-tabs > li > span.tab-control-spacer.right {
+    float: right;
 }
-#tabaccordion #description, #tabaccordion #commentaires, #tabaccordion #contact {
-	float:left;
-	width:100%;
+.tabbable.responsive .nav-tabs > li > a.tab-control:hover {
+    color: white;
+    background: @linkColorHover;
+}
+.tabbable.responsive .nav-tabs > li > span.tab-control-spacer {
+    line-height: 28px;
+    color: transparent;
+    background: transparent;
 }
 
-.no-js #tabaccordion section {
-  display: block; /* I NEED TO FIX THIS */
-}
-
-@media only screen and (min-width: 980px) { 
-    #tabaccordion {width: 100%; position: relative; border: none; }
-    #tabaccordion > li { display: inline; border:none; }
-    #tabaccordion > li span.tabaccordionitem {display: inline-block;border-top: 1px solid @boxColor;border-left: 1px solid @boxColor;border-right: 1px solid @boxColor;}  
-	#tabaccordion > li:last-child {	border-bottom: none;}
-    #tabaccordion section { padding: 1%; top: 42px; left: 0; border: 1px solid @boxColor;width:100%;}   
-}
 
 //Half VGA
 @media screen and (max-width: 640px){
