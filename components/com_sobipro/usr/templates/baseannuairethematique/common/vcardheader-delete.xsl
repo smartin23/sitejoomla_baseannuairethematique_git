@@ -1,26 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:php="http://php.net/xsl">
+<xsl:import href="vcard.xsl" />
+<xsl:import href="review.xsl" />
 <xsl:output method="xml" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" encoding="UTF-8"/>
-<xsl:include href="vcard.xsl" />
-
-	<xsl:template name="entriesLoop">
-	<div class="spEntriesListContainer">
-	
-	<div id="entriesaccordion" class="accordion">
-	
-		<xsl:variable name="entriesInLine">
-			<xsl:value-of select="entries_in_line" />
-		</xsl:variable>
-		<xsl:variable name="eCellWidth">
-			<xsl:value-of select="(100 div $entriesInLine) -5" />
-		</xsl:variable>
-		<xsl:variable name="entriesCount">
-			<xsl:value-of select="count(entries/entry)" />
-		</xsl:variable>
-
-		<xsl:for-each select="entries/entry">
-		
-			<div class="accordion-group span6">
+<xsl:template name="vcardheader">
+<div class="accordion-group">
 				<div class="accordion-heading">
 					<a class="accordion-toogle" data-toggle="collapse" data-parent="#entriesaccordion">
 						<xsl:attribute name="href">
@@ -72,9 +56,7 @@
 						</div>
 						
 						<div style="clear:both;"/>	
-						
-						
-						
+		
 						<div class="spField" id="categorie">
 							<xsl:if test="count(categories)">				
 								<xsl:for-each select="categories/category">
@@ -83,8 +65,7 @@
 							</xsl:if>
 						</div>		
 						<div class="spField" id="rating"><xsl:call-template name="ratingStars"/></div>
-						
-						
+		
 					</a>
 				</div>
 					<div style="clear:both;"/>
@@ -125,12 +106,7 @@
 						</xsl:if>
 				
 					</div>
-				</div>
-				
-			</div>
-		</xsl:for-each> 
-	</div>
-	</div>
-	<div style="clear:both;"/>
-	</xsl:template>
+				</div>		
+</div>
+</xsl:template>
 </xsl:stylesheet>

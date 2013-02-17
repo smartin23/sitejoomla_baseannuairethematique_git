@@ -366,18 +366,19 @@
 								</div>  
 							</xsl:if>
 							
-							<div id="print" class="block">
+							<div id="send" class="block">
 								<a>
 									<xsl:attribute name="href">
 										<xsl:text>mailto:</xsl:text>
 										<xsl:text>?subject=</xsl:text>
 										<xsl:value-of select="entry/name" />
 										<xsl:text>&amp;body=</xsl:text>
-										<xsl:value-of select="url" />
+										<xsl:value-of select="entry/url" />
 									</xsl:attribute>
 									<i class="icon-envelope"></i> Envoyer cette fiche par mail
 								</a>
 							</div>
+							
 							<div id="print" class="block">
 								<a href="#" onClick="window.print()"><i class="icon-print"></i> Imprimer cette fiche</a>
 							</div>														

@@ -13,45 +13,7 @@ body
   padding: 0;
 }
 
-.whitetexturized {background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGElEQVQImWNgYGBg+P///384jcKBAbwqADxAH+GUHxlRAAAAAElFTkSuQmCC) repeat;}
 
-
-.whitebordered {
-text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff,
-1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-filter: progid:DXImageTransform.Microsoft.Glow(Color=#ffffff,Strength=1); /* IE<10 */
-}
-
-.shadowed {
--moz-box-shadow: 2px 2px 3px #333;
--webkit-box-shadow: 2px 2px 3px #333;
-box-shadow: 2px 2px 3px #333;
-}
-
-.top-shadowed {
--moz-box-shadow: 0px -3px 3px #333;
--webkit-box-shadow: 0px -3px 3px #333;
-box-shadow: 0px -3px 3px #333;
-}
-
-.bottom-shadowed {
--moz-box-shadow: 0px 3px 3px #333;
--webkit-box-shadow: 0px 3px 3px #333;
-box-shadow: 0px 3px 3px #333;
-}
-
-.notshadowed {
-	box-shadow:none;
-}
-
-.rounded {
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-}
-
-.notrounded {
-	border-radius:0px;
-}
 
 //Block d'affichage des champs dans les vues vcard et details (partagé ici)
 .block {margin-bottom:15px;}
@@ -62,14 +24,16 @@ box-shadow: 0px 3px 3px #333;
 .block li:last-child:after, .list li:last-child:after {content:'.';}
 
 //Structure
+.largesheet {.whitetexturized ;position:relative;z-index:1;}
 .sheet.container, .footer.container {overflow:hidden; margin:auto;}
 .sheet-wrapper, .footer-wrapper { }
 
 //Blocs principaux
-.zone-gauche {position:relative; z-index:9; padding:5px; margin-bottom:20px;}
-.zone-gauche.on {.whitetexturized }
+.zone-gauche, .contenu  {position:relative; z-index:9; padding:5px; margin-bottom:20px;}
+.zone-gauche.on {.whitetexturized ;}
 .zone-gauche.off {background-color:transparent;}
 .zone-centre {position:relative; z-index:9;}
+
 
 
 //Onoff
@@ -106,7 +70,10 @@ border-bottom-left-radius: 5px;}
 .header .brand .w1, .contenuplus .header .brand .w1 {color:@headerBrandColor1;}
 .header .brand .w2, .contenuplus .header .brand .w2 {color:@headerBrandColor2;}
 .header .brand .w3, .contenuplus .header .brand .w3 {color:@headerBrandColor3;}
-.header  .soustitre, .header .soustitre-small, .header .accroche {clear:both;font-family:@fontFamily1;font-weight:700;.whitebordered;}
+.header h1 {color:@headerBrandColor3;font-size:@headerBrandFontsize;font-weight:bold;.whitebordered;}
+.header  .soustitre, .header .soustitre-small, .header .accroche 
+{clear:both;font-family:@fontFamily1;font-weight:700;.whitebordered;}
+.header h2 {font-size:1em;}
 .header  .soustitre-small {display:none;}
 .header  .accroche {visibility:hidden; height:1px;}
 .contenuplus .header .icon, .contenuplus .header .brand, .contenuplus .header .soustitre, .contenuplus .header .soustitre-small{opacity:1;}
@@ -144,7 +111,7 @@ border-bottom-left-radius: 5px;}
 input.invalid, textarea.invalid {border:1px solid #FF0000!important;}
 
 //Contenu +
-.contenuplus {position:relative;z-index:9;margin-top:25px;margin-bottom:25px;.whitetexturized ;padding:3%;}
+.contenuplus {position:relative;z-index:9;margin-top:25px;margin-bottom:25px;.whitetexturized ; .whitebordered; .contrastedbackground;padding:3%;}
 .contenuplus .retour {font-size:2em; position:absolute; top:20px; right:20px;}
 .contenuplus ul.editor {list-style-type:none;  list-style: none; margin: 0 0 10px;}
 .contenuplus ul.editor li{padding:2px; position:relative; margin-left:15px;}
@@ -158,9 +125,10 @@ input.invalid, textarea.invalid {border:1px solid #FF0000!important;}
 	left:-15px;
 	top:5px;
 }
+.item-page {}
 
 //Footer
-footer {position:relative;.whitetexturized ;color:@footerColor;z-index:9999;padding-bottom:15px;}
+footer {position:relative;background-color:lighten(@textColor,35%);color:@footerColor; .whitebordered; z-index:9999;padding-bottom:15px;}
 footer  h3 {color:@footerTitleColor; font-size:1.6em;font-weight:bold; text-transform:uppercase;line-height:20px;cursor:pointer;}
 footer a {color:@footerLinkColor;}
 footer a:hover {color:@footerLinkHoverColor;}
@@ -174,8 +142,8 @@ footer .login {padding:1%;padding-top:0px;}
 footer .registered .login .guestonly {display:none;}
 
 //Ma carte locale
-footer .macartelocale {background-color:@white; color:@textColor; margin-top:20px;padding:3%;.rounded;.shadowed;}
-footer .macartelocale a, footer .macartelocale h3 {color:@textColor;}
+//footer .macartelocale {background-color:@white; color:@textColor; margin-top:20px;padding:3%;.rounded;.shadowed;}
+//footer .macartelocale a, footer .macartelocale h3 {color:@textColor;}
 
 //Logout
 footer .loggedin {padding:1%;padding-top:20px;}
@@ -193,7 +161,13 @@ footer .social #socialshare {position:relative; right:2%;}
 footer .social #sociallinks {font-size:2em;}
 
 //Links 
-footer .links {font-size:0.8em;margin-top:20px; color:lighten(@footerBackgroundColor,20%);line-height:1.2em;}
+footer .links {font-size:0.8em;margin-top:20px;line-height:1.2em;}
+
+//Derniers inscrits
+.derniersinscrits .entry {float:left; width:100%;margin-bottom:10px;}
+.derniersinscrits .entry #logo {margin-right:2%;}
+.derniersinscrits .entry #titre {font-weight:bold;margin-bottom:5px;}
+.derniersinscrits .entry #categorie {font-size:0.8em;}
 
 //Autres menu
 .nav > li > a:hover {background:none;}
@@ -345,6 +319,10 @@ margin:0 4px 0 0;
 
 //Media Queries  
 @media screen and (max-width: 980px) {
+
+	//Bloc Derniers inscrits
+	footer .derniersinscrits {display:none;}
+
 }	
 
 // Tablets to regular desktops
@@ -407,9 +385,6 @@ margin:0 4px 0 0;
 	footer .menusecondaire {margin-top:0px;}
 	footer .theme, footer .misc {margin-top:30px;}
 	footer .misc {display:none;}
-	
-	//Bloc temporaire Ma carte locale
-	footer .macartelocale {display:none;}
 	
 	//Titres du blog
 	.blog h2 {font-size:2em;}

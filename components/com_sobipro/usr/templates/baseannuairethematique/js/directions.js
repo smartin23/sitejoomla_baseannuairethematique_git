@@ -10,7 +10,9 @@ function geolocalisation(){
 					//jQuery("#saddr-msg").html('Erreur lors de la géolocalisation : '+ status);
 				}
 			});
-		});
+		},
+		function(error) {},
+		{maximumAge:60000, timeout:10000, enableHighAccuracy:false} );
 	}
 	else{
 		//jQuery("#saddr-msg").html('Partage de position non autorisé.');

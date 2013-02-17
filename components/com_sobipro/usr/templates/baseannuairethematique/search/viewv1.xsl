@@ -8,19 +8,22 @@
 <xsl:include href="../common/entries.xsl" />
 
 <xsl:template match="/search">
-
-		<div id="SPSearchForm" 	class="span4">
-		
-			<div>
+	<h3><i class="icon-search icon-large"></i> Rerchercher</h3>
+	<div class="SPSearch">
+		<div>
 			<xsl:apply-templates select="menu" />
 			<xsl:apply-templates select="alphaMenu" />
-			</div>
+		</div>
 	  
-			<div style="clear:both;"/>
+		<div style="clear:both;"/>
+		
+		<div id="SPSearchForm">
       
 			<!--Recherche Autour de...-->
 			<xsl:value-of select="mjradius" disable-output-escaping="yes" />
-
+    
+			<div style="clear:both;"/>
+        
 			<!-- define variable to check if there are more than 3 fields -->
 			<xsl:variable name="fieldsCount">
 				<xsl:value-of select="count(fields/*)" />
@@ -37,7 +40,9 @@
 						  
 						</xsl:if>
 					</xsl:for-each>
- 
+  
+					
+					
 					<!--Extended Search Fields-->				
 					<div id="SPExtSearch" class="customscrollbar">
 						<div class="scrollbar">
@@ -84,25 +89,23 @@
 			</xsl:choose>
 		</div>
 		
-		<div id="SPSearchResults" class="span8">
+		<div style="clear:both;"/>
 	
-			<!--Message de résultats-->
-			<xsl:if test="message">
-			  <div class="message">
-				<xsl:value-of select="message"/>
-			  </div>
-			</xsl:if>
-			
-			<!--Liste des entrées trouvées-->
-			<div class="row-fluid">
-				<xsl:call-template name="entriesLoop" />
-			</div>
-			
-			<!--Pagination-->
-			<xsl:apply-templates select="navigation" />
+		<!--Message de résultats-->
+		<xsl:if test="message">
+		  <div class="message">
+			<xsl:value-of select="message"/>
+		  </div>
+		</xsl:if>
 		
-		</div>
+		<div style="clear:both;"/>
 
+		<!--Liste des entrées trouvées-->
+		<xsl:call-template name="entriesLoop" />
+		
+		<!--Pagination-->
+		<xsl:apply-templates select="navigation" />
+	</div>
 </xsl:template>
 
 <xsl:template name="FieldCell">

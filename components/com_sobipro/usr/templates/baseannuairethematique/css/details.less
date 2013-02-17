@@ -7,10 +7,7 @@
 //CSS general
 @import "../../../../../../templates/baseannuairethematique/css/general.less";
 
-.contrastedbackground {background-color:rgba(255,255,255,1);}
-
 #all {max-width:none!important;}
-
 
 .block-editor ul {list-style-type:none;  list-style: none; margin: 0 0 10px;}
 .block-editor ul li{padding:2px; position:relative; margin-left:15px;}
@@ -121,34 +118,47 @@
 	position:relative;
 }
 
+.tabbable {.notwhitebordered;}
+
 .tabbable.responsive .tab-content {
 	padding:20px;
-	border-left:1px solid @navbarBorder;
-	border-right:1px solid @navbarBorder;
-	border-bottom:1px solid @navbarBorder;
+	
 	.contrastedbackground;
 }
 .tabbable.responsive .nav-tabs, .tabbable.responsive .nav {
 	margin: 0px;
+	border:none;
 }
 
-.tabbable.responsive .nav-tabs li {
-	margin-bottom:-3px;
+.tabbable.responsive .nav-tabs > li {
+
+	.whitebordered;
+	
+	border-style: none;
+	color:@textColor!important;
+
+}
+
+.tabbable.responsive .nav-tabs > li:active{
+	.contrastedbackground;
+	.notwhitebordered;
+
 }
 
 .tabbable.responsive .nav-tabs a {
 	font-size:1.4em;
+	border:none;
 }
 
 .tabbable.responsive .nav-tabs > li > a:active,
 .tabbable.responsive .nav-tabs > .active > a,
 .tabbable.responsive .nav-tabs > .active > a:hover {
-	border-style: none;
-	color:@textColor!important;
-	.contrastedbackground;
+		color:@textColor!important;
+		.contrastedbackground;
 }
 
-@media (max-width: 767px) {
+
+@media (max-width: 979px) {
     body {
       	padding: 0;
     }
@@ -198,13 +208,15 @@
 	-webkit-border-radius: 18px;
 	-moz-border-radius: 18px;
 	border-radius: 18px;
+	
+	.notwhitebordered;
     }
 .tabbable.responsive .nav-tabs > li > a.tab-control.right,
 .tabbable.responsive .nav-tabs > li > span.tab-control-spacer.right {
     float: right;
 }
 .tabbable.responsive .nav-tabs > li > a.tab-control:hover {
-    color: white;
+    color: white!important;
     background: @linkColorHover;
 }
 .tabbable.responsive .nav-tabs > li > span.tab-control-spacer {

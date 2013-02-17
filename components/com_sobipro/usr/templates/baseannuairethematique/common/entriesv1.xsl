@@ -19,8 +19,8 @@
 		</xsl:variable>
 
 		<xsl:for-each select="entries/entry">
-		
-			<div class="accordion-group span6">
+	
+			<div class="accordion-group">
 				<div class="accordion-heading">
 					<a class="accordion-toogle" data-toggle="collapse" data-parent="#entriesaccordion">
 						<xsl:attribute name="href">

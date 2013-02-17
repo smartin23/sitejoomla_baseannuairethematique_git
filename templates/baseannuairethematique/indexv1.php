@@ -51,29 +51,25 @@ $sitename = $app->getCfg('sitename');
 
 <body class="site <?php echo $option . " view-" . $view . " layout-" . $layout . " task-" . str_replace('.','-',$task ). " itemid-" . $itemid . " ";?> <?php if ($this->params->get('fluidContainer')) { echo "fluid"; } ?>">
 
-<div class="largesheet">
 <div class="sheet container">
 			
-		<div class="zone-centre row-fluid">
-		
-				<div id="onoff"><i class="icon-eye-close icon-large"></i></div>
-
-				<header>					
-					<div class="header on">												
-						<jdoc:include type="modules" name="logo" />						
-					</div>	
-				</header>
+		<div class="centre row-fluid">
 		
 				<?php if (($task=='search.results') or ($task=='search.view')) {?>
-				
-				<!--<div class="span12 zone-gauche on">-->
-													
-					<div class="contenu on row-fluid">
+				<div class="span4 zone-gauche on">
+					<div id="onoff"><i class="icon-eye-close icon-large"></i></div>
+					<header>					
+						<div class="header on">												
+							<jdoc:include type="modules" name="logo" />						
+						</div>	
+					</header>
+					
+					<div class="clear"></div>															
+					<div class="contenu on">
 						<jdoc:include type="component" />
 					</div>
 								
-				<!--</div>-->
-				
+				</div>
 				<?php } ?>
 				
 				<?php if (($task!='search.results') and ($task!='search.view')) {?>
@@ -100,7 +96,6 @@ $sitename = $app->getCfg('sitename');
 				</div>
 				<?php } ?>							
 		</div>
-</div>
 </div>
 
 <div class="fullmap container">
@@ -168,23 +163,7 @@ $sitename = $app->getCfg('sitename');
 	Modernizr.load([
 	{
 		test:Modernizr.touch,
-		yep:"/min/g=mobilejs",
-		callback: {
-		"/min/g=mobilejs" : function() {
-			//Support Swipe pour le carousel photos
-			jQuery('.carousel').each(function () {
-				
-				jQuery(this).swiperight(function() {  
-					jQuery(this).carousel('prev');			
-				}); 
-				
-				jQuery(this).swipeleft(function() {  
-					jQuery(this).carousel('next');  
-				}); 
-		
-			});
-		}
-		}
+		yep:"/min/g=mobilejs"
 	}
 	]);
 </script>
@@ -226,25 +205,19 @@ cf. http://stackoverflow.com/questions/12715254/twitter-bootstrap-transition-con
 <!--Carousel-->
 <script type='text/javascript'>
 	jQuery.noConflict();
-	
-	//Carousel photos (description)
-	jQuery('.carousel').carousel({  
-	  interval: 8000 // autoplay à 8s
-	});
-				
-	
-	//Desactivation du conflit avec Mootools (encore utilisé par SobiPro!)
-	window.addEvent('domready', function(){
-		if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
+	if (jQuery('.carousel')) {
+		//Desactivation du conflit avec Mootools (encore utilisé par SobiPro!)
+		window.addEvent('domready', function(){
+			if (typeof jQuery != 'undefined' && typeof MooTools != 'undefined' ) {
 
-		Element.implement({
-		slide: function(how, mode){
-		return this;
-		}
+			Element.implement({
+			slide: function(how, mode){
+			return this;
+			}
+			});
+			}
 		});
-		}
-	});
-
+	}
 </script>
 
 <script type='text/javascript'>

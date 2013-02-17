@@ -37,7 +37,10 @@ jQuery(document).ready(function() {
 	addBootstrapTags();
 	
 	//Tabs & accordion
-	jQuery(".tabbable.responsive").resptabs(); 
+	jQuery(".tabbable.responsive").resptabs({
+    maxSmallWidth: 1200,
+    slideTime: 300
+	}); 
 	/*jQuery('#tabaccordion').children('li').first().children('span.tabaccordionitem').addClass('active').next().addClass('is-open').show();     
     jQuery('#tabaccordion').on('click', 'li > span.tabaccordionitem', function() {
         
@@ -61,25 +64,7 @@ jQuery(document).ready(function() {
       }	  
     });*/
 	
-			
-	//Carousel photos (description)
-	jQuery('#spdecarousel').carousel({  
-	  interval: 8000 // autoplay à 8s
-	});
-	
-	//Support Swipe pour le carousel photos
-	jQuery('#spdecarousel.carousel').each(function () {
 		
-		jQuery(this).swiperight(function() {  
-			jQuery(this).carousel('prev');			
-		}); 
-		
-		jQuery(this).swipeleft(function() {  
-			jQuery(this).carousel('next');  
-		}); 
-		
-	});
-	
 	//Entry social share
 	//Share entry
 	jQuery('.SPDetails #entryshareme').sharrre({
