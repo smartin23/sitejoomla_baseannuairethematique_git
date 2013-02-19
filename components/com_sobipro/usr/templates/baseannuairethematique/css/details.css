@@ -43,11 +43,17 @@ p {
   margin: 0 0 10px;
 }
 .contrastedbackground {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.8);
   behavior: url(../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../scripts/pie100/PIE.php);
 }
 .whitetexturized {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGElEQVQImWNgYGBg+P///384jcKBAbwqADxAH+GUHxlRAAAAAElFTkSuQmCC) repeat;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC) repeat;
+}
+.whitebordered {
+  text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff, 1px 1px #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
+  filter: progid:dximagetransform.microsoft.glow(Color=#ffffff, Strength=1);
+  /* IE<10 */
+
 }
 .notwhitebordered {
   text-shadow: none;
@@ -254,7 +260,7 @@ p {
 }
 .tabbable.responsive .tab-content {
   padding: 20px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.8);
   behavior: url(../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../scripts/pie100/PIE.php);
 }
 .tabbable.responsive .nav-tabs,
@@ -263,11 +269,15 @@ p {
   border: none;
 }
 .tabbable.responsive .nav-tabs > li {
+  text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff, 1px 1px #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
+  filter: progid:dximagetransform.microsoft.glow(Color=#ffffff, Strength=1);
+  /* IE<10 */
+
   border-style: none;
   color: #6a4a3c !important;
 }
 .tabbable.responsive .nav-tabs > li:active {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.8);
   behavior: url(../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../scripts/pie100/PIE.php);
   text-shadow: none;
   filter: none;
@@ -280,7 +290,7 @@ p {
 .tabbable.responsive .nav-tabs > .active > a,
 .tabbable.responsive .nav-tabs > .active > a:hover {
   color: #6a4a3c !important;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.8);
   behavior: url(../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../scripts/pie100/PIE.php);
 }
 @media (max-width: 979px) {
@@ -306,7 +316,7 @@ p {
     padding: 0 15px;
     border: 1px solid #d4d4d4;
     overflow: hidden;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.8);
     behavior: url(../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../scripts/pie100/PIE.php);
   }
   .tabbable.responsive .nav-tabs > li > a {

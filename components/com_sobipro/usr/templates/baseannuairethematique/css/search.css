@@ -61,11 +61,17 @@ p {
   margin: 0 0 10px;
 }
 .contrastedbackground {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.8);
   behavior: url(../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../scripts/pie100/PIE.php);
 }
 .whitetexturized {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGElEQVQImWNgYGBg+P///384jcKBAbwqADxAH+GUHxlRAAAAAElFTkSuQmCC) repeat;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC) repeat;
+}
+.whitebordered {
+  text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff, 1px 1px #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
+  filter: progid:dximagetransform.microsoft.glow(Color=#ffffff, Strength=1);
+  /* IE<10 */
+
 }
 .notwhitebordered {
   text-shadow: none;
@@ -112,6 +118,10 @@ p {
   font-weight: bold;
   margin: 1%;
   margin-bottom: 5px;
+  text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff, 1px 1px #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
+  filter: progid:dximagetransform.microsoft.glow(Color=#ffffff, Strength=1);
+  /* IE<10 */
+
 }
 #spSearchForm .pagination {
   display: none;
@@ -122,6 +132,10 @@ p {
 #SPSearchForm div.SPSearchLabel {
   width: auto;
   margin-right: 2%;
+  text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff, 1px 1px #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
+  filter: progid:dximagetransform.microsoft.glow(Color=#ffffff, Strength=1);
+  /* IE<10 */
+
 }
 #SPSearchForm label {
   line-height: 25px;
@@ -153,6 +167,10 @@ input#mj_rs_center_selector {
 i.locateme {
   cursor: pointer;
   font-size: 2.3em;
+  text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff, 1px 1px #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
+  filter: progid:dximagetransform.microsoft.glow(Color=#ffffff, Strength=1);
+  /* IE<10 */
+
   max-width: 5%;
 }
 div.SPSearchField.radius {
@@ -176,7 +194,7 @@ select#sid_list {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.8);
   behavior: url(../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../scripts/pie100/PIE.php);
 }
 #SPExtSearch div.SPSearchLabel {
@@ -246,7 +264,7 @@ select.sid_list2 {
 }
 .spEntriesListContainer .accordion-group {
   padding: 1%;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.8);
   behavior: url(../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../scripts/pie100/PIE.php);
 }
 .spEntriesListContainer .accordion-heading a {

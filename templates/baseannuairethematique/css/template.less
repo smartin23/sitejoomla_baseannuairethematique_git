@@ -34,10 +34,8 @@ body
 .zone-gauche.off {background-color:transparent;}
 .zone-centre {position:relative; z-index:9;}
 
-
-
 //Onoff
-#onoff {cursor:pointer; position:absolute; top:0; right:0; font-size:1.5em;font-weight:normal; background-color:@thematicColor;color:#fff;padding:1%;
+#onoff {cursor:pointer; position:absolute; z-index:999; top:0; right:100px; font-size:1.5em;font-weight:normal; background-color:@thematicColor;color:#fff;padding:1%;
 -moz-border-radius-bottomright: 5px;
 border-bottom-right-radius: 5px;
 -moz-border-radius-bottomleft: 5px;
@@ -45,16 +43,18 @@ border-bottom-left-radius: 5px;}
 
 //Contenu / Onoff
 .contenu {overflow:hidden; position:relative;}
-.contenu.on, .header.on{
+.contenu.on, .header.on, .fullmap.on {
 	//transition: 1s opacity 0.3s;  
 	//opacity:1;
-	display:block;
+	//display:block;
+	z-index:99;
 }
 
-.contenu.off, .header.off{
+.contenu.off, .header.off, .fullmap.off{
 	//transition: 1s opacity 0.3s;  
 	//opacity:0;
-	display:none;
+	//display:none;
+	z-index:0;
 }
 
 //Header
@@ -73,7 +73,7 @@ border-bottom-left-radius: 5px;}
 .header h1 {color:@headerBrandColor3;font-size:@headerBrandFontsize;font-weight:bold;.whitebordered;}
 .header  .soustitre, .header .soustitre-small, .header .accroche 
 {clear:both;font-family:@fontFamily1;font-weight:700;.whitebordered;}
-.header h2 {font-size:1em;}
+.header h2 {font-size:1em;font-weight:bold;}
 .header  .soustitre-small {display:none;}
 .header  .accroche {visibility:hidden; height:1px;}
 .contenuplus .header .icon, .contenuplus .header .brand, .contenuplus .header .soustitre, .contenuplus .header .soustitre-small{opacity:1;}
@@ -128,7 +128,7 @@ input.invalid, textarea.invalid {border:1px solid #FF0000!important;}
 .item-page {}
 
 //Footer
-footer {position:relative;background-color:lighten(@textColor,35%);color:@footerColor; .whitebordered; z-index:9999;padding-bottom:15px;}
+footer {position:relative;font-weight:bold;color:@footerColor;.whitetexturized ;.contrastedbackground; z-index:9999;padding-bottom:15px;}
 footer  h3 {color:@footerTitleColor; font-size:1.6em;font-weight:bold; text-transform:uppercase;line-height:20px;cursor:pointer;}
 footer a {color:@footerLinkColor;}
 footer a:hover {color:@footerLinkHoverColor;}
@@ -329,7 +329,7 @@ margin:0 4px 0 0;
 @media screen and (min-width: 980px) and (max-width: 1200px) {
 	
 	//Logo
-	.header .brand {font-size:@headerBrandFontsize980-1200;}
+	.header .brand, .header h1 {font-size:@headerBrandFontsize980-1200;}
 	.header .icon  {font-size:@headerIconFontsize980-1200;}
 	.header .soustitre {font-size:0.8em;}
 }
@@ -338,10 +338,11 @@ margin:0 4px 0 0;
 // Tablets to regular desktops
 @media screen and (min-width: 768px) and (max-width: 979px) {
 
-	.span4.zone-gauche {width:42%!important;}
+	//.span4.zone-gauche {width:42%!important;}
+	.accordion-group {float:left;width:100%!important;}
 	
 	//Logo
-	.header .brand {font-size:@headerBrandFontsize768-980;}
+	.header .brand, .header h1 {font-size:@headerBrandFontsize768-980;}
 	.header .icon  {font-size:@headerIconFontsize768-980;}
 	.header .soustitre {font-size:0.6em;}
 	
@@ -422,7 +423,7 @@ margin:0 4px 0 0;
 @media screen and (max-width: 320px) {
 
 	//Logo
-	.header .brand {font-size:@headerBrandFontsize320;}
+	.header .brand, .header h1  {font-size:@headerBrandFontsize320;}
 	.header .icon  {font-size:@headerIconFontsize320;}
 	.header .soustitre {font-size:0.7em;}
 }

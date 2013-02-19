@@ -38,7 +38,7 @@ jQuery(document).ready(function() {
 	
 	//Tabs & accordion
 	jQuery(".tabbable.responsive").resptabs({
-    maxSmallWidth: 1200,
+    maxSmallWidth: 979,
     slideTime: 300
 	}); 
 	/*jQuery('#tabaccordion').children('li').first().children('span.tabaccordionitem').addClass('active').next().addClass('is-open').show();     

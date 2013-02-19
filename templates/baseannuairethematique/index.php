@@ -50,13 +50,13 @@ $sitename = $app->getCfg('sitename');
 </head>
 
 <body class="site <?php echo $option . " view-" . $view . " layout-" . $layout . " task-" . str_replace('.','-',$task ). " itemid-" . $itemid . " ";?> <?php if ($this->params->get('fluidContainer')) { echo "fluid"; } ?>">
-
+<div id="onoff"><i class="icon-eye-close icon-large"></i></div>
 <div class="largesheet">
-<div class="sheet container">
+	<div class="sheet container">
 			
 		<div class="zone-centre row-fluid">
 		
-				<div id="onoff"><i class="icon-eye-close icon-large"></i></div>
+				
 
 				<header>					
 					<div class="header on">												
@@ -88,10 +88,7 @@ $sitename = $app->getCfg('sitename');
 							<div class="retour"><a href="javascript:history.go(-1)"><i class="icon-remove-sign icon-large"></i></a></div>
 					<?php } ?>
 						
-						<div class="span12 header">
-							<jdoc:include type="modules" name="logo" />			
-						</div>
-						<div class="clear"></div>
+						
 					
 						<jdoc:include type="message" />
 						<jdoc:include type="component" />	
@@ -315,7 +312,7 @@ function adaptOnResize() {
 	var usedWidth =  window.innerWidth ? window.innerWidth : jQuery(window).width();
 	
 	//La partie centrale s'affiche sur la hauteur totale - la hauteur des titres du footer.
-	jQuery('.centre').css('min-height', usedHeight-jQuery('footer h3').outerHeight(true)); 
+	//jQuery('.zone-centre').css('min-height', usedHeight-jQuery('footer h3').outerHeight(true)); 
 	
 	//Les cartes doivent s'afficher sur la hauteur disponible
 	jQuery('#JmapsHome').height(usedHeight).width(usedWidth);
@@ -364,21 +361,37 @@ jQuery(document).ready(function() {
 		}		
 	});
 	
+		var usedHeight = window.innerHeight ? window.innerHeight : jQuery(window).height();
+	var usedWidth =  window.innerWidth ? window.innerWidth : jQuery(window).width();
+	
 	//On/off
 	var contenu = jQuery('.contenu');
-	var header = jQuery('.header');
-	var zonegauche = jQuery('.zone-gauche');
+	//var header = jQuery('.header');
+	//var zonegauche = jQuery('.zone-gauche');
+	var fullmap = jQuery('.fullmap');
+	fullmap.height(usedHeight);
+	
 	jQuery("#onoff").click(function() {
 		if (contenu.hasClass('on')) {
 			jQuery(this).html('<i class="icon-eye-open icon-large"></i>');
 			contenu.removeClass('on');
 			contenu.addClass('off');
 			
+			fullmap.removeClass('off');
+			fullmap.addClass('on');
+			
+				var usedHeight = window.innerHeight ? window.innerHeight : jQuery(window).height();
+	var usedWidth =  window.innerWidth ? window.innerWidth : jQuery(window).width();
+			jQuery('.zone-centre').css('min-height', usedHeight-jQuery('footer h3').outerHeight(true)); 
+			
 			//On cache/montre aussi le header
-			header.removeClass('on');
+			/*header.removeClass('on');
 			header.addClass('off');
 			zonegauche.removeClass('on');
-			zonegauche.addClass('off');
+			zonegauche.addClass('off');*/
+			/*sheet.removeClass('on');
+			sheet.addClass('off');*/
+			
 		}
 		else
 		{
@@ -386,11 +399,18 @@ jQuery(document).ready(function() {
 			contenu.removeClass('off');
 			contenu.addClass('on');
 			
+			fullmap.removeClass('on');
+			fullmap.addClass('off');
+			
+			jQuery('.zone-centre').css('min-height', 0); 
+			
 			//On cache/montre aussi le header
-			header.removeClass('off');
+			/*header.removeClass('off');
 			header.addClass('on');
 			zonegauche.removeClass('off');
-			zonegauche.addClass('on');
+			zonegauche.addClass('on');*/
+			/*sheet.removeClass('off');
+			sheet.addClass('on');*/
 		}
 	});
 							
