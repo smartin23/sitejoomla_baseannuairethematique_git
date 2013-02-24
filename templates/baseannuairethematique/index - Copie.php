@@ -51,23 +51,47 @@ $sitename = $app->getCfg('sitename');
 
 <body class="site <?php echo $option . " view-" . $view . " layout-" . $layout . " task-" . str_replace('.','-',$task ). " itemid-" . $itemid . " ";?> <?php if ($this->params->get('fluidContainer')) { echo "fluid"; } ?>">
 
-<header>					
-<div class="header on">												
-	<jdoc:include type="modules" name="logo" />						
-</div>	
-</header>
-				
-<div class="page">
-	<?php if ($task=='search.results'){ ?>
-		<div id="onoff"><i class="icon-eye-close icon-large"></i></div>
-	<?php } ?>
+<!--<div id="onoff"><i class="icon-eye-close icon-large"></i></div>-->
+
 	
-	<div class="largesheet">
+	<header>					
+		<div class="header on">												
+			<jdoc:include type="modules" name="logo" />						
+		</div>	
+	</header>
+	
+	
+	
+				<?php if ($task=='search.results') {?>
+				<div class="fullmap">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="mapgrip">
+				<jdoc:include type="modules" name="map2" style="standard" />
+					</div>		
+		</div>
+	</div>
+	</div>
+				<?php } else if ($task=='search.view'){ ?>
+				<div class="fullmap">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="mapgrip">
+				<jdoc:include type="modules" name="map1" style="standard" />
+					</div>		
+		</div>
+	</div>
+	</div>
+				<?php } ?>				
+		
+
 	
 	<div class="sheet container">
 			
 		<div class="zone-centre row-fluid">
-	
+		
+				
+
 				<?php if (($task=='search.results') or ($task=='search.view')) {?>
 				
 				<!--<div class="span12 zone-gauche on">-->
@@ -91,7 +115,9 @@ $sitename = $app->getCfg('sitename');
 					<?php } else {?>
 							<div class="retour"><a href="javascript:history.go(-1)"><i class="icon-remove-sign icon-large"></i></a></div>
 					<?php } ?>
-							
+						
+						
+					
 						<jdoc:include type="message" />
 						<jdoc:include type="component" />	
 						
@@ -100,22 +126,7 @@ $sitename = $app->getCfg('sitename');
 				<?php } ?>							
 		</div>
 	</div>
-	</div>
-</div>
 
-<div class="fullmap container">
-	<div class="row-fluid">
-		<div class="span12">
-			<div class="mapgrip">
-				<?php if ($task=='search.results') {?>
-				<jdoc:include type="modules" name="map2" style="standard" />
-				<?php } else if ($task=='search.view'){ ?>
-				<jdoc:include type="modules" name="map1" style="standard" />
-				<?php } ?>				
-			</div>		
-		</div>
-	</div>
-</div>
 
 <footer>
 	<div class="container">	
@@ -315,8 +326,7 @@ function adaptOnResize() {
 	var usedWidth =  window.innerWidth ? window.innerWidth : jQuery(window).width();
 	
 	//La partie centrale s'affiche sur la hauteur totale - la hauteur des titres du footer.
-	jQuery('.zone-centre').css('min-height', usedHeight-jQuery('footer h3').outerHeight(true)-jQuery('header').outerHeight(true)); 
-	
+	jQuery('.zone-centre').css('min-height', usedHeight-jQuery('footer h3').outerHeight(true)); 
 	
 	//Les cartes doivent s'afficher sur la hauteur disponible
 	jQuery('#JmapsHome').height(usedHeight).width(usedWidth);
@@ -365,14 +375,14 @@ jQuery(document).ready(function() {
 		}		
 	});
 	
-		//var usedHeight = window.innerHeight ? window.innerHeight : jQuery(window).height();
-	//var usedWidth =  window.innerWidth ? window.innerWidth : jQuery(window).width();
+	var usedHeight = window.innerHeight ? window.innerHeight : jQuery(window).height();
+	var usedWidth =  window.innerWidth ? window.innerWidth : jQuery(window).width();
 	
 	//On/off
 	var contenu = jQuery('.contenu');
 	//var header = jQuery('.header');
 	//var zonegauche = jQuery('.zone-gauche');
-	var fullmap = jQuery('.fullmap');
+	//var fullmap = jQuery('.fullmap');
 	//fullmap.height(usedHeight);
 	
 	jQuery("#onoff").click(function() {
@@ -384,9 +394,9 @@ jQuery(document).ready(function() {
 			fullmap.removeClass('off');
 			fullmap.addClass('on');
 			
-				//var usedHeight = window.innerHeight ? window.innerHeight : jQuery(window).height();
-	//var usedWidth =  window.innerWidth ? window.innerWidth : jQuery(window).width();
-			//jQuery('.zone-centre').css('min-height', usedHeight-jQuery('footer h3').outerHeight(true)-jQuery('header').outerHeight(true)); 
+			var usedHeight = window.innerHeight ? window.innerHeight : jQuery(window).height();
+			var usedWidth =  window.innerWidth ? window.innerWidth : jQuery(window).width();
+			jQuery('.zone-centre').css('min-height', usedHeight-jQuery('footer h3').outerHeight(true)); 
 			
 			//On cache/montre aussi le header
 			/*header.removeClass('on');
@@ -406,7 +416,7 @@ jQuery(document).ready(function() {
 			fullmap.removeClass('on');
 			fullmap.addClass('off');
 			
-			//jQuery('.zone-centre').css('min-height', 0); 
+			jQuery('.zone-centre').css('min-height', 0); 
 			
 			//On cache/montre aussi le header
 			/*header.removeClass('off');

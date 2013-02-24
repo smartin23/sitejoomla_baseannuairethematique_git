@@ -43,7 +43,7 @@ p {
   margin: 0 0 10px;
 }
 .contrastedbackground {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #ffffff;
   behavior: url(././../../../scripts/pie100/PIE.php);
 }
 .whitetexturized {
@@ -70,9 +70,9 @@ p {
   box-shadow: 0px -3px 3px #333333;
 }
 .bottom-shadowed {
-  -moz-box-shadow: 0px 3px 3px #333;
-  -webkit-box-shadow: 0px 3px 3px #333;
-  box-shadow: 0px 3px 3px #333;
+  -moz-box-shadow: 0px 1px 2px #333;
+  -webkit-box-shadow: 0px 1px 2px #333;
+  box-shadow: 0px 1px 2px #333;
 }
 .notshadowed {
   box-shadow: none;

@@ -24,34 +24,33 @@ body
 .block li:last-child:after, .list li:last-child:after {content:'.';}
 
 //Structure
-.page {position:relative;}
-.largesheet {position:relative;.whitetexturized ;z-index:1;}
-.sheet.container, .footer.container {overflow:hidden; margin:auto;}
+.largesheet {.whitetexturized ;position:relative;z-index:1;}
+.sheet.container, .footer.container {overflow:hidden; margin:auto;clear:left;}
 .sheet-wrapper, .footer-wrapper { }
 
 //Blocs principaux
-.zone-gauche, .contenu  {position:relative; z-index:9; margin-bottom:20px; margin-top:20px;}
+.zone-gauche, .contenu  {position:relative; z-index:9; margin-bottom:20px;}
 .zone-gauche.on {.whitetexturized ;}
 .zone-gauche.off {background-color:transparent;}
 .zone-centre {position:relative; z-index:9;}
 
 //Onoff
-#onoff {cursor:pointer; position:absolute; z-index:999; top:0; right:60px; font-size:1.5em;font-weight:normal; background-color:@thematicColor;color:#fff;padding:5px;
+#onoff {cursor:pointer; position:absolute; z-index:999; top:0; right:60px; font-size:1.5em;font-weight:normal; background-color:@thematicColor;color:#fff;padding:1%;
 -moz-border-radius-bottomright: 5px;
 border-bottom-right-radius: 5px;
 -moz-border-radius-bottomleft: 5px;
 border-bottom-left-radius: 5px;}
 
 //Contenu / Onoff
-.contenu {overflow:hidden; position:relative;}
-.contenu.on, .fullmap.on {
+.contenu {overflow:hidden; position:relative; margin-top:20px; padding-bottom:20px;}
+.contenu.on, .header.on, .fullmap.on {
 	//transition: 1s opacity 0.3s;  
 	//opacity:1;
 	//display:block;
 	z-index:99;
 }
 
-.contenu.off, .fullmap.off{
+.contenu.off, .header.off, .fullmap.off{
 	//transition: 1s opacity 0.3s;  
 	//opacity:0;
 	//display:none;
@@ -59,28 +58,30 @@ border-bottom-left-radius: 5px;}
 }
 
 //Header
-.header {position:relative; z-index:999;background-color:#F0EDE5;padding:1%;padding-top:5px;padding-bottom:5px;.bottom-shadowed;}
+.header {width:100%;float:left;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;}
+.logo {padding:1%;}
 .contenuplus .header {margin:0 0 25px!important; padding:0!important;}
 .header a {color:@textColor;}
 .header a:hover {color:lighten(@textColor,5%)!important;}
-.header .titresite {float:left;}
+.header .titresite, .header .soustitre {float:right;}
 .header .icon {font-size:@headerIconFontsize; line-height:100%; color:@headerIconColor; .whitebordered;}
 .header .icon a, .header .icon a:hover {color:@headerIconColor;}
-.header .icon {position:relative; }
+.header .icon {float:right}
 .header .brand {font-family:@fontFamily1;font-size:@headerBrandFontsize;line-height:1.2em;font-weight:bold;.whitebordered;}
 .header .brand .w1, .contenuplus .header .brand .w1 {color:@headerBrandColor1;}
 .header .brand .w2, .contenuplus .header .brand .w2 {color:@headerBrandColor2;}
 .header .brand .w3, .contenuplus .header .brand .w3 {color:@headerBrandColor3;}
-.header h1 {text-align:right;color:@headerBrandColor3;font-size:@headerBrandFontsize;font-weight:bold;.whitebordered;}
+.header h1 {color:@headerBrandColor3;font-size:@headerBrandFontsize;font-weight:bold;.whitebordered;}
 .header  .soustitre, .header .soustitre-small, .header .accroche 
 {clear:both;font-family:@fontFamily1;font-weight:700;.whitebordered;}
-.header h2 {font-size:1em;font-weight:bold;text-align:right;margin:0; padding:0;}
+.header h2 {font-size:1em;font-weight:bold;margin-top:0px;}
 .header  .soustitre-small {display:none;}
 .header  .accroche {visibility:hidden; height:1px;}
 .contenuplus .header .icon, .contenuplus .header .brand, .contenuplus .header .soustitre, .contenuplus .header .soustitre-small{opacity:1;}
 
 //Google maps
 .fullmap {position:fixed;top:0;left:0;width:100%;max-width:100%;z-index:0;}
+//.fullmap {clear:left;position:relative; overflow:hidden; width:100%; height:380px;}
 .fullmap.container-fluid {padding:0!important;margin:0!important;}
 
 #Jmaps img, #JmapsSearch img, #JmapsHome img, #field_jmapsmarker img {max-width:none!important;}
@@ -112,8 +113,8 @@ border-bottom-left-radius: 5px;}
 input.invalid, textarea.invalid {border:1px solid #FF0000!important;}
 
 //Contenu +
-.contenuplus {position:relative;z-index:9;margin-top:25px;margin-bottom:25px; .contrastedbackground;padding:3%;}
-.contenuplus .retour {font-size:2em; position:absolute; top:-10px; right:-10px;}
+.contenuplus {position:relative;z-index:9;margin-top:25px;margin-bottom:25px;padding:3%;}
+.contenuplus .retour {font-size:2em; float:right; position:relative; top:0px; right:20px;margin-bottom:20px;}
 .contenuplus ul.editor {list-style-type:none;  list-style: none; margin: 0 0 10px;}
 .contenuplus ul.editor li{padding:2px; position:relative; margin-left:15px;}
 .contenuplus ul.editor li:before {
@@ -128,8 +129,9 @@ input.invalid, textarea.invalid {border:1px solid #FF0000!important;}
 }
 .item-page {}
 
+
 //Footer
-footer {position:relative;font-weight:bold;color:@footerColor;background-color:#F0EDE5; z-index:9999;padding-bottom:15px;}
+footer {position:relative;clear:left;color:@footerColor;background-color:#F4F3F0; z-index:9999;padding-bottom:15px;padding-top:20px;border-top:1px solid @lightBorderColor;}
 footer  h3 {color:@footerTitleColor; font-size:1.6em;font-weight:bold; text-transform:uppercase;line-height:20px;cursor:pointer;}
 footer a {color:@footerLinkColor;}
 footer a:hover {color:@footerLinkHoverColor;}
@@ -332,7 +334,7 @@ margin:0 4px 0 0;
 	//Logo
 	.header .brand, .header h1 {font-size:@headerBrandFontsize980-1200;}
 	.header .icon  {font-size:@headerIconFontsize980-1200;}
-	.header .soustitre h2{font-size:1em;}
+	.header .soustitre {font-size:0.8em;}
 }
 
 
@@ -345,7 +347,7 @@ margin:0 4px 0 0;
 	//Logo
 	.header .brand, .header h1 {font-size:@headerBrandFontsize768-980;}
 	.header .icon  {font-size:@headerIconFontsize768-980;}
-	.header .soustitre h2 {font-size:1em;}
+	.header .soustitre {font-size:0.8em;}
 	
 	//.spEntriesListContainer .spEntriesListCell  #logo {float:none;margin-bottom:15px;}
 	//.spEntriesListContainer .spEntriesListTitle #titre {clear:both;}
@@ -374,9 +376,10 @@ margin:0 4px 0 0;
 	//.map1, .map2 {width:95%; }
 
 	//On supprime le bouton de masquage de la partie gauche
-	//#onoff {/*display:none*/ position:fixed; top:0px; z-index:9999;}
+	#onoff {/*display:none*/ position:fixed; top:0px; z-index:9999;}
 		
 	//Titre header
+	.header {padding-top:5px;padding-bottom:20px;}
 	//header
 	.header .soustitre {display:none;}
 	.header .soustitre-small {display:block;text-align:right;margin-right:3%;}
@@ -406,7 +409,6 @@ margin:0 4px 0 0;
 	
 	.header .brand, .header h1  {font-size:@headerBrandFontsize480;}
 	.header .icon  {font-size:@headerIconFontsize480;}
-	.header .soustitre h2{font-size:0.8em;}
 }
 
 @media screen and (min-width:480px) and (max-width: 767px) {
@@ -429,7 +431,7 @@ margin:0 4px 0 0;
 	//Logo
 	.header .brand, .header h1  {font-size:@headerBrandFontsize320;}
 	.header .icon  {font-size:@headerIconFontsize320;}
-	.header .soustitre h2{font-size:0.7em;}
+	.header .soustitre {font-size:0.7em;}
 }
 
 @media print {

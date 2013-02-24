@@ -43,8 +43,8 @@ p {
   margin: 0 0 10px;
 }
 .contrastedbackground {
-  background-color: rgba(255, 255, 255, 0.8);
-  behavior: url(././././././../../../scripts/pie100/PIE.php);
+  background-color: #ffffff;
+  behavior: url(././././../../../scripts/pie100/PIE.php);
 }
 .whitetexturized {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC) repeat;
@@ -70,9 +70,9 @@ p {
   box-shadow: 0px -3px 3px #333333;
 }
 .bottom-shadowed {
-  -moz-box-shadow: 0px 3px 3px #333;
-  -webkit-box-shadow: 0px 3px 3px #333;
-  box-shadow: 0px 3px 3px #333;
+  -moz-box-shadow: 0px 1px 2px #333;
+  -webkit-box-shadow: 0px 1px 2px #333;
+  box-shadow: 0px 1px 2px #333;
 }
 .notshadowed {
   box-shadow: none;
@@ -113,9 +113,12 @@ body {
 .list li:last-child:after {
   content: '.';
 }
-.largesheet {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC) repeat;
+.page {
   position: relative;
+}
+.largesheet {
+  position: relative;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC) repeat;
   z-index: 1;
 }
 .sheet.container,
@@ -127,8 +130,8 @@ body {
 .contenu {
   position: relative;
   z-index: 9;
-  padding: 5px;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 .zone-gauche.on {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC) repeat;
@@ -145,12 +148,12 @@ body {
   position: absolute;
   z-index: 999;
   top: 0;
-  right: 100px;
+  right: 60px;
   font-size: 1.5em;
   font-weight: normal;
   background-color: #6a4a3c;
   color: #fff;
-  padding: 1%;
+  padding: 5px;
   -moz-border-radius-bottomright: 5px;
   border-bottom-right-radius: 5px;
   -moz-border-radius-bottomleft: 5px;
@@ -161,19 +164,23 @@ body {
   position: relative;
 }
 .contenu.on,
-.header.on,
 .fullmap.on {
   z-index: 99;
 }
 .contenu.off,
-.header.off,
 .fullmap.off {
   z-index: 0;
 }
 .header {
+  position: relative;
+  z-index: 999;
+  background-color: #F0EDE5;
   padding: 1%;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  -moz-box-shadow: 0px 1px 2px #333;
+  -webkit-box-shadow: 0px 1px 2px #333;
+  box-shadow: 0px 1px 2px #333;
 }
 .contenuplus .header {
   margin: 0 0 25px!important;
@@ -189,7 +196,7 @@ body {
   float: left;
 }
 .header .icon {
-  font-size: 6em;
+  font-size: 2em;
   line-height: 100%;
   color: #fcd036;
   text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff, 1px 1px #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
@@ -202,12 +209,11 @@ body {
   color: #fcd036;
 }
 .header .icon {
-  float: left;
-  margin-right: 1%;
+  position: relative;
 }
 .header .brand {
   font-family: "Dosis", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 2.5em;
+  font-size: 1.5em;
   line-height: 1.2em;
   font-weight: bold;
   text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff, 1px 1px #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
@@ -228,8 +234,9 @@ body {
   color: #fcd036;
 }
 .header h1 {
+  text-align: right;
   color: #fcd036;
-  font-size: 2.5em;
+  font-size: 1.5em;
   font-weight: bold;
   text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff, 1px 1px #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
   filter: progid:dximagetransform.microsoft.glow(Color=#ffffff, Strength=1);
@@ -250,6 +257,9 @@ body {
 .header h2 {
   font-size: 1em;
   font-weight: bold;
+  text-align: right;
+  margin: 0;
+  padding: 0;
 }
 .header .soustitre-small {
   display: none;
@@ -340,20 +350,15 @@ textarea.invalid {
   z-index: 9;
   margin-top: 25px;
   margin-bottom: 25px;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC) repeat;
-  text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff, 1px 1px #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
-  filter: progid:dximagetransform.microsoft.glow(Color=#ffffff, Strength=1);
-  /* IE<10 */
-
-  background-color: rgba(255, 255, 255, 0.8);
-  behavior: url(././././././../../../scripts/pie100/PIE.php);
+  background-color: #ffffff;
+  behavior: url(././././../../../scripts/pie100/PIE.php);
   padding: 3%;
 }
 .contenuplus .retour {
   font-size: 2em;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: -10px;
+  right: -10px;
 }
 .contenuplus ul.editor {
   list-style-type: none;
@@ -379,9 +384,7 @@ footer {
   position: relative;
   font-weight: bold;
   color: #6a4a3c;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC) repeat;
-  background-color: rgba(255, 255, 255, 0.8);
-  behavior: url(././././././../../../scripts/pie100/PIE.php);
+  background-color: #F0EDE5;
   z-index: 9999;
   padding-bottom: 15px;
 }
@@ -629,13 +632,13 @@ table.acymailing_form {
 @media screen and (min-width: 980px) and (max-width: 1200px) {
   .header .brand,
   .header h1 {
-    font-size: 2.2em;
+    font-size: 1.5em;
   }
   .header .icon {
-    font-size: 5.5em;
+    font-size: 2em;
   }
-  .header .soustitre {
-    font-size: 0.8em;
+  .header .soustitre h2 {
+    font-size: 1em;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 979px) {
@@ -645,29 +648,19 @@ table.acymailing_form {
   }
   .header .brand,
   .header h1 {
-    font-size: 2em;
+    font-size: 1.5em;
   }
   .header .icon {
-    font-size: 5em;
+    font-size: 2em;
   }
-  .header .soustitre {
-    font-size: 0.6em;
+  .header .soustitre h2 {
+    font-size: 1em;
   }
   footer h3 {
     font-size: 1.6em!important;
   }
 }
 @media screen and (max-width: 767px) {
-  #onoff {
-    /*display:none*/
-    position: fixed;
-    top: 0px;
-    z-index: 9999;
-  }
-  .header {
-    padding-top: 5px;
-    padding-bottom: 20px;
-  }
   .header .soustitre {
     display: none;
   }
@@ -710,6 +703,16 @@ table.acymailing_form {
   .blog h3 {
     font-size: 1.6em;
   }
+  .header .brand,
+  .header h1 {
+    font-size: 1.2em;
+  }
+  .header .icon {
+    font-size: 1.5em;
+  }
+  .header .soustitre h2 {
+    font-size: 0.8em;
+  }
 }
 @media screen and (min-width: 480px) and (max-width: 767px) {
   footer .partenaires img {
@@ -731,12 +734,12 @@ table.acymailing_form {
 @media screen and (max-width: 320px) {
   .header .brand,
   .header h1 {
-    font-size: 2em;
+    font-size: 1.2em;
   }
   .header .icon {
-    font-size: 5em;
+    font-size: 1.5em;
   }
-  .header .soustitre {
+  .header .soustitre h2 {
     font-size: 0.7em;
   }
 }
