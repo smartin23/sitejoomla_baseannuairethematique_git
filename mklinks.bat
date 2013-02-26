@@ -58,6 +58,11 @@ rmdir mod_jmaps
 MKLINK /D mod_jmaps D:\wamp21e\www\sitejoomla_baseannuaire_git\modules\mod_jmaps
 pause
 
+cd \wamp21e\www\sitejoomla_baseannuairethematique\modules
+rmdir mod_sobipro_entries
+MKLINK /D mod_sobipro_entries D:\wamp21e\www\sitejoomla_baseannuaire_git\modules\mod_sobipro_entries
+pause
+
 cd \wamp21e\www\sitejoomla_baseannuairethematique\plugins\system
 rmdir plugin_googlemap2
 MKLINK /D plugin_googlemap2 D:\wamp21e\www\sitejoomla_baseannuaire_git\plugins\system\plugin_googlemap2

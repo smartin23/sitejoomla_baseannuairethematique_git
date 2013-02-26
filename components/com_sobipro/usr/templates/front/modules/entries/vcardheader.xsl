@@ -3,7 +3,7 @@
 <xsl:output method="xml" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" encoding="UTF-8"/>
 <xsl:template name="vcardheader">
 
-						<xsl:if test="string-length(fields/field_logo/data/@image) &gt; 0">
+						<xsl:if test="string-length(fields/field_logo/data/@thumbnail) &gt; 0">
 							<div id="logo" class="SPField pull-left">							
 								<xsl:element name="img">
 								  <xsl:attribute name="src">
