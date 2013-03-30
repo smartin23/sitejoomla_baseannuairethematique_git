@@ -13,28 +13,31 @@
     padding: 0;
 }
 
+//Amenagement Bootstrap
+.btn-primary {text-shadow:none; color:@textColor;}
+
 //Titres
 h1 {font-family:@fontFamily1; font-size:1em;font-weight:normal;margin:0; padding:0;}
 h2 {font-family:@fontFamily1; font-size:2em; line-height:1em; font-weight:normal; word-spacing:0.2em;margin: 10px 0;}
 h3 {font-family:@fontFamily1; font-size:1.8em;font-weight:normal; word-spacing:0.2em;color:@textColor;margin: 10px 0;}
 
-a {text-decoration:none;}
-a:hover {text-decoration:none; }
+a {color:@thematicColor;text-decoration:none;}
+a:hover {color:lighten(@thematicColor,15%);text-decoration:none; }
 
 p {margin:0 0 10px;}
 
 .contrastedbackground {
 	background-color:rgba(255,255,255,1);
-	behavior: url(../../../scripts/pie100/PIE.php);
+	behavior: url(/PIE.php);
 }
 
 .whitetexturized {background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC) repeat;}
 
-
 .whitebordered {
-text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff,
-1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-filter: progid:DXImageTransform.Microsoft.Glow(Color=#ffffff,Strength=1); /* IE<10 */
+text-shadow: 1px 0 2px #fff, -1px 0 2px #fff, 0 1px 2px #fff, 0 -1px 2px #fff,
+1px 1px 2px #fff, -1px -1px 2px #fff, 1px -1px 2px #fff, -1px 1px 2px #fff;
+behavior: url(/PIE.php);
+//filter: progid:DXImageTransform.Microsoft.Glow(Color=#ffffff,Strength=4); /* IE<10 */
 }
 
 .notwhitebordered {
@@ -46,31 +49,69 @@ filter: progid:DXImageTransform.Microsoft.Glow(Color=#ffffff,Strength=1); /* IE<
 -moz-box-shadow: 2px 2px 3px #333;
 -webkit-box-shadow: 2px 2px 3px #333;
 box-shadow: 2px 2px 3px #333;
+behavior: url(/PIE.php);
 }
 
 .top-shadowed {
--moz-box-shadow: 0px -3px 3px #333;
--webkit-box-shadow: 0px -3px 3px #333;
-box-shadow: 0px -3px 3px #333;
+-moz-box-shadow: 0px 0px 3px #333;
+-webkit-box-shadow: 0px 0px 3px #333;
+box-shadow: 0px 0px 3px #333;
+behavior: url(/PIE.php);
 }
 
 .bottom-shadowed {
 -moz-box-shadow: 0px 1px 2px #333;
 -webkit-box-shadow: 0px 1px 2px #333;
 box-shadow: 0px 1px 2px #333;
+behavior: url(/PIE.php);
 }
 
 .notshadowed {
-	box-shadow:none;
+	box-shadow:none;	
+}
+
+.text-shadowed {
+	text-shadow: @textColor 0.1em 0.1em 0.2em;
+	behavior: url(/PIE.php);
 }
 
 .rounded {
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+	behavior: url(/PIE.php);
 }
 
 .notrounded {
 	border-radius:0px;
 }
 
+.lifted:before, .lifted:after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	-ms-transform: skew(-3deg,-2deg);
+	-webkit-transform: skew(-3deg,-2deg); /* Safari and Chrome */
+	-o-transform: skew(-3deg,-2deg); /* Opera */
+	-moz-transform: skew(-3deg,-2deg); /* Firefox */
+	bottom: 14px;
+	box-shadow: 0 15px 5px rgba(0, 0, 0, 0.3);
+	height: 50px;
+	left: 5px;
+	max-width: 50%;
+	width: 50%;
+	behavior: url(/PIE.php);
+}
+.lifted:after {
 
+	-ms-transform: skew(3deg,2deg); /* IE 9 */
+	-webkit-transform: skew(3deg,2deg); /* Safari and Chrome */
+	-o-transform: skew(3deg,2deg); /* Opera */
+	-moz-transform: skew(3deg,2deg); /* Firefox */
+	left: auto;
+	right: 5px;
+	behavior: url(/PIE.php);
+}
+
+.lifted {
+	position:relative;
+}

@@ -10,7 +10,14 @@
 								  <xsl:value-of select="fields/field_logo/data/@thumbnail" />
 								  </xsl:attribute>
 								  <xsl:attribute name="alt">
-								  <xsl:value-of select="entry/name" />
+									<xsl:choose>
+									<xsl:when test="string-length(name) &gt; 0">
+									<xsl:value-of select="name" />
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:value-of select="fields/field_name/data" />
+									</xsl:otherwise>
+									</xsl:choose>
 								  </xsl:attribute>
 								</xsl:element>							
 							</div>
@@ -48,7 +55,7 @@
 						<div class="spField" id="categorie">
 							<xsl:if test="count(categories)">				
 								<xsl:for-each select="categories/category">
-								  <xsl:value-of select="." />			  
+								  <xsl:value-of select="." /><br/>		  
 								</xsl:for-each>		
 							</xsl:if>
 						</div>	

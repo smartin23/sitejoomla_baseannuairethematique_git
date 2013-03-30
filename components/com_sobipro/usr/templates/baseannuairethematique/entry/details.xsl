@@ -20,7 +20,7 @@
 	<div class="SPDetailEntry">
 
 		<div class="manage"><xsl:call-template name="manage" /></div>
-		<div class="ratingstars"><xsl:call-template name="ratingStars"/></div>
+		
 		<div style="clear:both;"/>
 		
 		<h1 itemprop="legalName" class="SPTitle">
@@ -40,7 +40,8 @@
             </xsl:for-each>
           </div>
         </xsl:if>
-		
+		<div class="ratingstars"><xsl:call-template name="ratingStars"/></div>
+		<div style="clear:both;"/>
 		<div class="tabbable responsive spEntryTabs">
 			<ul class="nav nav-tabs" id="tabaccordion">
 				<li class="active"><a href="#tab1" data-toggle="tab"><i class="icon-pushpin icon-large"></i> Description</a></li>
@@ -71,8 +72,8 @@
 						
 						<xsl:if test="string-length(entry/fields/field_encemoment/data) &gt; 0">
 						<div class="SPDE-Encemoment well">
-							<strong><xsl:value-of select="entry/fields/field_encemoment/label"/></strong><br/>
-							<div itemprop="description" class="spField block-editor" id="activite_detaillee">
+							<h3><xsl:value-of select="entry/fields/field_encemoment/label"/></h3>
+							<div class="spField block-editor" id="encemoment">
 							  <xsl:value-of select="entry/fields/field_encemoment/data" disable-output-escaping="yes"/>
 							  <xsl:text> </xsl:text>
 							  <xsl:value-of select="entry/fields/field_encemoment/@suffix"/>
@@ -103,7 +104,7 @@
 					<div class="SPDE-More">
 											
 						<div class="SPDE-Links">	
-							<strong><xsl:text>Suivez-nous sur : </xsl:text></strong><br/>			
+										
 							<xsl:if test="string-length(entry/fields/field_facebook/data) &gt; 0">
 								
 							  <div class="spField" id="facebook">          
@@ -161,6 +162,9 @@
 							  </xsl:attribute>
 							  <xsl:attribute name="alt">
 							  <xsl:value-of select="entry/name" />
+							  </xsl:attribute>
+							  <xsl:attribute name="itemprop">
+							  <xsl:text>logo</xsl:text>
 							  </xsl:attribute>
 							</xsl:element>
 							
@@ -220,7 +224,7 @@
 										<xsl:for-each select="entry/fields/field_bio/options/*">
 										<xsl:choose>
 											<xsl:when test="./@selected = 'true'">
-												<xsl:if test="./@position = 1">	
+												<xsl:if test="./@position = 2">	
 													<img class="tampon ab" src="images/tampons/logo_ab1-small.jpg" />
 												</xsl:if>
 											</xsl:when>					 
@@ -325,6 +329,7 @@
 									
 									<div itemprop="telephone" class="spField">
 										<i class="icon-phone"></i> 
+										<xsl:text> </xsl:text>
 										<xsl:value-of select="entry/fields/field_phone/data"/>
 										<xsl:text> </xsl:text>
 										<xsl:value-of select="entry/fields/field_phone/@suffix"/>
@@ -334,6 +339,7 @@
 									
 									<div itemprop="faxNumber" class="spField">
 										<i class="icon-inbox"></i> 
+										<xsl:text> </xsl:text>
 										<xsl:value-of select="entry/fields/field_fax/data"/>
 										<xsl:text> </xsl:text>
 										<xsl:value-of select="entry/fields/field_fax/@suffix"/>
@@ -343,6 +349,7 @@
 								
 								<div class="spField">
 									<i class="icon-mobile-phone"></i> 
+									<xsl:text> </xsl:text>
 									<xsl:value-of select="entry/fields/field_mobile/data"/>
 									<xsl:text> </xsl:text>
 									<xsl:value-of select="entry/fields/field_mobile/@suffix"/>
@@ -351,7 +358,7 @@
 							</div>
 								
 							<xsl:if test="string-length(entry/fields/field_site_internet/data) &gt; 0">		  
-								<div class="spField block" id="internet"> 
+								<div itemprop="url" class="spField block" id="internet"> 
 									<i class="icon-plus"></i> 
 									<a>
 										<xsl:attribute name="href">

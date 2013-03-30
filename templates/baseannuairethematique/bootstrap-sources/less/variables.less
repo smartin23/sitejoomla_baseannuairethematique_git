@@ -29,19 +29,20 @@
 @pink:                  #c3325f;
 @purple:                #7a43b6;
 @marron:				#6A4A3C;
+@thematicColor:         #F9DF36;
 
 
 // Scaffolding
 // -------------------------
 @bodyBackground:        @white;
-@textColor:             @marron;
-@invertedtextColor:     @white;
+@textColor:             @grayDarker;
+@invertedtextColor:     @grayDarker;
 
 
 // Links
 // -------------------------
-@linkColor:             lighten(@textColor, 5%);
-@linkColorHover:        lighten(@textColor, 15%);
+@linkColor:             lighten(@thematicColor, 5%);
+@linkColorHover:        lighten(@thematicColor, 15%);
 
 
 // Typography
@@ -90,8 +91,8 @@
 @btnBackgroundHighlight:            darken(@white, 10%);
 @btnBorder:                         #bbb;
 
-@btnPrimaryBackground:              @textColor;
-@btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 20%);
+@btnPrimaryBackground:              @thematicColor;
+@btnPrimaryBackgroundHighlight:     lighten(@thematicColor, 5%);
 
 @btnInfoBackground:                 #5bc0de;
 @btnInfoBackgroundHighlight:        #2f96b4;

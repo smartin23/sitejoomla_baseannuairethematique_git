@@ -2,33 +2,36 @@
 @fontFamily1: "Dosis", @baseFontFamily;
 @fontFamily2: @baseFontFamily;
 
-@thematicColor: @textColor;
-@thematicColor2: #FCD036;
+@thematicColor: #6A4A3C;
+@thematicColor2: #F9DF36;
 @headerIconColor : @thematicColor2;
-@headerBrandColor1 : lighten(@thematicColor, 10%); 
-@headerBrandColor2 : lighten(@thematicColor, 20%); 
+@headerBrandColor1 : lighten(@thematicColor, 0%); 
+@headerBrandColor2 : lighten(@thematicColor, 0%); 
 @headerBrandColor3 : @thematicColor2;
 
 @headerBrandFontsize : 1.5em;
 @headerBrandFontsize980-1200 : 1.5em;
-@headerBrandFontsize768-980 : 1.5em;
-@headerBrandFontsize480 : 1.2em;
+@headerBrandFontsize768-980 : 1.4em;
+@headerBrandFontsize480 : 1.4em;
+@headerBrandFontsize360 : 1.3em;
 @headerBrandFontsize320 : 1.2em;
 
-@headerIconFontsize : 2em;
-@headerIconFontsize980-1200 : 2em;
-@headerIconFontsize768-980 : 2em;
-@headerIconFontsize480 : 1.5em;
-@headerIconFontsize320 : 1.5em;
+@headerIconFontsize : 1.5em;
+@headerIconFontsize980-1200 : 1.5em;
+@headerIconFontsize768-980 : 1.4em;
+@headerIconFontsize480 : 1.4em;
+@headerIconFontsize360 : 1.3em;
+@headerIconFontsize320 : 1.2em;
 
-@footerBackgroundColor : @boxColor;
-@footerColor : @textColor;
-@footerTitleColor : @textColor;
-@footerLinkColor : lighten(@footerColor , 5%);
-@footerLinkHoverColor : lighten(@footerColor , 15%);
-@footerNavLinkColor : lighten(@footerColor , 15%);
-@footerNavLinkHoverColor : lighten(@footerColor , 25%);
+@footerBackgroundColor : lighten(@thematicColor,5%);
+@footerColor : lighten(@footerBackgroundColor , 50%);
+@footerTitleColor :lighten(@footerBackgroundColor , 100%);
+@footerLinkColor : lighten(@footerBackgroundColor , 50%);
+@footerLinkHoverColor : lighten(@footerBackgroundColor , 90%);
+@footerNavLinkColor : lighten(@footerBackgroundColor , 50%);
+@footerNavLinkHoverColor : lighten(@footerBackgroundColor , 90%);
+@footerKeywordsColor : lighten(@footerBackgroundColor , 5%);
 
 @boxColor: #F4F3F0;
 @lightBorderColor : #ddd;
-@borderColor : @textColor;
+@borderColor : @thematicColor;

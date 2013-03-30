@@ -24,7 +24,7 @@ $sitename = $app->getCfg('sitename');
  <head>
  
 	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 
 	<link type="text/css" rel="stylesheet" href="<?php echo $this->baseurl ?>/min/g=generalcss" />
 
@@ -42,7 +42,9 @@ $sitename = $app->getCfg('sitename');
 		jQuery.noConflict();
 	</script>
 	
+	
     <jdoc:include type="head" />
+
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 	<!--[if lt IE 9]>
 	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -51,37 +53,57 @@ $sitename = $app->getCfg('sitename');
 
 <body class="site <?php echo $option . " view-" . $view . " layout-" . $layout . " task-" . str_replace('.','-',$task ). " itemid-" . $itemid . " ";?> <?php if ($this->params->get('fluidContainer')) { echo "fluid"; } ?>">
 
+
 <header>					
-<div class="header on">												
-	<jdoc:include type="modules" name="logo" />						
-</div>	
+	<div class="header container on">												
+		<jdoc:include type="modules" name="logo" />						
+	</div>
+	<?php if (($task=='search.results')  or ($task=='search.view')){ ?>
+		<div id="onoff2" class="onoff2 onoffswitch hidden"><img title="Passer en mode Recherche" alt="Tous les apiculteurs en mode Recherche" src="images/deco/search.png"></div>
+<?php } ?>
+
 </header>
-				
-<div class="page">
-	<?php if ($task=='search.results'){ ?>
-		<div id="onoff"><i class="icon-eye-close icon-large"></i></div>
-	<?php } ?>
-	
-	<div class="largesheet">
-	
-	<div class="sheet container">
 			
+<div class="page">
+
+	<div class="sheet on">
+				
+	<?php if (($task=='search.results')  or ($task=='search.view')) { ?>
+		<div id="onoff1" class="onoff onoffswitch"><img title="Passer en mode Carte" alt="Tous les apiculteurs en mode Carte" src="images/deco/map.png"></div>
+	<?php } ?>
+				
 		<div class="zone-centre row-fluid">
 	
 				<?php if (($task=='search.results') or ($task=='search.view')) {?>
 				
 				<!--<div class="span12 zone-gauche on">-->
 													
-					<div class="contenu on row-fluid">
+					<div class="contenu on span4">
 						<jdoc:include type="component" />
 					</div>
+										
+					<?php if ( $this->countModules( 'popup' )){ 
+					// Définit les cookies
+					if (!isset($_COOKIE['touslesapiculteurs-popup'])) {
+						setcookie("touslesapiculteurs-popup", "displayed");
+					?>
+						<div class="popup span8">
+							<div class="contenuplus">
+												
+								<div class="retour"><i class="icon-remove-sign icon-large"></i></div>
+								<jdoc:include type="modules" name="popup" />
+								
+							</div>
+						</div>
+					<?php } ?>
+					<?php } ?>
 								
 				<!--</div>-->
 				
 				<?php } ?>
 				
 				<?php if (($task!='search.results') and ($task!='search.view')) {?>
-				<div class="span10 offset1 zone-centre">
+				<div class="span8 offset2 zone-centre">
 
 					<div class="contenuplus">
 					<?php $backurl= $_SERVER['HTTP_REFERER'];
@@ -100,7 +122,6 @@ $sitename = $app->getCfg('sitename');
 				<?php } ?>							
 		</div>
 	</div>
-	</div>
 </div>
 
 <div class="fullmap container">
@@ -109,12 +130,14 @@ $sitename = $app->getCfg('sitename');
 			<div class="mapgrip">
 				<?php if ($task=='search.results') {?>
 				<jdoc:include type="modules" name="map2" style="standard" />
-				<?php } else if ($task=='search.view'){ ?>
+				<?php } else { ?>
 				<jdoc:include type="modules" name="map1" style="standard" />
 				<?php } ?>				
-			</div>		
+			</div>
+			
 		</div>
 	</div>
+	<div class="largesheet"></div>
 </div>
 
 <footer>
@@ -134,10 +157,10 @@ $sitename = $app->getCfg('sitename');
 								</div>
 								<div class="row-fluid">
 									<div id="sociallinks" class="pull-left">
-										<i class="icon-facebook-sign icon-large">&nbsp;</i><i class="icon-twitter-sign icon-large">&nbsp;</i><i class="icon-google-plus-sign icon-large">&nbsp;</i>
+										<a href="http://www.facebook.com/pages/Ma-carte-locale/607034682644449" target="_blank"><i class="icon-facebook-sign icon-large">&nbsp;</i></a><a href="https://twitter.com/macartelocale" target="_blank"><i class="icon-twitter-sign icon-large">&nbsp;</i></a><i class="icon-google-plus-sign icon-large">&nbsp;</i>
 									</div>
 									<div id="socialshare" class="pull-right">
-										<div id="shareme" data-url="http://www.lagrangeweb.fr" data-text="Partagez Tous les apicluteurs sur vos réseaux sociaux" data-title="partagent cette page">&nbsp;</div>
+										<div id="shareme" data-url="http://ma-carte-locale.eu" data-text="Partagez Tous les apiculteurs sur vos réseaux sociaux" data-title="partagent cette page">&nbsp;</div>
 									</div>
 								</div>
 							</div>
@@ -157,12 +180,14 @@ $sitename = $app->getCfg('sitename');
 	</div>
 </footer>
 
-<!--[if lt IE 9]>
-  <script src="/min/g=ielte9js"></script>
-<![endif]-->
-<!--[if lt IE 8]>
-  <script src="/min/g=ielte8js"></script>
-<![endif]-->
+
+	<!--[if IE 9]>
+	  <script src="/min/g=ielte9js"></script>
+	<![endif]-->
+	<!--[if lt IE 9]>
+	  <script src="/min/g=ielte8js"></script>
+	<![endif]-->
+	
 
 <script type='text/javascript'>
 	Modernizr.load([
@@ -171,6 +196,20 @@ $sitename = $app->getCfg('sitename');
 		yep:"/min/g=mobilejs",
 		callback: {
 		"/min/g=mobilejs" : function() {
+		
+			//Support swipe pour les résultats de recherche
+			jQuery('.spEntriesListContainer').each(function () {
+				
+				jQuery(this).swiperight(function() {  
+					jQuery(this).find('.previous_link').trigger('click');			
+				}); 
+				
+				jQuery(this).swipeleft(function() {  
+					jQuery(this).find('.next_link').trigger('click');	
+				}); 
+		
+			});
+			
 			//Support Swipe pour le carousel photos
 			jQuery('.carousel').each(function () {
 				
@@ -314,9 +353,8 @@ function adaptOnResize() {
 	var usedHeight = window.innerHeight ? window.innerHeight : jQuery(window).height();
 	var usedWidth =  window.innerWidth ? window.innerWidth : jQuery(window).width();
 	
-	//La partie centrale s'affiche sur la hauteur totale - la hauteur des titres du footer.
-	jQuery('.zone-centre').css('min-height', usedHeight-jQuery('footer h3').outerHeight(true)-jQuery('header').outerHeight(true)); 
-	
+	//La page centrale s'affiche sur la hauteur totale - la hauteur des titres du footer.
+	jQuery('.page').css('min-height', usedHeight-jQuery('footer h3').outerHeight(true)-jQuery('header').outerHeight(true)); 
 	
 	//Les cartes doivent s'afficher sur la hauteur disponible
 	jQuery('#JmapsHome').height(usedHeight).width(usedWidth);
@@ -329,6 +367,55 @@ jQuery.fn.scrollView = function () {
             scrollTop: jQuery(this).offset().top
         }, 1000);
     });
+}
+
+function modeMap() {
+
+	jQuery('.centre').scrollView();
+		
+	//jQuery('.header .logo').removeClass('on').addClass('off');
+	
+	jQuery('.sheet').removeClass('on').addClass('off');
+	
+	jQuery('.largesheet').removeClass('on').addClass('off');
+	
+	jQuery('.fullmap').removeClass('off').addClass('on');
+	
+	jQuery(".onoff2").removeClass('hidden').addClass('show');
+				
+	//var usedHeight = window.innerHeight ? window.innerHeight : jQuery(window).height();
+	//var usedWidth =  window.innerWidth ? window.innerWidth : jQuery(window).width();
+	//jQuery('.zone-centre').css('min-height', usedHeight-jQuery('footer h3').outerHeight(true)-jQuery('header').outerHeight(true)); 
+	
+	//On cache/montre aussi le header
+	/*header.removeClass('on');
+	header.addClass('off');
+	zonegauche.removeClass('on');
+	zonegauche.addClass('off');*/
+	/*sheet.removeClass('on');
+	sheet.addClass('off');*/
+}
+
+function modeSearch() {
+	//jQuery('.header .logo').removeClass('off').addClass('on');
+	
+	jQuery('.sheet').removeClass('off').addClass('on');
+	
+	jQuery('.largesheet').removeClass('off').addClass('on');
+	
+	jQuery('.fullmap').removeClass('on').addClass('off');
+	
+	jQuery(".onoff2").removeClass('show').addClass('hidden');
+	
+	//jQuery('.zone-centre').css('min-height', 0); 
+	
+	//On cache/montre aussi le header
+	/*header.removeClass('off');
+	header.addClass('on');
+	zonegauche.removeClass('off');
+	zonegauche.addClass('on');*/
+	/*sheet.removeClass('off');
+	sheet.addClass('on');*/
 }
 
 jQuery(document).ready(function() {
@@ -345,6 +432,16 @@ jQuery(document).ready(function() {
 	//Association des classes de reception des evenements customs
 	jQuery('#JmapsHome').addClass('userposregistered').addClass('recentermapregistered');
 	jQuery('#JmapsSearch').addClass('userposregistered').addClass('recentermapregistered');
+	
+	//bof bof...on ajoute les ombres évoluées
+	jQuery("#SPSearchForm").addClass("lifted");
+	//jQuery(".spEntriesListContainer .accordion-group").addClass("lifted");
+	jQuery(".contenuplus").addClass("lifted");
+	
+	//Popup
+	jQuery(".popup").find(".retour").click(function() {
+		jQuery(this).parent().parent().hide();
+	});
 	
 	//Remontée du footer 
 	var footer = jQuery('footer');
@@ -365,56 +462,22 @@ jQuery(document).ready(function() {
 		}		
 	});
 	
-		//var usedHeight = window.innerHeight ? window.innerHeight : jQuery(window).height();
+	//var usedHeight = window.innerHeight ? window.innerHeight : jQuery(window).height();
 	//var usedWidth =  window.innerWidth ? window.innerWidth : jQuery(window).width();
 	
 	//On/off
-	var contenu = jQuery('.contenu');
-	//var header = jQuery('.header');
-	//var zonegauche = jQuery('.zone-gauche');
-	var fullmap = jQuery('.fullmap');
-	//fullmap.height(usedHeight);
-	
-	jQuery("#onoff").click(function() {
-		if (contenu.hasClass('on')) {
-			jQuery(this).html('<i class="icon-eye-open icon-large"></i>');
-			contenu.removeClass('on');
-			contenu.addClass('off');
-			
-			fullmap.removeClass('off');
-			fullmap.addClass('on');
-			
-				//var usedHeight = window.innerHeight ? window.innerHeight : jQuery(window).height();
-	//var usedWidth =  window.innerWidth ? window.innerWidth : jQuery(window).width();
-			//jQuery('.zone-centre').css('min-height', usedHeight-jQuery('footer h3').outerHeight(true)-jQuery('header').outerHeight(true)); 
-			
-			//On cache/montre aussi le header
-			/*header.removeClass('on');
-			header.addClass('off');
-			zonegauche.removeClass('on');
-			zonegauche.addClass('off');*/
-			/*sheet.removeClass('on');
-			sheet.addClass('off');*/
-			
+	//jQuery('.sheet').addClass("on");
+	jQuery(".onoffswitch").click(function() {
+		
+		if (jQuery('.sheet').hasClass('on')) {
+		
+			modeMap();
 		}
 		else
 		{
-			jQuery(this).html('<i class="icon-eye-close icon-large"></i>');
-			contenu.removeClass('off');
-			contenu.addClass('on');
+			jQuery(this).html('<img src="images/deco/search.png" width="32px">');
 			
-			fullmap.removeClass('on');
-			fullmap.addClass('off');
-			
-			//jQuery('.zone-centre').css('min-height', 0); 
-			
-			//On cache/montre aussi le header
-			/*header.removeClass('off');
-			header.addClass('on');
-			zonegauche.removeClass('off');
-			zonegauche.addClass('on');*/
-			/*sheet.removeClass('off');
-			sheet.addClass('on');*/
+			modeSearch();
 		}
 	});
 							
@@ -431,7 +494,24 @@ jQuery(document).ready(function() {
 	var ctrlgrp=jQuery('.SPEntryEdit').find('.control-group').each(function () {
 		title=jQuery(this).find('span').attr('title');
 		if (title && title!='Article') jQuery(this).find(".controls").after('<div class="hasCustomLegend">'+title+'</div>');
-	});		
+	});	
+		
+	//On n'affiche le bloc resultats que si il y a des résultats
+	if (jQuery('#entriesaccordion').find('ul.content').children('li').length==0) {
+		jQuery('#SPSearchResults').hide();
+		
+	}
+	else jQuery('#SobiPro').addClass('opaque');
+			
+	//Pagination des résultats de recherche
+	jQuery('#entriesaccordion').pajinate(
+	{	items_per_page:4,
+		abort_on_small_lists: true,
+		nav_label_first :' << ', 
+		nav_label_prev : ' < ',
+		nav_label_next : ' > ',
+		nav_label_last : ' >> '
+	});
 });
 
 jQuery(window).load(function(){ 
@@ -442,9 +522,10 @@ jQuery(window).load(function(){
 	});
 		
 	//Et en attendantmieux (ordre d'appels de app ?) : on cache le champs Publication pendant un an en le cochant (js)
-	var dpub = jQuery('#field_duree_de_publication'); 
+	//Mais seulement dans la recherche étendue!!!
+	var dpub = jQuery('#SPExtSearch #field_duree_de_publication'); 
 	dpub.parent().parent().hide();
-	dpub.attr('checked', true);
+	dpub.find(".SPSearchChbx").attr('checked', true);
 	
 	//Attention : fonctionne pour le moment avec un seul carousel / page !	
 	//Losque le premier item active est detecté, on affiche le carousel
@@ -474,7 +555,12 @@ jQuery(window).load(function(){
 	//Gestion du recentrage de la carte Search selon l'item affiché ( methode 1 : sur clic sur titre et marker)
 	jQuery("img.jmapsInfoMarker").each(function () {		
 		jQuery(this).click(function() {
+			//On passe en mode carte
+			modeMap();
+		
 			jQuery('#JmapsSearch').trigger('recentermap', [jQuery(this).attr("data-lat"), jQuery(this).attr("data-lon")]);
+			
+			
 		});
 	});
 	/*jQuery(".spEntriesListContainer .spField#titre").each(function () {		
@@ -525,6 +611,13 @@ jQuery(window).load(function(){
 			});
 		}
 	}
+
+	//A reception de la géolocalisation, on active la recherche si...
+	jQuery("#SobiPro").on('userposget', function (event, param1, param2) {
+		if (sessionStorage.getItem("tla-initialization")!="initialized")
+			jQuery("#SPSearchForm .button").trigger("click");
+			sessionStorage.setItem("tla-initialization","initialized")
+    })
 		
 	//General share plugin
 	jQuery('#shareme').sharrre({

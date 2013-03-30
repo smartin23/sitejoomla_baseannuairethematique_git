@@ -14,7 +14,7 @@
 .block-editor ul li:before {
 	content:"\00a0";
 	display: block;
-	border: solid 5px @textColor;
+	border: solid 5px @thematicColor;
 	height: 0;
 	width: 0;
 	position: absolute;
@@ -25,11 +25,16 @@
 .block-gauche {overflow:hidden; float:left; width:60%;}
 .block-droite {overflow:hidden; float:right; width:35%;}
 
-.SPDetails {color:@textColor;}
+.SPDetails {color:@thematicColor;}
 .SPDetails h1 {font-size:2.5em;}
+
+.SPDetails .tab-content #activite_detaillee a,
+.SPDetails .tab-content #encemoment a,
+.SPDetails .tab-content #infocomplementaire a {color:@thematicColor; border-bottom:1px dashed @thematicColor;}
 
 //Textes enrichis
 .SPDetails #resume_activite {font-weight:bold;margin-bottom:30px;}
+.SPDetails #activite_detaillee {margin-bottom:30px;}
 
 //Entete
 .SPDetails .spEntryEditLink {padding-right:2%;}
@@ -50,7 +55,7 @@
 //Manage
 .SPDetailEntry .manage {float:left;width:50%;margin-bottom:15px;}
 //Rating
-.SPDetailEntry .ratingstars {float:right;}
+.SPDetailEntry .ratingstars {float:left;}
 
 //Logo
 .SPField#logo img {max-width:100%; width:100%;height:auto;}
@@ -68,7 +73,7 @@
 //Links
 .SPDE-Links {}
 .SPDE-Links div.spField {display:inline;line-height:30px;}
-.SPDE-Links div.spField a {color:@textColor!important;font-size:2.2em;}
+.SPDE-Links div.spField a {color:@thematicColor!important;font-size:2.2em;}
 
 //Social share
 .SPDE-Socialshare {width:100%;float:right;}
@@ -80,7 +85,7 @@
 
 //Galerie d'images
 .SPDE-Galery {margin-top:25px;}
-//.SPDE-Galery .carousel-control {display:none;background:none!important; border:none!important; color:@textColor ;font-size:2em;opacity:0.4}
+//.SPDE-Galery .carousel-control {display:none;background:none!important; border:none!important; color:@thematicColor ;font-size:2em;opacity:0.4}
 //.SPDE-Galery .carousel .item img {width:100%;}
 
 //Google map : gestion du formulaire de recherche d'itineraire
@@ -124,9 +129,7 @@
 	padding:20px;
 	border-left:1px solid @lightBorderColor;
 	border-right:1px solid @lightBorderColor;
-	border-bottom:1px solid @lightBorderColor;
-
-	
+	border-bottom:1px solid @lightBorderColor;	
 }
 .tabbable.responsive .nav-tabs, .tabbable.responsive .nav {
 	margin: 0px;
@@ -137,7 +140,7 @@
 	.whitebordered;
 	
 	border-style: none;
-	color:@textColor!important;
+	color:@thematicColor!important;
 
 }
 
@@ -155,13 +158,12 @@
 .tabbable.responsive .nav-tabs > li > a:active,
 .tabbable.responsive .nav-tabs > .active > a,
 .tabbable.responsive .nav-tabs > .active > a:hover {
-		color:@textColor!important;
-		border-color:@lightBorderColor @lightBorderColor transparent;
-		border-image: none;
+	color:@thematicColor!important;
+	border-color:@lightBorderColor @lightBorderColor transparent;
+	border-image: none;
     border-style: solid;
     border-width: 1px;
 }
-
 
 @media (max-width: 979px) {
     body {

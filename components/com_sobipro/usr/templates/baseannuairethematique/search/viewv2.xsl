@@ -9,7 +9,7 @@
 
 <xsl:template match="/search">
 
-		<div id="SPSearchForm" 	>
+		<div id="SPSearchForm" 	class="span4">
 		
 			<div>
 			<xsl:apply-templates select="menu" />
@@ -73,7 +73,6 @@
 						</div>
 					</div>	  
 				</xsl:when>
-				
 				<!--<xsl:otherwise>
 				  <xsl:for-each select="fields/*">
 					<xsl:call-template name="FieldCell" />
@@ -82,7 +81,6 @@
 					</xsl:if>
 				  </xsl:for-each>
 				</xsl:otherwise>     -->  
-				
 			</xsl:choose>
 			
 			<!--Message de résultats-->
@@ -94,22 +92,17 @@
 			
 		</div>
 		
-		<div id="SPSearchResults">
-				
+		<div id="SPSearchResults" class="span8">
+	
+			
+			
 			<!--Liste des entrées trouvées-->
 			<div class="row-fluid">
 				<xsl:call-template name="entriesLoop" />
 			</div>
 			
-			<div id="SPESearchResultsTxt">
-				
-				<div><xsl:value-of select="php:function( 'SobiPro::Txt', 'Cliquez pour en savoir plus.' )" /></div>
-				<div><xsl:value-of select="php:function( 'SobiPro::Txt', 'Cliquez sur l`épingle numérotée pour passer en mode Carte.' )" /></div>
-			</div>
-			
 			<!--Pagination-->
-			<!-- La pagination de base est remplacée par pajinate-->
-			<!--<xsl:apply-templates select="navigation" />-->
+			<xsl:apply-templates select="navigation" />
 		
 		</div>
 
@@ -131,9 +124,6 @@
 				  <xsl:value-of select="php:function( 'SobiPro::Txt', 'Options' )" />
 				</xsl:variable>
 				<input id="SPExOptBt" class="button btn" name="SPExOptBt" value="{$ExOptLabel}" type="button"/>
-				<div id="SPExOptTxt">
-				<xsl:value-of select="php:function( 'SobiPro::Txt', 'Astuce : Utilisez le bouton Options pour affiner votre recherche et trouvez du miel de bruyère ou de sapin, un cueilleur d`essaim ou une ruche, de la propolis bio ou le rucher école tout près de chez vous ou en balade.' )" />
-				</div>
 			  
 			</xsl:if>
 		</div>

@@ -18,18 +18,12 @@
 			<xsl:value-of select="count(entries/entry)" />
 		</xsl:variable>
 
-		<ul class='content'>
 		<xsl:for-each select="entries/entry">
-			<li>
-			<div class="accordion-group">
+		
+			<div class="accordion-group span6">
 				<div class="accordion-heading">
-
-					<xsl:if test="string-length(fields/field_logo/data/@thumbnail) &gt; 0">
-						<a class="accordion-toogle" data-toggle="collapse" data-parent="#entriesaccordion">
-						<xsl:attribute name="href">
-							<xsl:text>#collapse</xsl:text>
-							<xsl:value-of select="position()" />
-						</xsl:attribute>
+		
+						<xsl:if test="string-length(fields/field_logo/data/@thumbnail) &gt; 0">
 							<div id="logo" class="SPField">							
 								<xsl:element name="img">
 								  <xsl:attribute name="src">
@@ -47,13 +41,11 @@
 								  </xsl:attribute>
 								</xsl:element>							
 							</div>
-						</a>
-					</xsl:if>
+						</xsl:if>
 						
 						<div id="header">
 							
 								<div class="header-left">
-									
 									<a class="accordion-toogle" data-toggle="collapse" data-parent="#entriesaccordion">
 									<xsl:attribute name="href">
 										<xsl:text>#collapse</xsl:text>
@@ -70,32 +62,21 @@
 										</xsl:choose>
 									</div>
 									</a>
-									
-									<div class="spField" id="localisation">
-								  <span>
-									  <xsl:value-of select="fields/field_zip/data"/>
-									  <xsl:text> </xsl:text>
-									  <xsl:value-of select="fields/field_zip/@suffix"/>
-								  </span>
-								  <span>
-									  <xsl:value-of select="fields/field_city/data"/>
-									  <xsl:text> </xsl:text>
-									  <xsl:value-of select="fields/field_city/@suffix"/>
-								  </span>
-									</div>
-														
-									<div class="spField" id="categorie">
-									<xsl:if test="count(categories)">		
-										<ul>
-										<xsl:for-each select="categories/category">
-										  <li><xsl:value-of select="." /></li>
-										  
-										</xsl:for-each>	
-										</ul>
+							
+									<xsl:if test="string-length(fields/field_productions_principales/data) &gt; 0">
+										<div class="spField block" id="productionsprincipales">								
+											<ul>
+												<xsl:for-each select="fields/field_productions_principales/options/*">
+												   <xsl:choose>
+													  <xsl:when test="./@selected = 'true'">      
+														  <li><xsl:value-of select="."/></li>			
+													  </xsl:when>		 
+												   </xsl:choose>
+												</xsl:for-each>
+											</ul>
+										</div>
 									</xsl:if>
-									</div>	
 								</div>
-								
 								<div class="header-right">
 									<div class="localisation">
 										<div class="marker"></div>
@@ -103,17 +84,22 @@
 									</div>
 								</div>
 								
-							<div style="clear:both;"/>
-							
-							<div class="header-bottom">				
-								<div class="spField" id="rating"><xsl:call-template name="ratingStars"/></div>
-							</div>
-								
 						</div>
+						<div style="clear:both;"/>
+								<div class="header-bottom">
+									<div class="spField" id="categorie">
+										<xsl:if test="count(categories)">				
+											<xsl:for-each select="categories/category">
+											  <xsl:value-of select="." />			  
+											</xsl:for-each>		
+										</xsl:if>
+									</div>		
+									<div class="spField" id="rating"><xsl:call-template name="ratingStars"/></div>
+								</div>
 
 				</div>
 				<div style="clear:both;"/>
-				<div class="accordion-body">
+				<div>
 					<xsl:attribute name="class">
 						<xsl:choose>
 							<xsl:when test="position() = 1">accordion-body collapse</xsl:when>
@@ -153,10 +139,7 @@
 				</div>
 				
 			</div>
-			</li>
 		</xsl:for-each> 
-		</ul>
-		<div class="page_navigation"></div>
 	</div>
 	</div>
 	<div style="clear:both;"/>

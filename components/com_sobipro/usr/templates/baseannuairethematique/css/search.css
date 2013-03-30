@@ -28,6 +28,10 @@
   margin: 0;
   padding: 0;
 }
+.btn-primary {
+  text-shadow: none;
+  color: #222222;
+}
 h1 {
   font-family: "Dosis", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1em;
@@ -48,13 +52,15 @@ h3 {
   font-size: 1.8em;
   font-weight: normal;
   word-spacing: 0.2em;
-  color: #6a4a3c;
+  color: #222222;
   margin: 10px 0;
 }
 a {
+  color: #6a4a3c;
   text-decoration: none;
 }
 a:hover {
+  color: #9b6c58;
   text-decoration: none;
 }
 p {
@@ -62,16 +68,14 @@ p {
 }
 .contrastedbackground {
   background-color: #ffffff;
-  behavior: url(../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../scripts/pie100/PIE.php);
+  behavior: url(/PIE.php);
 }
 .whitetexturized {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC) repeat;
 }
 .whitebordered {
-  text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff, 1px 1px #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
-  filter: progid:dximagetransform.microsoft.glow(Color=#ffffff, Strength=1);
-  /* IE<10 */
-
+  text-shadow: 1px 0 2px #ffffff, -1px 0 2px #ffffff, 0 1px 2px #ffffff, 0 -1px 2px #ffffff, 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 1px -1px 2px #ffffff, -1px 1px 2px #ffffff;
+  behavior: url(/PIE.php);
 }
 .notwhitebordered {
   text-shadow: none;
@@ -81,31 +85,83 @@ p {
   -moz-box-shadow: 2px 2px 3px #333;
   -webkit-box-shadow: 2px 2px 3px #333;
   box-shadow: 2px 2px 3px #333;
+  behavior: url(/PIE.php);
 }
 .top-shadowed {
-  -moz-box-shadow: 0px -3px 3px #333333;
-  -webkit-box-shadow: 0px -3px 3px #333333;
-  box-shadow: 0px -3px 3px #333333;
+  -moz-box-shadow: 0px 0px 3px #333;
+  -webkit-box-shadow: 0px 0px 3px #333;
+  box-shadow: 0px 0px 3px #333;
+  behavior: url(/PIE.php);
 }
 .bottom-shadowed {
   -moz-box-shadow: 0px 1px 2px #333;
   -webkit-box-shadow: 0px 1px 2px #333;
   box-shadow: 0px 1px 2px #333;
+  behavior: url(/PIE.php);
 }
 .notshadowed {
   box-shadow: none;
 }
+.text-shadowed {
+  text-shadow: #222222 0.1em 0.1em 0.2em;
+  behavior: url(/PIE.php);
+}
 .rounded {
   -moz-border-radius: 5px;
   border-radius: 5px;
+  behavior: url(/PIE.php);
 }
 .notrounded {
   border-radius: 0px;
 }
+.lifted:before,
+.lifted:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  -ms-transform: skew(-3deg, -2deg);
+  -webkit-transform: skew(-3deg, -2deg);
+  /* Safari and Chrome */
+
+  -o-transform: skew(-3deg, -2deg);
+  /* Opera */
+
+  -moz-transform: skew(-3deg, -2deg);
+  /* Firefox */
+
+  bottom: 14px;
+  box-shadow: 0 15px 5px rgba(0, 0, 0, 0.3);
+  height: 50px;
+  left: 5px;
+  max-width: 50%;
+  width: 50%;
+  behavior: url(/PIE.php);
+}
+.lifted:after {
+  -ms-transform: skew(3deg, 2deg);
+  /* IE 9 */
+
+  -webkit-transform: skew(3deg, 2deg);
+  /* Safari and Chrome */
+
+  -o-transform: skew(3deg, 2deg);
+  /* Opera */
+
+  -moz-transform: skew(3deg, 2deg);
+  /* Firefox */
+
+  left: auto;
+  right: 5px;
+  behavior: url(/PIE.php);
+}
+.lifted {
+  position: relative;
+}
 #spSearchForm {
-  margin: 0!important;
   overflow: hidden;
   position: relative;
+  margin-top: 60px;
+  margin-bottom: 0px;
 }
 #spSearchResults {
   overflow: hidden;
@@ -117,14 +173,17 @@ p {
 #spSearchForm .message {
   font-weight: bold;
   margin: 1%;
+  margin-top: 20px;
   margin-bottom: 5px;
-  text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff, 1px 1px #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
-  filter: progid:dximagetransform.microsoft.glow(Color=#ffffff, Strength=1);
-  /* IE<10 */
-
 }
 #spSearchForm .pagination {
   display: none;
+}
+#SPSearchForm {
+  /*	margin:1%;*/
+  padding: 2%;
+  margin-bottom: 10px;
+  background-color: #f4f3f0;
 }
 #SPSearchForm label {
   display: inline;
@@ -132,10 +191,6 @@ p {
 #SPSearchForm div.SPSearchLabel {
   width: auto;
   margin-right: 2%;
-  text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff, 1px 1px #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
-  filter: progid:dximagetransform.microsoft.glow(Color=#ffffff, Strength=1);
-  /* IE<10 */
-
 }
 #SPSearchForm label {
   line-height: 25px;
@@ -167,10 +222,6 @@ input#mj_rs_center_selector {
 i.locateme {
   cursor: pointer;
   font-size: 2.3em;
-  text-shadow: 1px 0 0 #ffffff, -1px 0 0 #ffffff, 0 1px 0 #ffffff, 0 -1px 0 #ffffff, 1px 1px #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
-  filter: progid:dximagetransform.microsoft.glow(Color=#ffffff, Strength=1);
-  /* IE<10 */
-
   max-width: 5%;
 }
 div.SPSearchField.radius {
@@ -195,12 +246,18 @@ select#sid_list {
   -moz-border-radius: 5px;
   border-radius: 5px;
   background-color: #ffffff;
-  behavior: url(../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../scripts/pie100/PIE.php);
+  behavior: url(/PIE.php);
 }
 #SPExtSearch div.SPSearchLabel {
   text-shadow: none;
   filter: none;
   margin-top: 10px;
+}
+#SPExOptTxt {
+  font-size: 0.8em;
+  line-height: 1em;
+  margin-top: 15px;
+  color: #888888;
 }
 .customscrollbar {
   clear: both;
@@ -262,23 +319,70 @@ select.sid_list1,
 select.sid_list2 {
   width: 100%;
 }
+#SobiPro.opaque {
+  background-color: #fdfcfc;
+  position: relative;
+  z-index: -2;
+}
+.spEntriesListContainer ul.content {
+  margin: 0px;
+  list-style-type: none;
+}
+.spEntriesListContainer ul.content > li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.spEntriesListContainer ul.content > li:nth-child(even) {
+  background-color: #f4f3f0;
+}
 .spEntriesListContainer .accordion {
   margin: 0;
 }
 .spEntriesListContainer .accordion-group {
-  padding: 1%;
-  background-color: #ffffff;
-  behavior: url(../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../../../../templates/baseannuairethematique/css/../../../scripts/pie100/PIE.php);
+  position: relative;
+  margin: 0;
+  padding: 2%;
+  border: none;
 }
 .spEntriesListContainer .accordion-heading a {
   color: #6a4a3c;
 }
-.spEntriesListContainer .accordion-heading #logo {
-  margin-right: 2%;
+.spEntriesListContainer .accordion-heading ul {
+  list-style-type: none;
+  margin: 0;
 }
-.spEntriesListContainer .accordion-heading #titre {
+.spEntriesListContainer .accordion-heading ul li {
+  line-height: 1.2em;
+}
+.spEntriesListContainer .accordion-heading #logo {
+  float: left;
+  overflow: hidden;
+  margin-right: 2%;
+  max-height: 120px;
+  min-height: 75px;
+  max-width: 28%;
+}
+.spEntriesListContainer .accordion-heading #logo img {
+  width: 100%;
+}
+.spEntriesListContainer .accordion-heading #header {
   float: left;
   width: 70%;
+}
+.spEntriesListContainer .accordion-heading .header-left {
+  float: left;
+  width: 80%;
+}
+.spEntriesListContainer .accordion-heading .header-right {
+  float: right;
+  width: 20%;
+}
+.spEntriesListContainer .accordion-heading .header-bottom {
+  position: absolute;
+  bottom: 5px;
+  right: 1%;
+}
+.spEntriesListContainer .accordion-heading #titre {
   font-size: 1em;
   font-weight: bold;
   padding-bottom: 5px;
@@ -289,7 +393,6 @@ select.sid_list2 {
 }
 .spEntriesListContainer .accordion-heading .localisation {
   position: relative;
-  float: right;
   font-size: 0.8em;
   text-align: right;
   overflow: hidden;
@@ -299,11 +402,12 @@ select.sid_list2 {
   clear: right;
 }
 .spEntriesListContainer .accordion-heading #rating {
-  float: left;
+  float: right;
 }
 .spEntriesListContainer .accordion-heading #categorie {
-  float: right;
+  float: left;
   font-size: 0.8em;
+  margin-top: 3px;
 }
 .spEntriesListContainer.skin {
   margin: 1%;
@@ -349,6 +453,36 @@ select.sid_list2 {
 .spEntriesListContainer .spEntriesListCell #logo {
   float: left;
   margin-right: 2%;
+}
+#SPESearchResultsTxt {
+  font-size: 0.8em;
+  color: #888888;
+  line-height: 1em;
+  padding: 1%;
+  text-align: center;
+  margin-bottom: 1px;
+}
+.page_navigation,
+.alt_page_navigation {
+  float: left;
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.page_navigation a,
+.alt_page_navigation a {
+  padding: 3px 5px;
+  margin: 2px;
+  color: white;
+  text-decoration: none;
+  font-family: Tahoma;
+  font-size: 12px;
+  background-color: #f9df36;
+}
+.active_page {
+  background-color: white !important;
+  color: #6a4a3c !important;
 }
 .spEntriesListContainer .spEntriesListCell .spEntryCats {
   font-size: 0.8em;

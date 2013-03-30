@@ -11,9 +11,8 @@ body
 {
   margin: 0 auto;
   padding: 0;
+  color:@thematicColor!important;
 }
-
-
 
 //Block d'affichage des champs dans les vues vcard et details (partagé ici)
 .block {margin-bottom:15px;}
@@ -25,63 +24,90 @@ body
 
 //Structure
 .page {position:relative;}
-.largesheet {position:relative;.whitetexturized ;z-index:1;}
+.sheet {padding-left:5%; padding-right:5%;}
 .sheet.container, .footer.container {overflow:hidden; margin:auto;}
 .sheet-wrapper, .footer-wrapper { }
 
 //Blocs principaux
-.zone-gauche, .contenu  {position:relative; z-index:9; margin-bottom:20px; margin-top:20px;}
+.zone-gauche, .contenu  {position:relative; z-index:9; margin-bottom:20px; /*margin-top:20px;*/max-width:420px;}
 .zone-gauche.on {.whitetexturized ;}
 .zone-gauche.off {background-color:transparent;}
 .zone-centre {position:relative; z-index:9;}
 
 //Onoff
-#onoff {cursor:pointer; position:absolute; z-index:999; top:0; right:60px; font-size:1.5em;font-weight:normal; background-color:@thematicColor;color:#fff;padding:5px;
+.onoffswitch img {width:32px;}
+.onoff {cursor:pointer; position:absolute; z-index:9999; width:32px; height:32px; top:18px;  font-size:1.5em;font-weight:normal; background-color:@thematicColor2;color:#fff;padding:5px;
+-moz-border-radius-topright: 5px;
+border-top-right-radius: 5px;
+-moz-border-radius-topleft: 5px;
+border-top-left-radius: 5px;
+behavior: url(/PIE.php);
+}
+
+//Onoff
+.onoff2 {cursor:pointer; position:fixed; z-index:9999; width:32px; height:32px; top:0; left:5%;  font-size:1.5em;font-weight:normal; background-color:@thematicColor2;color:#fff;padding:5px;
 -moz-border-radius-bottomright: 5px;
 border-bottom-right-radius: 5px;
 -moz-border-radius-bottomleft: 5px;
-border-bottom-left-radius: 5px;}
-
-//Contenu / Onoff
-.contenu {overflow:hidden; position:relative;}
-.contenu.on, .fullmap.on {
-	//transition: 1s opacity 0.3s;  
-	//opacity:1;
-	//display:block;
-	z-index:99;
+border-bottom-left-radius: 5px;
+behavior: url(/PIE.php);
 }
 
-.contenu.off, .fullmap.off{
-	//transition: 1s opacity 0.3s;  
-	//opacity:0;
-	//display:none;
-	z-index:0;
+.onoff2.hidden {display:none;}
+.onoff2.show {display:block;}
+
+//Contenu / Onoff
+.sheet.on {
+	transition: 1s opacity 0.3s;  
+	opacity:1;
+	display:block;
+	//z-index:99;
+}
+
+.largesheet.on, .logo.on {
+	display:block;
+}
+
+.sheet.off{
+	transition: 1s opacity 0.3s;  
+	opacity:0;
+	display:none;
+	//z-index:0;
+}
+
+.largesheet.off, .logo.off {
+	display:none;
 }
 
 //Header
-.header {position:relative; z-index:999;background-color:#F0EDE5;padding:1%;padding-top:5px;padding-bottom:5px;.bottom-shadowed;}
-.contenuplus .header {margin:0 0 25px!important; padding:0!important;}
-.header a {color:@textColor;}
-.header a:hover {color:lighten(@textColor,5%)!important;}
+.header {position:relative; z-index:999;}
+.contenuplus .header {margin:0 0 25px!important; padding:0!important;text-align:right;}
+.header a {color:@thematicColor;}
+.header a:hover {color:lighten(@thematicColor,5%)!important;}
 .header .titresite {float:left;}
+.header .logo {float:right; }
 .header .icon {font-size:@headerIconFontsize; line-height:100%; color:@headerIconColor; .whitebordered;}
 .header .icon a, .header .icon a:hover {color:@headerIconColor;}
 .header .icon {position:relative; }
-.header .brand {font-family:@fontFamily1;font-size:@headerBrandFontsize;line-height:1.2em;font-weight:bold;.whitebordered;}
+.header .brand {font-family:@fontFamily1;font-size:@headerBrandFontsize;line-height:1.2em;font-weight:bold;.whitebordered;letter-spacing:1px;}
 .header .brand .w1, .contenuplus .header .brand .w1 {color:@headerBrandColor1;}
 .header .brand .w2, .contenuplus .header .brand .w2 {color:@headerBrandColor2;}
 .header .brand .w3, .contenuplus .header .brand .w3 {color:@headerBrandColor3;}
 .header h1 {text-align:right;color:@headerBrandColor3;font-size:@headerBrandFontsize;font-weight:bold;.whitebordered;}
 .header  .soustitre, .header .soustitre-small, .header .accroche 
 {clear:both;font-family:@fontFamily1;font-weight:700;.whitebordered;}
-.header h2 {font-size:1em;font-weight:bold;text-align:right;margin:0; padding:0;}
+.header h2 {font-size:1em;font-weight:bold;text-align:right;margin:0; padding:0;.whitebordered;}
 .header  .soustitre-small {display:none;}
 .header  .accroche {visibility:hidden; height:1px;}
+
+.popup {margin-top:38px;}
+.popup .retour {right:0px!important;}
 .contenuplus .header .icon, .contenuplus .header .brand, .contenuplus .header .soustitre, .contenuplus .header .soustitre-small{opacity:1;}
 
 //Google maps
-.fullmap {position:fixed;top:0;left:0;width:100%;max-width:100%;z-index:0;}
+.fullmap {position:fixed;top:0;left:0;width:100%;max-width:100%;}
 .fullmap.container-fluid {padding:0!important;margin:0!important;}
+.largesheet {position:fixed;.whitetexturized ;top:0; left:0;width:100%;width:100%;height:100%;}
 
 #Jmaps img, #JmapsSearch img, #JmapsHome img, #field_jmapsmarker img {max-width:none!important;}
 .markerHTMLdiv, .markerHTMLdiv {font-weight:normal!important;font-size:0.9em!important;line-height:1.5em;}
@@ -99,37 +125,40 @@ border-bottom-left-radius: 5px;}
 .profile #users-profile-sobipro div#sobipro-entries {margin-bottom:20px;}
 
 //Profile Edition
-.profile-edit legend {color:@textColor!important;border:none!important; font-size:1em!important;}
+.profile-edit legend {color:@thematicColor!important;border:none!important; font-size:1em!important;}
 
 //Registration
-.registration legend {color:@textColor!important;border:none!important; font-size:1em!important;}
+.registration legend {color:@thematicColor!important;border:none!important; font-size:1em!important;}
 
 //Contacts
 .contact .contact-email-form-description {margin-bottom:20px;}
-.contact-form legend {color:@textColor!important;border:none!important; font-size:1em!important;font-weight:normal!important;}
+.contact-form legend {color:@thematicColor!important;border:none!important; font-size:1em!important;font-weight:normal!important;}
 
 //Validation
 input.invalid, textarea.invalid {border:1px solid #FF0000!important;}
 
 //Contenu +
-.contenuplus {position:relative;z-index:9;margin-top:25px;margin-bottom:25px; .contrastedbackground;padding:3%;}
-.contenuplus .retour {font-size:2em; position:absolute; top:-10px; right:-10px;}
+.contenuplus {position:relative;margin-top:30px;margin-bottom:25px; .contrastedbackground;padding:3%;}
+.contenuplus .retour { cursor:pointer;font-size:2em; position:absolute; top:-10px; right:0px;color:@thematicColor2;}
 .contenuplus ul.editor {list-style-type:none;  list-style: none; margin: 0 0 10px;}
 .contenuplus ul.editor li{padding:2px; position:relative; margin-left:15px;}
 .contenuplus ul.editor li:before {
 	content:"\00a0";
 	display: block;
-	border: solid 5px @textColor;
+	border: solid 5px @thematicColor2;
 	height: 0;
 	width: 0;
 	position: absolute;
 	left:-15px;
 	top:5px;
 }
-.item-page {}
+
+//On affichage jamais une liste des categories
+.contenuplus .spCatListContainer {display:none;}
+
 
 //Footer
-footer {position:relative;font-weight:bold;color:@footerColor;background-color:#F0EDE5; z-index:9999;padding-bottom:15px;}
+footer {position:relative;color:@footerColor;background-color:@footerBackgroundColor; z-index:9999;padding-bottom:15px;.top-shadowed}
 footer  h3 {color:@footerTitleColor; font-size:1.6em;font-weight:bold; text-transform:uppercase;line-height:20px;cursor:pointer;}
 footer a {color:@footerLinkColor;}
 footer a:hover {color:@footerLinkHoverColor;}
@@ -143,18 +172,19 @@ footer .login {padding:1%;padding-top:0px;}
 footer .registered .login .guestonly {display:none;}
 
 //Ma carte locale
-//footer .macartelocale {background-color:@white; color:@textColor; margin-top:20px;padding:3%;.rounded;.shadowed;}
-//footer .macartelocale a, footer .macartelocale h3 {color:@textColor;}
+//footer .macartelocale {background-color:@white; color:@thematicColor; margin-top:20px;padding:3%;.rounded;.shadowed;}
+//footer .macartelocale a, footer .macartelocale h3 {color:@thematicColor;}
 
 //Logout
-footer .loggedin {padding:1%;padding-top:20px;}
+footer .loggedin {padding:1%;}
 footer .loggedin #login-form {margin:0px;}
 footer .login-greeting {margin-bottom:5px;}
 
 //Misc
 footer .misc {padding:1%;padding-top:0px;}
 footer .partenaires img {width:100%;}
-footer .keywords {font-size:1em; line-height:1.2em;color:@textColor;margin-top:20px;}
+footer .keywords {font-size:1em; line-height:1.2em; color:@footerKeywordsColor;margin-top:20px;}
+footer .keywords a {color:@footerKeywordsColor;}
 
 //Share
 footer .social {padding:1%;padding-top:0px}
@@ -165,21 +195,26 @@ footer .social #sociallinks {font-size:2em;}
 footer .links {font-size:0.8em;margin-top:20px;line-height:1.2em;}
 
 //Derniers inscrits
-.derniersinscrits .entry {float:left; width:100%;margin-bottom:10px;}
+.derniersinscrits .entry {float:left; width:100%;margin-bottom:12px;}
 .derniersinscrits .entry #logo {margin-right:2%;}
-.derniersinscrits .entry #titre {font-weight:bold;margin-bottom:5px;}
-.derniersinscrits .entry #categorie {font-size:0.8em;}
+.derniersinscrits .entry #logo img{width:100px;max-width:none!important;}
+.derniersinscrits .entry #titre {font-weight:bold;margin-bottom:3px;line-height:1em;}
+.derniersinscrits .entry #localisation {margin-bottom:2px;}
+.derniersinscrits .entry #categorie {font-size:0.8em;line-height:1em;}
+
+//Modules
+.module {margin-bottom:25px;}
 
 //Autres menu
 .nav > li > a:hover {background:none;}
 
 //Carousel
-.carousel .carousel-control {display:none;background:none!important; border:none!important; color:@textColor ;font-size:2em;opacity:0.4;}
+.carousel .carousel-control {display:none;background:none!important; border:none!important; color:@thematicColor ;font-size:2em;opacity:0.4;}
 .carousel .carousel-inner .item img {width:100%;}
 
 //Tooltips (bootstrap)
 .tooltip {font-size:1em;font-weight:normal;}
-a.hasBootstrapTip {color:@textColor;}
+a.hasBootstrapTip {color:@thematicColor;}
 
 //Comment ca marche ?
 #inscrivezvous-demo {position:relative;}
@@ -320,10 +355,6 @@ margin:0 4px 0 0;
 
 //Media Queries  
 @media screen and (max-width: 980px) {
-
-	//Bloc Derniers inscrits
-	footer .derniersinscrits {display:none;}
-
 }	
 
 // Tablets to regular desktops
@@ -340,7 +371,7 @@ margin:0 4px 0 0;
 @media screen and (min-width: 768px) and (max-width: 979px) {
 
 	//.span4.zone-gauche {width:42%!important;}
-	.accordion-group {float:left;width:100%!important;}
+	//.accordion-group {float:left;width:100%!important;margin:0px!important;}
 	
 	//Logo
 	.header .brand, .header h1 {font-size:@headerBrandFontsize768-980;}
@@ -350,8 +381,13 @@ margin:0 4px 0 0;
 	//.spEntriesListContainer .spEntriesListCell  #logo {float:none;margin-bottom:15px;}
 	//.spEntriesListContainer .spEntriesListTitle #titre {clear:both;}
 	
+	//Contenu
+	.contenu {width:40%!important;}
+	.popup {width:50%!important;}
+	
 	//Titres footer
-	footer h3 {font-size:1.6em!important;}
+	footer h3 {font-size:1.5em!important;}
+	footer #socialshare {float:left!important; margin-top:20px;}
 }
 
 // Phones to portrait tablets and narrow desktops
@@ -387,19 +423,29 @@ margin:0 4px 0 0;
 	footer .theme, footer .misc {margin-top:30px;}
 	footer .misc {display:none;}
 	
+	//Bloc Derniers inscrits
+	footer .derniersinscrits {display:none;}
+	
 	//Titres du blog
 	.blog h2 {font-size:2em;}
 	.blog h3 {font-size:1.8em;}
-	
-	//Contenu + 
-	.contenuplus {margin-top:0px;margin-bottom:0px;}
 	
 	//Zones
 	.zone-gauche {margin-bottom:3px; }
 	.zone-gauche.on {}	
 }
 
+@media screen and (min-width:600px) and (max-width: 767px) {
+
+	//.accordion-group {float:left!important;width:48%!important;}
+	//.accordion-group:not(:first-child) {margin-left:2%!important;}
+	//.accordion-group:first-child {margin-left:0px!important;}
+}
+
 @media screen and (max-width: 480px) {
+
+	.sheet {padding-left:2%; padding-right:2%;}
+
 	//Titres du blog
 	.blog h2 {font-size:1.8em;}
 	.blog h3 {font-size:1.6em;}
@@ -409,12 +455,12 @@ margin:0 4px 0 0;
 	.header .soustitre h2{font-size:0.8em;}
 }
 
-@media screen and (min-width:480px) and (max-width: 767px) {
-
-	footer .partenaires img {width:50%;}
-}
-
 @media screen and (max-width: 360px) {
+
+	//Logo
+	.header .brand, .header h1  {font-size:@headerBrandFontsize360;}
+	.header .icon  {font-size:@headerIconFontsize360;}
+	.header .soustitre h2{font-size:0.7em;}
 
 	//Bascule de l'illustration du post
 	.blog img.illustration {float:left; width:100%;}

@@ -26,17 +26,16 @@
 //Variables internes globales
 @import "../../../../../../templates/baseannuairethematique/css/variables.less";
 
-#spSearchForm {margin:0!important;overflow:hidden;position:relative;}
+#spSearchForm {overflow:hidden;position:relative;margin-top:60px;margin-bottom:0px;}
 #spSearchResults {overflow:hidden;position:relative;}
 
-
 #spSearchForm h3 {display:none;}
-#spSearchForm .message {font-weight:bold;margin:1%;margin-bottom:5px;.whitebordered;}
+#spSearchForm .message {font-weight:bold;margin:1%;margin-top:20px;margin-bottom:5px;}
 #spSearchForm .pagination {display:none;}
 
-//#SPSearchForm {	margin:1%; margin-bottom:20px;}
+#SPSearchForm {/*	margin:1%;*/ padding:2%;margin-bottom:10px;background-color:@boxColor;}
 #SPSearchForm label {display:inline;}
-#SPSearchForm div.SPSearchLabel{width:auto; margin-right:2%;.whitebordered;}
+#SPSearchForm div.SPSearchLabel{width:auto; margin-right:2%;}
 
 #SPSearchForm label {line-height:25px;}
 
@@ -77,7 +76,7 @@ div.SPSearchField {
 
 //Radius
 input#mj_rs_center_selector {width:85%;}
-i.locateme {cursor:pointer;font-size:2.3em;.whitebordered;max-width:5%;}
+i.locateme {cursor:pointer;font-size:2.3em;max-width:5%;}
 div.SPSearchField.radius {display:inline;}
 select#mj_rs_radius_selector {width:auto;}
 button#mj_rs_cutom {margin-bottom:10px;}
@@ -87,12 +86,14 @@ select#sid_list{width:95%;}
 #SPExtSearch{font-size:0.9em;height:350px;margin-top:10px;margin-bottom:15px;border:1px solid @inputBorder;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;.contrastedbackground;}
 #SPExtSearch div.SPSearchLabel {.notwhitebordered; margin-top:10px;}
 
+#SPExOptTxt {font-size:0.8em;line-height:1em;margin-top:15px;color:lighten(@textColor, 40%);}
+
 //Custom Scrollbar for extended search
 .customscrollbar{ clear: both;}
 .customscrollbar .viewport { width: 95%; height: 350px; overflow: hidden; position: relative; }
 .customscrollbar .overview { list-style: none; position: absolute; left: 0; top: 0; width:100%;padding-left:2%;}
 .customscrollbar .thumb .end,
-.customscrollbar .thumb { background-color: @textColor; }
+.customscrollbar .thumb { background-color: @thematicColor; }
 .customscrollbar .scrollbar { position: relative; float: right; width: 5%; }
 .customscrollbar .track { background-color: @boxColor; height: 100%; width:13px; position: relative; padding: 0 1px; }
 .customscrollbar .thumb { height: 20px; width: 13px; cursor: pointer; overflow: hidden; position: absolute; top: 0; }
@@ -104,21 +105,34 @@ select#sid_list{width:95%;}
 select.sid_list1, select.sid_list2 {width:100%;}
 
 //Resultats de recherche
-//.spEntriesListContainer {margin:1%;}
+.spEntriesListContainer {}
+
+#SobiPro.opaque {background-color:lighten(@boxColor,4%); position:relative; z-index:-2;}
 //Accordion header
+.spEntriesListContainer  ul.content {margin:0px;list-style-type:none;}
+.spEntriesListContainer  ul.content > li {padding-top:10px;
+padding-bottom:10px;}
+.spEntriesListContainer  ul.content > li:nth-child(even) {background-color:lighten(@boxColor,0%)}
 .spEntriesListContainer .accordion {margin:0;}
-.spEntriesListContainer .accordion-group  {padding:1%;.contrastedbackground;}
-.spEntriesListContainer .accordion-heading a {color:@textColor;}
-.spEntriesListContainer .accordion-heading #logo {margin-right:2%;}
-.spEntriesListContainer .accordion-heading #titre {float:left; width:70%;font-size:1em;font-weight:bold;padding-bottom:5px;}
+.spEntriesListContainer .accordion-group  {position:relative;margin:0;padding:2%;border:none;}
+.spEntriesListContainer .accordion-heading {}
+.spEntriesListContainer .accordion-heading a {color:@thematicColor;}
+.spEntriesListContainer .accordion-heading ul {list-style-type:none;margin:0;}
+.spEntriesListContainer .accordion-heading ul li {line-height:1.2em}
+.spEntriesListContainer .accordion-heading #logo {float:left;overflow:hidden;margin-right:2%;max-height:120px;min-height:75px;max-width:28%;}
+.spEntriesListContainer .accordion-heading #logo img {width:100%;}
+.spEntriesListContainer .accordion-heading #header {float:left;width:70%;}
+.spEntriesListContainer .accordion-heading .header-left{float:left; width:80%;}
+.spEntriesListContainer .accordion-heading .header-right {float:right;width:20%;}
+.spEntriesListContainer .accordion-heading .header-bottom {position:absolute; bottom:5px;right:1%;}
+.spEntriesListContainer .accordion-heading #titre {font-size:1em;font-weight:bold;padding-bottom:5px;}
 .spEntriesListContainer .accordion-heading #productionsprincipales {font-weight:normal;font-size:0.8em;}
-.spEntriesListContainer .accordion-heading .localisation {position:relative;float:right; font-size:0.8em;text-align:right;overflow:hidden;}
+.spEntriesListContainer .accordion-heading .localisation {position:relative; font-size:0.8em;text-align:right;overflow:hidden;}
 .spEntriesListContainer .accordion-heading #distance {font-weight:bold;clear:right;}
+.spEntriesListContainer .accordion-heading #rating {float:right;}
+.spEntriesListContainer .accordion-heading #categorie {float:left;font-size:0.8em;margin-top:3px;}
+//.spEntriesListContainer .accordion-heading #categorie li {margin:0;}
 
-.spEntriesListContainer .accordion-heading #rating {float:left;}
-.spEntriesListContainer .accordion-heading #categorie {float:right;font-size:0.8em;}
-
- 
 //Accordion body
 .spEntriesListContainer.skin {margin:1%; border: 1px solid #CCCCCC;
     border-radius: 5px 5px 5px 5px;/*border:1px solid @inputBorder;-webkit-border-radius: 5px; -moz-border-radius: 5px;border-radius: 5px;*/background-color:rgba(255,255,255,1);}
@@ -132,6 +146,34 @@ select.sid_list1, select.sid_list2 {width:100%;}
 .spEntriesListContainer .spEntriesListCell div#resume_activite {margin-bottom:10px;}
 .spEntriesListContainer .spEntriesListCell div#productions {font-weight:bold;margin-bottom:10px;}
 .spEntriesListContainer .spEntriesListCell #logo {float:left; margin-right:2%;}
+
+#SPESearchResultsTxt {font-size:0.8em;color:lighten(@textColor, 40%);line-height:1em;padding:1%;text-align:center;margin-bottom:1px;}
+
+
+//Pagination
+.page_navigation , .alt_page_navigation{
+	float: left;
+	width:100%;
+	
+	text-align:center;
+	padding-top:10px;
+	padding-bottom: 10px;
+}
+
+.page_navigation a, .alt_page_navigation a{
+	padding:3px 5px;
+	margin:2px;
+	color:white;
+	text-decoration:none;
+
+	font-family: Tahoma;
+	font-size: 12px;
+	background-color:@thematicColor2;
+}
+.active_page{
+	background-color:white !important;
+	color:@thematicColor !important;
+}	
 
 //Category
 .spEntriesListContainer .spEntriesListCell .spEntryCats {font-size:0.8em; font-weight:normal;margin-top:10px;text-align:left;}
@@ -149,6 +191,7 @@ input#mj_rs_center_selector {width:75%;}
 @media screen and (min-width: 320px) and (max-width: 480px){
 	.overview .SPSearchCell:nth-child(2) span {display:block;}
 }
+
 
 @media screen and (max-width: 320px) {
 input#mj_rs_center_selector {width:75%;}

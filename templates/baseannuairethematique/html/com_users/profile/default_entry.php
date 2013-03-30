@@ -53,9 +53,10 @@ if ($nbrows > 0) :?>
 			if ($row['2'] == 0) echo '<i class="icon-exclamation-sign"></i> ';
 			if ($row['2'] == 1) echo '<i class="icon-ok-sign"></i> ';	
             echo '<a href="index.php?option=com_sobipro&sid='.$row['0'].'">'.$row['1'].'</a>, ';		
-			echo JText::_('COM_USERS_SOBIPRO_SINCE')." ".JHtml::_('date', $row['4']);
+			//echo JText::_('COM_USERS_SOBIPRO_SINCE')." ".JHtml::_('date', $row['4']);
 			echo " (".$row['3']." ".JText::_('COM_USERS_SOBIPRO_COUNTER').")";
 			echo ' | <a href="index.php?option=com_sobipro&task=entry.edit&sid='.$row['0'].'">'.JText::_('COM_USERS_SOBIPRO_EDIT_ENTRY').'</a>';
+			echo '<br/>';
 			}
 		?>
 	<?php endif;?>
